@@ -9,6 +9,7 @@ namespace ImDiabetic
     public partial class RegistrationPage : ContentPage
     {
         Realm realm;
+        User user;
         public RegistrationPage()
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace ImDiabetic
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
             AddUser();
-            await Navigation.PushAsync(new DashboardPage());
+            await Navigation.PushAsync(new DashboardPage(user));
         }
 
         protected override bool OnBackButtonPressed()
@@ -33,17 +34,14 @@ namespace ImDiabetic
         {
             String firstName = firstNameEntry.Text;
             String lastName = lastNameEntry.Text;
-            String age = ageEntry.Text;
-
-            int selectedIndex = picker.SelectedIndex;
-            String gender = (string)picker.ItemsSource[selectedIndex];
-            Debug.WriteLine("********Pick " + selectedIndex + " and " + gender);
+            String age = ageEntry.Text; 
+            String gender = (string)picker.ItemsSource[picker.SelectedIndex];
 
             String password = passwordEntry.Text;
 
             realm.Write(() =>
             {
-                var user = new User { FirstName = firstName, LastName = lastName, Age = age, Gender = gender, Password = password };
+                user = new User { FirstName = firstName, LastName = lastName, Age = age, Gender = gender, Password = password };
                 realm.Add(user);
             });
         }

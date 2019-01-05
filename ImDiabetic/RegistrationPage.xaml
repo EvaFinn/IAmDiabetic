@@ -4,7 +4,7 @@
         <Label Text="Register yo" HorizontalOptions="Center" />
         <Entry x:Name="firstNameEntry" Placeholder="First Name" ReturnType="Next" />
         <Entry x:Name="lastNameEntry" Placeholder="Last Name" ReturnType="Next" />
-        <Entry x:Name="ageEntry" Placeholder="Age" ReturnType="Next" />
+        <Entry x:Name="ageEntry" Placeholder="Age" Keyboard="Numeric" ReturnType="Next" />
         <Picker x:Name="picker" Title="Gender">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">

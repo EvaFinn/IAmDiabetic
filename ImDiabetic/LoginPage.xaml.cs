@@ -24,7 +24,8 @@ namespace ImDiabetic
             var users = realm.All<User>().Where(u => u.FirstName == firstNameEntry.Text && u.Password == passwordEntry.Text);
             if (users.Count() > 0)
             {
-                await Navigation.PushAsync(new DashboardPage());
+                User user = users.FirstOrDefault();
+                await Navigation.PushAsync(new DashboardPage(user));
             } else {
                 await DisplayAlert("Alert", "User does not exist lad", "OK");
             }
