@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="Registration" NavigationPage.HasBackButton="False" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.RegistrationPage">
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Label Text="Register yo" HorizontalOptions="Center" />
+        <Entry x:Name="firstNameEntry" Placeholder="First Name" ReturnType="Next" />
+        <Entry x:Name="lastNameEntry" Placeholder="Last Name" ReturnType="Next" />
+        <Entry x:Name="ageEntry" Placeholder="Age" ReturnType="Next" />
+        <Picker x:Name="picker" Title="Gender">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Female</x:String>
+                    <x:String>Male</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="true" ReturnType="Done" />
+        <Button Text="Register" Clicked="Handle_Clicked" />
+    </StackLayout>
+</ContentPage>
