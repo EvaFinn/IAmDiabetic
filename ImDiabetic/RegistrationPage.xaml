@@ -15,5 +15,6 @@
         </Picker>
         <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="true" ReturnType="Done" />
         <Button Text="Register" Clicked="Handle_Clicked" />
+        <Button Text="Cancel" Clicked="Cancel_Clicked" />
     </StackLayout>
 </ContentPage>

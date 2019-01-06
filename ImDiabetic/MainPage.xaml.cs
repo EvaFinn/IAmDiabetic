@@ -26,5 +26,10 @@ namespace ImDiabetic
         {
             await Navigation.PushAsync(new RegistrationPage());
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }

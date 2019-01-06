@@ -15,8 +15,34 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MyPage.xaml" />
+    <EmbeddedResource Remove="LL.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="MyPage.xaml.cs" />
+    <Compile Remove="LL.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="FodyWeavers.xml" />
+    <None Remove="Icons\home.png" />
+    <None Remove="Icons\logs.png" />
+    <None Remove="Icons\more.png" />
+    <None Remove="Icons\trends.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Icons\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\home.png" />
+    <EmbeddedResource Include="Icons\logs.png" />
+    <EmbeddedResource Include="Icons\more.png" />
+    <EmbeddedResource Include="Icons\trends.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="LogsPage.xaml.cs">
+      <DependentUpon>LogsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="TrendsPage.xaml.cs">
+      <DependentUpon>TrendsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -25,6 +25,11 @@ namespace ImDiabetic
             await Navigation.PushAsync(new DashboardPage(user));
         }
 
+        async void Cancel_Clicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
+
         protected override bool OnBackButtonPressed()
         {
             return true;

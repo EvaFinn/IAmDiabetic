@@ -5,5 +5,6 @@
         <Entry x:Name="firstNameEntry" Placeholder="First Name" />
         <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="true" />
         <Button Text="Next" Clicked="Handle_Clicked"/>
+        <Button Text="Register" Clicked="Register_Clicked"/>
     </StackLayout>
 </ContentPage>

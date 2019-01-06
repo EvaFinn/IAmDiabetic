@@ -31,6 +31,11 @@ namespace ImDiabetic
             }
         }
 
+        async void Register_Clicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new RegistrationPage());
+        }
+
         protected override bool OnBackButtonPressed()
         {
             return true;

@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage Title="Dashboard" NavigationPage.HasBackButton="False" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.DashboardPage">
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label x:Name="welcomeUserLabel" HorizontalOptions="Center"/>
-        <Button Text="Log Out" Clicked="Logout_Click"/>
-    </StackLayout>
+    <AbsoluteLayout>
+        <StackLayout BackgroundColor="Gray" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout Margin="0,200,0,0" HorizontalOptions="Center">
+                <Label x:Name="welcomeUserLabel" HorizontalOptions="Center" />
+                <Button Text="Log Out" Clicked="Logout_Click" />
+            </StackLayout>
+        </StackLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds=".20,1,1,.1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="White" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+            <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckHome">
+                <Image Margin="0,10,0,10" x:Name="imgHome" Style="{StaticResource ButtonNavigationBarImageStyle}" />
+                <Label Text="HomeTBC" Style="{StaticResource ButtonNavigationBarLabelStyle}">
+<!--      Change Home to go somewhere else          -->
+                </Label>
+            </StackLayout>
+            <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckLogs">
+                <Image Margin="0,10,0,10" x:Name="imgLogs" Style="{StaticResource ButtonNavigationBarImageStyle}" />
+                <Label Text="Logs" Style="{StaticResource ButtonNavigationBarLabelStyle}">
+                </Label>
+            </StackLayout>
+            <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckTrends">
+                <Image Margin="0,10,0,10" x:Name="imgTrends" Style="{StaticResource ButtonNavigationBarImageStyle}" />
+                <Label Text="Trends" Style="{StaticResource ButtonNavigationBarLabelStyle}">
+                </Label>
+            </StackLayout>
+            <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckMore">
+                <Image Margin="0,10,0,10" x:Name="imgMore" Style="{StaticResource ButtonNavigationBarImageStyle}" />
+                <Label Text="More" Style="{StaticResource ButtonNavigationBarLabelStyle}">
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </AbsoluteLayout>
 </ContentPage>
