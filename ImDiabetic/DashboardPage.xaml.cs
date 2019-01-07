@@ -43,7 +43,7 @@ namespace ImDiabetic
             {
                 DefaultBackground();
                 stckLogs.BackgroundColor = Color.DeepSkyBlue;
-                await Navigation.PushAsync(new LogsPage());
+                await Navigation.PushAsync(new LogsPage(User));
             };
             stckLogs.GestureRecognizers.Add(logsTap);
 

@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage Title="Logs" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.LogsPage">
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label Text="Log page - To Be Developed" HorizontalOptions="Center" />
-    </StackLayout>
+    <ContentPage.Content>
+        <Grid VerticalOptions="Start" HorizontalOptions="Center" Margin="50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="BLOOD GLUCOSE" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" />
+            <Entry x:Name="bloodGlucoseEntry" Placeholder="mg/dl" WidthRequest="200" Grid.Row="0" Grid.Column="1" />
+            <Label Text="INSULIN" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" />
+            <Entry x:Name="insulinEntry" WidthRequest="150" Placeholder="Unit" Grid.Row="1" Grid.Column="1" />
+            <Label Text="PILLS" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" />
+            <Entry x:Name="pillEntry" WidthRequest="150" Placeholder="" Grid.Row="2" Grid.Column="1" />
+            <Label Text="ACTIVITY" Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center" />
+            <Entry x:Name="activityEntry" WidthRequest="150" Placeholder="" Grid.Row="3" Grid.Column="1" />
+            <Label Text="CARBS" Grid.Row="4" Grid.Column="0" VerticalTextAlignment="Center" />
+            <Entry x:Name="carbsEntry" WidthRequest="150" Placeholder="g" Grid.Row="4" Grid.Column="1" />
+            <Button Text="Scan" Grid.Row="4" Grid.Column="2" WidthRequest = "40" HeightRequest = "10" />
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>

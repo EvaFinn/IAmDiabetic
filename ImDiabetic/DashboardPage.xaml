@@ -10,24 +10,20 @@
         <StackLayout AbsoluteLayout.LayoutBounds=".20,1,1,.1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="White" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
             <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckHome">
                 <Image Margin="0,10,0,10" x:Name="imgHome" Style="{StaticResource ButtonNavigationBarImageStyle}" />
-                <Label Text="HomeTBC" Style="{StaticResource ButtonNavigationBarLabelStyle}">
+                <Label Text="HomeTBC" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
 <!--      Change Home to go somewhere else          -->
-                </Label>
             </StackLayout>
             <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckLogs">
                 <Image Margin="0,10,0,10" x:Name="imgLogs" Style="{StaticResource ButtonNavigationBarImageStyle}" />
-                <Label Text="Logs" Style="{StaticResource ButtonNavigationBarLabelStyle}">
-                </Label>
+                <Label Text="Logs" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
             </StackLayout>
             <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckTrends">
                 <Image Margin="0,10,0,10" x:Name="imgTrends" Style="{StaticResource ButtonNavigationBarImageStyle}" />
-                <Label Text="Trends" Style="{StaticResource ButtonNavigationBarLabelStyle}">
-                </Label>
+                <Label Text="Trends" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
             </StackLayout>
             <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckMore">
                 <Image Margin="0,10,0,10" x:Name="imgMore" Style="{StaticResource ButtonNavigationBarImageStyle}" />
-                <Label Text="More" Style="{StaticResource ButtonNavigationBarLabelStyle}">
-                </Label>
+                <Label Text="More" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
             </StackLayout>
         </StackLayout>
     </AbsoluteLayout>
