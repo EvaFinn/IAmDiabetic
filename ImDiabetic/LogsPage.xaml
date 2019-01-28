@@ -20,7 +20,8 @@
             <Entry x:Name="activityEntry" WidthRequest="150" Placeholder="" Grid.Row="3" Grid.Column="1" />
             <Label Text="CARBS" Grid.Row="4" Grid.Column="0" VerticalTextAlignment="Center" />
             <Entry x:Name="carbsEntry" WidthRequest="150" Placeholder="g" Grid.Row="4" Grid.Column="1" />
-            <Button Text="Scan" Grid.Row="4" Grid.Column="2" WidthRequest = "40" HeightRequest = "10" />
+            <Button Text="Scan" Grid.Row="4" Grid.Column="2" WidthRequest="40" HeightRequest="10" />
+            <Button Text = "Save" Grid.Row="5" Grid.Column="1" Clicked="Handle_Clicked" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

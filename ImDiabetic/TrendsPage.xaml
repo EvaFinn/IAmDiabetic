@@ -2,5 +2,6 @@
 <ContentPage Title="Trends" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.TrendsPage">
     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
         <Label Text="Trends page - To Be Developed" HorizontalOptions="Center" />
+        <Label Text="Will have overview of test results, graph, average" HorizontalOptions="Center" />
     </StackLayout>
 </ContentPage>

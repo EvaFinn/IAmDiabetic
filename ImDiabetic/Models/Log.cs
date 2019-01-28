@@ -7,7 +7,7 @@ namespace ImDiabetic.Models
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string UserId { get; set; }
-        public DateTime LogDate { get; set; }
+        public DateTimeOffset LogDate { get; set; }
         public string BloodGlucose { get; set; }
         public string Insulin { get; set; }
         public string Pills { get; set; }

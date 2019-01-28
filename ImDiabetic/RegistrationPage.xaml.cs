@@ -14,7 +14,7 @@ namespace ImDiabetic
         {
             InitializeComponent();
 
-            var config = new RealmConfiguration() { SchemaVersion = 1 };
+            var config = new RealmConfiguration() { SchemaVersion = 2 };
             realm = Realm.GetInstance(config);
             //realm = Realm.GetInstance();
         }

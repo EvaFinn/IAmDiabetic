@@ -5,12 +5,11 @@ using Xamarin.Forms;
 
 namespace ImDiabetic
 {
-    public partial class MorePage : ContentPage
+    public partial class GoalsPage : ContentPage
     {
-        public MorePage()
+        public GoalsPage()
         {
             InitializeComponent();
         }
-
     }
 }

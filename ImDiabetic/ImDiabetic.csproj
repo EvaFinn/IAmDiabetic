@@ -27,6 +27,8 @@
     <None Remove="Icons\logs.png" />
     <None Remove="Icons\more.png" />
     <None Remove="Icons\trends.png" />
+    <None Remove="Icons\rocket.png" />
+    <None Remove="Icons\trophiesStep.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icons\" />
@@ -37,6 +39,8 @@
     <EmbeddedResource Include="Icons\logs.png" />
     <EmbeddedResource Include="Icons\more.png" />
     <EmbeddedResource Include="Icons\trends.png" />
+    <EmbeddedResource Include="Icons\rocket.png" />
+    <EmbeddedResource Include="Icons\trophiesStep.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="LogsPage.xaml.cs">

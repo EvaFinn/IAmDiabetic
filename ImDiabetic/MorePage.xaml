@@ -2,5 +2,6 @@
 <ContentPage Title="More" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.MorePage">
     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
         <Label Text="More page - To Be Developed" HorizontalOptions="Center" />
+        <Label Text="Access to education, quizzes, reminders?" HorizontalOptions="Center" />
     </StackLayout>
 </ContentPage>

@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage Title="Dashboard" NavigationPage.HasBackButton="False" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.DashboardPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.DashboardPage">
     <AbsoluteLayout>
         <StackLayout BackgroundColor="Gray" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
             <StackLayout Margin="0,200,0,0" HorizontalOptions="Center">
                 <Label x:Name="welcomeUserLabel" HorizontalOptions="Center" />
+                <Label x:Name="logTestLabel" HorizontalOptions="Center" />
                 <Button Text="Log Out" Clicked="Logout_Click" />
             </StackLayout>
         </StackLayout>
+        <Grid VerticalOptions="Center" HorizontalOptions="Center" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Button x:Name="btn1" Grid.Row="0" Grid.Column="0" />
+            <ImageButton x:Name="btn2" Source="Icons.rocket.png" Grid.Row="0" Grid.Column="1" />
+            <!--            <Button Text="Save1" Grid.Row="0" Grid.Column="1" />-->
+            <Button Text="Save2" Grid.Row="0" Grid.Column="2" />
+            <Button Text="Save3" Grid.Row="0" Grid.Column="3" />
+            
+        </Grid>
         <StackLayout AbsoluteLayout.LayoutBounds=".20,1,1,.1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="White" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-            <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckHome">
-                <Image Margin="0,10,0,10" x:Name="imgHome" Style="{StaticResource ButtonNavigationBarImageStyle}" />
-                <Label Text="HomeTBC" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
-<!--      Change Home to go somewhere else          -->
+            <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckGoals">
+                <Image Margin="0,10,0,10" x:Name="imgGoals" Style="{StaticResource ButtonNavigationBarImageStyle}" />
+                <Label Text="Goals" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
             </StackLayout>
             <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckLogs">
                 <Image Margin="0,10,0,10" x:Name="imgLogs" Style="{StaticResource ButtonNavigationBarImageStyle}" />

@@ -14,7 +14,7 @@ namespace ImDiabetic
         {
             InitializeComponent();
 
-            var config = new RealmConfiguration() { SchemaVersion = 1 };
+            var config = new RealmConfiguration() { SchemaVersion = 2 };
             realm = Realm.GetInstance(config);
             //realm = Realm.GetInstance();
         }
@@ -27,7 +27,7 @@ namespace ImDiabetic
                 User user = users.FirstOrDefault();
                 await Navigation.PushAsync(new DashboardPage(user));
             } else {
-                await DisplayAlert("Alert", "User does not exist lad", "OK");
+                await DisplayAlert("Alert", "User does not exist", "OK");
             }
         }
 

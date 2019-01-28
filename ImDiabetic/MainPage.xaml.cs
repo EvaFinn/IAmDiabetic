@@ -15,6 +15,8 @@ namespace ImDiabetic
         {
             InitializeComponent();
             Debug.WriteLine("*********** REALM AT " + RealmConfigurationBase.GetPathToRealm());
+            Debug.WriteLine("*********** DATE IS " + DateTime.Now);
+
         }
 
         async void Login_Click(object sender, System.EventArgs e)
