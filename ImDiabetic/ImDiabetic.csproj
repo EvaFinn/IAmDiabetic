@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1009999" />
     <PackageReference Include="Realm" Version="3.3.0" />
+    <PackageReference Include="SuaveControls.FloatingActionButton" Version="2018.1.5" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MyPage.xaml" />
@@ -29,6 +30,7 @@
     <None Remove="Icons\trends.png" />
     <None Remove="Icons\rocket.png" />
     <None Remove="Icons\trophiesStep.png" />
+    <None Remove="Icons\profile.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icons\" />
@@ -41,6 +43,7 @@
     <EmbeddedResource Include="Icons\trends.png" />
     <EmbeddedResource Include="Icons\rocket.png" />
     <EmbeddedResource Include="Icons\trophiesStep.png" />
+    <EmbeddedResource Include="Icons\profile.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="LogsPage.xaml.cs">

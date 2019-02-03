@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using SuaveControls.FloatingActionButton.iOS.Renderers;
 using UIKit;
 
 namespace ImDiabetic.iOS
@@ -24,7 +25,7 @@ namespace ImDiabetic.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-
+            FloatingActionButtonRenderer.InitRenderer();
             return base.FinishedLaunching(app, options);
         }
     }

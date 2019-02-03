@@ -22,7 +22,7 @@ namespace ImDiabetic
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
             AddUser();
-            await Navigation.PushAsync(new DashboardPage(user));
+            await Navigation.PushAsync(new MasterDetailNav(user));
         }
 
         async void Cancel_Clicked(object sender, System.EventArgs e)

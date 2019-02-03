@@ -25,7 +25,7 @@ namespace ImDiabetic
             if (users.Count() > 0)
             {
                 User user = users.FirstOrDefault();
-                await Navigation.PushAsync(new DashboardPage(user));
+                await Navigation.PushAsync(new MasterDetailNav(user));
             } else {
                 await DisplayAlert("Alert", "User does not exist", "OK");
             }

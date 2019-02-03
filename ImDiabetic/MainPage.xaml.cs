@@ -13,6 +13,7 @@ namespace ImDiabetic
     {
         public MainPage()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             Debug.WriteLine("*********** REALM AT " + RealmConfigurationBase.GetPathToRealm());
             Debug.WriteLine("*********** DATE IS " + DateTime.Now);

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MasterDetailPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:ImDiabetic"
+    xmlns:pages="clr-namespace:ImDiabetic" 
+    x:Class="ImDiabetic.MasterDetailNav"
+    MasterBehavior="Popover" >
+    <MasterDetailPage.Master>
+        <ContentPage Title="ImDiabetic" Padding="0, 20, 0, 0">
+            <StackLayout Margin="10" Orientation="Vertical">
+                <Image x:Name="profileImage" />
+                <ListView x:Name="aboutList" ItemSelected="OnMenuItemSelected" >  
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ImageCell Text="{Binding Text}" TextColor="DeepSkyBlue"  Detail="{Binding Detail}" ImageSource="{Binding ImagePath}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Log Out" Clicked="Handle_Clicked" />
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage></NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

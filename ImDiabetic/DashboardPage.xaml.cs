@@ -21,12 +21,9 @@ namespace ImDiabetic
             realm = Realm.GetInstance(config);
             User = user;
             welcomeUserLabel.Text = "Welcome " + User.FirstName + "!";
-            btn2.Source = ImageSource.FromResource("ImDiabetic.Icons.rocket.png");
 
             TapOptions();
             CheckLogs();
-            btn1.Text = User.FirstName;
-            //App.Current.Properties
         }
 
         private void CheckLogs()
@@ -52,21 +49,8 @@ namespace ImDiabetic
             imgLogs.Source = ImageSource.FromResource("ImDiabetic.Icons.logs.png");
             imgTrends.Source = ImageSource.FromResource("ImDiabetic.Icons.trends.png");
             imgMore.Source = ImageSource.FromResource("ImDiabetic.Icons.more.png");
+            //imgHome.Source = ImageSource.FromResource("ImDiabetic.Icons.home.png");
 
-            //imgGoal2.Source = ImageSource.FromResource("ImDiabetic.Icons.trophiesStep.png");
-            //imgGoal3.Source = ImageSource.FromResource("ImDiabetic.Icons.trophiesStep.png");
-            //imgGoal4.Source = ImageSource.FromResource("ImDiabetic.Icons.trophiesStep.png");
-            //imgGoal5.Source = ImageSource.FromResource("ImDiabetic.Icons.trophiesStep.png");
-
-
-
-
-            //imgGoals2.Source = ImageSource.FromResource("ImDiabetic.Icons.rocket.png");
-            //imgLogs2.Source = ImageSource.FromResource("ImDiabetic.Icons.rocket.png");
-            //imgTrends2.Source = ImageSource.FromResource("ImDiabetic.Icons.rocket.png");
-            //imgMore2.Source = ImageSource.FromResource("ImDiabetic.Icons.rocket.png");
-
-            //Tap Gesture Recognizer  
             var goalsTap = new TapGestureRecognizer();
             goalsTap.Tapped += async (sender, e) =>
             {
@@ -107,46 +91,15 @@ namespace ImDiabetic
             };
             stckMore.GestureRecognizers.Add(moreTap);
 
-
-            //var goalsTap2 = new TapGestureRecognizer();
-            //goalsTap2.Tapped += async (sender, e) =>
+            //var homeTap = new TapGestureRecognizer();
+            //homeTap.Tapped += async (sender, e) =>
             //{
             //    //DefaultBackground();
-            //    stckGoals2.BackgroundColor = Color.DeepSkyBlue;
-            //    await Navigation.PushAsync(new GoalsPage());
+            //    stckHome.BackgroundColor = Color.DeepSkyBlue;
+            //    await Navigation.PushAsync(new DashboardPage(User));
             //    DefaultBackground();
             //};
-            //stckGoals2.GestureRecognizers.Add(goalsTap2);
-
-            //var logsTap2 = new TapGestureRecognizer();
-            //logsTap2.Tapped += async (sender, e) =>
-            //{
-            //    //DefaultBackground();
-            //    stckLogs2.BackgroundColor = Color.DeepSkyBlue;
-            //    await Navigation.PushAsync(new LogsPage(User));
-            //    DefaultBackground();
-            //};
-            //stckLogs2.GestureRecognizers.Add(logsTap2);
-
-            //var trendsTap2 = new TapGestureRecognizer();
-            //trendsTap.Tapped += async (sender, e) =>
-            //{
-            //    //DefaultBackground();
-            //    stckTrend2.BackgroundColor = Color.DeepSkyBlue;
-            //    await Navigation.PushAsync(new TrendsPage());
-            //    DefaultBackground();
-            //};
-            //stckTrend2.GestureRecognizers.Add(trendsTap2);
-
-            //var moreTap2 = new TapGestureRecognizer();
-            //moreTap2.Tapped += async (sender, e) =>
-            //{
-            //    //DefaultBackground();
-            //    stckMore2.BackgroundColor = Color.DeepSkyBlue;
-            //    await Navigation.PushAsync(new MorePage());
-            //    DefaultBackground();
-            //};
-            //stckMore2.GestureRecognizers.Add(moreTap2);
+            //stckHome.GestureRecognizers.Add(homeTap);
         }
 
         public void DefaultBackground()
@@ -157,10 +110,11 @@ namespace ImDiabetic
             stckMore.BackgroundColor = Color.White;
         }
 
-        async void Logout_Click(object sender, System.EventArgs e)
-        {
-            await Navigation.PushAsync(new MainPage());
-        }
+        //void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        //{
+        //    Detail =new NavigationPage(new ProfilePage(User));
+        //    IsPresented = false;
+        //}
 
         protected override bool OnBackButtonPressed()
         {
