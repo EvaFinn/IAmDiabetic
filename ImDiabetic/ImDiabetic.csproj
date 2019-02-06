@@ -19,6 +19,7 @@
     <EmbeddedResource Remove="Views\TrendsPage.xaml" />
     <EmbeddedResource Remove="Views\MyPage.xaml" />
     <EmbeddedResource Remove="Views\MyPage1.xaml" />
+    <EmbeddedResource Remove="Views\Ignore.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="MyPage.xaml.cs" />
@@ -90,9 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Views\TrendsPage111.xaml">
-      <LogicalName>ImDiabetic.Views.TrendsPage.xaml</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Ignore.xaml">
       <LogicalName>ImDiabetic.Views.TrendsPage.xaml</LogicalName>
     </EmbeddedResource>
   </ItemGroup>

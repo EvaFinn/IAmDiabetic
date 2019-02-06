@@ -23,24 +23,13 @@ namespace ImDiabetic.Views
 
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
-            //if ((BindingContext as LoginViewModel).CheckUser())
-            //{
-            //    User user = (BindingContext as LoginViewModel).LoggedInUser;
-            //    await Navigation.PushAsync(new MasterDetailNav(user));
-            //} else {
-            //    await DisplayAlert("Alert", "User does not exist", "OK");
-            //}
-
-            //var users = realm.All<User>().Where(u => u.FirstName == firstNameEntry.Text && u.Password == passwordEntry.Text);
-            //if (users.Count() > 0)
-            //{
-            //    User user = users.FirstOrDefault();
-                //await Navigation.PushAsync(new MasterDetailNav(user));
-            //}
-            //else
-            //{
-            //    await DisplayAlert("Alert", "User does not exist", "OK");
-            //}
+            if ((BindingContext as LoginViewModel).CheckUser())
+            {
+                User user = (BindingContext as LoginViewModel).LoggedInUser;
+                await Navigation.PushAsync(new MasterDetailNav(user));
+            } else {
+                await DisplayAlert("Alert", "User does not exist", "OK");
+            }
         }
 
         async void Register_Clicked(object sender, System.EventArgs e)
