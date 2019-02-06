@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace ImDiabetic
+namespace ImDiabetic.Views
 {
-    public partial class TrendsPage : ContentPage
+    public partial class TrendPage : ContentPage
     {
-        public TrendsPage()
+        public TrendPage()
         {
             InitializeComponent();
         }

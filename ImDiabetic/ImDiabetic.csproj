@@ -12,15 +12,21 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1009999" />
     <PackageReference Include="Realm" Version="3.3.0" />
-    <PackageReference Include="SuaveControls.FloatingActionButton" Version="2018.1.5" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MyPage.xaml" />
     <EmbeddedResource Remove="LL.xaml" />
+    <EmbeddedResource Remove="Views\TrendsPage.xaml" />
+    <EmbeddedResource Remove="Views\MyPage.xaml" />
+    <EmbeddedResource Remove="Views\MyPage1.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="MyPage.xaml.cs" />
     <Compile Remove="LL.xaml.cs" />
+    <Compile Remove="Views\MyPage.xaml.cs" />
+    <Compile Remove="Views\MyPage1.xaml.cs" />
+    <Compile Remove="Views\TrendsPage.xaml.cs" />
+    <Compile Remove="Views\MyPage2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="FodyWeavers.xml" />
@@ -35,6 +41,8 @@
   <ItemGroup>
     <Folder Include="Icons\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\home.png" />
@@ -46,11 +54,46 @@
     <EmbeddedResource Include="Icons\profile.png" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="LogsPage.xaml.cs">
-      <DependentUpon>LogsPage.xaml</DependentUpon>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\DashboardPage.xaml.cs">
+      <DependentUpon>Ignore.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Update="TrendsPage.xaml.cs">
-      <DependentUpon>TrendsPage.xaml</DependentUpon>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\GoalsPage.xaml.cs">
+      <DependentUpon>Ignore.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\LoginPage.xaml.cs">
+      <DependentUpon>Ignore.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\LogsPage.xaml.cs">
+      <DependentUpon>Ignore.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\MainPage.xaml.cs">
+      <DependentUpon>Ignore.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\MorePage.xaml.cs">
+      <DependentUpon>Ignore.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\RegistrationPage.xaml.cs">
+      <DependentUpon>Ignore.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\9.1.5-1\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v8.1\Mono.Android.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Views\TrendsPage111.xaml">
+      <LogicalName>ImDiabetic.Views.TrendsPage.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Ignore.xaml">
+      <LogicalName>ImDiabetic.Views.TrendsPage.xaml</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

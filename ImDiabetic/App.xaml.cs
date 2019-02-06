@@ -1,4 +1,5 @@
 ﻿using System;
+using ImDiabetic.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

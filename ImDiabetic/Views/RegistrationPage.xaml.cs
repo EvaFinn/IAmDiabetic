@@ -4,7 +4,7 @@ using System.Diagnostics;
 using Realms;
 using Xamarin.Forms;
 
-namespace ImDiabetic
+namespace ImDiabetic.Views
 {
     public partial class RegistrationPage : ContentPage
     {
@@ -41,6 +41,10 @@ namespace ImDiabetic
             String lastName = lastNameEntry.Text;
             String age = ageEntry.Text; 
             String gender = (string)picker.ItemsSource[picker.SelectedIndex];
+
+            String weight = weightEntry.Text;
+            String height = heightEntry.Text;
+            String targetBG = targetBGEntry.Text;
 
             String password = passwordEntry.Text;
 

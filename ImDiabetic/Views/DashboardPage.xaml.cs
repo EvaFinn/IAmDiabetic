@@ -6,7 +6,7 @@ using ImDiabetic.Models;
 using Realms;
 using Xamarin.Forms;
 
-namespace ImDiabetic
+namespace ImDiabetic.Views
 {
     public partial class DashboardPage : ContentPage
     {
@@ -76,7 +76,7 @@ namespace ImDiabetic
             {
                 //DefaultBackground();
                 stckTrends.BackgroundColor = Color.DeepSkyBlue;
-                await Navigation.PushAsync(new TrendsPage());
+                await Navigation.PushAsync(new TrendPage());
                 DefaultBackground();
             };
             stckTrends.GestureRecognizers.Add(trendsTap);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Realms;
 using Xamarin.Forms;
 
-namespace ImDiabetic
+namespace ImDiabetic.Views
 {
     public partial class MainPage : ContentPage
     {
