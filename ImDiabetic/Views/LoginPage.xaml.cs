@@ -2,23 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using ImDiabetic.ViewModels;
-using Realms;
 using Xamarin.Forms;
 
 namespace ImDiabetic.Views
 {
     public partial class LoginPage : ContentPage
     {
-        private Realm realm;
-
         public LoginPage()
         {
             InitializeComponent();
             BindingContext = new LoginViewModel();
-
-            var config = new RealmConfiguration() { SchemaVersion = 2 };
-            realm = Realm.GetInstance(config);
-            //realm = Realm.GetInstance();
         }
 
         async void Handle_Clicked(object sender, System.EventArgs e)
@@ -27,7 +20,9 @@ namespace ImDiabetic.Views
             {
                 User user = (BindingContext as LoginViewModel).LoggedInUser;
                 await Navigation.PushAsync(new MasterDetailNav(user));
-            } else {
+            }
+            else
+            {
                 await DisplayAlert("Alert", "User does not exist", "OK");
             }
         }

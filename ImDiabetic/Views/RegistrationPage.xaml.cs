@@ -1,27 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Realms;
+using ImDiabetic.ViewModels;
 using Xamarin.Forms;
 
 namespace ImDiabetic.Views
 {
     public partial class RegistrationPage : ContentPage
     {
-        Realm realm;
-        User user;
         public RegistrationPage()
         {
             InitializeComponent();
-
-            var config = new RealmConfiguration() { SchemaVersion = 2 };
-            realm = Realm.GetInstance(config);
-            //realm = Realm.GetInstance();
+            BindingContext = new RegistrationViewModel();
         }
 
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
-            AddUser();
+            (BindingContext as RegistrationViewModel).AddUser();
+            User user = (BindingContext as RegistrationViewModel).RegisteredUser;
             await Navigation.PushAsync(new MasterDetailNav(user));
         }
 
@@ -33,26 +29,6 @@ namespace ImDiabetic.Views
         protected override bool OnBackButtonPressed()
         {
             return true;
-        }
-
-        private void AddUser()
-        {
-            String firstName = firstNameEntry.Text;
-            String lastName = lastNameEntry.Text;
-            String age = ageEntry.Text; 
-            String gender = (string)picker.ItemsSource[picker.SelectedIndex];
-
-            String weight = weightEntry.Text;
-            String height = heightEntry.Text;
-            String targetBG = targetBGEntry.Text;
-
-            String password = passwordEntry.Text;
-
-            realm.Write(() =>
-            {
-                user = new User { FirstName = firstName, LastName = lastName, Age = age, Gender = gender, Password = password };
-                realm.Add(user);
-            });
         }
     }
 }

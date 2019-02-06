@@ -5,10 +5,10 @@
              x:Class="ImDiabetic.Views.RegistrationPage">
     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
         <Label Text="Register" HorizontalOptions="Center" />
-        <Entry x:Name="firstNameEntry" Placeholder="First Name" ReturnType="Next" />
-        <Entry x:Name="lastNameEntry" Placeholder="Last Name" ReturnType="Next" />
-        <Entry x:Name="ageEntry" Placeholder="Age" Keyboard="Numeric" ReturnType="Next" />
-        <Picker x:Name="picker" Title="Gender">
+        <Entry x:Name="firstNameEntry" Text="{Binding FirstName}" Placeholder="First Name" ReturnType="Next" />
+        <Entry x:Name="lastNameEntry" Text="{Binding LastName}" Placeholder="Last Name" ReturnType="Next" />
+        <Entry x:Name="ageEntry" Text="{Binding Age}" Placeholder="Age" Keyboard="Numeric" ReturnType="Next" />
+        <Picker x:Name="picker" Title="Gender" SelectedItem="{Binding Gender}">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Female</x:String>
@@ -16,10 +16,10 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
-        <Entry x:Name="weightEntry" Placeholder="Weight" ReturnType="Next" />
-        <Entry x:Name="heightEntry" Placeholder="Height" ReturnType="Next" />
-        <Entry x:Name="targetBGEntry" Placeholder="Target Blood Glucose" ReturnType="Next" />
-        <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="true" ReturnType="Done" />
+        <Entry x:Name="weightEntry" Text="{Binding Weight}" Placeholder="Weight" ReturnType="Next" />
+        <Entry x:Name="heightEntry" Text="{Binding Height}" Placeholder="Height" ReturnType="Next" />
+        <Entry x:Name="targetBGEntry" Text="{Binding TargetBloodGlucose}" Placeholder="Target Blood Glucose" ReturnType="Next" />
+        <Entry x:Name="passwordEntry" Text="{Binding Password}" Placeholder="Password" IsPassword="true" ReturnType="Done" />
         <Button Text="Register" Clicked="Handle_Clicked" />
         <Button Text="Cancel" Clicked="Cancel_Clicked" />
     </StackLayout>
