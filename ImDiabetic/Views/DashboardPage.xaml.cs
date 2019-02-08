@@ -19,7 +19,6 @@ namespace ImDiabetic.Views
             InitializeComponent();
             BindingContext = new DashboardViewModel(user);
             User = (BindingContext as DashboardViewModel).User;
-
             TapOptions();
         }
 
