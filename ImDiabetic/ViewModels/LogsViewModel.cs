@@ -1,12 +1,10 @@
 ﻿using System;
 using ImDiabetic.Models;
-using Realms;
 
 namespace ImDiabetic.ViewModels
 {
-    public class LogsViewModel
+    public class LogsViewModel : BaseViewModel
     {
-        Realm realm;
         public User User { get; set; }
         public string BloodGlucose { get; set; }
         public string Insulin { get; set; }
@@ -17,8 +15,6 @@ namespace ImDiabetic.ViewModels
 
         public LogsViewModel(User user)
         {
-            var config = new RealmConfiguration() { SchemaVersion = 2 };
-            realm = Realm.GetInstance(config);
             User = user;
         }
 

@@ -2,13 +2,11 @@
 using System.Diagnostics;
 using System.Linq;
 using ImDiabetic.Models;
-using Realms;
 
 namespace ImDiabetic.ViewModels
 {
-    public class DashboardViewModel
+    public class DashboardViewModel : BaseViewModel
     {
-        Realm realm;
         public User User { get; set; }
         public string Welcome { get; set; }
         public string Test { get; set; }
@@ -16,8 +14,6 @@ namespace ImDiabetic.ViewModels
 
         public DashboardViewModel(User user)
         {
-            var config = new RealmConfiguration() { SchemaVersion = 2 };
-            realm = Realm.GetInstance(config);
             User = user;
             Welcome = "Welcome " + User.FirstName + "!";
             HasLogs();

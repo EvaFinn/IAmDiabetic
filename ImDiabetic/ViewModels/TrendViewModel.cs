@@ -1,7 +1,6 @@
 ﻿using System;
 using SkiaSharp;
 using Microcharts;
-using Realms;
 using Entry = Microcharts.Entry;
 using System.Collections.Generic;
 using ImDiabetic.Models;
@@ -9,9 +8,8 @@ using System.Linq;
 
 namespace ImDiabetic.ViewModels
 {
-    public class TrendViewModel
+    public class TrendViewModel : BaseViewModel
     {
-        Realm realm;
         public User User { get; set; }
         public Chart Chart { get; set; }
         public Log Log { get; set; }
@@ -19,8 +17,6 @@ namespace ImDiabetic.ViewModels
 
         public TrendViewModel(User user)
         {
-            var config = new RealmConfiguration() { SchemaVersion = 2 };
-            realm = Realm.GetInstance(config);
             User = user;
 
             CreateChart();

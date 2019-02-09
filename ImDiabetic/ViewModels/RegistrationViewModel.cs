@@ -1,11 +1,9 @@
 ﻿using System;
-using Realms;
 
 namespace ImDiabetic.ViewModels
 {
-    public class RegistrationViewModel
+    public class RegistrationViewModel : BaseViewModel
     {
-        Realm realm;
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Age { get; set; }
@@ -18,8 +16,7 @@ namespace ImDiabetic.ViewModels
 
         public RegistrationViewModel()
         {
-            var config = new RealmConfiguration() { SchemaVersion = 2 };
-            realm = Realm.GetInstance(config);
+
         }
 
         public void AddUser()
