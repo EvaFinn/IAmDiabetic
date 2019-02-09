@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" x:Class="ImDiabetic.Views.TrendPage">
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label Text="Trends page - To Be Developed" HorizontalOptions="Center" />
-        <forms:ChartView x:Name="Chart3"/>
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
+        <Label Text="Trends page" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" />
+        <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+<!--            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">-->
+                <forms:ChartView  x:Name="bgChart" Chart="{Binding Chart}" HorizontalOptions="FillAndExpand" HeightRequest="200" WidthRequest="400"/>
+<!--            </StackLayout>-->
+        </ScrollView>
     </StackLayout>
 </ContentPage>

@@ -13,7 +13,7 @@
                 <ListView x:Name="aboutList" ItemSelected="OnMenuItemSelected" >  
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ImageCell Text="{Binding Text}" TextColor="DeepSkyBlue"  Detail="{Binding Detail}" ImageSource="{Binding ImagePath}" />
+                            <ImageCell Text="{Binding Text}" TextColor="DeepSkyBlue" ImageSource="{Binding ImagePath}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

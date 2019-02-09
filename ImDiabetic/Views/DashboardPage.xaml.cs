@@ -52,7 +52,7 @@ namespace ImDiabetic.Views
             {
                 ;
                 stckTrends.BackgroundColor = Color.DeepSkyBlue;
-                await Navigation.PushAsync(new TrendPage());
+                await Navigation.PushAsync(new TrendPage(User));
                 DefaultBackground();
             };
             stckTrends.GestureRecognizers.Add(trendsTap);
