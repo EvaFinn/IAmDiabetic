@@ -1,11 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" x:Class="ImDiabetic.Views.TrendPage">
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" xmlns:local="clr-namespace:ImDiabetic" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" x:Class="ImDiabetic.Views.TrendPage">
+    <!--            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">-->
+    <!--                <forms:ChartView  x:Name="bgChart" Chart="{Binding Chart}" HorizontalOptions="FillAndExpand" HeightRequest="200" WidthRequest="400"/>-->
+    <!--            </StackLayout>-->
+    <StackLayout>
         <Label Text="Trends page" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" />
-        <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-<!--            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">-->
-                <forms:ChartView  x:Name="bgChart" Chart="{Binding Chart}" HorizontalOptions="FillAndExpand" HeightRequest="200" WidthRequest="400"/>
-<!--            </StackLayout>-->
-        </ScrollView>
+        <chart:SfChart VerticalOptions="FillAndExpand">
+            <chart:SfChart.Title>
+                <chart:ChartTitle Text="Blood Glucose Test Results">
+                </chart:ChartTitle>
+            </chart:SfChart.Title>
+            <chart:SfChart.ColorModel>
+                <chart:ChartColorModel Palette="Natural">
+                </chart:ChartColorModel>
+            </chart:SfChart.ColorModel>
+            <chart:SfChart.ChartBehaviors>
+                <chart:ChartZoomPanBehavior ZoomMode="X" />
+            </chart:SfChart.ChartBehaviors>
+            <chart:SfChart.PrimaryAxis>
+                <chart:CategoryAxis EdgeLabelsDrawingMode="Shift">
+                    <chart:CategoryAxis.Title>
+                        <chart:ChartAxisTitle Text="Date" />
+                    </chart:CategoryAxis.Title>
+                </chart:CategoryAxis>
+                <!--            <chart:DateTimeAxis/>-->
+            </chart:SfChart.PrimaryAxis>
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis>
+                    <chart:NumericalAxis.Title>
+                        <chart:ChartAxisTitle Text="Blood Glucose Levels" />
+                    </chart:NumericalAxis.Title>
+                </chart:NumericalAxis>
+            </chart:SfChart.SecondaryAxis>
+            <chart:SfChart.Legend>
+                <chart:ChartLegend>
+                </chart:ChartLegend>
+            </chart:SfChart.Legend>
+            <chart:LineSeries ItemsSource="{Binding ListOfLogs}" Label="Blood Glucose" XBindingPath="LogDate.Day" YBindingPath="BloodGlucose">
+                <chart:LineSeries.DataMarker>
+                    <chart:ChartDataMarker />
+                </chart:LineSeries.DataMarker>
+            </chart:LineSeries>
+        </chart:SfChart>
+        
+        <chart:SfChart VerticalOptions="FillAndExpand">
+            <chart:SfChart.Title>
+                <chart:ChartTitle Text="Average Sales Comparison">
+                </chart:ChartTitle>
+            </chart:SfChart.Title>
+            <chart:SfChart.ColorModel>
+                <chart:ChartColorModel Palette="Pineapple">
+                </chart:ChartColorModel>
+            </chart:SfChart.ColorModel>
+            <chart:SfChart.ChartBehaviors>
+                <chart:ChartZoomPanBehavior ZoomMode="X" />
+            </chart:SfChart.ChartBehaviors>
+            <chart:SfChart.PrimaryAxis>
+                <chart:CategoryAxis EdgeLabelsDrawingMode="Shift">
+                    <chart:CategoryAxis.Title>
+                        <chart:ChartAxisTitle Text="Date" />
+                    </chart:CategoryAxis.Title>
+                </chart:CategoryAxis>
+                <!--            <chart:DateTimeAxis/>-->
+            </chart:SfChart.PrimaryAxis>
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis>
+                    <chart:NumericalAxis.Title>
+                        <chart:ChartAxisTitle Text="Blood Glucose Levels" />
+                    </chart:NumericalAxis.Title>
+                </chart:NumericalAxis>
+            </chart:SfChart.SecondaryAxis>
+            <chart:SfChart.Legend>
+                <chart:ChartLegend>
+                </chart:ChartLegend>
+            </chart:SfChart.Legend>
+            <chart:LineSeries ItemsSource="{Binding ListOfLogs}" Label="Blood Glucose" XBindingPath="LogDate.Day" YBindingPath="BloodGlucose">
+                <chart:LineSeries.DataMarker>
+                    <chart:ChartDataMarker />
+                </chart:LineSeries.DataMarker>
+            </chart:LineSeries>
+        </chart:SfChart>
     </StackLayout>
 </ContentPage>

@@ -19,6 +19,7 @@ namespace ImDiabetic.Views
             if ((BindingContext as LoginViewModel).CheckUser())
             {
                 User user = (BindingContext as LoginViewModel).LoggedInUser;
+                //await Navigation.PushAsync(new TestChart(user));
                 await Navigation.PushAsync(new MasterDetailNav(user));
             }
             else

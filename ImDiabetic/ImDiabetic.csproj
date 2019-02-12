@@ -14,6 +14,7 @@
     <PackageReference Include="Realm" Version="3.4.0" />
     <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
     <PackageReference Include="Microcharts" Version="0.7.1" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.4.0.52" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MyPage.xaml" />
@@ -30,6 +31,7 @@
     <Compile Remove="Views\MyPage1.xaml.cs" />
     <Compile Remove="Views\TrendsPage.xaml.cs" />
     <Compile Remove="Views\MyPage2.cs" />
+    <Compile Remove="Views\TestChart.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="FodyWeavers.xml" />
@@ -90,6 +92,7 @@
     <Reference Include="Mono.Android">
       <HintPath>..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\9.1.5-1\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v8.1\Mono.Android.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Views\TrendsPage111.xaml">

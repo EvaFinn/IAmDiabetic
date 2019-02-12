@@ -19,54 +19,57 @@ namespace ImDiabetic.ViewModels
         {
             User = user;
 
-            CreateChart();
+            LogsForCharts();
         }
 
-        public void CreateChart() {
+        public void LogsForCharts() {
             var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
-            List<Entry> entries = new List<Entry>();
+            ListOfLogs = new List<Log>();
             if (logs.Count() > 0)
             {
                 foreach (Log log in logs)
                 {
-                    string colourToShow = CheckColour(log);
-                    Entry entry = new Entry(float.Parse(log.BloodGlucose))
-                    {
-                        Label = log.LogDate.Day.ToString() + "/" + log.LogDate.Month.ToString() + "/" + log.LogDate.Year.ToString(),
-                        ValueLabel = log.BloodGlucose,
-                        Color = SKColor.Parse(colourToShow)
-                    };
+                    //string colourToShow = CheckColour(log);
+                    //Entry entry = new Entry(float.Parse(log.BloodGlucose))
+                    //{
+                    //    Label = log.LogDate.Day.ToString() + "/" + log.LogDate.Month.ToString() + "/" + log.LogDate.Year.ToString(),
+                    //    ValueLabel = log.BloodGlucose,
+                    //    Color = SKColor.Parse(colourToShow)
+                    //};
 
-                    entries.Add(entry);
+                    ListOfLogs.Add(log);
+
+                    //entries.Add(entry);
                 }
             }
 
-            this.Chart = new LineChart()
-            {
-                Entries = entries,
-                LineMode = LineMode.Straight,
-                LineSize = 8,
-                PointMode = PointMode.Square,
-                PointSize = 18,
-                MaxValue = 500,
-                MinValue = 0,
-                LabelTextSize = 20,
-            };
+            //this.Chart = new LineChart()
+            //{
+            //    Entries = entries,
+            //    LineMode = LineMode.Straight,
+            //    LineSize = 8,
+            //    PointMode = PointMode.Square,
+            //    PointSize = 18,
+            //    MaxValue = 500,
+            //    MinValue = 0,
+            //    LabelTextSize = 20,
+            //};
 
         }
 
-        private string CheckColour(Log log) {
-            float colour = float.Parse(log.BloodGlucose);
-            //TODO 120 - 140 target, hardcoded, will change to user specified targets
-            if(colour < 120) {
-                return "#002ED1";
-            }
-            else if(colour > 140) {
-                return "#D10B00";
-            }
-            else {
-                return "#07D100";
-            }
-        }
+        //private string CheckColour(Log log) {
+        //    //float colour = float.Parse(log.BloodGlucose);
+        //    ////TODO 120 - 140 target, hardcoded, will change to user specified targets
+        //    //if(colour < 120) {
+        //    //    return "#002ED1";
+        //    //}
+        //    //else if(colour > 140) {
+        //    //    return "#D10B00";
+        //    //}
+        //    //else {
+        //    //    return "#07D100";
+        //    //}
+        //    return "";
+        //}
     }
 }

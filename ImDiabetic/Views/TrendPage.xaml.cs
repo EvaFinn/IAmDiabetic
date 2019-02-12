@@ -16,7 +16,7 @@ namespace ImDiabetic.Views
         {
             InitializeComponent();
             User = user;
-            BindingContext = new TrendViewModel(user);
+            this.BindingContext = new TrendViewModel(user);
         }
     }
 }
