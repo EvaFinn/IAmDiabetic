@@ -1,9 +1,9 @@
 ﻿using System;
 using Realms;
 
-namespace ImDiabetic.Models
+namespace ImDiabetic.Models.Logbook
 {
-    public class FoodItem: RealmObject
+    public class FoodItem : RealmObject
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string UserId { get; set; }

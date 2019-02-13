@@ -10,6 +10,11 @@ namespace ImDiabetic
         public string LastName { get; set; }
         public string Age { get; set; }
         public string Gender { get; set; }
+        public string Weight { get; set; }
+        public string Height { get; set; }
+        public string TargetBloodGlucose { get; set; }
         public string Password { get; set; }
+        public int DailyStreak { get; set; } = 0;
+        public DateTimeOffset LastLogInDate { get; set; } = DateTimeOffset.Now;
     }
 }

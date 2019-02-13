@@ -15,6 +15,7 @@
     <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
     <PackageReference Include="Microcharts" Version="0.7.1" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.4.0.52" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRangeSlider" Version="16.4.0.53" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MyPage.xaml" />
@@ -48,6 +49,7 @@
     <Folder Include="Models\" />
     <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Models\Logbook\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\home.png" />

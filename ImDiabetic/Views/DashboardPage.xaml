@@ -7,6 +7,7 @@
             <StackLayout Margin="0,200,0,0" HorizontalOptions="Center">
                 <Label x:Name="welcomeUserLabel" Text="{Binding Welcome}" HorizontalOptions="Center" />
                 <Label x:Name="logTestLabel" Text="{Binding Test}" HorizontalOptions="Center" />
+                <Label x:Name="dailyStreak" Text="{Binding DailyStreak}" HorizontalOptions="Center" />
             </StackLayout>
         </StackLayout>
         <StackLayout AbsoluteLayout.LayoutBounds=".20,1,1,.1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="White" HorizontalOptions="FillAndExpand" Orientation="Horizontal">

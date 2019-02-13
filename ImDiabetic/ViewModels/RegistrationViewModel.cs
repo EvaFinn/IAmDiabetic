@@ -23,7 +23,7 @@ namespace ImDiabetic.ViewModels
         {
             realm.Write(() =>
             {
-                var user = new User { FirstName = FirstName, LastName = LastName, Age = Age, Gender = Gender, Password = Password };
+                var user = new User { FirstName = FirstName, LastName = LastName, Age = Age, Gender = Gender, Weight = Weight, Height = Height, TargetBloodGlucose = TargetBloodGlucose, Password = Password };
                 RegisteredUser = user;
                 realm.Add(user);
             });

@@ -14,7 +14,7 @@ namespace ImDiabetic.Views
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
-            var config = new RealmConfiguration() { SchemaVersion = 2 };
+            var config = new RealmConfiguration() { SchemaVersion = 4 };
             realm = Realm.GetInstance(config);
             User = user;
             profileImage.Source = ImageSource.FromResource("ImDiabetic.Icons.profile.png");
@@ -35,15 +35,6 @@ namespace ImDiabetic.Views
             }
 
             Detail = new NavigationPage((Page)Activator.CreateInstance(selectedPage, User));
-
-            //try
-            //{
-            //    Detail = new NavigationPage((Page)Activator.CreateInstance(selectedPage, User));
-            //}
-            //catch (MissingMethodException err)
-            //{
-            //    Detail = new NavigationPage((Page)Activator.CreateInstance(selectedPage));
-            //}
             IsPresented = false;
             aboutList.SelectedItem = null;
         }

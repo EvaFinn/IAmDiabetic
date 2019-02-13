@@ -1,22 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using Entry = Microcharts.Entry;
-
 using Xamarin.Forms;
-using SkiaSharp;
-using Microcharts;
 using ImDiabetic.ViewModels;
+using Syncfusion.SfChart.XForms;
 
 namespace ImDiabetic.Views
 {
     public partial class TrendPage : ContentPage
     {
         public User User { get; }
+        List<Color> customColors;
+
         public TrendPage(User user)
         {
             InitializeComponent();
             User = user;
-            this.BindingContext = new TrendViewModel(user);
+            this.BindingContext = new TrendViewModel(User);
+            UIForChart();
+        }
+
+        public TrendPage()  //for xaml previewer only.
+        {
+            InitializeComponent();
+        }
+
+        public void UIForChart()
+        {
+            customColors = new List<Color>
+            {
+                Color.FromHex("#f44141"),    //red
+                Color.FromHex("#56f442"),   //green
+                Color.FromHex("#f4d041")    //yellow 
+            };
+
+            BGChart.ColorModel.Palette = ChartColorPalette.Custom;
+            BGChart.ColorModel.CustomBrushes = customColors;
         }
     }
 }

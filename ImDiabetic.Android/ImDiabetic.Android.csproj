@@ -66,6 +66,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
       <Version>16.4.0.52</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfRangeSlider">
+      <Version>16.4.0.53</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
