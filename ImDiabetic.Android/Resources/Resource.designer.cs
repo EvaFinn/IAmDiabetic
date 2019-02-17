@@ -70,6 +70,11 @@ namespace ImDiabetic.Droid
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_others_label = global::ImDiabetic.Droid.Resource.String.sfchart_others_label;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.w = global::ImDiabetic.Droid.Resource.String.w;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.week = global::ImDiabetic.Droid.Resource.String.week;
+			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.inputlayout_togglecollapseicon = global::ImDiabetic.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
+			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.inputlayout_togglevisibleicon = global::ImDiabetic.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
+			global::Syncfusion.ListView.XForms.Android.Resource.String.ApplicationName = global::ImDiabetic.Droid.Resource.String.ApplicationName;
+			global::Syncfusion.ListView.XForms.Android.Resource.String.Hello = global::ImDiabetic.Droid.Resource.String.Hello;
+			global::Syncfusion.ListView.XForms.Android.Resource.String.Load_More = global::ImDiabetic.Droid.Resource.String.Load_More;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_in = global::ImDiabetic.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_out = global::ImDiabetic.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_grow_fade_in_from_bottom = global::ImDiabetic.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -6153,6 +6158,15 @@ namespace ImDiabetic.Droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f0a003d
+			public const int ApplicationName = 2131361853;
+			
+			// aapt resource value: 0x7f0a003c
+			public const int Hello = 2131361852;
+			
+			// aapt resource value: 0x7f0a003e
+			public const int Load_More = 2131361854;
+			
 			// aapt resource value: 0x7f0a0015
 			public const int abc_action_bar_home_description = 2131361813;
 			
@@ -6327,38 +6341,38 @@ namespace ImDiabetic.Droid
 			// aapt resource value: 0x7f0a003a
 			public const int path_password_strike_through = 2131361850;
 			
-			// aapt resource value: 0x7f0a003d
-			public const int q = 2131361853;
+			// aapt resource value: 0x7f0a0040
+			public const int q = 2131361856;
 			
-			// aapt resource value: 0x7f0a003c
-			public const int quarter = 2131361852;
+			// aapt resource value: 0x7f0a003f
+			public const int quarter = 2131361855;
 			
 			// aapt resource value: 0x7f0a0026
 			public const int search_menu_title = 2131361830;
 			
+			// aapt resource value: 0x7f0a0046
+			public const int sfchart_close_label = 2131361862;
+			
 			// aapt resource value: 0x7f0a0043
-			public const int sfchart_close_label = 2131361859;
-			
-			// aapt resource value: 0x7f0a0040
-			public const int sfchart_high_label = 2131361856;
-			
-			// aapt resource value: 0x7f0a0041
-			public const int sfchart_low_label = 2131361857;
-			
-			// aapt resource value: 0x7f0a0042
-			public const int sfchart_open_label = 2131361858;
+			public const int sfchart_high_label = 2131361859;
 			
 			// aapt resource value: 0x7f0a0044
-			public const int sfchart_others_label = 2131361860;
+			public const int sfchart_low_label = 2131361860;
+			
+			// aapt resource value: 0x7f0a0045
+			public const int sfchart_open_label = 2131361861;
+			
+			// aapt resource value: 0x7f0a0047
+			public const int sfchart_others_label = 2131361863;
 			
 			// aapt resource value: 0x7f0a003b
 			public const int status_bar_notification_info_overflow = 2131361851;
 			
-			// aapt resource value: 0x7f0a003f
-			public const int w = 2131361855;
+			// aapt resource value: 0x7f0a0042
+			public const int w = 2131361858;
 			
-			// aapt resource value: 0x7f0a003e
-			public const int week = 2131361854;
+			// aapt resource value: 0x7f0a0041
+			public const int week = 2131361857;
 			
 			static String()
 			{

@@ -3,13 +3,15 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:local="clr-namespace:ImDiabetic"
-    xmlns:pages="clr-namespace:ImDiabetic" 
+    xmlns:pages="clr-namespace:ImDiabetic"
+    xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     x:Class="ImDiabetic.Views.MasterDetailNav"
     MasterBehavior="Popover" >
     <MasterDetailPage.Master>
         <ContentPage Title="ImDiabetic" Padding="0, 20, 0, 0">
             <StackLayout Margin="10" Orientation="Vertical">
                 <Image x:Name="profileImage" />
+                
                 <ListView x:Name="aboutList" ItemSelected="OnMenuItemSelected" >  
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -17,6 +19,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                
                 <Button Text="Log Out" Clicked="Handle_Clicked" />
             </StackLayout>
         </ContentPage>

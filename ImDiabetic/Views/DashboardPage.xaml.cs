@@ -61,7 +61,7 @@ namespace ImDiabetic.Views
             moreTap.Tapped += async (sender, e) =>
             {
                 stckMore.BackgroundColor = Color.DeepSkyBlue;
-                await Navigation.PushAsync(new MorePage());
+                await Navigation.PushAsync(new MorePage(User));
                 DefaultBackground();
             };
             stckMore.GestureRecognizers.Add(moreTap);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Syncfusion.ListView.XForms.iOS;
 using UIKit;
 
 namespace ImDiabetic.iOS
@@ -24,6 +25,7 @@ namespace ImDiabetic.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
+            SfListViewRenderer.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
         }
