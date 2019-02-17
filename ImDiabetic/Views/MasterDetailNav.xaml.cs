@@ -14,7 +14,7 @@ namespace ImDiabetic.Views
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
-            var config = new RealmConfiguration() { SchemaVersion = 4 };
+            var config = new RealmConfiguration() { SchemaVersion = 6 };
             realm = Realm.GetInstance(config);
             User = user;
             profileImage.Source = ImageSource.FromResource("ImDiabetic.Icons.profile.png");
@@ -53,14 +53,14 @@ namespace ImDiabetic.Views
                 new MasterMenuItems()
                 {
                     Text = "Dashboard",
-                    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.home.png"),
+                    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rocket.png"),
                     TargetPage = typeof(DashboardPage)
                 },
 
                 new MasterMenuItems()
                 {
                     Text = "Settings",
-                    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.more.png"),
+                    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rocket.png"),
                     TargetPage = typeof(ProfilePage)
                 }
             };

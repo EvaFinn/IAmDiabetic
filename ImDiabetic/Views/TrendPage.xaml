@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" xmlns:local="clr-namespace:ImDiabetic" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" x:Class="ImDiabetic.Views.TrendPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             xmlns:local="clr-namespace:ImDiabetic" 
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             x:Class="ImDiabetic.Views.TrendPage">
     <StackLayout>
         <Label Text="Trends page" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" />
         <chart:SfChart VerticalOptions="FillAndExpand">
@@ -15,14 +18,14 @@
                 <chart:ChartZoomPanBehavior ZoomMode="X" />
             </chart:SfChart.ChartBehaviors>
             <chart:SfChart.PrimaryAxis>
-                <chart:DateTimeCategoryAxis Interval="0.1" IntervalType="Days" EdgeLabelsDrawingMode="Center">
+                <chart:DateTimeCategoryAxis Interval="0.1" IntervalType="Days" EdgeLabelsDrawingMode="Center" AutoScrollingDelta="5">
                     <chart:DateTimeCategoryAxis.LabelStyle>
                         <chart:ChartAxisLabelStyle Margin="3" />
                     </chart:DateTimeCategoryAxis.LabelStyle>
                 </chart:DateTimeCategoryAxis>
             </chart:SfChart.PrimaryAxis>
             <chart:SfChart.SecondaryAxis>
-                <chart:NumericalAxis>
+                <chart:NumericalAxis Minimum="0" Maximum="15">
                     <chart:NumericalAxis.Title>
                         <chart:ChartAxisTitle Text="Blood Glucose Levels" />
                     </chart:NumericalAxis.Title>
@@ -47,7 +50,7 @@
                 <chart:ChartLegend>
                 </chart:ChartLegend>
             </chart:SfChart.Legend>
-            <chart:DoughnutSeries x:Name="BGChart" ItemsSource="{Binding Data3}" Label="Blood Glucose" XBindingPath="LevelType" YBindingPath="BDTargetCounts" DataMarkerPosition="OutsideExtended" DoughnutCoefficient="0.7">
+            <chart:DoughnutSeries x:Name="BGChart" ItemsSource="{Binding Data3}" Label="Blood Glucose" XBindingPath="LevelType" YBindingPath="BGTargetCounts" DataMarkerPosition="OutsideExtended" DoughnutCoefficient="0.7">
                 <chart:DoughnutSeries.DataMarker>
                     <chart:ChartDataMarker LabelContent="Percentage">
                         <chart:ChartDataMarker.LabelStyle>

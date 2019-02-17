@@ -24,7 +24,6 @@ namespace ImDiabetic.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
-            //Syncfusion.SfChart.XForms.MacOS.SfChartRenderer.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
         }

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage Title="Registration" NavigationPage.HasBackButton="False" 
-             xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ImDiabetic.Views.RegistrationPage">
+<ContentPage Title="Registration" NavigationPage.HasBackButton="False" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:range="clr-namespace:Syncfusion.SfRangeSlider.XForms;assembly=Syncfusion.SfRangeSlider.XForms" x:Class="ImDiabetic.Views.RegistrationPage">
     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
         <Label Text="Register" HorizontalOptions="Center" />
         <Entry x:Name="firstNameEntry" Text="{Binding FirstName}" Placeholder="First Name" ReturnType="Next" />
@@ -18,7 +15,48 @@
         </Picker>
         <Entry x:Name="weightEntry" Text="{Binding Weight}" Placeholder="Weight" ReturnType="Next" />
         <Entry x:Name="heightEntry" Text="{Binding Height}" Placeholder="Height" ReturnType="Next" />
-        <Entry x:Name="targetBGEntry" Text="{Binding TargetBloodGlucose}" Placeholder="Target Blood Glucose" ReturnType="Next" />
+        <Picker x:Name="maxTarget" Title="Max Blood Glucose Target" SelectedItem="{Binding MaxTarget}">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:Double}">
+                    <x:Double>15.0</x:Double>
+                    <x:Double>14.0</x:Double>
+                    <x:Double>13.0</x:Double>
+                    <x:Double>12.0</x:Double>
+                    <x:Double>11.0</x:Double>
+                    <x:Double>10.0</x:Double>
+                    <x:Double>9.0</x:Double>
+                    <x:Double>8.0</x:Double>
+                    <x:Double>7.0</x:Double>
+                    <x:Double>6.0</x:Double>
+                    <x:Double>5.0</x:Double>
+                    <x:Double>4.0</x:Double>
+                    <x:Double>3.0</x:Double>
+                    <x:Double>2.0</x:Double>
+                    <x:Double>1.0</x:Double>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Picker x:Name="minTarget" Title="Min Blood Glucose Target" SelectedItem="{Binding MinTarget}">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:Double}">
+                    <x:Double>15.0</x:Double>
+                    <x:Double>14.0</x:Double>
+                    <x:Double>13.0</x:Double>
+                    <x:Double>12.0</x:Double>
+                    <x:Double>11.0</x:Double>
+                    <x:Double>10.0</x:Double>
+                    <x:Double>9.0</x:Double>
+                    <x:Double>8.0</x:Double>
+                    <x:Double>7.0</x:Double>
+                    <x:Double>6.0</x:Double>
+                    <x:Double>5.0</x:Double>
+                    <x:Double>4.0</x:Double>
+                    <x:Double>3.0</x:Double>
+                    <x:Double>2.0</x:Double>
+                    <x:Double>1.0</x:Double>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
         <Entry x:Name="passwordEntry" Text="{Binding Password}" Placeholder="Password" IsPassword="true" ReturnType="Done" />
         <Button Text="Register" Clicked="Handle_Clicked" />
         <Button Text="Cancel" Clicked="Cancel_Clicked" />

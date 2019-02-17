@@ -17,6 +17,7 @@ namespace ImDiabetic.ViewModels
         {
             User = user;
             Welcome = "Welcome " + User.FirstName + "!";
+            DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
             DailyStreakCheck();
             HasLogs();
         }
@@ -35,32 +36,62 @@ namespace ImDiabetic.ViewModels
                 }
                 FirstLog = logs.FirstOrDefault();
                 Test = FirstLog.Id + "," + FirstLog.BloodGlucose;
-                DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
             }
         }
 
         public void DailyStreakCheck()
         {
-            //LoggedInUser.LastLogInDate = DateTimeOffset.Now;
             TimeSpan dif = DateTimeOffset.Now - User.LastLogInDate;
             Debug.WriteLine("=========== User Last LogIn " + User.LastLogInDate);
             Debug.WriteLine(">>>>>>>>>>> Date Difference " + dif.TotalDays + ", " + dif.TotalHours + ", " + dif.TotalMinutes);
-            //if (dif.TotalDays == 1) { 
-            //}
-            if (dif.TotalHours > 24)
-            {
-                //go back to zero
-                Debug.WriteLine(">>>>>>>>>>> Back To Zero");
-                User.DailyStreak = 0;
+
+            //WARNING TODO will not handle going from 31st of month to 1st of next month, etc. FIX! -- update, maybe fix? must test lol.
+            if (DateTimeOffset.Now.Day >= User.LastLogInDate.Day + 1) {
+                if (dif.TotalHours > 24)
+                {
+                    Debug.WriteLine(">>>>>>>>>>> Back To Zero");
+                    realm.Write(() =>
+                    {
+                        User.DailyStreak = 0;
+                    });
+                    DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
+                }
+                else {
+                    Debug.WriteLine("$$$$$$$$$$$$ NEXT DAY BUT LESS THAN 24 HOURS?");
+                    realm.Write(() =>
+                    {
+                        User.DailyStreak++;
+                    });
+                    DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
+                }
+            } else {
+                if(DateTimeOffset.Now.Day == 1 && (User.LastLogInDate.Day == 31 || User.LastLogInDate.Day == 30 || (User.LastLogInDate.Day == 28 && User.LastLogInDate.Month == 2)))
+                {
+                    if (dif.TotalHours > 24)
+                    {
+                        Debug.WriteLine(">>>>>>>>>>> Back To Zero");
+                        realm.Write(() =>
+                        {
+                            User.DailyStreak = 0;
+                        });
+                        DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
+                    }
+                    else
+                    {
+                        Debug.WriteLine("$$$$$$$$$$$$ NEXT DAY BUT LESS THAN 24 HOURS?");
+                        realm.Write(() =>
+                        {
+                            User.DailyStreak++;
+                        });
+                        DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
+                    }
+                }
             }
 
             realm.Write(() =>
             {
                 User.LastLogInDate = DateTimeOffset.Now;
             });
-
-            //if (user.LastLogInDate.Day > DateTimeOffset.Now.Day) { 
-            //}
         }
     }
 }

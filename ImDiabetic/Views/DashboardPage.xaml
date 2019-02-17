@@ -19,10 +19,6 @@
                 <Image Margin="0,10,0,10" x:Name="imgLogs" Style="{StaticResource ButtonNavigationBarImageStyle}" />
                 <Label Text="Logs" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
             </StackLayout>
-            <!--<StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckHome">
-                <Image Margin="0,10,0,10" x:Name="imgHome" Style="{StaticResource ButtonNavigationBarImageStyle}" />
-                <Label Text="Home" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
-            </StackLayout>-->
             <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckTrends">
                 <Image Margin="0,10,0,10" x:Name="imgTrends" Style="{StaticResource ButtonNavigationBarImageStyle}" />
                 <Label Text="Trends" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
