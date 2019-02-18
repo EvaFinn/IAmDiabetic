@@ -14,6 +14,7 @@
     <PackageReference Include="Realm" Version="3.4.0" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.4.0.52" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="16.4.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="16.4.0.53" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MyPage.xaml" />
@@ -41,6 +42,10 @@
     <None Remove="Icons\rocket.png" />
     <None Remove="Icons\trophiesStep.png" />
     <None Remove="Icons\profile.png" />
+    <None Remove="Icons\medal.png" />
+    <None Remove="Icons\mtn.png" />
+    <None Remove="Icons\edu.png" />
+    <None Remove="Icons\quiz.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icons\" />
@@ -57,6 +62,10 @@
     <EmbeddedResource Include="Icons\rocket.png" />
     <EmbeddedResource Include="Icons\trophiesStep.png" />
     <EmbeddedResource Include="Icons\profile.png" />
+    <EmbeddedResource Include="Icons\medal.png" />
+    <EmbeddedResource Include="Icons\mtn.png" />
+    <EmbeddedResource Include="Icons\edu.png" />
+    <EmbeddedResource Include="Icons\quiz.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\DashboardPage.xaml.cs">

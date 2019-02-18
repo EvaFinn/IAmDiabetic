@@ -1,33 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage Title="More" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ImDiabetic;assembly=ImDiabetic" xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" x:Class="ImDiabetic.Views.MorePage">
-    <!--<syncfusion:SfListView x:Name="listView" ItemsSource="MasterMenuItems">
-        <syncfusion:SfListView.ItemTemplate>
-            <DataTemplate>
-                <Grid Padding="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="0.4*" />
-                        <RowDefinition Height="0.6*" />
-                    </Grid.RowDefinitions>
-                    <Label Text="{Binding Text}" FontAttributes="Bold" TextColor="Teal" FontSize="21" />
-                    <Label Grid.Row="1" Text="{Binding Text}" TextColor="Teal" FontSize="15" />
-                    <Label Grid.Row="1" Text="{Binding Text}" TextColor="Teal" FontSize="15" />
-                </Grid>
-            </DataTemplate>
-        </syncfusion:SfListView.ItemTemplate>
-    </syncfusion:SfListView>-->
-    <!-- <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label Text="More page - To Be Developed" HorizontalOptions="Center" />
-        <Label Text="Access to education, quizzes, reminders?" HorizontalOptions="Center" />
-    </StackLayout>-->
-    <StackLayout Margin="10" Orientation="Vertical">
-        <!--<Image x:Name="profileImage" />-->
-        <ListView x:Name="morePage" ItemSelected="OnMenuItemSelected">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ImageCell Text="{Binding Text}" TextColor="DeepSkyBlue" ImageSource="{Binding ImagePath}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Button Text="Log Out" Clicked="Handle_Clicked" />
+<ContentPage Title="More" 
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             x:Class="ImDiabetic.Views.MorePage">
+    <StackLayout>
+       <!-- <Button Text="Achievements" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="150" BackgroundColor="Aqua" />
+        <Button Text="Educational Content" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="150" BackgroundColor="Aqua" />
+        <Button Text="Quizzes" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="150" BackgroundColor="Aqua" />-->
+        <buttons:SfButton x:Name="Btn1" Text="Achievements" HorizontalTextAlignment="Start" HeightRequest="150" FontSize="18" FontAttributes="Bold" BackgroundColor="#164ca3" ShowIcon="True" ImageWidth="80"/>
+        <buttons:SfButton x:Name="Btn2" Text="Educational Content" HorizontalTextAlignment="Start" HeightRequest="150" FontSize="18" FontAttributes="Bold" BackgroundColor="#2e76ea" ShowIcon="True" ImageWidth="80"/>
+        <buttons:SfButton x:Name="Btn3" Text="Quizzes" HorizontalTextAlignment="Start" FontSize="18" HeightRequest="150" FontAttributes="Bold" BackgroundColor="#52a8f9" ShowIcon="True" ImageWidth="80"/>
     </StackLayout>
 </ContentPage>

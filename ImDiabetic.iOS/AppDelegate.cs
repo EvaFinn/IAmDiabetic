@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.XForms.iOS.Buttons;
 using UIKit;
 
 namespace ImDiabetic.iOS
@@ -26,6 +27,7 @@ namespace ImDiabetic.iOS
             global::Xamarin.Forms.Forms.Init();
             Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
             SfListViewRenderer.Init();
+            SfButtonRenderer.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
         }
