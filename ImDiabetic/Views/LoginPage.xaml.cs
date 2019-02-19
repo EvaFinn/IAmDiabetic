@@ -19,9 +19,6 @@ namespace ImDiabetic.Views
             if ((BindingContext as LoginViewModel).CheckUser())
             {
                 User user = (BindingContext as LoginViewModel).LoggedInUser;
-                //user.LastLogInDate = DateTimeOffset.Now;
-                //(BindingContext as LoginViewModel).DailyStreak();
-                //await Navigation.PushAsync(new TrendPage(user));
                 await Navigation.PushAsync(new MasterDetailNav(user));
             }
             else

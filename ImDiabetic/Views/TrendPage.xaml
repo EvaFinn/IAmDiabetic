@@ -4,7 +4,6 @@
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              x:Class="ImDiabetic.Views.TrendPage">
     <StackLayout>
-        <Label Text="Trends page" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" />
         <chart:SfChart VerticalOptions="FillAndExpand">
             <chart:SfChart.Title>
                 <chart:ChartTitle Text="Blood Glucose Test Results">

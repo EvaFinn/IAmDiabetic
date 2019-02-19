@@ -32,7 +32,7 @@ namespace ImDiabetic.ViewModels
             {
                 foreach (Log log in logs)
                 {
-                    Debug.WriteLine("*********** LOGS " + log.Id + ", " + log.BloodGlucose + ", " + log.LogDate);
+                    Debug.WriteLine("*********** LOGS " + log.Id + "** " + log.BloodGlucose + "** " + log.LogDate);
                 }
                 FirstLog = logs.FirstOrDefault();
                 Test = FirstLog.Id + "," + FirstLog.BloodGlucose;
@@ -42,14 +42,10 @@ namespace ImDiabetic.ViewModels
         public void DailyStreakCheck()
         {
             TimeSpan dif = DateTimeOffset.Now - User.LastLogInDate;
-            Debug.WriteLine("=========== User Last LogIn " + User.LastLogInDate);
-            Debug.WriteLine(">>>>>>>>>>> Date Difference " + dif.TotalDays + ", " + dif.TotalHours + ", " + dif.TotalMinutes);
-
             //WARNING TODO will not handle going from 31st of month to 1st of next month, etc. FIX! -- update, maybe fix? must test lol.
             if (DateTimeOffset.Now.Day >= User.LastLogInDate.Day + 1) {
                 if (dif.TotalHours > 24)
                 {
-                    Debug.WriteLine(">>>>>>>>>>> Back To Zero");
                     realm.Write(() =>
                     {
                         User.DailyStreak = 0;
@@ -57,7 +53,6 @@ namespace ImDiabetic.ViewModels
                     DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
                 }
                 else {
-                    Debug.WriteLine("$$$$$$$$$$$$ NEXT DAY BUT LESS THAN 24 HOURS?");
                     realm.Write(() =>
                     {
                         User.DailyStreak++;
@@ -69,7 +64,6 @@ namespace ImDiabetic.ViewModels
                 {
                     if (dif.TotalHours > 24)
                     {
-                        Debug.WriteLine(">>>>>>>>>>> Back To Zero");
                         realm.Write(() =>
                         {
                             User.DailyStreak = 0;
@@ -78,7 +72,6 @@ namespace ImDiabetic.ViewModels
                     }
                     else
                     {
-                        Debug.WriteLine("$$$$$$$$$$$$ NEXT DAY BUT LESS THAN 24 HOURS?");
                         realm.Write(() =>
                         {
                             User.DailyStreak++;

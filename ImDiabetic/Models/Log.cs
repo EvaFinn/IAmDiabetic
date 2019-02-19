@@ -1,4 +1,5 @@
 ﻿using System;
+using ImDiabetic.Models.Logbook;
 using Realms;
 
 namespace ImDiabetic.Models
@@ -9,9 +10,9 @@ namespace ImDiabetic.Models
         public string UserId { get; set; }
         public DateTimeOffset LogDate { get; set; }
         public string BloodGlucose { get; set; }
-        public string Insulin { get; set; }
-        public string Pills { get; set; }
-        public string Carbs { get; set; }
-        public string Activity { get; set; }
+        public InsulinLog Insulin { get; set; }
+        public MedicationLog Medication { get; set; }
+        public FoodLog Food { get; set; }
+        public ActivityLog Activity { get; set; }
     }
 }

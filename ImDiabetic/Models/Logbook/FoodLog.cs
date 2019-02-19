@@ -3,7 +3,7 @@ using Realms;
 
 namespace ImDiabetic.Models.Logbook
 {
-    public class FoodItem : RealmObject
+    public class FoodLog : RealmObject
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string UserId { get; set; }
@@ -11,5 +11,6 @@ namespace ImDiabetic.Models.Logbook
         public string Brand { get; set; }
         public string Calories { get; set; }
         public string Carbohydrates { get; set; }
+        public DateTimeOffset LogDate { get; set; }
     }
 }

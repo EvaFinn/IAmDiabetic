@@ -14,7 +14,7 @@ namespace ImDiabetic.Views
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
-            var config = new RealmConfiguration() { SchemaVersion = 6 };
+            var config = new RealmConfiguration() { SchemaVersion = 8 };
             realm = Realm.GetInstance(config);
             User = user;
             profileImage.Source = ImageSource.FromResource("ImDiabetic.Icons.profile.png");

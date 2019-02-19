@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
+using Realms;
 
 namespace ImDiabetic.ViewModels
 {
@@ -24,16 +27,28 @@ namespace ImDiabetic.ViewModels
         {
             realm.Write(() =>
             {
-                var user = new User { 
-                    FirstName = FirstName, LastName = LastName, Age = Age, 
-                    Gender = Gender, Weight = Weight, Height = Height,
-                    MaxTargetBloodGlucose = MaxTarget, 
-                    MinTargetBloodGlucose = MinTarget, 
-                    Password = Password 
+                var user = new User
+                {
+                    FirstName = FirstName,
+                    LastName = LastName,
+                    Age = Age,
+                    Gender = Gender,
+                    Weight = Weight,
+                    Height = Height,
+                    MaxTargetBloodGlucose = MaxTarget,
+                    MinTargetBloodGlucose = MinTarget,
+                    Password = Password
                 };
                 RegisteredUser = user;
                 realm.Add(user);
             });
+
+            var uuu = realm.All<User>();
+            foreach (User use in uuu)
+            {
+                Debug.WriteLine("NAME " + use.FirstName + ",,," + use.Password);
+            }
+          
         }
     }
 }

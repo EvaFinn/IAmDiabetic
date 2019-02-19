@@ -4,12 +4,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
              x:Class="ImDiabetic.Views.MorePage">
-    <StackLayout>
-       <!-- <Button Text="Achievements" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="150" BackgroundColor="Aqua" />
-        <Button Text="Educational Content" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="150" BackgroundColor="Aqua" />
-        <Button Text="Quizzes" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="150" BackgroundColor="Aqua" />-->
-        <buttons:SfButton x:Name="Btn1" Text="Achievements" HorizontalTextAlignment="Start" HeightRequest="150" FontSize="18" FontAttributes="Bold" BackgroundColor="#164ca3" ShowIcon="True" ImageWidth="80"/>
-        <buttons:SfButton x:Name="Btn2" Text="Educational Content" HorizontalTextAlignment="Start" HeightRequest="150" FontSize="18" FontAttributes="Bold" BackgroundColor="#2e76ea" ShowIcon="True" ImageWidth="80"/>
-        <buttons:SfButton x:Name="Btn3" Text="Quizzes" HorizontalTextAlignment="Start" FontSize="18" HeightRequest="150" FontAttributes="Bold" BackgroundColor="#52a8f9" ShowIcon="True" ImageWidth="80"/>
+    <StackLayout x:Name="stackLayout">
+        <buttons:SfButton x:Name="Btn1" Text="Achievements" HorizontalTextAlignment="Start" HeightRequest="150" FontSize="18" FontAttributes="Bold" BackgroundColor="#164ca3" ShowIcon="True" ImageWidth="80" Command="{Binding ButtonCommand}" CommandParameter="Achievement" />
+        <buttons:SfButton x:Name="Btn2" Text="Educational Content" HorizontalTextAlignment="Start" HeightRequest="150" FontSize="18" FontAttributes="Bold" BackgroundColor="#2e76ea" ShowIcon="True" ImageWidth="80" Command="{Binding ButtonCommand}" CommandParameter="Education"/>
+        <buttons:SfButton x:Name="Btn3" Text="Quizzes" HorizontalTextAlignment="Start" FontSize="18" HeightRequest="150" FontAttributes="Bold" BackgroundColor="#52a8f9" ShowIcon="True" ImageWidth="80" Command="{Binding ButtonCommand}" CommandParameter="Quiz"/>
     </StackLayout>
 </ContentPage>

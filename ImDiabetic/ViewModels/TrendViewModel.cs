@@ -12,7 +12,7 @@ namespace ImDiabetic.ViewModels
     public class TrendViewModel : BaseViewModel
     {
         public User User { get; set; }
-        public Log Log { get; set; }
+        //public Log Log { get; set; }
         public List<Log> ListOfLogs { get; set; }
         public List<BGTargetData> Data3 { get; set; }
 
@@ -46,6 +46,7 @@ namespace ImDiabetic.ViewModels
 
             foreach (Log log in logs)
             {
+                Debug.WriteLine("*********" + log.BloodGlucose);
                 if (float.Parse(log.BloodGlucose) < User.MinTargetBloodGlucose)
                 {
                     lowcount++;

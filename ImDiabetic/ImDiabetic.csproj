@@ -32,6 +32,7 @@
     <Compile Remove="Views\TrendsPage.xaml.cs" />
     <Compile Remove="Views\MyPage2.cs" />
     <Compile Remove="Views\TestChart.xaml.cs" />
+    <Compile Remove="Models\FoodItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="FodyWeavers.xml" />
@@ -53,6 +54,7 @@
     <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Models\Logbook\" />
+    <Folder Include="Views\More\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\home.png" />
