@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using ImDiabetic.Models;
 using Realms;
 
 namespace ImDiabetic.ViewModels
@@ -48,7 +49,15 @@ namespace ImDiabetic.ViewModels
             {
                 Debug.WriteLine("NAME " + use.FirstName + ",,," + use.Password);
             }
-          
+
+            var question = new QuizQuestion { Question = "Question?", Topic = "Food", Answer = "Answer", OptionOne = "Answer", OptionTwo = "Not Answer 2", OptionThree = "Not Answer 3" };
+            var quiz = new Quiz { Question = question, UserId = RegisteredUser.Id, Score = "0" };
+
+            realm.Write(() => {
+                realm.Add(question);
+                realm.Add(quiz);
+            });
+
         }
     }
 }

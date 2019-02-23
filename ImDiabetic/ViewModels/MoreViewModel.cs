@@ -31,7 +31,7 @@ namespace ImDiabetic.ViewModels
                     await _navigation.PushAsync(new EducationPage());
                     break;
                 case "Quiz":
-                    await _navigation.PushAsync(new QuizPage());
+                    await _navigation.PushAsync(new QuizPage(User));
                     break;
                 default:
                     break;

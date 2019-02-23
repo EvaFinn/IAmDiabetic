@@ -179,4 +179,7 @@
     <EmbeddedResource Include="Resources\logs.png" />
     <EmbeddedResource Include="Resources\home.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quizquestion.json" />
+  </ItemGroup>
 </Project>
