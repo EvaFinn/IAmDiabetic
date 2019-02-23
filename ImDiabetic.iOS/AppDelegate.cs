@@ -28,6 +28,7 @@ namespace ImDiabetic.iOS
             Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
             SfListViewRenderer.Init();
             SfButtonRenderer.Init();
+            SfCheckBoxRenderer.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
         }

@@ -7,6 +7,7 @@ using System.Reflection;
 using ImDiabetic.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Syncfusion.XForms.Buttons;
 
 namespace ImDiabetic.ViewModels
 {
@@ -24,19 +25,12 @@ namespace ImDiabetic.ViewModels
         public QuestionViewModel(User user)
         {
             User = user;
-            //var serializer = JsonSerializer.CreateDefault();
-            //var jsonArray = JArray.Parse(jsonString);
-            //var reports = new List<User>();
-            //realm.Write(() =>
-            //{
-            //    foreach (var jsonValue in jsonArray)
-            //    {
-            //        var report = realm.CreateObject<User>();
-            //        serializer.Populate(new JTokenReader(jsonValue), report);
-            //        reports.Add(report);
-            //    }
-            //});
+            InitQuestion();
 
+        }
+
+        private void InitQuestion()
+        {
             var quizzes = realm.All<Quiz>().Where(u => u.UserId == User.Id);
             foreach (Quiz quiz in quizzes)
             {
@@ -44,12 +38,12 @@ namespace ImDiabetic.ViewModels
             }
 
             var q = quizzes.FirstOrDefault();
-            Question = q.Question.Question;
-            Topic = q.Question.Topic;
-            OptionOne = q.Question.OptionOne;
-            OptionTwo = q.Question.OptionTwo;
-            OptionThree = q.Question.OptionThree;
-            Message = q.Question.Answer;
+            //Question = q.Question.Question;
+            //Topic = q.Question.Topic;
+            //OptionOne = q.Question.OptionOne;
+            //OptionTwo = q.Question.OptionTwo;
+            //OptionThree = q.Question.OptionThree;
+            //Message = q.Question.Answer;
 
 
             var assembly = IntrospectionExtensions.GetTypeInfo(typeof(QuizQuestion)).Assembly;
@@ -60,18 +54,35 @@ namespace ImDiabetic.ViewModels
             using (var reader = new System.IO.StreamReader(stream))
             {
                 json = reader.ReadToEnd();
-                var jsonresult = JsonConvert.DeserializeObject<List<QuizQuestion>>(json);
-                earthquakes = jsonresult.ElementAt(1).Answer;
             }
+
+            var jsonresult = JsonConvert.DeserializeObject<List<QuizQuestion>>(json);
+            earthquakes = jsonresult.ElementAt(1).Answer;
+            Question = jsonresult.ElementAt(1).Question;
+            Topic = jsonresult.ElementAt(1).Topic;
+            OptionOne = jsonresult.ElementAt(1).OptionOne;
+            OptionTwo = jsonresult.ElementAt(1).OptionTwo;
+            OptionThree = jsonresult.ElementAt(1).OptionThree;
+            Answer = jsonresult.ElementAt(1).Answer;
+            Message = "Message";
+
 
             Debug.WriteLine("*********** TESTTEST: " + json);
             Debug.WriteLine("@@@@@@@@@@@ TESTTEST: " + earthquakes);
-            //QuizQuestion ques = new QuizQuestion { Question =  };
+        }
 
-            //var question = new QuizQuestion { Question = "Question?", Answer = "Answer", OptionOne = "Answer", OptionTwo = "Not Answer 2", OptionThree = "Not Answer 3" };
-            // SAVE JSON DATA INTO QUESTION OBJECT. MAYBE ADD TOPIC FIELD TO QUESTION/QUIZ? SORT BY TOPIC WHEN 
-            // DISPLAYING AVAILABLE QUIZZES.
-
+        public bool CheckAnswer(string answerchoice) {
+            Debug.WriteLine("!!!!!!!!!! WHAT : " + answerchoice);
+            if (answerchoice.Equals(Answer)) {
+                Message = "CORRECT ANSWER";
+                Debug.WriteLine("CORRECT");
+                return true;
+            }
+            else {
+                Message = "INCORRECT FOOL";
+                Debug.WriteLine("INCORRECT");
+                return false;
+            }
         }
     }
 }

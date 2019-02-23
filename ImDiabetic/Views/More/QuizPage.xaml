@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.Views.More.QuizPage">
-        <StackLayout x:Name="slQuestion" IsVisible="true" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label x:Name="lblQuestion"
-                       FontAttributes="Bold"
-                       FontSize="Large"
-                       HorizontalTextAlignment="Center"
-                       Text="{Binding Question}" />
-                <Button x:Name="btnAnswerOne" Text="{Binding OptionOne}" 
-                    IsEnabled="true" />
-                <Button x:Name="btnAnswerTwo" Text="{Binding OptionTwo}" 
-                    IsEnabled="true" />
-                <Button x:Name="btnAnswerThree" Text="{Binding OptionThree}" 
-                    IsEnabled="true" />
-                <Label x:Name="lblMessage"
-                       FontAttributes="Italic"
-                       FontSize="Large"
-                       HorizontalTextAlignment="Center"
-                       Text="{Binding Message}" />
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" x:Class="ImDiabetic.Views.More.QuizPage">
+    <StackLayout x:Name="slQuestion" IsVisible="true" HorizontalOptions="Center" VerticalOptions="Center">
+        <Label x:Name="lblQuestion" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" Text="{Binding Question}" />
+        <syncfusion:SfCheckBox x:Name="checkAnsOne" Text="{Binding OptionOne}" StateChanged="CheckBox_StateChanged" />
+        <syncfusion:SfCheckBox x:Name="checkAnsTwo" Text="{Binding OptionTwo}" StateChanged="CheckBox_StateChanged" />
+        <syncfusion:SfCheckBox x:Name="checkAnsThree" Text="{Binding OptionThree}" StateChanged="CheckBox_StateChanged" />
+        <Button x:Name="answerCheck" Text="Check Answer?" IsEnabled="true" Clicked="Handle_Clicked" />
+        <Label x:Name="lblMessage" FontAttributes="Italic" FontSize="Large" HorizontalTextAlignment="Center" Text="{Binding Message}" />
     </StackLayout>
 </ContentPage>
