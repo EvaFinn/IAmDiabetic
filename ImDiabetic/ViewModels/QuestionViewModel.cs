@@ -8,6 +8,7 @@ using ImDiabetic.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Syncfusion.XForms.Buttons;
+using Xamarin.Forms;
 
 namespace ImDiabetic.ViewModels
 {
@@ -21,12 +22,13 @@ namespace ImDiabetic.ViewModels
         public string OptionThree { get; set; }
         public string Answer { get; set; }
         public string Message { get; set; }
+        private int questioncount;
 
-        public QuestionViewModel(User user)
+        public QuestionViewModel(User user, int question)
         {
             User = user;
+            questioncount = question;
             InitQuestion();
-
         }
 
         private void InitQuestion()
@@ -44,45 +46,65 @@ namespace ImDiabetic.ViewModels
             //OptionTwo = q.Question.OptionTwo;
             //OptionThree = q.Question.OptionThree;
             //Message = q.Question.Answer;
+            //questioncount = 0;
+            PrepareQuastion();
 
+
+        }
+
+        private void PrepareQuastion()
+        {
+            string json, earthquakes;
+            List<QuizQuestion> jsonresult;
 
             var assembly = IntrospectionExtensions.GetTypeInfo(typeof(QuizQuestion)).Assembly;
             Stream stream = assembly.GetManifestResourceStream("ImDiabetic.quizquestion.json");
-            string json = "";
-            string earthquakes;
-
+            json = "";
             using (var reader = new System.IO.StreamReader(stream))
             {
                 json = reader.ReadToEnd();
             }
 
-            var jsonresult = JsonConvert.DeserializeObject<List<QuizQuestion>>(json);
-            earthquakes = jsonresult.ElementAt(1).Answer;
-            Question = jsonresult.ElementAt(1).Question;
-            Topic = jsonresult.ElementAt(1).Topic;
-            OptionOne = jsonresult.ElementAt(1).OptionOne;
-            OptionTwo = jsonresult.ElementAt(1).OptionTwo;
-            OptionThree = jsonresult.ElementAt(1).OptionThree;
-            Answer = jsonresult.ElementAt(1).Answer;
+            jsonresult = JsonConvert.DeserializeObject<List<QuizQuestion>>(json);
+            earthquakes = jsonresult.ElementAt(0).Answer;
+
+
+            Question = jsonresult.ElementAt(questioncount).Question;
+            Topic = jsonresult.ElementAt(questioncount).Topic;
+            OptionOne = jsonresult.ElementAt(questioncount).OptionOne;
+            OptionTwo = jsonresult.ElementAt(questioncount).OptionTwo;
+            OptionThree = jsonresult.ElementAt(questioncount).OptionThree;
+            Answer = jsonresult.ElementAt(questioncount).Answer;
             Message = "Message";
 
+            Debug.WriteLine("*********** COUNT JSON : " + jsonresult.Count);
+            Debug.WriteLine("*********** TESTTEST : " + questioncount);
 
-            Debug.WriteLine("*********** TESTTEST: " + json);
-            Debug.WriteLine("@@@@@@@@@@@ TESTTEST: " + earthquakes);
+
+            //if(questioncount == 2) {
+            //    _navigation.PopAsync();
+            //}
+            //else {
+            //    Debug.WriteLine("i don't even know");
+            //}
         }
 
         public bool CheckAnswer(string answerchoice) {
             Debug.WriteLine("!!!!!!!!!! WHAT : " + answerchoice);
+            questioncount++;
+            bool result;
             if (answerchoice.Equals(Answer)) {
                 Message = "CORRECT ANSWER";
                 Debug.WriteLine("CORRECT");
-                return true;
+                result = true;
             }
             else {
                 Message = "INCORRECT FOOL";
                 Debug.WriteLine("INCORRECT");
-                return false;
+                result = false;
             }
+            //PrepareQuastion();
+            return result;
         }
     }
 }

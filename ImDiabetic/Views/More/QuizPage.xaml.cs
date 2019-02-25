@@ -10,10 +10,15 @@ namespace ImDiabetic.Views.More
     public partial class QuizPage : ContentPage
     {
         string answerchoice;
-        public QuizPage(User user)
+        int questcount;
+        public User User { get; set; }
+
+        public QuizPage(User user, int qcount)
         {
             InitializeComponent();
-            this.BindingContext = new QuestionViewModel(user);
+            User = user;
+            questcount = qcount;
+            this.BindingContext = new QuestionViewModel(user, questcount);
         }
 
         private void CheckBox_StateChanged(object sender, StateChangedEventArgs e)
@@ -46,13 +51,15 @@ namespace ImDiabetic.Views.More
             answerchoice = null;
 
             if (IsCorrect) {
-                answerCheck.BackgroundColor = Color.Green;
+                lblMessage.TextColor = Color.Green;
                 lblMessage.Text = "Correct!";
             }
             else if (!IsCorrect) {
-                answerCheck.BackgroundColor = Color.Red;
+                lblMessage.TextColor = Color.Red;
                 lblMessage.Text = "Incorrect!";
             }
+           
+           Navigation.PushAsync(new QuizPage(User, 1));
         }
     }
 }

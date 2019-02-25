@@ -15,6 +15,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.4.0.52" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="16.4.0.53" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="16.4.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="16.4.0.54" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MyPage.xaml" />
@@ -48,6 +49,7 @@
     <None Remove="Icons\edu.png" />
     <None Remove="Icons\quiz.png" />
     <None Remove="quizquestion.json" />
+    <None Remove="EduContent\Hypoglycaemia.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icons\" />
@@ -56,6 +58,7 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Models\Logbook\" />
     <Folder Include="Views\More\" />
+    <Folder Include="EduContent\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\home.png" />
@@ -70,10 +73,11 @@
     <EmbeddedResource Include="Icons\edu.png" />
     <EmbeddedResource Include="Icons\quiz.png" />
     <EmbeddedResource Include="quizquestion.json" />
+    <EmbeddedResource Include="EduContent\Hypoglycaemia.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\DashboardPage.xaml.cs">
-      <DependentUpon>Ignore.xaml</DependentUpon>
+      <DependentUpon>DashboardPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\GoalsPage.xaml.cs">

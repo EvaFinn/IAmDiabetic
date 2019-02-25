@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.SfPdfViewer.XForms.iOS;
 using Syncfusion.XForms.iOS.Buttons;
 using UIKit;
 
@@ -29,6 +30,7 @@ namespace ImDiabetic.iOS
             SfListViewRenderer.Init();
             SfButtonRenderer.Init();
             SfCheckBoxRenderer.Init();
+            SfPdfDocumentViewRenderer.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
         }

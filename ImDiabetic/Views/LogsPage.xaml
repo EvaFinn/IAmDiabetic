@@ -13,13 +13,13 @@
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
             <Label Text="BLOOD GLUCOSE" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" />
-            <Entry x:Name="bloodGlucoseEntry" Text="{Binding BloodGlucose}" Placeholder="mg/dl" WidthRequest="200" Grid.Row="0" Grid.Column="1" />
+            <Entry x:Name="bloodGlucoseEntry" Text="{Binding BloodGlucose}" Placeholder="mmol/l" WidthRequest="200" Grid.Row="0" Grid.Column="1" />
             <Label Text="INSULIN" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" />
             <Entry x:Name="insulinEntry" Text="{Binding Insulin}" WidthRequest="150" Placeholder="Unit" Grid.Row="1" Grid.Column="1" />
             <Label Text="PILLS" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" />
             <Entry x:Name="pillEntry" Text="{Binding Pills}" WidthRequest="150" Placeholder="" Grid.Row="2" Grid.Column="1" />
             <Label Text="ACTIVITY" Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center" />
-            <Entry x:Name="activityEntry" Text="{Binding Activity}" WidthRequest="150" Placeholder="" Grid.Row="3" Grid.Column="1" />
+            <Entry x:Name="activityEntry" Text="{Binding Activity}" WidthRequest="150" Placeholder="Minutes" Grid.Row="3" Grid.Column="1" />
             <Label Text="CARBS" Grid.Row="4" Grid.Column="0" VerticalTextAlignment="Center" />
             <Entry x:Name="carbsEntry" Text="{Binding Carbs}" WidthRequest="150" Placeholder="g" Grid.Row="4" Grid.Column="1" />
             <Button Text="Scan" Grid.Row="4" Grid.Column="2" WidthRequest="40" HeightRequest="10" />

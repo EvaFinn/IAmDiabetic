@@ -6,6 +6,6 @@
         <syncfusion:SfCheckBox x:Name="checkAnsTwo" Text="{Binding OptionTwo}" StateChanged="CheckBox_StateChanged" />
         <syncfusion:SfCheckBox x:Name="checkAnsThree" Text="{Binding OptionThree}" StateChanged="CheckBox_StateChanged" />
         <Button x:Name="answerCheck" Text="Check Answer?" IsEnabled="true" Clicked="Handle_Clicked" />
-        <Label x:Name="lblMessage" FontAttributes="Italic" FontSize="Large" HorizontalTextAlignment="Center" Text="{Binding Message}" />
+        <Label x:Name="lblMessage" FontAttributes="Italic,Bold" FontSize="Large" HorizontalTextAlignment="Center" Text="{Binding Message}" />
     </StackLayout>
 </ContentPage>

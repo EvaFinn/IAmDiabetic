@@ -66,6 +66,9 @@
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
       <Version>16.4.0.53</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer">
+      <Version>16.4.0.54</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
