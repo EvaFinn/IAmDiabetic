@@ -2,7 +2,7 @@
   [
     {
       "Question": "What is Hypoglycemia?",
-      "Topic": "Food",
+      "Topic": "Blood Glucose",
       "OptionOne": "When blood sugar decreases to below normal levels",
       "OptionTwo": "A form of hemoglobin that is covalently bound to glucose",
       "OptionThree": "When blood sugar increases to above normal levels",
@@ -10,7 +10,7 @@
     },
     {
       "Question": "What is Hyperglycemia?",
-      "Topic": "Food",
+      "Topic": "Blood Glucose",
       "OptionOne": "A form of hemoglobin that is covalently bound to glucose",
       "OptionTwo": "When blood sugar decreases to below normal levels",
       "OptionThree": "When blood sugar increases to above normal levels",
@@ -18,10 +18,34 @@
     },
     {
       "Question": "What is glycated hemoglobin?",
-      "Topic": "Food",
+      "Topic": "Blood Glucose",
       "OptionOne": "A form of hemoglobin that is covalently bound to glucose",
       "OptionTwo": "When blood sugar decreases to below normal levels",
       "OptionThree": "When blood sugar increases to above normal levels",
       "Answer": "1"
+    },
+    {
+      "Question": "Regular insulin is used for what?",
+      "Topic": "Management",
+      "OptionOne": "Provide the diabetic with a baseline insulin level",
+      "OptionTwo": "Provide insulin to cover increased blood glucose associated with meals",
+      "OptionThree": "Help control blood glucose during the night",
+      "Answer": "2"
+    },
+    {
+      "Question": "Blood glucose levels respond to food, particularly carbohydrates. What other factors can affect blood glucose levels?",
+      "Topic": "Management",
+      "OptionOne": "Physical activity",
+      "OptionTwo": "Stress",
+      "OptionThree": "All of the above",
+      "Answer": "3"
+    },
+    {
+      "Question": "How often should a person with Type 1 Diabetes check their blood sugar levels each day?",
+      "Topic": "Management",
+      "OptionOne": "Once a day",
+      "OptionTwo": "Twice a day",
+      "OptionThree": "4 or more times a day",
+      "Answer": "3"
     }
    ]

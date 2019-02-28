@@ -17,15 +17,7 @@ namespace ImDiabetic.ViewModels
     {
         public User User { get; set; }
         private int questionNumber = 0;
-        //public string Question { get; set; }
-        //public string Topic { get; set; }
-        //public string OptionOne { get; set; }
-        //public string OptionTwo { get; set; }
-        //public string OptionThree { get; set; }
-        //public string Answer { get; set; }
-        //public string Message { get; set; }
-        //private int questioncount;
-
+      
         private int _correctAnswer = 0;
         public int CorrectAnswer
         {
@@ -151,10 +143,7 @@ namespace ImDiabetic.ViewModels
         private string _message;
         public string Message
         {
-            get
-            {
-                return this._message;
-            }
+            get { return this._message; }
             set
             {
                 this._message = value;
@@ -163,9 +152,12 @@ namespace ImDiabetic.ViewModels
             }
         }
 
-        public QuestionViewModel()
+        private string ChosenTopic { get; set; }
+
+        public QuestionViewModel(string topic)
         {
             //LoadQuestions();
+            ChosenTopic = topic;
         }
 
         public bool CheckIfCorrect(int correct)
@@ -181,7 +173,6 @@ namespace ImDiabetic.ViewModels
 
         public void LoadQuestions()
         {
-
             List<QuizQuestion> jsonresult;
 
             var assembly = IntrospectionExtensions.GetTypeInfo(typeof(QuizQuestion)).Assembly;
@@ -193,11 +184,17 @@ namespace ImDiabetic.ViewModels
             }
 
             jsonresult = JsonConvert.DeserializeObject<List<QuizQuestion>>(json);
+            List<QuizQuestion> questions = new List<QuizQuestion>();
+
+            for (int i = 0; i < jsonresult.Count; i++) {
+                if (jsonresult.ElementAt(i).Topic.Equals(ChosenTopic))
+                {
+                    questions.Add(jsonresult[i]);
+                }
+            }
 
             IsLoading = true;
-            QuestionList = jsonresult;
-
-
+            QuestionList = questions;
 
             IsLoading = false;
             ChooseNewQuestion();
@@ -206,9 +203,6 @@ namespace ImDiabetic.ViewModels
         public void ChooseNewQuestion()
         {
             IsLoading = true;
-            //if(questionNumber == 3) { 
-                
-            //}
 
             QuizQuestion selectedItem = QuestionList[questionNumber];
 
@@ -227,91 +221,5 @@ namespace ImDiabetic.ViewModels
             Debug.WriteLine("*********** COUNT JSON : " + questionNumber);
             questionNumber++;
         }
-
-
-
-
-        //public QuestionViewModel(User user, int question)
-        //{
-        //    User = user;
-        //    questioncount = question;
-        //    InitQuestion();
-        //}
-
-        //private void InitQuestion()
-        //{
-        //    var quizzes = realm.All<Quiz>().Where(u => u.UserId == User.Id);
-        //    foreach (Quiz quiz in quizzes)
-        //    {
-        //        Debug.WriteLine("QQQQQQQ  " + quiz.Question.Question + ",," + quiz.Question.Answer);
-        //    }
-
-        //    var q = quizzes.FirstOrDefault();
-        //    //Question = q.Question.Question;
-        //    //Topic = q.Question.Topic;
-        //    //OptionOne = q.Question.OptionOne;
-        //    //OptionTwo = q.Question.OptionTwo;
-        //    //OptionThree = q.Question.OptionThree;
-        //    //Message = q.Question.Answer;
-        //    //questioncount = 0;
-        //    PrepareQuastion();
-
-
-        //}
-
-        //private void PrepareQuastion()
-        //{
-        //    string json, earthquakes;
-        //    List<QuizQuestion> jsonresult;
-
-        //    var assembly = IntrospectionExtensions.GetTypeInfo(typeof(QuizQuestion)).Assembly;
-        //    Stream stream = assembly.GetManifestResourceStream("ImDiabetic.quizquestion.json");
-        //    json = "";
-        //    using (var reader = new System.IO.StreamReader(stream))
-        //    {
-        //        json = reader.ReadToEnd();
-        //    }
-
-        //    jsonresult = JsonConvert.DeserializeObject<List<QuizQuestion>>(json);
-        //    earthquakes = jsonresult.ElementAt(0).Answer;
-
-
-        //    Question = jsonresult.ElementAt(questioncount).Question;
-        //    Topic = jsonresult.ElementAt(questioncount).Topic;
-        //    OptionOne = jsonresult.ElementAt(questioncount).OptionOne;
-        //    OptionTwo = jsonresult.ElementAt(questioncount).OptionTwo;
-        //    OptionThree = jsonresult.ElementAt(questioncount).OptionThree;
-        //    Answer = jsonresult.ElementAt(questioncount).Answer;
-        //    Message = "Message";
-
-        //    Debug.WriteLine("*********** COUNT JSON : " + jsonresult.Count);
-        //    Debug.WriteLine("*********** TESTTEST : " + questioncount);
-
-
-        //    //if(questioncount == 2) {
-        //    //    _navigation.PopAsync();
-        //    //}
-        //    //else {
-        //    //    Debug.WriteLine("i don't even know");
-        //    //}
-        //}
-
-        //public bool CheckAnswer(string answerchoice) {
-        //    Debug.WriteLine("!!!!!!!!!! WHAT : " + answerchoice);
-        //    questioncount++;
-        //    bool result;
-        //    if (answerchoice.Equals(Answer)) {
-        //        Message = "CORRECT ANSWER";
-        //        Debug.WriteLine("CORRECT");
-        //        result = true;
-        //    }
-        //    else {
-        //        Message = "INCORRECT FOOL";
-        //        Debug.WriteLine("INCORRECT");
-        //        result = false;
-        //    }
-        //    //PrepareQuastion();
-        //    return result;
-        //}
     }
 }

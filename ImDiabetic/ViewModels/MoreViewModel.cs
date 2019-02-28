@@ -23,8 +23,7 @@ namespace ImDiabetic.ViewModels
 
         async public void MorePageButtons(string page)
         {
-            switch (page)
-            {
+            switch (page) {
                 case "Achievement":
                     await _navigation.PushAsync(new AchievementsPage());
                     break;
@@ -32,7 +31,7 @@ namespace ImDiabetic.ViewModels
                     await _navigation.PushAsync(new EducationPage(User));
                     break;
                 case "Quiz":
-                    await _navigation.PushAsync(new QuizPage(User));
+                    await _navigation.PushAsync(new QuizTopicsPage(User));
                     break;
                 default:
                     break;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Android.Widget;
 using ImDiabetic.Models;
 using ImDiabetic.ViewModels;
@@ -10,18 +11,16 @@ namespace ImDiabetic.Views.More
 {
     public partial class QuizPage : ContentPage
     {
-        string answerchoice;
-        int questcount;
-        public User User { get; set; }
+       public User User { get; set; }
 
-        int _choice = 0;
+        //int _choice = 0;
         int score = 100;
 
-        public QuizPage(User user)
+        public QuizPage(User user, string ChosenTopic)
         {
             InitializeComponent();
             User = user;
-            this.BindingContext = new QuestionViewModel();
+            this.BindingContext = new QuestionViewModel(ChosenTopic);
             (BindingContext as QuestionViewModel).LoadQuestions();
 
             btnAnswerOne.Clicked += (sender, ea) =>
@@ -58,6 +57,10 @@ namespace ImDiabetic.Views.More
         private void DoAnswer()
         {
             QuizSettings.Score += score;
+            Debug.WriteLine("CQ : " + QuizSettings.CurrentQuestion);
+            Debug.WriteLine("QC : " + QuizSettings.QUESTIONS_COUNT);
+            Debug.WriteLine("S : " + QuizSettings.Score);
+
             if (QuizSettings.CurrentQuestion < QuizSettings.QUESTIONS_COUNT)
             {
                 QuizSettings.CurrentQuestion++;
@@ -65,63 +68,17 @@ namespace ImDiabetic.Views.More
             }
             else
             {
+                QuizSettings.CurrentQuestion = 1;
+                QuizSettings.Score = 0;
                 NavigateToEndPage();
             }
         }
 
         async private void NavigateToEndPage()
         {
-            await Navigation.PushAsync(new MorePage(User));
+            //await Navigation.PushAsync(new DashboardPage(User));
+            await Navigation.PopToRootAsync();
         }
     }
-
-    //    public QuizPage(User user, int qcount)
-    //    {
-    //        InitializeComponent();
-    //        User = user;
-    //        questcount = qcount;
-    //        this.BindingContext = new QuestionViewModel();
-    //    }
-
-    //    private void CheckBox_StateChanged(object sender, StateChangedEventArgs e)
-    //    {
-    //        if (checkAnsOne.IsChecked.Value)
-    //        {
-    //            answerchoice = checkAnsOne.Text;
-    //        }
-    //        if (checkAnsTwo.IsChecked.Value)
-    //        {
-    //            answerchoice = checkAnsTwo.Text;
-    //        }
-    //        if (checkAnsThree.IsChecked.Value)
-    //        {
-    //            answerchoice = checkAnsThree.Text;
-    //        }
-    //    }
-
-    //    void Handle_Clicked(object sender, System.EventArgs e)
-    //    {
-    //        checkAnsOne.IsChecked = false;
-    //        checkAnsTwo.IsChecked = false;
-    //        checkAnsThree.IsChecked = false;
-    //        bool IsCorrect = false;
-
-    //        if (answerchoice != null)
-    //        {
-    //            IsCorrect = (BindingContext as QuestionViewModel).CheckAnswer(answerchoice);
-    //        }
-    //        answerchoice = null;
-
-    //        if (IsCorrect) {
-    //            lblMessage.TextColor = Color.Green;
-    //            lblMessage.Text = "Correct!";
-    //        }
-    //        else if (!IsCorrect) {
-    //            lblMessage.TextColor = Color.Red;
-    //            lblMessage.Text = "Incorrect!";
-    //        }
-
-    //       Navigation.PushAsync(new QuizPage(User, 1));
-    //    }
 }
 
