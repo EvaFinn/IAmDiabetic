@@ -12,8 +12,8 @@ namespace ImDiabetic.ViewModels
     public class MoreViewModel : BaseViewModel
     {
         private INavigation _navigation;
-        User User { get; set; }
-        public ICommand ButtonCommand => new Command<string>(Something);
+        private User User { get; set; }
+        public ICommand ButtonCommand => new Command<string>(MorePageButtons);
 
         public MoreViewModel(INavigation navigation, User user)
         {
@@ -21,9 +21,10 @@ namespace ImDiabetic.ViewModels
             User = user;
         }
 
-        async public void Something(string page)
+        async public void MorePageButtons(string page)
         {
-            switch (page) {
+            switch (page)
+            {
                 case "Achievement":
                     await _navigation.PushAsync(new AchievementsPage());
                     break;
@@ -31,7 +32,7 @@ namespace ImDiabetic.ViewModels
                     await _navigation.PushAsync(new EducationPage(User));
                     break;
                 case "Quiz":
-                    await _navigation.PushAsync(new QuizPage(User, 0));
+                    await _navigation.PushAsync(new QuizPage(User));
                     break;
                 default:
                     break;

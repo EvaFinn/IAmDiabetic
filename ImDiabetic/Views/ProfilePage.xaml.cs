@@ -7,7 +7,6 @@ namespace ImDiabetic.Views
 {
     public partial class ProfilePage : ContentPage
     {
-        Realm realm;
         public User User { get; }
 
         public ProfilePage(User user)
