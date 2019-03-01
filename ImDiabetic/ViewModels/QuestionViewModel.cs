@@ -203,7 +203,8 @@ namespace ImDiabetic.ViewModels
         public void ChooseNewQuestion()
         {
             IsLoading = true;
-
+            //int num = rnd.Next(0, questionNumber);
+            //random number between 0 and QuizSettings.QuestionCount??? idk
             QuizQuestion selectedItem = QuestionList[questionNumber];
 
             Answer1Enabled = true;
@@ -218,7 +219,6 @@ namespace ImDiabetic.ViewModels
             CorrectAnswer = int.Parse(selectedItem.Answer);
 
             IsLoading = false;
-            Debug.WriteLine("*********** COUNT JSON : " + questionNumber);
             questionNumber++;
         }
     }

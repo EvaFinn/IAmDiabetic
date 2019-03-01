@@ -44,8 +44,8 @@
       "Question": "How often should a person with Type 1 Diabetes check their blood sugar levels each day?",
       "Topic": "Management",
       "OptionOne": "Once a day",
-      "OptionTwo": "Twice a day",
-      "OptionThree": "4 or more times a day",
-      "Answer": "3"
+      "OptionTwo": "4 or more times a day",
+      "OptionThree": "Never",
+      "Answer": "2"
     }
    ]

@@ -1411,6 +1411,7 @@ namespace ImDiabetic.Droid
 			global::Syncfusion.ListView.XForms.Android.Resource.String.ApplicationName = global::ImDiabetic.Droid.Resource.String.ApplicationName;
 			global::Syncfusion.ListView.XForms.Android.Resource.String.Hello = global::ImDiabetic.Droid.Resource.String.Hello;
 			global::Syncfusion.ListView.XForms.Android.Resource.String.Load_More = global::ImDiabetic.Droid.Resource.String.Load_More;
+			global::Com.Syncfusion.Numericupdown.Resource.String.library_name = global::ImDiabetic.Droid.Resource.String.library_name;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Attribute.busyIndicatorAnimationTypes = global::ImDiabetic.Droid.Resource.Attribute.busyIndicatorAnimationTypes;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Attribute.busyIndicatorIsBusy = global::ImDiabetic.Droid.Resource.Attribute.busyIndicatorIsBusy;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Attribute.busyIndicatorSecondaryColor = global::ImDiabetic.Droid.Resource.Attribute.busyIndicatorSecondaryColor;

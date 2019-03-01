@@ -10,6 +10,7 @@ namespace ImDiabetic.Views
         public EducationContentPage(User user, string topic)
         {
             InitializeComponent();
+            //TODO allow user upload their own content.
             //this.BindingContext = new EducationContentViewModel(user, topic);
             this.BindingContext = new PdfViewerViewModel();
         }

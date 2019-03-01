@@ -11,10 +11,8 @@ namespace ImDiabetic.Views.More
 {
     public partial class QuizPage : ContentPage
     {
-       public User User { get; set; }
-
-        //int _choice = 0;
-        int score = 100;
+        public User User { get; set; }
+        int score = 0;
 
         public QuizPage(User user, string ChosenTopic)
         {
@@ -25,41 +23,34 @@ namespace ImDiabetic.Views.More
 
             btnAnswerOne.Clicked += (sender, ea) =>
             {
-                if ((BindingContext as QuestionViewModel).CheckIfCorrect(1)) DoAnswer();
-                else
+                if ((BindingContext as QuestionViewModel).CheckIfCorrect(1))
                 {
-                    score = score / 2;
+                    score++;
                 }
+                DoAnswer();
             };
 
             btnAnswerTwo.Clicked += (sender, ea) =>
             {
-                if ((BindingContext as QuestionViewModel).CheckIfCorrect(2)) DoAnswer();
-                else
+                if ((BindingContext as QuestionViewModel).CheckIfCorrect(2))
                 {
-                    score = score / 2;
+                    score++;
                 }
+                DoAnswer();
             };
 
             btnAnswerThree.Clicked += (sender, ea) =>
             {
                 if ((BindingContext as QuestionViewModel).CheckIfCorrect(3))
                 {
-                    DoAnswer();
+                    score++;
                 }
-                else
-                {
-                    score = score / 2;
-                }
+                DoAnswer();
             };
         }
 
         private void DoAnswer()
         {
-            QuizSettings.Score += score;
-            Debug.WriteLine("CQ : " + QuizSettings.CurrentQuestion);
-            Debug.WriteLine("QC : " + QuizSettings.QUESTIONS_COUNT);
-            Debug.WriteLine("S : " + QuizSettings.Score);
 
             if (QuizSettings.CurrentQuestion < QuizSettings.QUESTIONS_COUNT)
             {
@@ -68,15 +59,22 @@ namespace ImDiabetic.Views.More
             }
             else
             {
-                QuizSettings.CurrentQuestion = 1;
-                QuizSettings.Score = 0;
+                QuizSettings.Score += score;
+                Debug.WriteLine("Final Score : " + QuizSettings.Score);
+                ResetQuizStats();
                 NavigateToEndPage();
             }
         }
 
+        private static void ResetQuizStats()
+        {
+            QuizSettings.CurrentQuestion = 1;
+            QuizSettings.Score = 0;
+        }
+
         async private void NavigateToEndPage()
         {
-            //await Navigation.PushAsync(new DashboardPage(User));
+            //Go to an end page or result page?
             await Navigation.PopToRootAsync();
         }
     }
