@@ -17,5 +17,7 @@ namespace ImDiabetic
         public string Password { get; set; }
         public int DailyStreak { get; set; } = 0;
         public DateTimeOffset LastLogInDate { get; set; } = DateTimeOffset.Now;
+        public int Level { get; set; } = 0;
+        public int Score { get; set; } = 0;
     }
 }

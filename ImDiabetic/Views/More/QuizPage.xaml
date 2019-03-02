@@ -23,12 +23,6 @@
                        HorizontalTextAlignment="Center"
                        Text="{Binding Message}" />
             </StackLayout>
-
-            <ActivityIndicator x:Name="aiLoading"
-                               IsRunning="{Binding IsLoading}"
-                               IsVisible="{Binding IsLoading}"
-                               Color="Blue" />
-        
     </StackLayout>
 </ContentPage>
 

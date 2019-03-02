@@ -60,6 +60,7 @@
     <Folder Include="Models\Logbook\" />
     <Folder Include="Views\More\" />
     <Folder Include="EduContent\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\home.png" />
@@ -82,7 +83,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\GoalsPage.xaml.cs">
-      <DependentUpon>Ignore.xaml</DependentUpon>
+      <DependentUpon>GoalsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\LoginPage.xaml.cs">

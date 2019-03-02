@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using ImDiabetic.Models;
@@ -11,7 +12,9 @@ namespace ImDiabetic.ViewModels
         public string Welcome { get; set; }
         public string Test { get; set; }
         public string DailyStreak { get; set; }
-        public Log FirstLog { get; set; }
+        public Log LastLog { get; set; }
+        public string Level { get; set; }
+        public string Points { get; set; }
 
         public DashboardViewModel(User user)
         {
@@ -20,13 +23,16 @@ namespace ImDiabetic.ViewModels
             DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
             DailyStreakCheck();
             HasLogs();
+            Level = "Level : " + User.Level;
+            Points = "XP\t: " + User.Score;
         }
 
-        public void HasLogs() {
+        public void HasLogs()
+        {
             var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
             if (logs.Count() < 1)
             {
-                Test = "No logs made today";
+                Test = "No logs made yet";
             }
             else
             {
@@ -34,16 +40,17 @@ namespace ImDiabetic.ViewModels
                 {
                     Debug.WriteLine("*********** LOGS " + log.Id + "** " + log.BloodGlucose + "** " + log.LogDate);
                 }
-                FirstLog = logs.FirstOrDefault();
-                Test = FirstLog.Id + "," + FirstLog.BloodGlucose;
+                LastLog = logs.Last();
+                Test = "Last log was " + LastLog.BloodGlucose;
             }
         }
 
         public void DailyStreakCheck()
         {
             TimeSpan dif = DateTimeOffset.Now - User.LastLogInDate;
-            //WARNING TODO will not handle going from 31st of month to 1st of next month, etc. FIX! -- update, maybe fix? must test lol.
-            if (DateTimeOffset.Now.Day >= User.LastLogInDate.Day + 1) {
+            //TODO handle going from 31st of month to 1st of next month? -- maybe fixed? must test lol.
+            if (DateTimeOffset.Now.Day >= User.LastLogInDate.Day + 1)
+            {
                 if (dif.TotalHours > 24)
                 {
                     realm.Write(() =>
@@ -52,15 +59,18 @@ namespace ImDiabetic.ViewModels
                     });
                     DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
                 }
-                else {
+                else
+                {
                     realm.Write(() =>
                     {
                         User.DailyStreak++;
                     });
                     DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
                 }
-            } else {
-                if(DateTimeOffset.Now.Day == 1 && (User.LastLogInDate.Day == 31 || User.LastLogInDate.Day == 30 || (User.LastLogInDate.Day == 28 && User.LastLogInDate.Month == 2)))
+            }
+            else
+            {
+                if (DateTimeOffset.Now.Day == 1 && (User.LastLogInDate.Day == 31 || User.LastLogInDate.Day == 30 || (User.LastLogInDate.Day == 28 && User.LastLogInDate.Month == 2)))
                 {
                     if (dif.TotalHours > 24)
                     {

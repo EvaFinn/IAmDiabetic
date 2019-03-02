@@ -18,7 +18,7 @@ namespace ImDiabetic.Views.More
         {
             InitializeComponent();
             User = user;
-            this.BindingContext = new QuestionViewModel(ChosenTopic);
+            this.BindingContext = new QuestionViewModel(ChosenTopic, User);
             (BindingContext as QuestionViewModel).LoadQuestions();
 
             btnAnswerOne.Clicked += (sender, ea) =>
@@ -61,6 +61,7 @@ namespace ImDiabetic.Views.More
             {
                 QuizSettings.Score += score;
                 Debug.WriteLine("Final Score : " + QuizSettings.Score);
+                (BindingContext as QuestionViewModel).AddQuizToDB(QuizSettings.Score);
                 ResetQuizStats();
                 NavigateToEndPage();
             }
@@ -74,8 +75,7 @@ namespace ImDiabetic.Views.More
 
         async private void NavigateToEndPage()
         {
-            //Go to an end page or result page?
-            await Navigation.PopToRootAsync();
+            await Navigation.PushAsync(new QuizResultPage(User));
         }
     }
 }

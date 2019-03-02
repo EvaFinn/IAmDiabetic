@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.Views.More.QuizResultPage">
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Label Text="{Binding Score}"/>
+        <Label Text="{Binding Topic}"/>
+        <Button Text="Exit" Clicked="Handle_Clicked"/>
+    </StackLayout>
+</ContentPage>

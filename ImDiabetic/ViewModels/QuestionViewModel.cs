@@ -17,7 +17,6 @@ namespace ImDiabetic.ViewModels
     {
         public User User { get; set; }
         private int questionNumber = 0;
-      
         private int _correctAnswer = 0;
         public int CorrectAnswer
         {
@@ -128,18 +127,6 @@ namespace ImDiabetic.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private bool _isLoading;
-        public bool IsLoading
-        {
-            get { return this._isLoading; }
-            set
-            {
-                this._isLoading = value;
-                PropertyChanged(this,
-                    new PropertyChangedEventArgs("IsLoading"));
-            }
-        }
-
         private string _message;
         public string Message
         {
@@ -154,9 +141,9 @@ namespace ImDiabetic.ViewModels
 
         private string ChosenTopic { get; set; }
 
-        public QuestionViewModel(string topic)
+        public QuestionViewModel(string topic, User user)
         {
-            //LoadQuestions();
+            User = user;
             ChosenTopic = topic;
         }
 
@@ -192,17 +179,13 @@ namespace ImDiabetic.ViewModels
                     questions.Add(jsonresult[i]);
                 }
             }
-
-            IsLoading = true;
             QuestionList = questions;
 
-            IsLoading = false;
             ChooseNewQuestion();
         }
 
         public void ChooseNewQuestion()
         {
-            IsLoading = true;
             //int num = rnd.Next(0, questionNumber);
             //random number between 0 and QuizSettings.QuestionCount??? idk
             QuizQuestion selectedItem = QuestionList[questionNumber];
@@ -215,11 +198,16 @@ namespace ImDiabetic.ViewModels
             Answer1 = selectedItem.OptionOne;
             Answer2 = selectedItem.OptionTwo;
             Answer3 = selectedItem.OptionThree;
-
             CorrectAnswer = int.Parse(selectedItem.Answer);
-
-            IsLoading = false;
             questionNumber++;
+        }
+
+        public void AddQuizToDB(int finalScore) {
+            var quiz = new Quiz { UserId = User.Id, Score = finalScore.ToString(), Topic = ChosenTopic };
+
+            realm.Write(() => {
+                realm.Add(quiz);
+            });
         }
     }
 }

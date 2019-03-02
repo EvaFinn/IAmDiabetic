@@ -8,6 +8,6 @@ namespace ImDiabetic.Models
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Score { get; set; }
         public string UserId { get; set; }
-        public QuizQuestion Question { get; set; }
+        public string Topic { get; set; }
     }
 }
