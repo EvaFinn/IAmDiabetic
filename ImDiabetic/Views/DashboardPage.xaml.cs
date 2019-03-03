@@ -21,7 +21,12 @@ namespace ImDiabetic.Views
             User = (BindingContext as DashboardViewModel).User;
             TapOptions();
         }
-        
+
+        public DashboardPage()
+        {
+            InitializeComponent();
+        }
+
         private void TapOptions()
         {
             imgGoals.Source = ImageSource.FromResource("ImDiabetic.Icons.trophiesStep.png");

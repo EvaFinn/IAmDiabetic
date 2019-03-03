@@ -17,6 +17,7 @@
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="16.4.0.53" />
     <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="16.4.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.SfNumericUpDown" Version="16.4.0.54" />
+    <PackageReference Include="Syncfusion.Xamarin.Pdf" Version="16.4.0.54" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MyPage.xaml" />

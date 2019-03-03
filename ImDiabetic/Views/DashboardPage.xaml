@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ImDiabetic.Views.DashboardPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.Views.DashboardPage">
     <AbsoluteLayout>
-        <StackLayout BackgroundColor="Gray" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
-            <StackLayout Margin="0,200,0,0" HorizontalOptions="Center">
+        <StackLayout BackgroundColor="Gray" AbsoluteLayout.LayoutBounds="0,0.20,1,1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout Margin="0,100,0,0" Orientation="Vertical">
                 <Label x:Name="welcomeUserLabel" Text="{Binding Welcome}" HorizontalOptions="Center" />
                 <Label x:Name="logTestLabel" Text="{Binding Test}" HorizontalOptions="Center" />
-                <Label x:Name="dailyStreak" Text="{Binding DailyStreak}" HorizontalOptions="Center" />
-                 <Label x:Name="level" Text="{Binding Level}" HorizontalOptions="Center" />
-                 <Label x:Name="score" Text="{Binding Points}" HorizontalOptions="Center" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="dailyStreak" Text="{Binding DailyStreak}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" />
+                    <Label x:Name="level" Text="{Binding Level}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" />
+                    <Label x:Name="score" Text="{Binding Points}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" />
+                </Grid>
             </StackLayout>
-            
+        </StackLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0.5,0.5,1,0.1" AbsoluteLayout.LayoutFlags="All">
+            <BoxView BackgroundColor="Blue" />
         </StackLayout>
         <StackLayout AbsoluteLayout.LayoutBounds=".20,1,1,.1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="White" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
             <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckGoals">

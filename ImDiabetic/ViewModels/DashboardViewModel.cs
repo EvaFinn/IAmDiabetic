@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -12,7 +13,6 @@ namespace ImDiabetic.ViewModels
         public string Welcome { get; set; }
         public string Test { get; set; }
         public string DailyStreak { get; set; }
-        public Log LastLog { get; set; }
         public string Level { get; set; }
         public string Points { get; set; }
 
@@ -36,12 +36,18 @@ namespace ImDiabetic.ViewModels
             }
             else
             {
+                List<Log> todaysLogs = new List<Log>();
+
                 foreach (Log log in logs)
                 {
-                    Debug.WriteLine("*********** LOGS " + log.Id + "** " + log.BloodGlucose + "** " + log.LogDate);
+                    if (log.LogDate.Day.Equals(DateTimeOffset.Now.Day))
+                    {
+                        Debug.WriteLine("*********** LOGS " + log.BloodGlucose);
+                        todaysLogs.Add(log);
+
+                    }
                 }
-                LastLog = logs.Last();
-                Test = "Last log was " + LastLog.BloodGlucose;
+                Test = "Logs made today : " + todaysLogs.Count;
             }
         }
 
