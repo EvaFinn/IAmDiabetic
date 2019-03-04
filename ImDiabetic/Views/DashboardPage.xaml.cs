@@ -38,7 +38,7 @@ namespace ImDiabetic.Views
             goalsTap.Tapped += async (sender, e) =>
             {
                 stckGoals.BackgroundColor = Color.DeepSkyBlue;
-                await Navigation.PushAsync(new GoalsPage());
+                await Navigation.PushAsync(new GoalsPage(User));
                 DefaultBackground();
             };
             stckGoals.GestureRecognizers.Add(goalsTap);

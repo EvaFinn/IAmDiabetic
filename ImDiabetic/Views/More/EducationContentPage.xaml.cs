@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ImDiabetic.ViewModels;
 using Xamarin.Forms;
 
-namespace ImDiabetic.Views
+namespace ImDiabetic.Views.More
 {
     public partial class EducationContentPage : ContentPage
     {

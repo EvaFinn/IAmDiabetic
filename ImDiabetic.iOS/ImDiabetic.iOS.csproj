@@ -97,6 +97,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="FodyWeavers.xml" />
     <Compile Include="WrappedButtonRenderer.cs" />
+    <Compile Include="SaveIOS.cs" />
+    <Compile Include="PreviewControllerDS.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -167,6 +169,9 @@
       <Version>16.4.0.54</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfNumericUpDown">
+      <Version>16.4.0.54</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Pdf">
       <Version>16.4.0.54</Version>
     </PackageReference>
   </ItemGroup>

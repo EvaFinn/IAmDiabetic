@@ -3,5 +3,6 @@
     <StackLayout HorizontalOptions="CenterAndExpand">
         <Label Text="Educational Topics" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
         <ListView x:Name="listView" ItemTapped="OnItemTapped" ItemsSource="{Binding .}" />
+        <Button x:Name="addDocBtn" Text="Create Document" Clicked="Handle_Clicked"/>
     </StackLayout>
 </ContentPage>
