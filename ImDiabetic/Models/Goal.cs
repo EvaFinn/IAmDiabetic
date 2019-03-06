@@ -1,7 +1,9 @@
 ﻿using System;
+using Realms;
+
 namespace ImDiabetic.Models
 {
-    public class Goal
+    public class Goal : RealmObject
     {
         public string GoalID { get; set; } = Guid.NewGuid().ToString();
         public string UserID { get; set; } 

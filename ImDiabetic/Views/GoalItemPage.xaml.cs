@@ -1,35 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
 using ImDiabetic.Models;
+using ImDiabetic.ViewModels;
 using Xamarin.Forms;
 
 namespace ImDiabetic.Views
 {
     public partial class GoalItemPage : ContentPage
     {
-        public GoalItemPage()
+        public User User { get; set; }
+        public Goal Goal { get; set; }
+        private bool IsNew { get; set; }
+        public GoalItemPage(User user)
         {
             InitializeComponent();
+            User = user;
+            IsNew = true;
+            this.BindingContext = new GoalsViewModel(User);
         }
 
-        public GoalItemPage(Goal goal)
+        public GoalItemPage(Goal goal, User user)
         {
             InitializeComponent();
+            User = user;
+            Goal = goal;
+            IsNew = false;
+            this.BindingContext = new GoalsViewModel(User, Goal);
+            mySwitch.Toggled += (object sende, ToggledEventArgs ee) =>
+            {
+                Console.WriteLine("Switch.Toggled event sent");
+                //Update();
+            };
+        }
+
+        async private void Update()
+        {
+            (BindingContext as GoalsViewModel).UpdateGoal(Goal);
+            await Navigation.PopAsync();
         }
 
         async void OnSaveClicked(object sender, EventArgs e)
         {
-            //viewmodel save goal
-            //var todoItem = (TodoItem)BindingContext;
-            //await App.Database.SaveItemAsync(todoItem);
+            if (IsNew)
+            {
+                (BindingContext as GoalsViewModel).SaveGoal();
+                //TODO fix: doesn't update list
+            }
+            else
+            {
+                (BindingContext as GoalsViewModel).UpdateGoal(Goal);
+            }
             await Navigation.PopAsync();
         }
 
         async void OnDeleteClicked(object sender, EventArgs e)
         {
-            //view model delete goal
-            //var todoItem = (TodoItem)BindingContext;
-            //await App.Database.DeleteItemAsync(todoItem);
+            (BindingContext as GoalsViewModel).DeleteGoal(Goal);
+            //TODO fix: doesn't update list
             await Navigation.PopAsync();
         }
 

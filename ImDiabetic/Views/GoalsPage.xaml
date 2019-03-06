@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="ImDiabetic.Views.GoalsPage">
-   <ContentPage.ToolbarItems>
+<ContentPage Title="{Binding Text}" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.Views.GoalsPage">
+    <ContentPage.ToolbarItems>
         <ToolbarItem Text="+" Clicked="OnItemAdded">
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-        <On Platform="Android, UWP" Value="plus.png" />
-    </OnPlatform>
+                    <On Platform="Android, UWP" Value="ImDiabetic.Icons.add.png" />
+                </OnPlatform>
             </ToolbarItem.Icon>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
@@ -17,7 +15,7 @@
                 <ViewCell>
                     <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
-                        <Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Done}" />
+                        <Image x:Name="checkImg" HorizontalOptions="End" IsVisible="{Binding Done}" />
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>

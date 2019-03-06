@@ -44,7 +44,6 @@ namespace ImDiabetic.ViewModels
                     {
                         Debug.WriteLine("*********** LOGS " + log.BloodGlucose);
                         todaysLogs.Add(log);
-
                     }
                 }
                 Test = "Logs made today : " + todaysLogs.Count;

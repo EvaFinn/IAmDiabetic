@@ -52,6 +52,8 @@
     <None Remove="Icons\quiz.png" />
     <None Remove="quizquestion.json" />
     <None Remove="EduContent\Hypoglycaemia.pdf" />
+    <None Remove="Icons\add.png" />
+    <None Remove="Icons\checked.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icons\" />
@@ -77,6 +79,8 @@
     <EmbeddedResource Include="Icons\quiz.png" />
     <EmbeddedResource Include="quizquestion.json" />
     <EmbeddedResource Include="EduContent\Hypoglycaemia.pdf" />
+    <EmbeddedResource Include="Icons\add.png" />
+    <EmbeddedResource Include="Icons\checked.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\DashboardPage.xaml.cs">
