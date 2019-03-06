@@ -1,5 +1,6 @@
 ﻿using System;
 using Realms;
+using Realms.Sync;
 
 namespace ImDiabetic.ViewModels
 {
@@ -13,8 +14,14 @@ namespace ImDiabetic.ViewModels
 
         protected void SetUpRealm() {
             var config = new RealmConfiguration() { SchemaVersion = 11 }; //change in masterdetail page also
-            config.ShouldDeleteIfMigrationNeeded = true;
+            //config.ShouldDeleteIfMigrationNeeded = true;
             realm = Realm.GetInstance(config);
+
+
+            //var configuration = new FullSyncConfiguration(new Uri(Constants.RealmPath, UriKind.Relative));
+
+            //// User has already logged in, so we can just load the existing data in the Realm.
+            //realm = Realm.GetInstance(configuration);
         }
     }
 }

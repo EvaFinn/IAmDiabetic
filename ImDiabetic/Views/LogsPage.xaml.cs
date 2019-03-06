@@ -5,6 +5,9 @@ using ImDiabetic.Models;
 using ImDiabetic.ViewModels;
 using Xamarin.Forms;
 
+using ZXing.Net.Mobile.Forms;
+
+
 namespace ImDiabetic.Views
 {
     public partial class LogsPage : ContentPage
@@ -23,6 +26,23 @@ namespace ImDiabetic.Views
         {
             (BindingContext as LogsViewModel).AddLog();
             await Navigation.PushAsync(new MasterDetailNav(User));
+        }
+
+        private async void ScanClick(object sender, EventArgs e)
+        {
+            var ScannerPage = new ZXingScannerPage();
+
+            ScannerPage.OnScanResult += (result) => {
+                ScannerPage.IsScanning = false;
+
+                // Pop the page and show the result
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Navigation.PopAsync();
+                    await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                });
+            };
+            await Navigation.PushAsync(ScannerPage);
         }
     }
 }

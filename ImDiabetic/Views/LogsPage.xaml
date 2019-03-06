@@ -27,7 +27,7 @@
             <Entry x:Name="activityEntry" Text="{Binding Activity}" WidthRequest="150" Placeholder="Minutes" Grid.Row="3" Grid.Column="1" />
             <Label Text="CARBS" Grid.Row="4" Grid.Column="0" VerticalTextAlignment="Center" />
             <Entry x:Name="carbsEntry" Text="{Binding Carbs}" WidthRequest="150" Placeholder="g" Grid.Row="4" Grid.Column="1" />
-            <Button Text="Scan" Grid.Row="4" Grid.Column="2" WidthRequest="40" HeightRequest="10" />
+            <Button Text="Scan" Grid.Row="4" Grid.Column="2" WidthRequest="40" HeightRequest="10" Clicked="ScanClick"/>
             <Button Text="Save" Grid.Row="5" Grid.Column="1" Clicked="Handle_Clicked" />
         </Grid>
     </ContentPage.Content>
