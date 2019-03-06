@@ -20,11 +20,11 @@ namespace ImDiabetic.ViewModels
         {
             User = user;
             Welcome = "Welcome " + User.FirstName + "!";
-            DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
+            DailyStreak = User.DailyStreak.ToString();
             DailyStreakCheck();
             HasLogs();
-            Level = "Level : " + User.Level;
-            Points = "XP\t: " + User.Score;
+            Level = User.Level.ToString();
+            Points = User.Score.ToString();
         }
 
         public void HasLogs()

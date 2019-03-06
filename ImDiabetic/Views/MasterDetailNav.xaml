@@ -20,7 +20,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 
-                <Button Text="Log Out" Clicked="Handle_Clicked" />
+                <Button Text="Log Out" Clicked="Handle_Clicked" Style="{StaticResource AButton}" />
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

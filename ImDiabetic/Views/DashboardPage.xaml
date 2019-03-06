@@ -2,21 +2,27 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.Views.DashboardPage">
     <AbsoluteLayout>
         <StackLayout BackgroundColor="Gray" AbsoluteLayout.LayoutBounds="0,0.20,1,1" AbsoluteLayout.LayoutFlags="All">
-            <StackLayout Margin="0,100,0,0" Orientation="Vertical">
+            <StackLayout Margin="0,20,0,0" Orientation="Vertical" BackgroundColor="White">
                 <Label x:Name="welcomeUserLabel" Text="{Binding Welcome}" HorizontalOptions="Center" />
                 <Label x:Name="logTestLabel" Text="{Binding Test}" HorizontalOptions="Center" />
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
+                <Grid Grid.Row="2" ColumnSpacing="0" RowSpacing="0" Margin="0,30">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="dailyStreak" Text="{Binding DailyStreak}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" />
-                    <Label x:Name="level" Text="{Binding Level}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" />
-                    <Label x:Name="score" Text="{Binding Points}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" />
+                    <StackLayout>
+                        <Label Text="{Binding DailyStreak}" Style="{StaticResource StatsNumberLabel}" />
+                        <Label Text="Daily Streak" Style="{StaticResource StatsCaptionLabel}" />
+                    </StackLayout>
+                    <StackLayout Grid.Column="1">
+                        <Label Text="{Binding Level}" Style="{StaticResource StatsNumberLabel}" />
+                        <Label Text="Level" Style="{StaticResource StatsCaptionLabel}" />
+                    </StackLayout>
+                    <StackLayout Grid.Column="2">
+                        <Label Text="{Binding Points}" Style="{StaticResource StatsNumberLabel}" />
+                        <Label Text="Points" Style="{StaticResource StatsCaptionLabel}" />
+                    </StackLayout>
                 </Grid>
             </StackLayout>
         </StackLayout>
