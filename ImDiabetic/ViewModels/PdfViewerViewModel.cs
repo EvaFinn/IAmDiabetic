@@ -33,10 +33,16 @@ namespace ImDiabetic.ViewModels
         /// <summary>
         /// Constructor of the view model class
         /// </summary>
-        public PdfViewerViewModel()
+        public PdfViewerViewModel(String topic)
         {
             //Accessing the PDF document that is added as embedded resource as stream.
-            m_pdfDocumentStream = typeof(App).GetTypeInfo().Assembly.GetManifestResourceStream("ImDiabetic.EduContent.Hypoglycaemia.pdf");
+            m_pdfDocumentStream = typeof(App).GetTypeInfo().Assembly.GetManifestResourceStream("ImDiabetic.EduContent." + topic + ".pdf");
+        }
+
+        public PdfViewerViewModel(Stream stream)
+        {
+            //Accessing the PDF document that is added as embedded resource as stream.
+            m_pdfDocumentStream = stream;
         }
 
         private void NotifyPropertyChanged(string propertyName)

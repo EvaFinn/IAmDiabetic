@@ -62,7 +62,7 @@ namespace ImDiabetic.ViewModels
                     {
                         User.DailyStreak = 0;
                     });
-                    DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
+                    DailyStreak = User.DailyStreak.ToString();
                 }
                 else
                 {
@@ -70,7 +70,7 @@ namespace ImDiabetic.ViewModels
                     {
                         User.DailyStreak++;
                     });
-                    DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
+                    DailyStreak = User.DailyStreak.ToString();
                 }
             }
             else
@@ -83,7 +83,7 @@ namespace ImDiabetic.ViewModels
                         {
                             User.DailyStreak = 0;
                         });
-                        DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
+                        DailyStreak = User.DailyStreak.ToString();
                     }
                     else
                     {
@@ -91,7 +91,7 @@ namespace ImDiabetic.ViewModels
                         {
                             User.DailyStreak++;
                         });
-                        DailyStreak = "Daily Streak : " + User.DailyStreak.ToString();
+                        DailyStreak = User.DailyStreak.ToString();
                     }
                 }
             }

@@ -19,7 +19,7 @@ namespace ImDiabetic.Views
             InitializeComponent();
             User = user;
             BindingContext = new ProfileViewModel(User);
-            profileImage.Source = ImageSource.FromResource("ImDiabetic.Icons.profile.png");
+            //profileImage.Source = ImageSource.FromResource("ImDiabetic.Icons.profile.png");
         }
 
         protected override bool OnBackButtonPressed()
