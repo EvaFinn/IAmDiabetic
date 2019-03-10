@@ -29,7 +29,6 @@ namespace ImDiabetic.Views
             mySwitch.Toggled += (object sende, ToggledEventArgs ee) =>
             {
                 Console.WriteLine("Switch.Toggled event sent");
-                //Update();
             };
         }
 
@@ -50,6 +49,7 @@ namespace ImDiabetic.Views
             {
                 (BindingContext as GoalsViewModel).UpdateGoal(Goal);
             }
+            //await Navigation.PushAsync(new GoalsPage(User));
             await Navigation.PopAsync();
         }
 
@@ -57,6 +57,7 @@ namespace ImDiabetic.Views
         {
             (BindingContext as GoalsViewModel).DeleteGoal(Goal);
             //TODO fix: doesn't update list
+            //await Navigation.PushAsync(new GoalsPage(User));
             await Navigation.PopAsync();
         }
 
@@ -64,5 +65,10 @@ namespace ImDiabetic.Views
         {
             await Navigation.PopAsync();
         }
+
+        //protected override bool OnBackButtonPressed()
+        //{
+        //    return true;
+        //}
     }
 }

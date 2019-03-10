@@ -70,7 +70,7 @@ namespace ImDiabetic.Views
                 {
                     Text = "Settings",
                     ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rocket.png"),
-                    TargetPage = typeof(ProfilePage)
+                    TargetPage = typeof(SettingsPage)
                 }
             };
             return list;

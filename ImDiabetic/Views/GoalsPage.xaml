@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage Title="{Binding Text}" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.Views.GoalsPage">
     <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="Back" Clicked="OnBack">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android, UWP" Value="ImDiabetic.Icons.add.png" />
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>-->
+        
         <ToolbarItem Text="+" Clicked="OnItemAdded">
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
@@ -9,7 +17,8 @@
             </ToolbarItem.Icon>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-    <ListView x:Name="listView" Margin="20" ItemSelected="OnListItemSelected">
+    
+    <ListView x:Name="listView" Margin="20" ItemsSource="{Binding Goals}" ItemSelected="OnListItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

@@ -53,7 +53,6 @@ namespace ImDiabetic.ViewModels
         public void DailyStreakCheck()
         {
             TimeSpan dif = DateTimeOffset.Now - User.LastLogInDate;
-            //TODO handle going from 31st of month to 1st of next month? -- maybe fixed? must test lol.
             if (DateTimeOffset.Now.Day >= User.LastLogInDate.Day + 1)
             {
                 if (dif.TotalHours > 24)

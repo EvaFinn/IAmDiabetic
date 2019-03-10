@@ -14,7 +14,6 @@ namespace ImDiabetic.Views
 
         public DashboardPage(User user)
         {
-            //haven't finished extracting to viewmodel, binding in xaml file for UI objects?!?!?!?!
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             BindingContext = new DashboardViewModel(user);

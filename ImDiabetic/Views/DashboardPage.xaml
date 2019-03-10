@@ -26,7 +26,7 @@
                 </Grid>
             </StackLayout>
         </StackLayout>
-        <StackLayout AbsoluteLayout.LayoutBounds="0.5,0.5,1,0.1" AbsoluteLayout.LayoutFlags="All">
+        <StackLayout AbsoluteLayout.LayoutBounds="0.5,0.5,1,0.1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
             <BoxView BackgroundColor="Blue" />
         </StackLayout>
         <StackLayout AbsoluteLayout.LayoutBounds=".20,1,1,.1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="White" HorizontalOptions="FillAndExpand" Orientation="Horizontal">

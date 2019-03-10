@@ -10,8 +10,6 @@ using Plugin.FilePicker.Abstractions;
 using Plugin.FilePicker;
 using System.IO;
 using ImDiabetic.ViewModels;
-//using Plugin.FilePicker;
-//using Plugin.FilePicker.Abstractions;
 
 namespace ImDiabetic.Views.More
 {
@@ -22,7 +20,6 @@ namespace ImDiabetic.Views.More
         {
             InitializeComponent();
             User = user;
-            //listView.ItemsSource = (BindingContext as EducationContentViewModel).Items;
             this.BindingContext = new EducationContentViewModel(user, "topic");
         }
 
@@ -73,7 +70,5 @@ namespace ImDiabetic.Views.More
                 ex.ToString();
             }
         }
-
-
     }
 }

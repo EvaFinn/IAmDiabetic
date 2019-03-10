@@ -1,17 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using ImDiabetic.Models;
 
 namespace ImDiabetic.ViewModels
 {
-    public class GoalsViewModel : BaseViewModel
+    public class GoalsViewModel : BaseViewModel, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public User User { get; set; }
         public string Name { get; set; }
         public bool Done { get; set; }
         public string Notes { get; set; }
-        public List<Goal> Goals { get; set; } = new List<Goal>();
+        private List<Goal> _goals = new List<Goal>();
+        public List<Goal> Goals
+        {
+            get
+            {
+                return _goals;
+            }
+            set
+            {
+                _goals = value;
+                NotifyPropertyChanged("Goals");
+            }
+        }
+
         public Goal Goal { get; set; } 
         public string Text { get; set; }
 
@@ -36,7 +53,7 @@ namespace ImDiabetic.ViewModels
             if (goals.Count() > 0) {
                 foreach (Goal goal in goals)
                 {
-                    Goals.Add(goal);
+                    _goals.Add(goal);
                 }
                 Text = "Goals";
             } else { Text = "No Goals Yet."; }
@@ -51,6 +68,7 @@ namespace ImDiabetic.ViewModels
                 Goal = newGoal;
                 realm.Add(newGoal);
             });
+            GetGoals();
         }
 
         public void DeleteGoal(Goal goal) {
@@ -58,6 +76,7 @@ namespace ImDiabetic.ViewModels
             {
                 realm.Remove(goal);
             });
+            GetGoals();
         }
 
         public void UpdateGoal(Goal goal)
@@ -68,6 +87,14 @@ namespace ImDiabetic.ViewModels
                 goal.Notes = Notes;
                 goal.Done = Done;
             });
+        }
+
+        private void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }
