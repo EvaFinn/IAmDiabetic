@@ -42,11 +42,11 @@ namespace ImDiabetic.Views
             return true;
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
+        //protected override void OnDisappearing()
+        //{
+        //    base.OnDisappearing();
 
-            (BindingContext as LoginViewModel).Dispose();
-        }
+        //    (BindingContext as LoginViewModel).Dispose();
+        //}
     }
 }

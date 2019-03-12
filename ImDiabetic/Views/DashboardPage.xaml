@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.Views.DashboardPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" x:Class="ImDiabetic.Views.DashboardPage">
     <AbsoluteLayout>
         <StackLayout BackgroundColor="Gray" AbsoluteLayout.LayoutBounds="0,0.20,1,1" AbsoluteLayout.LayoutFlags="All">
             <StackLayout Margin="0,20,0,0" Orientation="Vertical" BackgroundColor="White">
@@ -26,8 +26,9 @@
                 </Grid>
             </StackLayout>
         </StackLayout>
-        <StackLayout AbsoluteLayout.LayoutBounds="0.5,0.5,1,0.1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-            <BoxView BackgroundColor="Blue" />
+        <StackLayout x:Name="stackAnim" AbsoluteLayout.LayoutBounds="0.5,0.3,1,0.1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <forms:AnimationView x:Name="AnimationView" Animation="2113-dog.json" Loop="True" AutoPlay="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="250" WidthRequest="250" />
+            <Label x:Name="foodLabel" Text="{Binding FoodText}" HorizontalOptions="Center" />
         </StackLayout>
         <StackLayout AbsoluteLayout.LayoutBounds=".20,1,1,.1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="White" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
             <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckGoals">

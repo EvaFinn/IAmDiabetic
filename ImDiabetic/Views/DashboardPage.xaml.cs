@@ -2,28 +2,25 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows.Input;
 using ImDiabetic.Models;
 using ImDiabetic.ViewModels;
+using Lottie.Forms;
 using Xamarin.Forms;
 
 namespace ImDiabetic.Views
 {
     public partial class DashboardPage : ContentPage
     {
-        public User User { get; }
+        public User User { get; set; }
 
         public DashboardPage(User user)
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             BindingContext = new DashboardViewModel(user);
-            User = (BindingContext as DashboardViewModel).User;
+            User = user;
             TapOptions();
-        }
-
-        public DashboardPage()
-        {
-            InitializeComponent();
         }
 
         private void TapOptions()

@@ -100,6 +100,7 @@
     <Compile Include="SaveIOS.cs" />
     <Compile Include="PreviewControllerDS.cs" />
     <Compile Include="PicturePickerImplementation.cs" />
+    <Compile Include="UserNotificationCenterDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -188,6 +189,15 @@
     <PackageReference Include="Xamarin.Plugin.FilePicker">
       <Version>2.0.135</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar">
+      <Version>16.4.0.54</Version>
+    </PackageReference>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
+      <Version>2.6.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Notifier">
+      <Version>3.0.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -207,5 +217,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\quizquestion.json" />
+    <BundleResource Include="Resources\2113-dog.json" />
   </ItemGroup>
 </Project>

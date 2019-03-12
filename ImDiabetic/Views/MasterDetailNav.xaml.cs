@@ -17,13 +17,8 @@ namespace ImDiabetic.Views
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             var config = new RealmConfiguration() { SchemaVersion = 11 };
-            config.ShouldDeleteIfMigrationNeeded = true;
+            //config.ShouldDeleteIfMigrationNeeded = true;
             realm = Realm.GetInstance(config);
-
-            //var configuration = new FullSyncConfiguration(new Uri(Constants.RealmPath, UriKind.Relative));
-
-            //// User has already logged in, so we can just load the existing data in the Realm.
-            //realm = Realm.GetInstance(configuration);
 
             User = user;
             profileImage.Source = ImageSource.FromResource("ImDiabetic.Icons.profile.png");

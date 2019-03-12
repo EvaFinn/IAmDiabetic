@@ -1,14 +1,14 @@
-﻿using System;
-
+﻿
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 using System.Threading.Tasks;
 using System.IO;
 using Android.Content;
+using Android.Views;
+using Android.Widget;
+//using Lottie.Forms.Droid;
 
 namespace ImDiabetic.Droid
 {
@@ -29,6 +29,7 @@ namespace ImDiabetic.Droid
             Instance = this;
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            //AnimationViewRenderer.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
