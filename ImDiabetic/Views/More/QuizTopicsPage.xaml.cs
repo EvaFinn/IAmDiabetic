@@ -12,8 +12,8 @@ namespace ImDiabetic.Views.More
 {
     public partial class QuizTopicsPage : ContentPage
     {
-        User User { get; set; }
-        public QuizTopicsPage(User user)
+        AppUser User { get; set; }
+        public QuizTopicsPage(AppUser user)
         {
             InitializeComponent();
             User = user;

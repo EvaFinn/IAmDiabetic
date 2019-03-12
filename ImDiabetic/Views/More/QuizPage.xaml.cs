@@ -11,10 +11,10 @@ namespace ImDiabetic.Views.More
 {
     public partial class QuizPage : ContentPage
     {
-        public User User { get; set; }
+        public AppUser User { get; set; }
         int score = 0;
 
-        public QuizPage(User user, string ChosenTopic)
+        public QuizPage(AppUser user, string ChosenTopic)
         {
             InitializeComponent();
             User = user;
@@ -51,7 +51,6 @@ namespace ImDiabetic.Views.More
 
         private void DoAnswer()
         {
-
             if (QuizSettings.CurrentQuestion < QuizSettings.QUESTIONS_COUNT)
             {
                 QuizSettings.CurrentQuestion++;

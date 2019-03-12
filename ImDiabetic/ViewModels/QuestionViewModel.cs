@@ -15,7 +15,7 @@ namespace ImDiabetic.ViewModels
 {
     public class QuestionViewModel :BaseViewModel, INotifyPropertyChanged
     {
-        public User User { get; set; }
+        public AppUser User { get; set; }
         private int questionNumber = 0;
         private int _correctAnswer = 0;
         public int CorrectAnswer
@@ -141,7 +141,7 @@ namespace ImDiabetic.ViewModels
 
         private string ChosenTopic { get; set; }
 
-        public QuestionViewModel(string topic, User user)
+        public QuestionViewModel(string topic, AppUser user)
         {
             User = user;
             ChosenTopic = topic;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using ImDiabetic.Models;
 using Plugin.FilePicker;
 using Plugin.FilePicker.Abstractions;
 
@@ -11,11 +12,11 @@ namespace ImDiabetic.ViewModels
     {
         public string Topic { get; set; }
         public string Test { get; set; }
-        public User User { get; set; }
+        public AppUser User { get; set; }
         public List<string> Items { get; set; } = new List<string>();
         public Stream MyStream { get; set; }
 
-        public EducationContentViewModel(User user, string topic)
+        public EducationContentViewModel(AppUser user, string topic)
         {
             User = user;
             Topic = topic;

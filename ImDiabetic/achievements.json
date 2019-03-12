@@ -1,0 +1,18 @@
+
+  [
+    {
+      "Name": "3 Day Streak",
+      "Description": "Your daily streak has reached 3 days!",
+      "PointsAwarded": "20"
+    },
+    {
+      "Name": "7 Day Streak",
+      "Description": "Your daily streak has reached 7 days!",
+      "PointsAwarded": "25"
+    },
+    {
+      "Name": "Regular Logger",
+      "Description": "You have logged 3 times in one day!",
+      "PointsAwarded": "20"
+    }
+   ]

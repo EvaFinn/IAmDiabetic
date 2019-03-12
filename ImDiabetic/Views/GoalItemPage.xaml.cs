@@ -8,10 +8,10 @@ namespace ImDiabetic.Views
 {
     public partial class GoalItemPage : ContentPage
     {
-        public User User { get; set; }
+        public AppUser User { get; set; }
         public Goal Goal { get; set; }
         private bool IsNew { get; set; }
-        public GoalItemPage(User user)
+        public GoalItemPage(AppUser user)
         {
             InitializeComponent();
             User = user;
@@ -19,7 +19,7 @@ namespace ImDiabetic.Views
             this.BindingContext = new GoalsViewModel(User);
         }
 
-        public GoalItemPage(Goal goal, User user)
+        public GoalItemPage(Goal goal, AppUser user)
         {
             InitializeComponent();
             User = user;

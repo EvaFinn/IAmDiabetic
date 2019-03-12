@@ -33,12 +33,12 @@
                     <Label Text="Daily Streak" Style="{StaticResource StatsCaptionLabel}" />
                 </StackLayout>
                 <StackLayout Grid.Column="1">
-                    <Label Text="{Binding Level}" Style="{StaticResource StatsNumberLabel}" />
+                    <Label Text="{Binding CurrentLevel}" Style="{StaticResource StatsNumberLabel}" />
                     <Label Text="Level" Style="{StaticResource StatsCaptionLabel}" />
-                    <progressBar:SfLinearProgressBar Progress="{Binding Points}" EasingEffect="CubicInOut" SegmentCount="4" Maximum="{Binding LevelOne}"/>
+                    <progressBar:SfLinearProgressBar Progress="{Binding Points}" EasingEffect="CubicInOut" SegmentCount="4" Maximum="{Binding PointsNeeded}"/>
                 </StackLayout>
                 <StackLayout Grid.Column="2">
-                    <Label Text="{Binding Points}" Style="{StaticResource StatsNumberLabel}" />
+                    <Label Text="{Binding DisplayPoints}" Style="{StaticResource StatsNumberLabel}" />
                     <Label Text="Points" Style="{StaticResource StatsCaptionLabel}" />
                 </StackLayout>
             </Grid>

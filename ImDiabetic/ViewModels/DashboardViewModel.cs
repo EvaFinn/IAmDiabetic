@@ -11,7 +11,7 @@ namespace ImDiabetic.ViewModels
 {
     public class DashboardViewModel : BaseViewModel
     {
-        public User User { get; set; }
+        public AppUser User { get; set; }
         public string Welcome { get; set; }
         public string Test { get; set; }
         public string DailyStreak { get; set; }
@@ -24,51 +24,39 @@ namespace ImDiabetic.ViewModels
         public int CurrentLevel { get; set; }
         public int NextLevel { get; set; }
 
-        public DashboardViewModel(User user)
+        public DashboardViewModel(AppUser user)
         {
             User = user;
             Welcome = "Welcome " + User.FirstName + "!";
             DailyStreak = User.DailyStreak.ToString();
             Points = User.Score.ToString();
             DailyStreakCheck();
-            //LevelStuff();
             HasLogs();
             CurrentLevel = User.Level;
             NextLevel = CurrentLevel + 1;
+            LevelStuff();
             Level = CurrentLevel.ToString();
             FoodText = "Getting hungry, eat soon";
         }
 
-        //public void LevelStuff()
-        //{
-        //    if (int.Parse(Points) >= LevelThree)
-        //    {
-        //        realm.Write(() =>
-        //        {
-        //            User.Level = 0;
-        //            User.Score = 0;
-        //            //User.Level++;
-        //        });
-        //    }
-        //    else if (int.Parse(Points) >= LevelTwo)
-        //    {
-        //        realm.Write(() =>
-        //        {
-        //            //User.Level++;
-        //            User.Level = 0;
-        //            User.Score = 0;
-        //        });
-        //    }
-        //    else if (int.Parse(Points) >= LevelOne)
-        //    {
-        //        realm.Write(() =>
-        //        {
-        //            //User.Level++;
-        //            User.Level = 0;
-        //            User.Score = 0;
-        //        });
-        //    }
-        //}
+        public void LevelStuff()
+        {
+            //int pointsRequiredToLevelUp = (15 * CurrentLevel) + (9 * (CurrentLevel - 1));
+            int pointsRequiredToLevelUp = 25 * CurrentLevel * (1 + CurrentLevel);
+
+            if (int.Parse(Points) >= pointsRequiredToLevelUp)
+            {
+                realm.Write(() =>
+                {
+                    //User.Level = 1;
+                    //User.Score = 0;
+                    User.Level++;
+                });
+                Debug.WriteLine("******** Points " + Points);
+                Debug.WriteLine("******** Level" + Level);
+                Debug.WriteLine("******** points needed " + pointsRequiredToLevelUp);
+            }
+        }
 
         public void HasLogs()
         {
@@ -98,43 +86,13 @@ namespace ImDiabetic.ViewModels
             TimeSpan dif = DateTimeOffset.Now - User.LastLogInDate;
             if (DateTimeOffset.Now.Day >= User.LastLogInDate.Day + 1)
             {
-                if (dif.TotalHours > 24)
-                {
-                    realm.Write(() =>
-                    {
-                        User.DailyStreak = 0;
-                    });
-                    //DailyStreak = User.DailyStreak.ToString();
-                }
-                else
-                {
-                    realm.Write(() =>
-                    {
-                        User.DailyStreak++;
-                    });
-                    //DailyStreak = User.DailyStreak.ToString();
-                }
+                CheckHours(dif);
             }
             else
             {
                 if (DateTimeOffset.Now.Day == 1 && (User.LastLogInDate.Day == 31 || User.LastLogInDate.Day == 30 || (User.LastLogInDate.Day == 28 && User.LastLogInDate.Month == 2)))
                 {
-                    if (dif.TotalHours > 24)
-                    {
-                        realm.Write(() =>
-                        {
-                            User.DailyStreak = 0;
-                        });
-                        //DailyStreak = User.DailyStreak.ToString();
-                    }
-                    else
-                    {
-                        realm.Write(() =>
-                        {
-                            User.DailyStreak++;
-                        });
-                        //DailyStreak = User.DailyStreak.ToString();
-                    }
+                    CheckHours(dif);
                 }
             }
 
@@ -142,6 +100,24 @@ namespace ImDiabetic.ViewModels
             {
                 User.LastLogInDate = DateTimeOffset.Now;
             });
+        }
+
+        private void CheckHours(TimeSpan dif)
+        {
+            if (dif.TotalHours > 24)
+            {
+                realm.Write(() =>
+                {
+                    User.DailyStreak = 0;
+                });
+            }
+            else
+            {
+                realm.Write(() =>
+                {
+                    User.DailyStreak++;
+                });
+            }
         }
     }
 }

@@ -12,9 +12,9 @@ namespace ImDiabetic.Views
 {
     public partial class LogsPage : ContentPage
     {
-        public User User { get; }
+        public AppUser User { get; }
 
-        public LogsPage(User user)
+        public LogsPage(AppUser user)
         {
             InitializeComponent();
             BindingContext = new LogsViewModel(user);

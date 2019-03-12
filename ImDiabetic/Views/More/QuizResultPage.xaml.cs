@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ImDiabetic.Models;
 using ImDiabetic.ViewModels;
 using Xamarin.Forms;
 
@@ -7,8 +8,8 @@ namespace ImDiabetic.Views.More
 {
     public partial class QuizResultPage : ContentPage
     {
-        public User User { get; }
-        public QuizResultPage(User user)
+        public AppUser User { get; }
+        public QuizResultPage(AppUser user)
         {
             InitializeComponent();
             User = user;

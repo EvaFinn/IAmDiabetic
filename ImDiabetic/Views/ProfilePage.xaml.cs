@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using ImDiabetic.Models;
 using ImDiabetic.Utils;
 using ImDiabetic.ViewModels;
 using Realms;
@@ -11,9 +12,9 @@ namespace ImDiabetic.Views
 {
     public partial class ProfilePage : ContentPage
     {
-        public User User { get; }
+        public AppUser User { get; }
 
-        public ProfilePage(User user)
+        public ProfilePage(AppUser user)
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
@@ -34,7 +35,6 @@ namespace ImDiabetic.Views
 
             if (stream != null)
             {
-
                 profileImage.Source = ImageSource.FromStream(() => stream);
                 profileImage.BackgroundColor = Color.Gray;
 
@@ -44,7 +44,6 @@ namespace ImDiabetic.Views
                     pickPictureButton.IsEnabled = true;
                 };
                 profileImage.GestureRecognizers.Add(recognizer);
-
                 //Uri myUir = Uri.
             }
             else

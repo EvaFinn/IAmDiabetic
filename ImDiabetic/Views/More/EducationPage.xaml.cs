@@ -10,13 +10,14 @@ using Plugin.FilePicker.Abstractions;
 using Plugin.FilePicker;
 using System.IO;
 using ImDiabetic.ViewModels;
+using ImDiabetic.Models;
 
 namespace ImDiabetic.Views.More
 {
     public partial class EducationPage : ContentPage
     {
-        User User { get; set; }
-        public EducationPage(User user)
+        AppUser User { get; set; }
+        public EducationPage(AppUser user)
         {
             InitializeComponent();
             User = user;

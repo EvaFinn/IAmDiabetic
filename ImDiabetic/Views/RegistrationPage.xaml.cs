@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ImDiabetic.Models;
 using ImDiabetic.ViewModels;
 using Xamarin.Forms;
 
@@ -17,7 +18,7 @@ namespace ImDiabetic.Views
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
             (BindingContext as RegistrationViewModel).AddUser();
-            User user = (BindingContext as RegistrationViewModel).RegisteredUser;
+            AppUser user = (BindingContext as RegistrationViewModel).RegisteredUser;
             await Navigation.PushAsync(new MasterDetailNav(user));
         }
 

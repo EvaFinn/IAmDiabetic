@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using ImDiabetic.ViewModels;
 using Syncfusion.SfChart.XForms;
+using ImDiabetic.Models;
 
 namespace ImDiabetic.Views
 {
     public partial class TrendPage : ContentPage
     {
-        public User User { get; }
+        public AppUser User { get; }
         List<Color> customColors;
 
-        public TrendPage(User user)
+        public TrendPage(AppUser user)
         {
             InitializeComponent();
             User = user;

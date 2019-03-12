@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ImDiabetic.Models;
 using ImDiabetic.ViewModels;
 using Realms;
 using Realms.Sync;
@@ -10,14 +11,14 @@ namespace ImDiabetic.Views
     public partial class MasterDetailNav : MasterDetailPage
     {
         Realm realm;
-        public User User { get; }
+        public AppUser User { get; }
 
-        public MasterDetailNav(User user)
+        public MasterDetailNav(AppUser user)
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
-            var config = new RealmConfiguration() { SchemaVersion = 11 };
-            //config.ShouldDeleteIfMigrationNeeded = true;
+            var config = new RealmConfiguration() { SchemaVersion = 12 };
+            config.ShouldDeleteIfMigrationNeeded = true;
             realm = Realm.GetInstance(config);
 
             User = user;

@@ -7,7 +7,7 @@ namespace ImDiabetic.ViewModels
 {
     public class LogsViewModel : BaseViewModel
     {
-        public User User { get; set; }
+        public AppUser User { get; set; }
         public string BloodGlucose { get; set; }
         public string Insulin { get; set; }
         public string Pills { get; set; }
@@ -21,7 +21,7 @@ namespace ImDiabetic.ViewModels
         //private ActivityLog activityLog;
         public int LastBloogGlucoseLog { get; set; }
 
-        public LogsViewModel(User user)
+        public LogsViewModel(AppUser user)
         {
             User = user;
             GetLastBGLog();

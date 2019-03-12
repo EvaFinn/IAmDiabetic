@@ -11,12 +11,12 @@ namespace ImDiabetic.Views
 {
     public partial class GoalsPage : ContentPage
     {
-        public User User { get; set; }
-        public GoalsPage(User user)
+        public AppUser User { get; set; }
+        public GoalsPage(AppUser user)
         {
             InitializeComponent();
             User = user;
-            this.BindingContext = new GoalsViewModel(user);
+            this.BindingContext = new GoalsViewModel(User);
             //if ((BindingContext as GoalsViewModel).Goals != null)
             //{
             //    listView.ItemsSource = (BindingContext as GoalsViewModel).Goals;
@@ -35,6 +35,7 @@ namespace ImDiabetic.Views
             {
                 await Navigation.PushAsync(new GoalItemPage(e.SelectedItem as Goal, User));
             }
+            ((ListView)sender).SelectedItem = null;
         }
 
         //async void OnBack(object sender, EventArgs e)

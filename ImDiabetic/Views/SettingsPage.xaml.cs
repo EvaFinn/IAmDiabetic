@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ImDiabetic.Models;
 using Plugin.LocalNotifications;
 using Xamarin.Forms;
 
@@ -10,7 +11,7 @@ namespace ImDiabetic.Views
         const int _SAMPLE_ID = 1;
         int _secondsToDelivery;
 
-        public SettingsPage(User user)
+        public SettingsPage(AppUser user)
         {
             InitializeComponent();
         }

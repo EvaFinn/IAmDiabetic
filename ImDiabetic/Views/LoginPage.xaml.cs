@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ImDiabetic.Models;
 using ImDiabetic.ViewModels;
 using Xamarin.Forms;
 
@@ -18,7 +19,7 @@ namespace ImDiabetic.Views
         {
             if ((BindingContext as LoginViewModel).CheckUser())
             {
-                User user = (BindingContext as LoginViewModel).LoggedInUser;
+                AppUser user = (BindingContext as LoginViewModel).LoggedInUser;
                 await Navigation.PushAsync(new MasterDetailNav(user));
             }
             else

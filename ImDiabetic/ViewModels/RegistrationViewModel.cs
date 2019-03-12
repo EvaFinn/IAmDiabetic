@@ -17,18 +17,13 @@ namespace ImDiabetic.ViewModels
         public double MaxTarget { get; set; }
         public double MinTarget { get; set; }
         public string Password { get; set; }
-        public User RegisteredUser { get; set; }
-
-        public RegistrationViewModel()
-        {
-
-        }
+        public AppUser RegisteredUser { get; set; }
 
         public void AddUser()
         {
             realm.Write(() =>
             {
-                var user = new User
+                var user = new AppUser
                 {
                     FirstName = FirstName,
                     LastName = LastName,
@@ -44,8 +39,8 @@ namespace ImDiabetic.ViewModels
                 realm.Add(user);
             });
 
-            var uuu = realm.All<User>();
-            foreach (User use in uuu)
+            var uuu = realm.All<AppUser>();
+            foreach (AppUser use in uuu)
             {
                 Debug.WriteLine("NAME " + use.FirstName + ",,," + use.Password);
             }

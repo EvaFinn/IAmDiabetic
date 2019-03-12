@@ -12,9 +12,9 @@ namespace ImDiabetic.Views
 {
     public partial class DashboardPage : ContentPage
     {
-        public User User { get; set; }
+        public AppUser User { get; set; }
 
-        public DashboardPage(User user)
+        public DashboardPage(AppUser user)
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();

@@ -11,12 +11,12 @@ namespace ImDiabetic.ViewModels
 
     public class TrendViewModel : BaseViewModel
     {
-        public User User { get; set; }
+        public AppUser User { get; set; }
         //public Log Log { get; set; }
         public List<Log> ListOfLogs { get; set; }
         public List<BGTargetData> Data3 { get; set; }
 
-        public TrendViewModel(User user)
+        public TrendViewModel(AppUser user)
         {
             User = user;
             LogsForCharts();

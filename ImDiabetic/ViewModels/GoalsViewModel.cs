@@ -11,7 +11,7 @@ namespace ImDiabetic.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public User User { get; set; }
+        public AppUser User { get; set; }
         public string Name { get; set; }
         public bool Done { get; set; }
         public string Notes { get; set; }
@@ -32,13 +32,13 @@ namespace ImDiabetic.ViewModels
         public Goal Goal { get; set; } 
         public string Text { get; set; }
 
-        public GoalsViewModel(User user)
+        public GoalsViewModel(AppUser user)
         {
             User = user;
             GetGoals();
         }
 
-        public GoalsViewModel(User user, Goal goal)
+        public GoalsViewModel(AppUser user, Goal goal)
         {
             User = user;
             GetGoals();
