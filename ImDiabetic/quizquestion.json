@@ -28,7 +28,7 @@
       "Question": "Regular insulin is used for what?",
       "Topic": "Management",
       "OptionOne": "Provide the diabetic with a baseline insulin level",
-      "OptionTwo": "Provide insulin to cover increased blood glucose associated with meals",
+      "OptionTwo": "Cover increased blood glucose associated with meals",
       "OptionThree": "Help control blood glucose during the night",
       "Answer": "2"
     },
@@ -41,11 +41,27 @@
       "Answer": "3"
     },
     {
+      "Question": "Type 2 diabetes is a disease in which the pancreas does not produce enough insulin and your body does not use the insulin properly.",
+      "Topic": "Management",
+      "OptionOne": "True",
+      "OptionTwo": "False",
+      "OptionThree": "Not sure",
+      "Answer": "1"
+    },
+    {
       "Question": "How often should a person with Type 1 Diabetes check their blood sugar levels each day?",
       "Topic": "Management",
       "OptionOne": "Once a day",
       "OptionTwo": "4 or more times a day",
       "OptionThree": "Never",
+      "Answer": "2"
+    },
+    {
+      "Question": "Why should you wear comfortable shoes and sneakers?",
+      "Topic": "Management",
+      "OptionOne": "To prevent shin splints",
+      "OptionTwo": "To prevent foot injuries",
+      "OptionThree": "To prevent toe nail damage",
       "Answer": "2"
     }
    ]

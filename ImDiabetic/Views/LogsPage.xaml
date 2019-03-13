@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage Title="Logs" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms" x:Class="ImDiabetic.Views.LogsPage">
-    <ContentPage.Content>
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+            <Label Text="Make sure you choose a Log type!" HorizontalOptions="CenterAndExpand"/>
+            <Picker x:Name="typepicker" Title="Log Type" WidthRequest="200" SelectedItem="{Binding LogType}" SelectedIndexChanged="OnPickerSelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Blood Glucose</x:String>
+                        <x:String>Insulin</x:String>
+                        <x:String>Activity</x:String>
+                        <x:String>Carbs</x:String>
+                        <x:String>Medication</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </StackLayout>
         <Grid VerticalOptions="Start" HorizontalOptions="Center" Margin="50">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -14,21 +27,17 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
-            <Label Text="BLOOD GLUCOSE" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" />
-            <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                <Stepper x:Name="bloodglucose" Increment="1" Value="{Binding BloodGlucose}" HorizontalOptions="End"  />
-                <Label Text="{Binding Source={x:Reference bloodglucose}, Path=Value, StringFormat='{0:F0}'}" WidthRequest="50" HorizontalOptions="Start"/>
+            <Label x:Name="bgLabel" Text="BLOOD GLUCOSE" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" />
+            <StackLayout x:Name="bgThing" Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                <Stepper x:Name="bloodglucose" Increment="1" Value="{Binding Amount}" HorizontalOptions="End" />
+                <Label Text="{Binding Source={x:Reference bloodglucose}, Path=Value, StringFormat='{0:F0}'}" WidthRequest="50" HorizontalOptions="Start" />
             </StackLayout>
-            <Label Text="INSULIN" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" />
-            <Entry x:Name="insulinEntry" Text="{Binding Insulin}" WidthRequest="150" Placeholder="Unit" Grid.Row="1" Grid.Column="1" />
-            <Label Text="PILLS" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" />
-            <Entry x:Name="pillEntry" Text="{Binding Pills}" WidthRequest="150" Placeholder="" Grid.Row="2" Grid.Column="1" />
-            <Label Text="ACTIVITY" Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center" />
-            <Entry x:Name="activityEntry" Text="{Binding Activity}" WidthRequest="150" Placeholder="Minutes" Grid.Row="3" Grid.Column="1" />
-            <Label Text="CARBS" Grid.Row="4" Grid.Column="0" VerticalTextAlignment="Center" />
-            <Entry x:Name="carbsEntry" Text="{Binding Carbs}" WidthRequest="150" Placeholder="g" Grid.Row="4" Grid.Column="1" />
-            <Button Text="Scan" Grid.Row="4" Grid.Column="2" WidthRequest="40" HeightRequest="10" Clicked="ScanClick"/>
-            <Button Text="Save" Grid.Row="5" Grid.Column="1" Clicked="Handle_Clicked" />
+            <Label x:Name="insulinLabel" Text="AMOUNT" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" />
+            <Entry x:Name="insulinEntry" Text="{Binding Amount}" WidthRequest="150" Placeholder="Unit" Grid.Row="1" Grid.Column="1" />
+            <Label x:Name="carbsLabel" Text="CARBS" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" />
+            <Entry x:Name="carbsEntry" Text="{Binding Amount}" WidthRequest="150" Placeholder="g" Grid.Row="2" Grid.Column="1" />
+            <Button x:Name="scanBtn" Text="Scan" Grid.Row="2" Grid.Column="2" WidthRequest="40" HeightRequest="10" Clicked="ScanClick" />
+            <Button x:Name="saveBtn" Text="Save" Grid.Row="4" Grid.Column="1" Clicked="Handle_Clicked" />
         </Grid>
-    </ContentPage.Content>
+    </StackLayout>
 </ContentPage>

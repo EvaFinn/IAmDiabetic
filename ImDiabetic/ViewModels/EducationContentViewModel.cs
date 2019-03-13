@@ -23,7 +23,8 @@ namespace ImDiabetic.ViewModels
 
             Items.Add("Food");
             Items.Add("Insulin");
-            Items.Add("Low Blood Sugar");
+            Items.Add("Blood Glucose Monitoring");
+            Items.Add("Hypoglycaemia");
             Items.Add("High Blood Sugar");
         }
 

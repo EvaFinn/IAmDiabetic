@@ -12,7 +12,7 @@ namespace ImDiabetic.Views.More
         public EducationContentPage(AppUser user, string topic)
         {
             InitializeComponent();
-            this.BindingContext = new PdfViewerViewModel("Hypoglycaemia");
+            this.BindingContext = new PdfViewerViewModel(topic);
         }
 
         public EducationContentPage(AppUser user, Stream stream)

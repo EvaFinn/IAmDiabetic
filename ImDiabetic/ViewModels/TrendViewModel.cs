@@ -31,7 +31,10 @@ namespace ImDiabetic.ViewModels
             {
                 foreach (Log log in logs)
                 {
-                    ListOfLogs.Add(log);
+                    if (log.Type == "Blood Glucose")
+                    {
+                        ListOfLogs.Add(log);
+                    }
                 }
             }
         }
@@ -46,18 +49,21 @@ namespace ImDiabetic.ViewModels
 
             foreach (Log log in logs)
             {
-                Debug.WriteLine("*********" + log.BloodGlucose);
-                if (float.Parse(log.BloodGlucose) < User.MinTargetBloodGlucose)
+                if (log.Type == "Blood Glucose")
                 {
-                    lowcount++;
-                }
-                else if (float.Parse(log.BloodGlucose) > User.MaxTargetBloodGlucose)
-                {
-                    highcount++;
-                }
-                else
-                {
-                    normalcount++;
+                    Debug.WriteLine("*********" + log.Amount);
+                    if (float.Parse(log.Amount) < User.MinTargetBloodGlucose)
+                    {
+                        lowcount++;
+                    }
+                    else if (float.Parse(log.Amount) > User.MaxTargetBloodGlucose)
+                    {
+                        highcount++;
+                    }
+                    else
+                    {
+                        normalcount++;
+                    }
                 }
             }
             Data3.Add(new BGTargetData { BGTargetCounts = lowcount, LevelType = "LOW" });

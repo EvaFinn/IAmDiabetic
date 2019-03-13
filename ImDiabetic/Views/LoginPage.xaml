@@ -9,6 +9,5 @@
         <Entry x:Name="passwordEntry" Text="{Binding Password, Mode=TwoWay}" Placeholder="Password" IsPassword="true" />
         <Button Text="Next" Clicked="Handle_Clicked" />
         <Button Text="Register" Clicked="Register_Clicked" />
-        <Button Text="Delete Users" Clicked="Delete_Clicked" />
     </StackLayout>
 </ContentPage>

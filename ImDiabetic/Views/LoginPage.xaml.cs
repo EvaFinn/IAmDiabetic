@@ -33,11 +33,6 @@ namespace ImDiabetic.Views
             await Navigation.PushAsync(new RegistrationPage());
         }
 
-        public void Delete_Clicked(object sender, System.EventArgs e)
-        {
-            (BindingContext as LoginViewModel).DeleteUsers();
-        }
-
         protected override bool OnBackButtonPressed()
         {
             return true;

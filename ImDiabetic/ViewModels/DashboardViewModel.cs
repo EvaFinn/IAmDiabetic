@@ -37,13 +37,13 @@ namespace ImDiabetic.ViewModels
             LevelStuff();
             Level = CurrentLevel.ToString();
             FoodText = "Getting hungry, eat soon";
+            AchievementsViewModel vm = new AchievementsViewModel(User);
+            vm.CheckAchievements();
         }
 
         public void LevelStuff()
         {
-            //int pointsRequiredToLevelUp = (15 * CurrentLevel) + (9 * (CurrentLevel - 1));
             int pointsRequiredToLevelUp = 25 * CurrentLevel * (1 + CurrentLevel);
-
             if (int.Parse(Points) >= pointsRequiredToLevelUp)
             {
                 realm.Write(() =>
@@ -73,7 +73,7 @@ namespace ImDiabetic.ViewModels
                 {
                     if (log.LogDate.Day.Equals(DateTimeOffset.Now.Day))
                     {
-                        Debug.WriteLine("*********** LOGS " + log.BloodGlucose);
+                        Debug.WriteLine("*********** LOGS " + log.Amount);
                         todaysLogs.Add(log);
                     }
                 }

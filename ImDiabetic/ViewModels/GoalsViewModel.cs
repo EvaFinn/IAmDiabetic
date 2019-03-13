@@ -9,28 +9,38 @@ namespace ImDiabetic.ViewModels
 {
     public class GoalsViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public AppUser User { get; set; }
         public string Name { get; set; }
         public bool Done { get; set; }
         public string Notes { get; set; }
+        public Goal Goal { get; set; }
+        //public Goal Goal
+        //{
+        //    get { return _goal; }
+        //    set
+        //    {
+        //        _goal = value;
+        //        OnPropertyChanged("Goal");
+        //    }
+        //}
+        public string Text { get; set; }
         private List<Goal> _goals = new List<Goal>();
         public List<Goal> Goals
         {
-            get
-            {
-                return _goals;
-            }
-            set
+            get { return _goals; }
+            set 
             {
                 _goals = value;
-                NotifyPropertyChanged("Goals");
+                OnPropertyChanged("Goals");
             }
         }
 
-        public Goal Goal { get; set; } 
-        public string Text { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
         public GoalsViewModel(AppUser user)
         {
@@ -50,18 +60,27 @@ namespace ImDiabetic.ViewModels
         private void GetGoals()
         {
             var goals = realm.All<Goal>().Where(g => g.UserID == User.Id);
-            if (goals.Count() > 0) {
+            if (goals.Count() > 0)
+            {
                 foreach (Goal goal in goals)
                 {
                     _goals.Add(goal);
                 }
                 Text = "Goals";
-            } else { Text = "No Goals Yet."; }
+            }
+            else { Text = "No Goals Yet."; }
         }
 
-        public void SaveGoal() {
-            var newGoal = new Goal { UserID = User.Id, Date = DateTimeOffset.Now,
-                Name = Name, Notes = Notes, Done = Done };
+        public void SaveGoal()
+        {
+            var newGoal = new Goal
+            {
+                UserID = User.Id,
+                Date = DateTimeOffset.Now,
+                Name = Name,
+                Notes = Notes,
+                Done = Done
+            };
 
             realm.Write(() =>
             {
@@ -71,7 +90,8 @@ namespace ImDiabetic.ViewModels
             GetGoals();
         }
 
-        public void DeleteGoal(Goal goal) {
+        public void DeleteGoal(Goal goal)
+        {
             realm.Write(() =>
             {
                 realm.Remove(goal);
@@ -89,12 +109,12 @@ namespace ImDiabetic.ViewModels
             });
         }
 
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+        //private void NotifyPropertyChanged(string propertyName)
+        //{
+        //    if (PropertyChanged != null)
+        //    {
+        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //    }
+        //}
     }
 }

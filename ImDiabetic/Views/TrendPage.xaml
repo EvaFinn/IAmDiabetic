@@ -34,7 +34,7 @@
                 <chart:ChartLegend>
                 </chart:ChartLegend>
             </chart:SfChart.Legend>
-            <chart:LineSeries ItemsSource="{Binding ListOfLogs}" Label="Blood Glucose" XBindingPath="LogDate.DateTime" YBindingPath="BloodGlucose">
+            <chart:LineSeries ItemsSource="{Binding ListOfLogs}" Label="Blood Glucose" XBindingPath="LogDate.DateTime" YBindingPath="Amount">
                 <chart:LineSeries.DataMarker>
                     <chart:ChartDataMarker />
                 </chart:LineSeries.DataMarker>

@@ -50,7 +50,6 @@ namespace ImDiabetic.Views.More
                 acheivements[i] = jsonresult.ElementAt(i).Name;
                 Debug.WriteLine("Name : " + acheivements[i]);
             }
-
             return acheivements;
         }
     }

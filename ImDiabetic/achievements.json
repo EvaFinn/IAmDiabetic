@@ -11,8 +11,23 @@
       "PointsAwarded": "25"
     },
     {
+      "Name": "14 Day Streak",
+      "Description": "Your daily streak has reached 14 days!",
+      "PointsAwarded": "50"
+    },
+    {
       "Name": "Regular Logger",
       "Description": "You have logged 3 times in one day!",
       "PointsAwarded": "20"
+    },
+    {
+      "Name": "Good Logger",
+      "Description": "You have logged 3 times a day for a whole week!",
+      "PointsAwarded": "25"
+    },
+    {
+      "Name": "Amazing Logger",
+      "Description": "You have logged 3 times a day for two weeks!",
+      "PointsAwarded": "50"
     }
    ]

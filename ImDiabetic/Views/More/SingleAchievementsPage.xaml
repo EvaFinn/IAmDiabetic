@@ -5,7 +5,7 @@
             <Label x:Name="achName" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" Text="{Binding Name}" />
             <Label x:Name="achDesc" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" Text="{Binding Description}" />
             <Label x:Name="achPoints" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" Text="{Binding Points}" />
-<!--            <Label x:Name="isAwarded" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" Text="{Binding IsAwarded}" />-->
+            <Label x:Name="achDate" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" Text="{Binding Date}" />
         </StackLayout>
     </StackLayout>
 </ContentPage>
