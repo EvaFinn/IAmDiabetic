@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using ImDiabetic.Models;
 
 namespace ImDiabetic.ViewModels
@@ -13,6 +14,7 @@ namespace ImDiabetic.ViewModels
         public string Info { get; set; }
         public int PointsNeeded { get; set; }
         public int CurrentLevel { get; set; }
+        public byte[] Photo { get; set; }
 
         public ProfileViewModel(AppUser user)
         {
@@ -25,6 +27,26 @@ namespace ImDiabetic.ViewModels
             Points = User.Score.ToString();
             DisplayPoints = Points + "/" + PointsNeeded;
             Info = User.Age + ", " + User.Gender;
+            Photo = User.ProfilePicture;
+        }
+
+        public void ReadFully(Stream input)
+        {
+            var buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                Photo = ms.ToArray();
+                realm.Write(() =>
+                {
+                    User.ProfilePicture = Photo;
+                });
+                //return Photo;
+            }
         }
     }
 }

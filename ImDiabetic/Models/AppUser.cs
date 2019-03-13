@@ -19,5 +19,6 @@ namespace ImDiabetic.Models
         public DateTimeOffset LastLogInDate { get; set; } = DateTimeOffset.Now;
         public int Level { get; set; } = 1;
         public int Score { get; set; } = 0;
+        public byte[] ProfilePicture { get; set; }
     }
 }

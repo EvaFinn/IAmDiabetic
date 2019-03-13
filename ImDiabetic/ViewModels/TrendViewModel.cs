@@ -12,9 +12,8 @@ namespace ImDiabetic.ViewModels
     public class TrendViewModel : BaseViewModel
     {
         public AppUser User { get; set; }
-        //public Log Log { get; set; }
         public List<Log> ListOfLogs { get; set; }
-        public List<BGTargetData> Data3 { get; set; }
+        public List<BGTargetData> BGChartData { get; set; }
 
         public TrendViewModel(AppUser user)
         {
@@ -42,7 +41,7 @@ namespace ImDiabetic.ViewModels
         public void CheckTargetBG()
         {
             var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
-            Data3 = new List<BGTargetData>();
+            BGChartData = new List<BGTargetData>();
             int highcount = 0;
             int lowcount = 0;
             int normalcount = 0;
@@ -66,9 +65,9 @@ namespace ImDiabetic.ViewModels
                     }
                 }
             }
-            Data3.Add(new BGTargetData { BGTargetCounts = lowcount, LevelType = "LOW" });
-            Data3.Add(new BGTargetData { BGTargetCounts = normalcount, LevelType = "NORMAL" });
-            Data3.Add(new BGTargetData { BGTargetCounts = highcount, LevelType = "HIGH" });
+            BGChartData.Add(new BGTargetData { BGTargetCounts = lowcount, LevelType = "LOW" });
+            BGChartData.Add(new BGTargetData { BGTargetCounts = normalcount, LevelType = "NORMAL" });
+            BGChartData.Add(new BGTargetData { BGTargetCounts = highcount, LevelType = "HIGH" });
         }
     }
 

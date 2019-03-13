@@ -20,7 +20,7 @@ namespace ImDiabetic.Views
             InitializeComponent();
             User = user;
             BindingContext = new ProfileViewModel(User);
-            //profileImage.Source = ImageSource.FromResource("ImDiabetic.Icons.profile.png");
+            profileImage.Source = ImageSource.FromStream(() => new MemoryStream((BindingContext as ProfileViewModel).Photo));
         }
 
         protected override bool OnBackButtonPressed()
@@ -35,8 +35,9 @@ namespace ImDiabetic.Views
 
             if (stream != null)
             {
-                profileImage.Source = ImageSource.FromStream(() => stream);
-                profileImage.BackgroundColor = Color.Gray;
+                (BindingContext as ProfileViewModel).ReadFully(stream);
+                profileImage.Source = ImageSource.FromStream(() => new MemoryStream((BindingContext as ProfileViewModel).Photo));
+                profileImage.BackgroundColor = Color.White;
 
                 TapGestureRecognizer recognizer = new TapGestureRecognizer();
                 recognizer.Tapped += (sender2, args) =>
@@ -44,7 +45,6 @@ namespace ImDiabetic.Views
                     pickPictureButton.IsEnabled = true;
                 };
                 profileImage.GestureRecognizers.Add(recognizer);
-                //Uri myUir = Uri.
             }
             else
             {

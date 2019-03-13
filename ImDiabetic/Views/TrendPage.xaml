@@ -49,7 +49,7 @@
                 <chart:ChartLegend>
                 </chart:ChartLegend>
             </chart:SfChart.Legend>
-            <chart:DoughnutSeries x:Name="BGChart" ItemsSource="{Binding Data3}" Label="Blood Glucose" XBindingPath="LevelType" YBindingPath="BGTargetCounts" DataMarkerPosition="OutsideExtended" DoughnutCoefficient="0.7">
+            <chart:DoughnutSeries x:Name="BGChart" ItemsSource="{Binding BGChartData}" Label="Blood Glucose" XBindingPath="LevelType" YBindingPath="BGTargetCounts" DataMarkerPosition="OutsideExtended" DoughnutCoefficient="0.7">
                 <chart:DoughnutSeries.DataMarker>
                     <chart:ChartDataMarker LabelContent="Percentage">
                         <chart:ChartDataMarker.LabelStyle>

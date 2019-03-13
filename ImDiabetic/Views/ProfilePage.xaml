@@ -14,7 +14,7 @@
             <Image Source="CurvedMask.png" VerticalOptions="End" Aspect="AspectFill" Margin="0,0,0,-1" />
             <!-- profile image -->
             <!--        <Image Source="ProfilePic.png" Margin="0,0,0,-50" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="End"/>-->
-            <Image x:Name="profileImage" Margin="0,0,0,-50" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="End" />
+            <Image x:Name="profileImage" Margin="0,0,0,-50" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="End"/>
             <!-- Profile Name -->
             <StackLayout x:Name="stckProfile" Grid.Row="1" HorizontalOptions="Center" Padding="0,50,0,00">
                 <Button x:Name="pickPictureButton" Text="Change Picture" Style="{StaticResource AButton}" Clicked="Handle_Clicked" />
