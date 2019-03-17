@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.Views.RemindersPage">
+    <StackLayout Padding="12" Spacing="20" Margin="0,60,0,0">
+        <Picker x:Name="typepicker" Title="Reminder For..." WidthRequest="200" SelectedItem="{Binding Title}">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Blood Glucose Test</x:String>
+                    <x:String>Take some Insulin</x:String>
+                    <x:String>Activity</x:String>
+                    <x:String>Have some Food!</x:String>
+                    <x:String>Take your Medication</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Entry x:Name="BodyEntry" Text="{Binding Body}" />
+        <TimePicker x:Name="_timePicker" Time="{Binding Time}" Format="T" PropertyChanged="OnTimePickerPropertyChanged" />
+        <Button x:Name="SendButton" Text="Save" Clicked="SendButtonClicked" />
+        <Button x:Name="DeleteBtn" Text="Delete" Clicked="DeleteButtonClicked" />
+    </StackLayout>
+</ContentPage>

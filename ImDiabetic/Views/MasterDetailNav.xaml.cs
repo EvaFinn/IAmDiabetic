@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using ImDiabetic.Models;
 using ImDiabetic.ViewModels;
 using Realms;
@@ -22,7 +23,8 @@ namespace ImDiabetic.Views
             realm = Realm.GetInstance(config);
 
             User = user;
-            profileImage.Source = ImageSource.FromResource("ImDiabetic.Icons.profile.png");
+            //profileImage.Source = ImageSource.FromResource("ImDiabetic.Icons.profile.png");
+            //profileImage.Source = ImageSource.FromStream(() => new MemoryStream(User.ProfilePicture)); //not working?
             aboutList.ItemsSource = GetMenuList();
             var homePage = typeof(DashboardPage);
             Detail = new NavigationPage(new DashboardPage(User));

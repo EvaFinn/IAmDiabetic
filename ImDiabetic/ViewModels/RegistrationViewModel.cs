@@ -45,5 +45,6 @@ namespace ImDiabetic.ViewModels
                 Debug.WriteLine("NAME " + use.FirstName + ",,," + use.Password);
             }
         }
+
     }
 }

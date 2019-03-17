@@ -9,19 +9,14 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="AUTO" />
             </Grid.RowDefinitions>
-            <!-- header background -->
             <Image Source="HeaderBackground.png" Aspect="AspectFill" />
             <Image Source="CurvedMask.png" VerticalOptions="End" Aspect="AspectFill" Margin="0,0,0,-1" />
-            <!-- profile image -->
-            <!--        <Image Source="ProfilePic.png" Margin="0,0,0,-50" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="End"/>-->
-            <Image x:Name="profileImage" Margin="0,0,0,-50" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="End"/>
-            <!-- Profile Name -->
+            <Image x:Name="profileImage" Margin="0,0,0,-50" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="End" />
             <StackLayout x:Name="stckProfile" Grid.Row="1" HorizontalOptions="Center" Padding="0,50,0,00">
                 <Button x:Name="pickPictureButton" Text="Change Picture" Style="{StaticResource AButton}" Clicked="Handle_Clicked" />
                 <Label HorizontalTextAlignment="Center" Text="{Binding UserName}" Style="{StaticResource ProfileNameLabel}" />
                 <Label HorizontalTextAlignment="Center" Text="{Binding Info}" Margin="0,-5" Style="{StaticResource ProfileTagLabel}" />
             </StackLayout>
-            <!-- Social Stats Section -->
             <Grid Grid.Row="2" ColumnSpacing="0" RowSpacing="0" Margin="0,30">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -35,20 +30,16 @@
                 <StackLayout Grid.Column="1">
                     <Label Text="{Binding CurrentLevel}" Style="{StaticResource StatsNumberLabel}" />
                     <Label Text="Level" Style="{StaticResource StatsCaptionLabel}" />
-                    <progressBar:SfLinearProgressBar Progress="{Binding Points}" EasingEffect="CubicInOut" SegmentCount="4" Maximum="{Binding PointsNeeded}"/>
+                    <progressBar:SfLinearProgressBar Progress="{Binding Points}" EasingEffect="CubicInOut" SegmentCount="4" Maximum="{Binding PointsNeeded}" />
                 </StackLayout>
                 <StackLayout Grid.Column="2">
                     <Label Text="{Binding DisplayPoints}" Style="{StaticResource StatsNumberLabel}" />
                     <Label Text="Points" Style="{StaticResource StatsCaptionLabel}" />
                 </StackLayout>
             </Grid>
-            <!--Using linear progress bar-->
-            <!-- profile description -->
             <ScrollView Grid.Row="3">
                 <Label Margin="20,0" HorizontalTextAlignment="Center" Style="{StaticResource MainBodyLabel}" Text="Main body? Not sure, maybe analyse your quiz topics in a graph? And I'll put in your trophies and shit here too, nice and graphically" />
             </ScrollView>
-            <!-- follow button -->
-            <!--            <Button Grid.Row="4" Text="Follow" Margin="20" VerticalOptions="End" Style="{StaticResource AButton}" />-->
         </Grid>
     </ScrollView>
 </ContentPage>

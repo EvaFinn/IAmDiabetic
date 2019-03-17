@@ -18,11 +18,7 @@ namespace ImDiabetic.ViewModels
         public string Level { get; set; }
         public string Points { get; set; }
         public string FoodText { get; set; }
-        public int LevelOne { get; set; } = 10;
-        public int LevelTwo { get; set; } = 20;
-        public int LevelThree { get; set; } = 30;
         public int CurrentLevel { get; set; }
-        public int NextLevel { get; set; }
 
         public DashboardViewModel(AppUser user)
         {
@@ -33,7 +29,6 @@ namespace ImDiabetic.ViewModels
             DailyStreakCheck();
             HasLogs();
             CurrentLevel = User.Level;
-            NextLevel = CurrentLevel + 1;
             LevelStuff();
             Level = CurrentLevel.ToString();
             FoodText = "Getting hungry, eat soon";
@@ -43,13 +38,12 @@ namespace ImDiabetic.ViewModels
 
         public void LevelStuff()
         {
-            int pointsRequiredToLevelUp = 25 * CurrentLevel * (1 + CurrentLevel);
+            int pointsRequiredToLevelUp = 25 * CurrentLevel * 2;
             if (int.Parse(Points) >= pointsRequiredToLevelUp)
             {
                 realm.Write(() =>
                 {
-                    //User.Level = 1;
-                    //User.Score = 0;
+                    User.Score = 0;
                     User.Level++;
                 });
                 Debug.WriteLine("******** Points " + Points);
