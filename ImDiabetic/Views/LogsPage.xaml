@@ -9,7 +9,7 @@
                         <x:String>Blood Glucose</x:String>
                         <x:String>Insulin</x:String>
                         <x:String>Activity</x:String>
-                        <x:String>Carbs</x:String>
+                        <x:String>Food Item</x:String>
                         <x:String>Medication</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
@@ -17,6 +17,7 @@
         </StackLayout>
         <Grid VerticalOptions="Start" HorizontalOptions="Center" Margin="50">
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -34,10 +35,15 @@
             </StackLayout>
             <Label x:Name="insulinLabel" Text="AMOUNT" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" />
             <Entry x:Name="insulinEntry" Text="{Binding Amount}" WidthRequest="150" Placeholder="Unit" Grid.Row="1" Grid.Column="1" />
-            <Label x:Name="carbsLabel" Text="CARBS" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" />
-            <Entry x:Name="carbsEntry" Text="{Binding Amount}" WidthRequest="150" Placeholder="g" Grid.Row="2" Grid.Column="1" />
-            <Button x:Name="scanBtn" Text="Scan" Grid.Row="2" Grid.Column="2" WidthRequest="40" HeightRequest="10" Clicked="ScanClick" />
-            <Button x:Name="saveBtn" Text="Save" Grid.Row="4" Grid.Column="1" Clicked="Handle_Clicked" />
+            
+             <Label x:Name="calLabel" Text="CALORIES" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" />
+            <Entry x:Name="calEntry" Text="{Binding Calorie}" WidthRequest="150" Placeholder="kcal" Grid.Row="2" Grid.Column="1" />
+            
+            <Label x:Name="carbsLabel" Text="CARBS" Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center" />
+            <Entry x:Name="carbsEntry" Text="{Binding Amount}" WidthRequest="150" Placeholder="g" Grid.Row="3" Grid.Column="1" />
+            
+            <Button x:Name="scanBtn" Text="Scan" Grid.Row="3" Grid.Column="2" WidthRequest="40" HeightRequest="10" Clicked="ScanClick" />
+            <Button x:Name="saveBtn" Text="Save" Grid.Row="5" Grid.Column="1" Clicked="Handle_Clicked" />
         </Grid>
     </StackLayout>
 </ContentPage>

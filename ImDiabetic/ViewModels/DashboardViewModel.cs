@@ -19,6 +19,10 @@ namespace ImDiabetic.ViewModels
         public string Points { get; set; }
         public string FoodText { get; set; }
         public int CurrentLevel { get; set; }
+        public int DailyTotalCarbs { get; set; }
+        public int TotalCal { get; set; }
+        public string DisplayOne { get; set; }
+        public string DisplayTwo { get; set; }
 
         public DashboardViewModel(AppUser user)
         {
@@ -55,6 +59,8 @@ namespace ImDiabetic.ViewModels
         public void HasLogs()
         {
             var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
+            DailyTotalCarbs = 0;
+            TotalCal = 0;
             if (logs.Count() < 1)
             {
                 Test = "No logs made yet";
@@ -62,17 +68,27 @@ namespace ImDiabetic.ViewModels
             else
             {
                 List<Log> todaysLogs = new List<Log>();
-
                 foreach (Log log in logs)
                 {
                     if (log.LogDate.Day.Equals(DateTimeOffset.Now.Day))
                     {
                         Debug.WriteLine("*********** LOGS " + log.Amount);
                         todaysLogs.Add(log);
+                        if (log.Type == "Food Item")
+                        {
+                            DailyTotalCarbs = DailyTotalCarbs + int.Parse(log.Amount);
+
+                            if (log.Calorie != null)
+                            {
+                                TotalCal = TotalCal + int.Parse(log.Calorie);
+                            }
+                        }
                     }
                 }
                 Test = "Logs made today : " + todaysLogs.Count;
             }
+            DisplayOne = "Total Carbs Today : " + DailyTotalCarbs;
+            DisplayTwo = "Total Calories : " + TotalCal;
         }
 
         public void DailyStreakCheck()

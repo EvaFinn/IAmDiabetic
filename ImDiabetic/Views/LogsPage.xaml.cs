@@ -25,6 +25,8 @@ namespace ImDiabetic.Views
 
             insulinEntry.IsVisible = false;
             insulinLabel.IsVisible = false;
+            calEntry.IsVisible = false;
+            calLabel.IsVisible = false;
             carbsEntry.IsVisible = false;
             carbsLabel.IsVisible = false;
             scanBtn.IsVisible = false;
@@ -47,12 +49,14 @@ namespace ImDiabetic.Views
                     insulinLabel.IsVisible = false;
                     carbsEntry.IsVisible = false;
                     carbsLabel.IsVisible = false;
+                    calEntry.IsVisible = false;
+                    calLabel.IsVisible = false;
                     scanBtn.IsVisible = false;
                     bgLabel.IsVisible = true;
                     bgThing.IsVisible = true;
                     saveBtn.IsEnabled = true;
                 }
-                else if (picker.SelectedItem.ToString() == "Carbs")
+                else if (picker.SelectedItem.ToString() == "Food Item")
                 {
                     insulinEntry.IsVisible = false;
                     insulinLabel.IsVisible = false;
@@ -60,6 +64,8 @@ namespace ImDiabetic.Views
                     bgThing.IsVisible = false;
                     carbsEntry.IsVisible = true;
                     carbsLabel.IsVisible = true;
+                    calEntry.IsVisible = true;
+                    calLabel.IsVisible = true;
                     scanBtn.IsVisible = true;
                     saveBtn.IsEnabled = true;
                 }
@@ -71,6 +77,8 @@ namespace ImDiabetic.Views
                     bgThing.IsVisible = false;
                     carbsEntry.IsVisible = false;
                     carbsLabel.IsVisible = false;
+                    calEntry.IsVisible = false;
+                    calLabel.IsVisible = false;
                     scanBtn.IsVisible = false;
                     saveBtn.IsEnabled = true;
                 }

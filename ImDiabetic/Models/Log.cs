@@ -11,6 +11,7 @@ namespace ImDiabetic.Models
         public DateTimeOffset LogDate { get; set; }
         public string Type { get; set; }
         public string Amount { get; set; }
+        public string Calorie { get; set; }
 
     }
 }

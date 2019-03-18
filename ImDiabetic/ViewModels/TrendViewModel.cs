@@ -12,8 +12,13 @@ namespace ImDiabetic.ViewModels
     public class TrendViewModel : BaseViewModel
     {
         public AppUser User { get; set; }
-        public List<Log> ListOfLogs { get; set; }
+        public List<Log> ListOfLogs { get; set; } = new List<Log>();
+        public List<Log> ListOfFoodLogs { get; set; } = new List<Log>();
         public List<BGTargetData> BGChartData { get; set; }
+        public int DailyTotalCarbs { get; set; }
+        public int TotalCal { get; set; }
+        public string DisplayOne { get; set; }
+        public string DisplayTwo { get; set; }
 
         public TrendViewModel(AppUser user)
         {
@@ -25,7 +30,8 @@ namespace ImDiabetic.ViewModels
         public void LogsForCharts()
         {
             var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
-            ListOfLogs = new List<Log>();
+            DailyTotalCarbs = 0;
+            TotalCal = 0;
             if (logs.Count() > 0)
             {
                 foreach (Log log in logs)
@@ -34,8 +40,20 @@ namespace ImDiabetic.ViewModels
                     {
                         ListOfLogs.Add(log);
                     }
+                    if(log.Type == "Food Item") {
+                        ListOfFoodLogs.Add(log);
+                        if (log.Calorie != null)
+                        {
+                            TotalCal = TotalCal + int.Parse(log.Calorie);
+                        }
+                        if (log.LogDate.Day == DateTimeOffset.Now.Day) {
+                            DailyTotalCarbs = DailyTotalCarbs + int.Parse(log.Amount);
+                        }
+                    }
                 }
             }
+            DisplayOne = "Total Carbs Today : " + DailyTotalCarbs;
+            DisplayTwo = "Total Calories : " + TotalCal;
         }
 
         public void CheckTargetBG()

@@ -25,6 +25,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="16.4.0.54" />
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="2.7.1" />
     <PackageReference Include="Xam.Plugins.Notifier" Version="3.0.1" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="16.4.0.54" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MyPage.xaml" />

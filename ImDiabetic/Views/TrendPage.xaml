@@ -1,64 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
-             xmlns:local="clr-namespace:ImDiabetic" 
-             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
-             x:Class="ImDiabetic.Views.TrendPage">
-    <StackLayout>
-        <chart:SfChart VerticalOptions="FillAndExpand">
-            <chart:SfChart.Title>
-                <chart:ChartTitle Text="Blood Glucose Test Results">
-                </chart:ChartTitle>
-            </chart:SfChart.Title>
-            <chart:SfChart.ColorModel>
-                <chart:ChartColorModel Palette="Natural">
-                </chart:ChartColorModel>
-            </chart:SfChart.ColorModel>
-            <chart:SfChart.ChartBehaviors>
-                <chart:ChartZoomPanBehavior ZoomMode="X" />
-            </chart:SfChart.ChartBehaviors>
-            <chart:SfChart.PrimaryAxis>
-                <chart:DateTimeCategoryAxis Interval="0.1" IntervalType="Days" EdgeLabelsDrawingMode="Center" AutoScrollingDelta="5">
-                    <chart:DateTimeCategoryAxis.LabelStyle>
-                        <chart:ChartAxisLabelStyle Margin="3" />
-                    </chart:DateTimeCategoryAxis.LabelStyle>
-                </chart:DateTimeCategoryAxis>
-            </chart:SfChart.PrimaryAxis>
-            <chart:SfChart.SecondaryAxis>
-                <chart:NumericalAxis Minimum="0" Maximum="15">
-                    <chart:NumericalAxis.Title>
-                        <chart:ChartAxisTitle Text="Blood Glucose Levels" />
-                    </chart:NumericalAxis.Title>
-                </chart:NumericalAxis>
-            </chart:SfChart.SecondaryAxis>
-            <chart:SfChart.Legend>
-                <chart:ChartLegend>
-                </chart:ChartLegend>
-            </chart:SfChart.Legend>
-            <chart:LineSeries ItemsSource="{Binding ListOfLogs}" Label="Blood Glucose" XBindingPath="LogDate.DateTime" YBindingPath="Amount">
-                <chart:LineSeries.DataMarker>
-                    <chart:ChartDataMarker />
-                </chart:LineSeries.DataMarker>
-            </chart:LineSeries>
-        </chart:SfChart>
-        <chart:SfChart VerticalOptions="FillAndExpand">
-            <chart:SfChart.Title>
-                <chart:ChartTitle Text="Blood Glucose Targets">
-                </chart:ChartTitle>
-            </chart:SfChart.Title>
-            <chart:SfChart.Legend>
-                <chart:ChartLegend>
-                </chart:ChartLegend>
-            </chart:SfChart.Legend>
-            <chart:DoughnutSeries x:Name="BGChart" ItemsSource="{Binding BGChartData}" Label="Blood Glucose" XBindingPath="LevelType" YBindingPath="BGTargetCounts" DataMarkerPosition="OutsideExtended" DoughnutCoefficient="0.7">
-                <chart:DoughnutSeries.DataMarker>
-                    <chart:ChartDataMarker LabelContent="Percentage">
-                        <chart:ChartDataMarker.LabelStyle>
-                            <chart:DataMarkerLabelStyle TextColor="White" />
-                        </chart:ChartDataMarker.LabelStyle>
-                    </chart:ChartDataMarker>
-                </chart:DoughnutSeries.DataMarker>
-            </chart:DoughnutSeries>
-        </chart:SfChart>
-        <Button Text="TesterButton"/>
-    </StackLayout>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ImDiabetic" xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" x:Class="ImDiabetic.Views.TrendPage">
+    <tabView:SfTabView x:Name="tabView" EnableSwiping="false" VisibleHeaderCount="3" BackgroundColor="White">
+        <tabView:SfTabView.SelectionIndicatorSettings>
+            <tabView:SelectionIndicatorSettings Color="DeepSkyBlue" Position="Fill" StrokeThickness="10" />
+        </tabView:SfTabView.SelectionIndicatorSettings>
+        <tabView:SfTabItem Title="Blood Glucose" SelectionColor="White" TitleFontAttributes="Bold" TitleFontColor="DeepSkyBlue">
+            <tabView:SfTabItem.Content>
+                <ScrollView>
+                    <StackLayout>
+                        <chart:SfChart VerticalOptions="FillAndExpand">
+                            <chart:SfChart.Title>
+                                <chart:ChartTitle Text="Blood Glucose Test Results">
+                                </chart:ChartTitle>
+                            </chart:SfChart.Title>
+                            <chart:SfChart.ColorModel>
+                                <chart:ChartColorModel Palette="Natural">
+                                </chart:ChartColorModel>
+                            </chart:SfChart.ColorModel>
+                            <chart:SfChart.ChartBehaviors>
+                                <chart:ChartZoomPanBehavior ZoomMode="X" />
+                            </chart:SfChart.ChartBehaviors>
+                            <chart:SfChart.PrimaryAxis>
+                                <chart:DateTimeCategoryAxis Interval="0.1" IntervalType="Days" EdgeLabelsDrawingMode="Center" AutoScrollingDelta="5">
+                                    <chart:DateTimeCategoryAxis.LabelStyle>
+                                        <chart:ChartAxisLabelStyle Margin="3" />
+                                    </chart:DateTimeCategoryAxis.LabelStyle>
+                                </chart:DateTimeCategoryAxis>
+                            </chart:SfChart.PrimaryAxis>
+                            <chart:SfChart.SecondaryAxis>
+                                <chart:NumericalAxis Minimum="0" Maximum="15">
+                                    <chart:NumericalAxis.Title>
+                                        <chart:ChartAxisTitle Text="Blood Glucose Levels" />
+                                    </chart:NumericalAxis.Title>
+                                </chart:NumericalAxis>
+                            </chart:SfChart.SecondaryAxis>
+                            <chart:SfChart.Legend>
+                                <chart:ChartLegend>
+                                </chart:ChartLegend>
+                            </chart:SfChart.Legend>
+                            <chart:LineSeries ItemsSource="{Binding ListOfLogs}" Label="Blood Glucose" XBindingPath="LogDate.DateTime" YBindingPath="Amount">
+                                <chart:LineSeries.DataMarker>
+                                    <chart:ChartDataMarker />
+                                </chart:LineSeries.DataMarker>
+                            </chart:LineSeries>
+                        </chart:SfChart>
+                        <chart:SfChart VerticalOptions="FillAndExpand">
+                            <chart:SfChart.Title>
+                                <chart:ChartTitle Text="Blood Glucose Targets">
+                                </chart:ChartTitle>
+                            </chart:SfChart.Title>
+                            <chart:SfChart.Legend>
+                                <chart:ChartLegend>
+                                </chart:ChartLegend>
+                            </chart:SfChart.Legend>
+                            <chart:DoughnutSeries x:Name="BGChart" ItemsSource="{Binding BGChartData}" Label="Blood Glucose" XBindingPath="LevelType" YBindingPath="BGTargetCounts" DataMarkerPosition="OutsideExtended" DoughnutCoefficient="0.7">
+                                <chart:DoughnutSeries.DataMarker>
+                                    <chart:ChartDataMarker LabelContent="Percentage">
+                                        <chart:ChartDataMarker.LabelStyle>
+                                            <chart:DataMarkerLabelStyle TextColor="White" />
+                                        </chart:ChartDataMarker.LabelStyle>
+                                    </chart:ChartDataMarker>
+                                </chart:DoughnutSeries.DataMarker>
+                            </chart:DoughnutSeries>
+                        </chart:SfChart>
+                    </StackLayout>
+                </ScrollView>
+            </tabView:SfTabItem.Content>
+        </tabView:SfTabItem>
+        <tabView:SfTabItem Title="Food Item" SelectionColor="White" TitleFontAttributes="Bold" TitleFontColor="DeepSkyBlue">
+            <tabView:SfTabItem.Content>
+                <StackLayout>
+                    <chart:SfChart VerticalOptions="FillAndExpand">
+                        <chart:SfChart.Title>
+                            <chart:ChartTitle Text="Carbohydrate Count">
+                            </chart:ChartTitle>
+                        </chart:SfChart.Title>
+                        <chart:SfChart.ColorModel>
+                            <chart:ChartColorModel Palette="Metro">
+                            </chart:ChartColorModel>
+                        </chart:SfChart.ColorModel>
+                        <chart:SfChart.ChartBehaviors>
+                            <chart:ChartZoomPanBehavior ZoomMode="X" />
+                        </chart:SfChart.ChartBehaviors>
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:DateTimeCategoryAxis Interval="0.1" IntervalType="Days" EdgeLabelsDrawingMode="Center" AutoScrollingDelta="5">
+                                <chart:DateTimeCategoryAxis.LabelStyle>
+                                    <chart:ChartAxisLabelStyle Margin="3" />
+                                </chart:DateTimeCategoryAxis.LabelStyle>
+                            </chart:DateTimeCategoryAxis>
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis>
+                                <chart:NumericalAxis.Title>
+                                    <chart:ChartAxisTitle Text="Carbohydrates" />
+                                </chart:NumericalAxis.Title>
+                            </chart:NumericalAxis>
+                        </chart:SfChart.SecondaryAxis>
+                        <chart:SfChart.Legend>
+                            <chart:ChartLegend>
+                            </chart:ChartLegend>
+                        </chart:SfChart.Legend>
+                        <chart:LineSeries ItemsSource="{Binding ListOfFoodLogs}" Label="Carbohydrates" XBindingPath="LogDate.DateTime" YBindingPath="Amount">
+                            <chart:LineSeries.DataMarker>
+                                <chart:ChartDataMarker />
+                            </chart:LineSeries.DataMarker>
+                        </chart:LineSeries>
+                    </chart:SfChart>
+                    <Label Text="{Binding DisplayOne}" Style="{StaticResource DisplayLabel}" />
+                    <Label Text="{Binding DisplayTwo}" Style="{StaticResource DisplayLabel}" />
+                </StackLayout>
+            </tabView:SfTabItem.Content>
+        </tabView:SfTabItem>
+        <tabView:SfTabItem Title="Activity" SelectionColor="White" TitleFontAttributes="Bold" TitleFontColor="DeepSkyBlue">
+            <tabView:SfTabItem.Content>
+                <Grid BackgroundColor="Blue" x:Name="FavoritesGrid" />
+            </tabView:SfTabItem.Content>
+        </tabView:SfTabItem>
+    </tabView:SfTabView>
 </ContentPage>

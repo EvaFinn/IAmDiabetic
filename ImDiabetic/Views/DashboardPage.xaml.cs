@@ -33,7 +33,7 @@ namespace ImDiabetic.Views
             var goalsTap = new TapGestureRecognizer();
             goalsTap.Tapped += async (sender, e) =>
             {
-                stckGoals.BackgroundColor = Color.DeepSkyBlue;
+                stckGoals.BackgroundColor = Color.White;
                 await Navigation.PushAsync(new GoalsPage(User));
                 DefaultBackground();
             };
@@ -42,7 +42,7 @@ namespace ImDiabetic.Views
             var logsTap = new TapGestureRecognizer();
             logsTap.Tapped += async (sender, e) =>
             {
-                stckLogs.BackgroundColor = Color.DeepSkyBlue;
+                stckLogs.BackgroundColor = Color.White;
                 await Navigation.PushAsync(new LogsPage(User));
                 DefaultBackground();
             };
@@ -52,7 +52,7 @@ namespace ImDiabetic.Views
             trendsTap.Tapped += async (sender, e) =>
             {
                 ;
-                stckTrends.BackgroundColor = Color.DeepSkyBlue;
+                stckTrends.BackgroundColor = Color.White;
                 await Navigation.PushAsync(new TrendPage(User));
                 DefaultBackground();
             };
@@ -61,7 +61,7 @@ namespace ImDiabetic.Views
             var moreTap = new TapGestureRecognizer();
             moreTap.Tapped += async (sender, e) =>
             {
-                stckMore.BackgroundColor = Color.DeepSkyBlue;
+                stckMore.BackgroundColor = Color.White;
                 await Navigation.PushAsync(new MorePage(User));
                 DefaultBackground();
             };
@@ -70,10 +70,10 @@ namespace ImDiabetic.Views
 
         public void DefaultBackground()
         {
-            stckGoals.BackgroundColor = Color.White;
-            stckLogs.BackgroundColor = Color.White;
-            stckTrends.BackgroundColor = Color.White;
-            stckMore.BackgroundColor = Color.White;
+            stckGoals.BackgroundColor = Color.DeepSkyBlue;
+            stckLogs.BackgroundColor = Color.DeepSkyBlue;
+            stckTrends.BackgroundColor = Color.DeepSkyBlue;
+            stckMore.BackgroundColor = Color.DeepSkyBlue;
         }
 
         protected override bool OnBackButtonPressed()

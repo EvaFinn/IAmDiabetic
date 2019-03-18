@@ -16,6 +16,7 @@ namespace ImDiabetic.ViewModels
         public string Pills { get; set; }
         public string Activity { get; set; }
         public string Carbs { get; set; }
+        public string Calorie { get; set; }
         public Log Log { get; set; }
         //private BloodGlucoseLog bloodGlucoseLog;
         //private InsulinLog insulinLog;
@@ -56,7 +57,7 @@ namespace ImDiabetic.ViewModels
             realm.Write(() =>
             {
                 //Log log = new Log { UserId = User.Id, LogDate = DateTime.Now, BloodGlucose = BloodGlucose, Insulin = Insulin, Pills = Pills, Carbs = Carbs, Activity = Activity };
-                Log log = new Log { UserId = User.Id, LogDate = DateTime.Now, Type = LogType, Amount = Amount };
+                Log log = new Log { UserId = User.Id, LogDate = DateTime.Now, Type = LogType, Amount = Amount, Calorie = Calorie };
                 realm.Add(log);
             });
         }

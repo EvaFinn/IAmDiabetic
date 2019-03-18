@@ -6,6 +6,7 @@
             <Color x:Key="BodyTextColor">#C3C3C3</Color>
             <Color x:Key="ButtonBackgroundColor">#5992FF</Color>
             <Color x:Key="BackgroundColor">White</Color>
+            <Color x:Key="DisplayColor">Red</Color>
 
             <!--  font families  -->
             <OnPlatform x:Key="RegularFontFamily" x:TypeArguments="x:String">
@@ -32,6 +33,13 @@
             <x:Double x:Key="ButtonFontSize">14</x:Double>
 
             <!--  styles  -->
+            <Style x:Key="DisplayLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource DisplayColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource RegularFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource TitleFontSize}" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>v
+            
             <Style x:Key="ProfileNameLabel" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource HeaderTextColor}" />
                 <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />

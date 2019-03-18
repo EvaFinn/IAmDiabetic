@@ -10,6 +10,7 @@ using Syncfusion.SfNumericUpDown.XForms.iOS;
 using Syncfusion.SfPdfViewer.XForms.iOS;
 using Syncfusion.XForms.iOS.Buttons;
 using Syncfusion.XForms.iOS.ProgressBar;
+using Syncfusion.XForms.iOS.TabView;
 using UIKit;
 using UserNotifications;
 
@@ -60,6 +61,7 @@ namespace ImDiabetic.iOS
             SfCheckBoxRenderer.Init();
             SfPdfDocumentViewRenderer.Init();
             SfNumericUpDownRenderer.Init();
+            SfTabViewRenderer.Init();
             // Add the below line if you are using SfLinearProgressBar.
             SfLinearProgressBarRenderer.Init();
             // Add the below line if you are using SfCircularProgressBar.  
