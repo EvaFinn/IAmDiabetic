@@ -8,6 +8,7 @@ using System.IO;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
+using Acr.UserDialogs;
 //using Lottie.Forms.Droid;
 
 namespace ImDiabetic.Droid
@@ -28,6 +29,7 @@ namespace ImDiabetic.Droid
             base.OnCreate(savedInstanceState);
             Instance = this;
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
+            UserDialogs.Init(this);
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
             //AnimationViewRenderer.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

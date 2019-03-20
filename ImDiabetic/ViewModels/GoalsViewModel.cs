@@ -87,7 +87,7 @@ namespace ImDiabetic.ViewModels
                 Goal = newGoal;
                 realm.Add(newGoal);
             });
-            GetGoals();
+            //GetGoals();
         }
 
         public void DeleteGoal(Goal goal)
@@ -96,7 +96,7 @@ namespace ImDiabetic.ViewModels
             {
                 realm.Remove(goal);
             });
-            GetGoals();
+            //GetGoals();
         }
 
         public void UpdateGoal(Goal goal)

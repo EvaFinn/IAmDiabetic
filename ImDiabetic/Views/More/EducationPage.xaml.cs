@@ -22,6 +22,10 @@ namespace ImDiabetic.Views.More
             InitializeComponent();
             User = user;
             this.BindingContext = new EducationContentViewModel(user, "topic");
+            var template = new DataTemplate(typeof(TextCell));
+            template.SetValue(TextCell.TextColorProperty, Color.DeepSkyBlue);
+            template.SetBinding(TextCell.TextProperty, ".");
+            listView.ItemTemplate = template;
         }
 
         void OnItemTapped(object sender, ItemTappedEventArgs e)

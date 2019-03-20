@@ -49,16 +49,16 @@ namespace ImDiabetic.Views
             {
                 (BindingContext as GoalsViewModel).UpdateGoal(Goal);
             }
-            //await Navigation.PushAsync(new GoalsPage(User));
-            await Navigation.PopAsync();
+            await Navigation.PushAsync(new GoalsPage(User));
+            //await Navigation.PopAsync();
         }
 
         async void OnDeleteClicked(object sender, EventArgs e)
         {
             (BindingContext as GoalsViewModel).DeleteGoal(Goal);
             //TODO fix: doesn't update list
-            //await Navigation.PushAsync(new GoalsPage(User));
-            await Navigation.PopAsync();
+            await Navigation.PushAsync(new GoalsPage(User));
+            //await Navigation.PopAsync();
         }
 
         async void OnCancelClicked(object sender, EventArgs e)

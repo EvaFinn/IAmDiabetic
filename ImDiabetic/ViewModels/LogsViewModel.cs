@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using ImDiabetic.Models;
 using ImDiabetic.Models.Logbook;
@@ -18,12 +21,9 @@ namespace ImDiabetic.ViewModels
         public string Carbs { get; set; }
         public string Calorie { get; set; }
         public Log Log { get; set; }
-        //private BloodGlucoseLog bloodGlucoseLog;
-        //private InsulinLog insulinLog;
-        //private MedicationLog medicationLog;
-        //private FoodLog foodLog;
-        //private ActivityLog activityLog;
         public int LastBloogGlucoseLog { get; set; }
+        public int LastActivityLog { get; set; }
+
 
         public LogsViewModel(AppUser user)
         {
@@ -37,18 +37,33 @@ namespace ImDiabetic.ViewModels
             if (logs.Count() < 1)
             {
                 LastBloogGlucoseLog = 0;
+                LastActivityLog = 0;
             }
             else
             {
                 List<Log> BGList = new List<Log>();
+                List<Log> AList = new List<Log>();
+
                 foreach (Log log in logs)
                 {
-                    if(log.Type == "Blood Glucose") {
+                    if (log.Type == "Blood Glucose")
+                    {
                         BGList.Add(log);
+                    } 
+                    if(log.Type == "Activity") {
+                        AList.Add(log);
+                    }
+
+                    if (BGList.Count > 0)
+                    {
+                        LastBloogGlucoseLog = int.Parse(BGList.Last().Amount);
+                    }
+
+                    if (AList.Count > 0)
+                    {
+                        LastActivityLog = int.Parse(AList.Last().Amount);
                     }
                 }
-                //LastBloogGlucoseLog = int.Parse(logs.Last().BloodGlucose);
-                LastBloogGlucoseLog = int.Parse(BGList.Last().Amount);
             }
         }
 
@@ -56,7 +71,6 @@ namespace ImDiabetic.ViewModels
         {
             realm.Write(() =>
             {
-                //Log log = new Log { UserId = User.Id, LogDate = DateTime.Now, BloodGlucose = BloodGlucose, Insulin = Insulin, Pills = Pills, Carbs = Carbs, Activity = Activity };
                 Log log = new Log { UserId = User.Id, LogDate = DateTime.Now, Type = LogType, Amount = Amount, Calorie = Calorie };
                 realm.Add(log);
             });

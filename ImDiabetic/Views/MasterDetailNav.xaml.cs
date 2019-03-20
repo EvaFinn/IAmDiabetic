@@ -66,10 +66,18 @@ namespace ImDiabetic.Views
 
                 new MasterMenuItems()
                 {
-                    Text = "Settings",
+                    Text = "Reminders",
                     ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rocket.png"),
-                    TargetPage = typeof(SettingsPage)
+                    TargetPage = typeof(RemindersListPage)
                 }
+                //,
+
+                //new MasterMenuItems()
+                //{
+                //    Text = "Settings",
+                //    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rocket.png"),
+                //    TargetPage = typeof(SettingsPage)
+                //}
             };
             return list;
         }

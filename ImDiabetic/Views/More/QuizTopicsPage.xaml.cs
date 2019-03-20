@@ -20,6 +20,10 @@ namespace ImDiabetic.Views.More
             string[] questionTopics = GetQustionTopics();
 
             this.BindingContext = questionTopics.Distinct().ToArray();
+            var template = new DataTemplate(typeof(TextCell));
+            template.SetValue(TextCell.TextColorProperty, Color.DeepSkyBlue);
+            template.SetBinding(TextCell.TextProperty, ".");
+            listView.ItemTemplate = template;
         }
 
         private string[] GetQustionTopics()

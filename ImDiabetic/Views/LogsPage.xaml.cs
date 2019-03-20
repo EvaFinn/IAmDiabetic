@@ -21,7 +21,7 @@ namespace ImDiabetic.Views
             BindingContext = new LogsViewModel(user);
             User = (BindingContext as LogsViewModel).User;
             bloodglucose.Value = (BindingContext as LogsViewModel).LastBloogGlucoseLog;
-
+            timeStep.Value = (BindingContext as LogsViewModel).LastActivityLog;
 
             insulinEntry.IsVisible = false;
             insulinLabel.IsVisible = false;
@@ -33,7 +33,8 @@ namespace ImDiabetic.Views
             bgLabel.IsVisible = false;
             bgThing.IsVisible = false;
             saveBtn.IsEnabled = false;
-
+            timeStep.IsVisible = false;
+            activityLabel.IsVisible = false;
         }
 
         private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
@@ -43,44 +44,64 @@ namespace ImDiabetic.Views
 
             if (selectedIndex != -1)
             {
-                if (picker.SelectedItem.ToString() == "Blood Glucose")
+                switch (picker.SelectedItem.ToString())
                 {
-                    insulinEntry.IsVisible = false;
-                    insulinLabel.IsVisible = false;
-                    carbsEntry.IsVisible = false;
-                    carbsLabel.IsVisible = false;
-                    calEntry.IsVisible = false;
-                    calLabel.IsVisible = false;
-                    scanBtn.IsVisible = false;
-                    bgLabel.IsVisible = true;
-                    bgThing.IsVisible = true;
-                    saveBtn.IsEnabled = true;
-                }
-                else if (picker.SelectedItem.ToString() == "Food Item")
-                {
-                    insulinEntry.IsVisible = false;
-                    insulinLabel.IsVisible = false;
-                    bgLabel.IsVisible = false;
-                    bgThing.IsVisible = false;
-                    carbsEntry.IsVisible = true;
-                    carbsLabel.IsVisible = true;
-                    calEntry.IsVisible = true;
-                    calLabel.IsVisible = true;
-                    scanBtn.IsVisible = true;
-                    saveBtn.IsEnabled = true;
-                }
-                else
-                {
-                    insulinEntry.IsVisible = true;
-                    insulinLabel.IsVisible = true;
-                    bgLabel.IsVisible = false;
-                    bgThing.IsVisible = false;
-                    carbsEntry.IsVisible = false;
-                    carbsLabel.IsVisible = false;
-                    calEntry.IsVisible = false;
-                    calLabel.IsVisible = false;
-                    scanBtn.IsVisible = false;
-                    saveBtn.IsEnabled = true;
+                    case "Blood Glucose":
+                        insulinEntry.IsVisible = false;
+                        insulinLabel.IsVisible = false;
+                        carbsEntry.IsVisible = false;
+                        carbsLabel.IsVisible = false;
+                        calEntry.IsVisible = false;
+                        calLabel.IsVisible = false;
+                        scanBtn.IsVisible = false;
+                        bgLabel.IsVisible = true;
+                        bgThing.IsVisible = true;
+                        saveBtn.IsEnabled = true;
+                        timeStep.IsVisible = false;
+                        activityLabel.IsVisible = false;
+                        break;
+                    case "Food Item":
+                        insulinEntry.IsVisible = false;
+                        insulinLabel.IsVisible = false;
+                        bgLabel.IsVisible = false;
+                        bgThing.IsVisible = false;
+                        carbsEntry.IsVisible = true;
+                        carbsLabel.IsVisible = true;
+                        calEntry.IsVisible = true;
+                        calLabel.IsVisible = true;
+                        scanBtn.IsVisible = true;
+                        saveBtn.IsEnabled = true;
+                        timeStep.IsVisible = false;
+                        activityLabel.IsVisible = false;
+                        break;
+                    case "Activity":
+                        insulinEntry.IsVisible = false;
+                        insulinLabel.IsVisible = false;
+                        calEntry.IsVisible = false;
+                        calLabel.IsVisible = false;
+                        carbsEntry.IsVisible = false;
+                        carbsLabel.IsVisible = false;
+                        scanBtn.IsVisible = false;
+                        bgLabel.IsVisible = false;
+                        bgThing.IsVisible = false;
+                        saveBtn.IsEnabled = true;
+                        timeStep.IsVisible = true;
+                        activityLabel.IsVisible = true;
+                        break;
+                    default:
+                        insulinEntry.IsVisible = true;
+                        insulinLabel.IsVisible = true;
+                        bgLabel.IsVisible = false;
+                        bgThing.IsVisible = false;
+                        carbsEntry.IsVisible = false;
+                        carbsLabel.IsVisible = false;
+                        calEntry.IsVisible = false;
+                        calLabel.IsVisible = false;
+                        scanBtn.IsVisible = false;
+                        saveBtn.IsEnabled = true;
+                        timeStep.IsVisible = false;
+                        activityLabel.IsVisible = false;
+                        break;
                 }
             }
         }
@@ -105,8 +126,6 @@ namespace ImDiabetic.Views
             ScannerPage.OnScanResult += (result) =>
             {
                 ScannerPage.IsScanning = false;
-
-                // Pop the page and show the result
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Navigation.PopAsync();

@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using ImDiabetic.Models;
 
 namespace ImDiabetic.ViewModels
@@ -15,6 +18,7 @@ namespace ImDiabetic.ViewModels
         public int PointsNeeded { get; set; }
         public int CurrentLevel { get; set; }
         public byte[] Photo { get; set; }
+        public List<TopicTargetData> Data { get; set; } = new List<TopicTargetData>();
 
         public ProfileViewModel(AppUser user)
         {
@@ -28,6 +32,41 @@ namespace ImDiabetic.ViewModels
             DisplayPoints = Points + "/" + PointsNeeded;
             Info = User.Age + ", " + User.Gender;
             Photo = User.ProfilePicture;
+            TopicChartInit();
+        }
+
+        private void TopicChartInit()
+        {
+            int manCount = 0;
+            int bgCount = 0;
+            var quiz = realm.All<Quiz>().Where(q => q.UserId == User.Id);
+            foreach (Quiz q in quiz)
+            {
+                Debug.WriteLine("Topic : " + q.Topic);
+                if (q.Score == "3")
+                {
+                    Debug.WriteLine("FULL SCORE!");
+                    switch (q.Topic) {
+                        case "Management":
+                            manCount++;
+                            break;
+                        case "Blood Glucose":
+                            bgCount++;
+                            break;
+                        default:
+                            break;
+                    }
+                    //if (q.Topic == "Management") { manCount++; }
+                    //else if (q.Topic == "Blood Glucose") { bgCount++; }
+                    //else { }
+                }
+            }
+            Data.Add(new TopicTargetData { TopicCount = manCount, Topic = "MANAGEMENT" });
+            Data.Add(new TopicTargetData { TopicCount = bgCount, Topic = "BLOOD GLUCOSE" });
+            Data.Add(new TopicTargetData { TopicCount = 0, Topic = "TOPIC1" });
+            Data.Add(new TopicTargetData { TopicCount = 0, Topic = "TOPIC2" });
+            Data.Add(new TopicTargetData { TopicCount = 0, Topic = "TOPIC3" });
+
         }
 
         public void ReadFully(Stream input)
@@ -45,8 +84,13 @@ namespace ImDiabetic.ViewModels
                 {
                     User.ProfilePicture = Photo;
                 });
-                //return Photo;
             }
         }
+    }
+
+    public class TopicTargetData
+    {
+        public int TopicCount { get; set; }
+        public string Topic { get; set; }
     }
 }

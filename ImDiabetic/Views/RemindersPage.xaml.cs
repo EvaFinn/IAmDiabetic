@@ -19,8 +19,8 @@ namespace ImDiabetic.Views
             User = user;
             this.BindingContext = new RemindersViewModel(User);
             SendButton.IsEnabled = false;
+            DeleteBtn.IsVisible = false;
             IsNew = true;
-            //if()
         }
 
         public RemindersPage(AppUser user, Reminders reminders)
@@ -43,7 +43,7 @@ namespace ImDiabetic.Views
             {
                 (BindingContext as RemindersViewModel).UpdateReminders(Reminder);
             }
-            Navigation.PopAsync();
+            Navigation.PushAsync(new RemindersListPage(User));
         }
 
         private void DeleteButtonClicked(object sender, EventArgs e)

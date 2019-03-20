@@ -1,33 +1,47 @@
-
-  [
-    {
-      "Name": "3 Day Streak",
-      "Description": "Your daily streak has reached 3 days!",
-      "PointsAwarded": "20"
-    },
-    {
-      "Name": "7 Day Streak",
-      "Description": "Your daily streak has reached 7 days!",
-      "PointsAwarded": "25"
-    },
-    {
-      "Name": "14 Day Streak",
-      "Description": "Your daily streak has reached 14 days!",
-      "PointsAwarded": "50"
-    },
-    {
-      "Name": "Regular Logger",
-      "Description": "You have logged 3 times in one day!",
-      "PointsAwarded": "20"
-    },
-    {
-      "Name": "Good Logger",
-      "Description": "You have logged 3 times a day for a whole week!",
-      "PointsAwarded": "25"
-    },
-    {
-      "Name": "Amazing Logger",
-      "Description": "You have logged 3 times a day for two weeks!",
-      "PointsAwarded": "50"
-    }
-   ]
+[
+  {
+    "Name": "3 Day Streak",
+    "Description": "Your daily streak has reached 3 days!",
+    "PointsAwarded": "20"
+  },
+  {
+    "Name": "7 Day Streak",
+    "Description": "Your daily streak has reached 7 days!",
+    "PointsAwarded": "25"
+  },
+  {
+    "Name": "14 Day Streak",
+    "Description": "Your daily streak has reached 14 days!",
+    "PointsAwarded": "50"
+  },
+  {
+    "Name": "Blood Glucose Logger",
+    "Description": "You have logged blood glucose test results 3 times in one day!",
+    "PointsAwarded": "20"
+  },
+  {
+    "Name": "Amazing Blood Glucose Logger",
+    "Description": "You have logged blood glucose test results 3 times a day for a whole week!",
+    "PointsAwarded": "25"
+  },
+  {
+    "Name": "Endurance Logging",
+    "Description": "You have made 5 logs per day for a week!",
+    "PointsAwarded": "50"
+  },
+  {
+    "Name": "Get That Food",
+    "Description": "You have made 3 food entires per day for a week!",
+    "PointsAwarded": "25"
+  },
+  {
+    "Name": "Active Life",
+    "Description": "You have logged at least 30 minutes exercise or activity within 24 hours",
+    "PointsAwarded": "20"
+  },
+  {
+    "Name": "Quiz Master",
+    "Description": "You have completed an available quiz!",
+    "PointsAwarded": "20"
+  }
+]

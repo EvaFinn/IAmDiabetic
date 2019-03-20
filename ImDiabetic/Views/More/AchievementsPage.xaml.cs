@@ -21,6 +21,10 @@ namespace ImDiabetic.Views.More
             //this.BindingContext = new AchievementsViewModel(user);
             string[] Achievements = GetAchievements();
             this.BindingContext = Achievements.Distinct().ToArray();
+            var template = new DataTemplate(typeof(TextCell));
+            template.SetValue(TextCell.TextColorProperty, Color.DeepSkyBlue);
+            template.SetBinding(TextCell.TextProperty, ".");
+            listView.ItemTemplate = template;
         }
 
         void OnItemTapped(object sender, ItemTappedEventArgs e)

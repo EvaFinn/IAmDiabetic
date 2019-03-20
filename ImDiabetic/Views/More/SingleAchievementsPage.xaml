@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.Views.More.SingleAchievementsPage">
-    <StackLayout x:Name="slQuestion" IsVisible="true" HorizontalOptions="Center" VerticalOptions="Center">
+    <StackLayout x:Name="slAchieve" IsVisible="true" HorizontalOptions="Center" VerticalOptions="Center">
         <StackLayout>
             <Label x:Name="achName" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" Text="{Binding Name}" />
             <Label x:Name="achDesc" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" Text="{Binding Description}" />

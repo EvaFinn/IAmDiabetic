@@ -14,6 +14,7 @@ namespace ImDiabetic.Views
         public AppUser User { get; set; }
         public GoalsPage(AppUser user)
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             User = user;
             this.BindingContext = new GoalsViewModel(User);
@@ -22,6 +23,14 @@ namespace ImDiabetic.Views
             //    listView.ItemsSource = (BindingContext as GoalsViewModel).Goals;
             //}
             //checkImg.Source = ImageSource.FromResource("ImDiabetic.Icons.checked.png");
+        }
+
+        protected override void OnAppearing()
+        {
+            //if ((BindingContext as GoalsViewModel).Goals != null)
+            //{
+            listView.ItemsSource = (BindingContext as GoalsViewModel).Goals;
+            //}
         }
 
         async void OnItemAdded(object sender, EventArgs e)
@@ -38,22 +47,14 @@ namespace ImDiabetic.Views
             ((ListView)sender).SelectedItem = null;
         }
 
-        //async void OnBack(object sender, EventArgs e)
-        //{
-        //    await Navigation.PushAsync(new DashboardPage(User));
-        //}
+        async void OnBack(object sender, EventArgs e)
+        {
+            await Navigation.PopToRootAsync();
+        }
 
         protected override bool OnBackButtonPressed()
         {
-            //Device.BeginInvokeOnMainThread(async () =>
-            //{
-
-            //    base.OnBackButtonPressed();
-
-            //    await Navigation.PushAsync(new DashboardPage(User));
-
-            //});
-            return false;
+            return true;
         }
     }
 }

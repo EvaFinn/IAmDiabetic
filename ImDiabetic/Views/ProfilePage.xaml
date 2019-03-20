@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" x:Class="ImDiabetic.Views.ProfilePage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" x:Class="ImDiabetic.Views.ProfilePage">
     <ScrollView Margin="0,20,0,0">
-        <Grid ColumnSpacing="0" RowSpacing="0">
+        <Grid ColumnSpacing="0" RowSpacing="0" BackgroundColor="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="AUTO" />
                 <RowDefinition Height="AUTO" />
@@ -37,8 +37,21 @@
                     <Label Text="Points" Style="{StaticResource StatsCaptionLabel}" />
                 </StackLayout>
             </Grid>
-            <ScrollView Grid.Row="3">
-                <Label Margin="20,0" HorizontalTextAlignment="Center" Style="{StaticResource MainBodyLabel}" Text="Main body? Not sure, maybe analyse your quiz topics in a graph? And I'll put in your trophies and shit here too, nice and graphically" />
+            <ScrollView Grid.Row="3" Orientation="Vertical" Padding="0" VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label Margin="20,0" HorizontalTextAlignment="Center" Style="{StaticResource MainBodyLabel}" Text="Main body? Analyse quiz topics in a graph, put in trophies, etc." />
+                    <chart:SfChart VerticalOptions="FillAndExpand" HeightRequest="300" WidthRequest="300">
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:CategoryAxis />
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis />
+                        </chart:SfChart.SecondaryAxis>
+                        <chart:RadarSeries ItemsSource="{Binding Data}" XBindingPath="Topic" YBindingPath="TopicCount" Color="DeepSkyBlue" StrokeColor="Blue" Opacity="0.7" />
+                    </chart:SfChart>
+                    <Label Margin="20,0" HorizontalTextAlignment="Center" Style="{StaticResource MainBodyLabel}" Text="Main body? Analyse quiz topics in a graph, put in trophies, etc." />
+                    <Label Margin="20,0" HorizontalTextAlignment="Center" Style="{StaticResource MainBodyLabel}" Text="Main body? Analyse quiz topics in a graph, put in trophies, etc." />
+                </StackLayout>
             </ScrollView>
         </Grid>
     </ScrollView>

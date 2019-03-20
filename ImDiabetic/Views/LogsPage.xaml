@@ -2,7 +2,7 @@
 <ContentPage Title="Logs" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms" x:Class="ImDiabetic.Views.LogsPage">
     <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
         <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
-            <Label Text="Make sure you choose a Log type!" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Make sure you choose a Log type!" HorizontalOptions="CenterAndExpand" />
             <Picker x:Name="typepicker" Title="Log Type" WidthRequest="200" SelectedItem="{Binding LogType}" SelectedIndexChanged="OnPickerSelectedIndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
@@ -35,13 +35,13 @@
             </StackLayout>
             <Label x:Name="insulinLabel" Text="AMOUNT" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" />
             <Entry x:Name="insulinEntry" Text="{Binding Amount}" WidthRequest="150" Placeholder="Unit" Grid.Row="1" Grid.Column="1" />
-            
-             <Label x:Name="calLabel" Text="CALORIES" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" />
+            <Label x:Name="activityLabel" Text="MINUTES" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" />
+
+            <numeric:SfNumericUpDown x:Name="timeStep" Minimum="0" Value="{Binding Amount}" Grid.Row="1" Grid.Column="1" StepValue="5" />
+            <Label x:Name="calLabel" Text="CALORIES" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" />
             <Entry x:Name="calEntry" Text="{Binding Calorie}" WidthRequest="150" Placeholder="kcal" Grid.Row="2" Grid.Column="1" />
-            
             <Label x:Name="carbsLabel" Text="CARBS" Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center" />
             <Entry x:Name="carbsEntry" Text="{Binding Amount}" WidthRequest="150" Placeholder="g" Grid.Row="3" Grid.Column="1" />
-            
             <Button x:Name="scanBtn" Text="Scan" Grid.Row="3" Grid.Column="2" WidthRequest="40" HeightRequest="10" Clicked="ScanClick" />
             <Button x:Name="saveBtn" Text="Save" Grid.Row="5" Grid.Column="1" Clicked="Handle_Clicked" />
         </Grid>
