@@ -56,16 +56,13 @@ namespace ImDiabetic.ViewModels
                         default:
                             break;
                     }
-                    //if (q.Topic == "Management") { manCount++; }
-                    //else if (q.Topic == "Blood Glucose") { bgCount++; }
-                    //else { }
                 }
             }
             Data.Add(new TopicTargetData { TopicCount = manCount, Topic = "MANAGEMENT" });
             Data.Add(new TopicTargetData { TopicCount = bgCount, Topic = "BLOOD GLUCOSE" });
-            Data.Add(new TopicTargetData { TopicCount = 0, Topic = "TOPIC1" });
-            Data.Add(new TopicTargetData { TopicCount = 0, Topic = "TOPIC2" });
-            Data.Add(new TopicTargetData { TopicCount = 0, Topic = "TOPIC3" });
+            Data.Add(new TopicTargetData { TopicCount = 2, Topic = "INSULIN" });
+            Data.Add(new TopicTargetData { TopicCount = 3, Topic = "DIABETES TYPE" });
+            Data.Add(new TopicTargetData { TopicCount = 5, Topic = "NUTRITION" });
 
         }
 

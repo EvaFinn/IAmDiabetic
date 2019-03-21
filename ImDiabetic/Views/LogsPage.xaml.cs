@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using ImDiabetic.Models;
 using ImDiabetic.ViewModels;
+using Syncfusion.XForms.Buttons;
 using Xamarin.Forms;
 
 using ZXing.Net.Mobile.Forms;
@@ -37,16 +38,15 @@ namespace ImDiabetic.Views
             activityLabel.IsVisible = false;
         }
 
-        private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        private void RadioButton_StateChanged(object sender, StateChangedEventArgs e)
         {
-            var picker = (Picker)sender;
-            int selectedIndex = picker.SelectedIndex;
-
-            if (selectedIndex != -1)
+            if (e.IsChecked.HasValue && e.IsChecked.Value)
             {
-                switch (picker.SelectedItem.ToString())
+                string text = (sender as SfRadioButton).Text;
+                switch (text)
                 {
                     case "Blood Glucose":
+                        (BindingContext as LogsViewModel).LogType = "Blood Glucose";
                         insulinEntry.IsVisible = false;
                         insulinLabel.IsVisible = false;
                         carbsEntry.IsVisible = false;
@@ -61,6 +61,7 @@ namespace ImDiabetic.Views
                         activityLabel.IsVisible = false;
                         break;
                     case "Food Item":
+                        (BindingContext as LogsViewModel).LogType = "Food Item";
                         insulinEntry.IsVisible = false;
                         insulinLabel.IsVisible = false;
                         bgLabel.IsVisible = false;
@@ -75,6 +76,7 @@ namespace ImDiabetic.Views
                         activityLabel.IsVisible = false;
                         break;
                     case "Activity":
+                        (BindingContext as LogsViewModel).LogType = "Activity";
                         insulinEntry.IsVisible = false;
                         insulinLabel.IsVisible = false;
                         calEntry.IsVisible = false;
@@ -88,7 +90,8 @@ namespace ImDiabetic.Views
                         timeStep.IsVisible = true;
                         activityLabel.IsVisible = true;
                         break;
-                    default:
+                    case "Insulin":
+                        (BindingContext as LogsViewModel).LogType = "Insulin";
                         insulinEntry.IsVisible = true;
                         insulinLabel.IsVisible = true;
                         bgLabel.IsVisible = false;
@@ -102,21 +105,32 @@ namespace ImDiabetic.Views
                         timeStep.IsVisible = false;
                         activityLabel.IsVisible = false;
                         break;
+                    case "Medication":
+                        (BindingContext as LogsViewModel).LogType = "Medication";
+                        insulinEntry.IsVisible = true;
+                        insulinLabel.IsVisible = true;
+                        bgLabel.IsVisible = false;
+                        bgThing.IsVisible = false;
+                        carbsEntry.IsVisible = false;
+                        carbsLabel.IsVisible = false;
+                        calEntry.IsVisible = false;
+                        calLabel.IsVisible = false;
+                        scanBtn.IsVisible = false;
+                        saveBtn.IsEnabled = true;
+                        timeStep.IsVisible = false;
+                        activityLabel.IsVisible = false;
+                        break;
+                    default:
+                        break;
                 }
             }
         }
 
+
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
-            if (typepicker.SelectedItem != null)
-            {
-                (BindingContext as LogsViewModel).AddLog();
-                await Navigation.PushAsync(new MasterDetailNav(User));
-            }
-            else
-            {
-                await DisplayAlert("Error", "Must set log type", "OK");
-            }
+            (BindingContext as LogsViewModel).AddLog();
+            await Navigation.PushAsync(new MasterDetailNav(User));
         }
 
         private async void ScanClick(object sender, EventArgs e)

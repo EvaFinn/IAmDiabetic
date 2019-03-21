@@ -60,13 +60,12 @@ namespace ImDiabetic.iOS
             SfListViewRenderer.Init();
             SfButtonRenderer.Init();
             SfCheckBoxRenderer.Init();
+            SfRadioButtonRenderer.Init();
             SfPdfDocumentViewRenderer.Init();
             SfNumericUpDownRenderer.Init();
             SfTabViewRenderer.Init();
             SfPickerRenderer.Init();
-            // Add the below line if you are using SfLinearProgressBar.
             SfLinearProgressBarRenderer.Init();
-            // Add the below line if you are using SfCircularProgressBar.  
             SfCircularProgressBarRenderer.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);

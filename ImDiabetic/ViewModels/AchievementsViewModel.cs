@@ -72,6 +72,7 @@ namespace ImDiabetic.ViewModels
         {
             CheckLoggerAchievements();
             CheckLoggerAchievementsTwo();
+
             CheckDailyStreak(3);
             CheckDailyStreak(7);
             CheckDailyStreak(14);
@@ -80,17 +81,17 @@ namespace ImDiabetic.ViewModels
         private void CheckLoggerAchievements()
         {
             //if isachieved == false
-            int sevendaycheck = 0;
-            int fourteendaycheck = 0;
+            //int sevendaycheck = 0;
+            //int fourteendaycheck = 0;
             var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
             if (logs.Count() > 0)
             {
                 List<Log> todaysLogs = new List<Log>();
                 //TimeSpan = DateTimeOffset.Now.Subtract((DateTimeOffset.Now.Day - 7));
                 DateTimeOffset date = DateTimeOffset.Now;
-                Debug.WriteLine("$$$$$$$" + date);
+                Debug.WriteLine("*** date: " + date);
                 DateTimeOffset newdate = date.AddDays(-1);
-                Debug.WriteLine("$$$$$$$" + newdate);
+                Debug.WriteLine("$$$$ new date : " + newdate);
 
 
                 foreach (Log log in logs)
@@ -126,7 +127,7 @@ namespace ImDiabetic.ViewModels
                     {
                         if (log.LogDate.Day.Equals(date.Day - i))
                         {
-                            Debug.WriteLine("$$$$$$$" + (date.Day - i));
+                            Debug.WriteLine("$$$$$$$++++ datetest thing  " + (date.Day - i) + ",,,,,  " + i);
 
                             someLogs.Add(log);
                         }
@@ -139,7 +140,7 @@ namespace ImDiabetic.ViewModels
                         sevendaycheck++;
                     }
                 }
-                Debug.WriteLine("$$$$$$$ seven day cehck is: " + sevendaycheck);
+                Debug.WriteLine("$$$$$$$ seven day check is: " + sevendaycheck);
 
                 //set is achieved to true
             }
@@ -149,7 +150,20 @@ namespace ImDiabetic.ViewModels
         {
             if (User.DailyStreak == checkDays)
             {
+                //if is won equals false
                 Debug.WriteLine("omg won award!!! streak is {0} long", checkDays);
+                //checkdays == 7 -> 7 days win set to true?
+                switch (checkDays) {
+                    case 3:
+                        //3 day win = true
+                        break;
+                    case 7:
+                        //7 day win = true
+                        break;
+                    case 14:
+                        //14 day win = true
+                        break;
+                }
             }
         }
     }
