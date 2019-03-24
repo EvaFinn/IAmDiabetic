@@ -63,5 +63,181 @@
       "OptionTwo": "To prevent foot injuries",
       "OptionThree": "To prevent toe nail damage",
       "Answer": "2"
+    },
+    {
+      "Question": "What is insulin?",
+      "Topic": "Insulin",
+      "OptionOne": "A source of carbohydrates",
+      "OptionTwo": "A form of hemoglobin",
+      "OptionThree": "A hormone produced by the beta cells in the pancreas by the islets of langerhans",
+      "Answer": "3"
+    },
+    {
+      "Question": "What is the age of onset for type 1 diabetes?",
+      "Topic": "Diabetes",
+      "OptionOne": "Most common in young people, but can occur at any age",
+      "OptionTwo": "Only above 65 years old",
+      "OptionThree": "Only under 10 years old",
+      "Answer": "1"
+    },
+    {
+      "Question": "What is the age of onset for type 2 diabetes?",
+      "Topic": "Diabetes",
+      "OptionOne": "Only above 65 years old",
+      "OptionTwo": "Usually age 35 or older, but can occur at any age",
+      "OptionThree": "Only under 10 years old",
+      "Answer": "2"
+    },
+    {
+      "Question": "What is the prevalance of type 1 diabetes?",
+      "Topic": "Diabetes",
+      "OptionOne": "Accounts for 5-10% of all types of diabetes",
+      "OptionTwo": "Accounts for 50% of all types of diabetes",
+      "OptionThree": "Accounts for 90-95% of all types of diabetes",
+      "Answer": "1"
+    },
+    {
+      "Question": "What is the prevalance of type 2 diabetes?",
+      "Topic": "Diabetes",
+      "OptionOne": "Accounts for 5-10% of all types of diabetes",
+      "OptionTwo": "Accounts for 50% of all types of diabetes",
+      "OptionThree": "Accounts for 90-95% of all types of diabetes",
+      "Answer": "3"
+    },
+    {
+      "Question": "What are some symptoms of type 1 diabetes?",
+      "Topic": "Diabetes",
+      "OptionOne": "Thirst, polyuria, polyphasic, fatigue, weight loss",
+      "OptionTwo": "None",
+      "OptionThree": "Frequent infections, impaired wound healing, visual changes",
+      "Answer": "1"
+    },
+    {
+      "Question": "What are some symptoms of type 2 diabetes?",
+      "Topic": "Diabetes",
+      "OptionOne": "Thirst, polyuria, polyphasic, fatigue, weight loss",
+      "OptionTwo": "Frequent infections, impaired wound healing, visual changes, Frequently none",
+      "OptionThree": "Loss of skin pigment",
+      "Answer": "2"
+    },
+    {
+      "Question": "Why is insulin minimal or absent in type 1 diabetes?",
+      "Topic": "Insulin",
+      "OptionOne": "Because of the destruction of beta cells by the body’s own T cells",
+      "OptionTwo": "Because individuals are born without a pancreas",
+      "OptionThree": "It isn't",
+      "Answer": "1"
+    },
+    {
+      "Question": "Which one is a type of insulin?",
+      "Topic": "Insulin",
+      "OptionOne": "Long acting",
+      "OptionTwo": "HbA1C",
+      "OptionThree": "None of these",
+      "Answer": "1"
+    },
+    {
+      "Question": "What does the HbA1C test indicate?",
+      "Topic": "Blood Glucose",
+      "OptionOne": "Amount of glycated haemoglobin over the life of a haemoglobin cell over the past 7-14 days",
+      "OptionTwo": "Amount of glycated haemoglobin over the life of a haemoglobin cell over the past 90-120 days",
+      "OptionThree": "Amount of glycated haemoglobin over the life of a haemoglobin cell over the past 30 days",
+      "Answer": "2"
+    },
+    {
+      "Question": "What HbA1C reading indicates diabetes?",
+      "Topic": "Blood Glucose",
+      "OptionOne": "Greater than 6.5%",
+      "OptionTwo": "Less than 6.5%",
+      "OptionThree": "Greater than 8%",
+      "Answer": "1"
+    },
+    {
+      "Question": "What kind of insulin allows type 1 diabetics to make adjustment in dosage before the meal based on current blood glucose levels and carbohydrate content of meals?",
+      "Topic": "Insulin",
+      "OptionOne": "Long acting insulin",
+      "OptionTwo": "Rapid acting insulin",
+      "OptionThree": "There is no kind that allows that",
+      "Answer": "2"
+    },
+    {
+      "Question": "If using conventional, fixed insulin regimens, what is important?",
+      "Topic": "Insulin",
+      "OptionOne": "Not using insulin at all",
+      "OptionTwo": "Incosistent amounts everyday",
+      "OptionThree": "Day to day consistency",
+      "Answer": "3"
+    },
+    {
+      "Question": "Why should individuals with type 2 diabetes look to achieve moderate weight loss?",
+      "Topic": "Management",
+      "OptionOne": "Because even a loss of 5-7% increases glycemic control",
+      "OptionTwo": "Extra weight stops the body producing insulin",
+      "OptionThree": "They shouldn't",
+      "Answer": "1"
+    },
+    {
+      "Question": "How many carbohydrates should be included in a diabetic diet?",
+      "Topic": "Nutrition",
+      "OptionOne": "100g/day minimum",
+      "OptionTwo": "50g/day minimum",
+      "OptionThree": "200g/day minimum",
+      "Answer": "2"
+    },
+    {
+      "Question": "What sources of carbohydrates should be emphasised?",
+      "Topic": "Nutrition",
+      "OptionOne": "Avoid all carbohydrates",
+      "OptionTwo": "Fizzy drinks, candy, cookies, and other desserts.",
+      "OptionThree": "Fruit, vegetables, legumes, whole grains and low fat milk",
+      "Answer": "3"
+    },
+    {
+      "Question": "How should carbohydrate intake be monitored?",
+      "Topic": "Nutrition",
+      "OptionOne": "Counting, exchanges, or experience based estimation",
+      "OptionTwo": "They don't have to be monitored",
+      "OptionThree": "I don't know",
+      "Answer": "1"
+    },
+    {
+      "Question": "What type of sweetener are recommenced for diabetics?",
+      "Topic": "Nutrition",
+      "OptionOne": "Artificial sweeteners",
+      "OptionTwo": "Natural sweeteners (sugar)",
+      "OptionThree": "No kind of sweeteners should be used",
+      "Answer": "1"
+    },
+    {
+      "Question": "How much fat should individuals on a diabetic diet consume?",
+      "Topic": "Nutrition",
+      "OptionOne": "No fat should be consumed",
+      "OptionTwo": "7% of daily intake from saturated fat, transfat should be minimised",
+      "OptionThree": "50% of daily intake from saturated fat",
+      "Answer": "2"
+    },
+    {
+      "Question": "What is one serving of carbohydrates?",
+      "Topic": "Nutrition",
+      "OptionOne": "15g",
+      "OptionTwo": "300g",
+      "OptionThree": "50g",
+      "Answer": "1"
+    },
+    {
+      "Question": "What kind of insulins should never be mixed?",
+      "Topic": "Insulin",
+      "OptionOne": "All insulin types can be mixed",
+      "OptionTwo": "Long acting insulins such as Lantus",
+      "OptionThree": "Short acting insulins such as Humulin",
+      "Answer": "2"
+    },
+    {
+      "Question": "Blood glucose is typically measured     ",
+      "Topic": "Blood Glucose",
+      "OptionOne": "Straight after a meal",
+      "OptionTwo": "1-2 hrs after a meal, or after a known amount of carbohydrate has been administered.",
+      "OptionThree": "At any time during the day",
+      "Answer": "2"
     }
    ]

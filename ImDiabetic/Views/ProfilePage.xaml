@@ -1,5 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" x:Class="ImDiabetic.Views.ProfilePage">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" 
+             xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" 
+             x:Class="ImDiabetic.Views.ProfilePage">
     <ScrollView Margin="0,20,0,0">
         <Grid ColumnSpacing="0" RowSpacing="0" BackgroundColor="White">
             <Grid.RowDefinitions>
@@ -9,9 +16,13 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="AUTO" />
             </Grid.RowDefinitions>
-            <Image Source="HeaderBackground.png" Aspect="AspectFill" />
-            <Image Source="CurvedMask.png" VerticalOptions="End" Aspect="AspectFill" Margin="0,0,0,-1" />
-            <Image x:Name="profileImage" Margin="0,0,0,-50" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="End" />
+            <Image x:Name="backgroundImage" Aspect="AspectFill" />
+            <Image x:Name="curvedMask" VerticalOptions="End" Aspect="AspectFill" Margin="0,-1,0,-1" />
+            <forms:CachedImage x:Name="profileImage" TranslationY="50" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="End">
+                <forms:CachedImage.Transformations>
+                    <transformations:RoundedTransformation Radius="240" />
+                </forms:CachedImage.Transformations>
+            </forms:CachedImage>
             <StackLayout x:Name="stckProfile" Grid.Row="1" HorizontalOptions="Center" Padding="0,50,0,00">
                 <Button x:Name="pickPictureButton" Text="Change Picture" Style="{StaticResource AButton}" Clicked="Handle_Clicked" />
                 <Label HorizontalTextAlignment="Center" Text="{Binding UserName}" Style="{StaticResource ProfileNameLabel}" />
@@ -39,15 +50,15 @@
             </Grid>
             <ScrollView Grid.Row="3" Orientation="Vertical" Padding="0" VerticalOptions="FillAndExpand">
                 <StackLayout>
-                    <Label Margin="20,0" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource MainBodyLabel}" Text="Quiz Topics Analysis" />
-                    <chart:SfChart VerticalOptions="FillAndExpand" HeightRequest="300" WidthRequest="300">
+                    <Label HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource MainBodyLabel}" Text="Quiz Topics Analysis - Full Marks" />
+                    <chart:SfChart VerticalOptions="FillAndExpand" HeightRequest="350" WidthRequest="350">
                         <chart:SfChart.PrimaryAxis>
                             <chart:CategoryAxis />
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
-                            <chart:NumericalAxis />
+                            <chart:NumericalAxis Interval="1" />
                         </chart:SfChart.SecondaryAxis>
-                        <chart:RadarSeries ItemsSource="{Binding Data}" XBindingPath="Topic" YBindingPath="TopicCount" Color="DeepSkyBlue" StrokeColor="DeepSkyBlue" EnableAnimation="True" Opacity="0.4"/>
+                        <chart:RadarSeries ItemsSource="{Binding Data}" DrawType="Area" XBindingPath="Topic" YBindingPath="TopicCount" Color="#008ECC" StrokeColor="DeepSkyBlue" EnableAnimation="True" Opacity="0.4" />
                     </chart:SfChart>
                     <Label Margin="20,0" HorizontalTextAlignment="Center" Style="{StaticResource MainBodyLabel}" Text="Main body? Analyse quiz topics in a graph, put in trophies, etc." />
                     <Label Margin="20,0" HorizontalTextAlignment="Center" Style="{StaticResource MainBodyLabel}" Text="Main body? Analyse quiz topics in a graph, put in trophies, etc." />

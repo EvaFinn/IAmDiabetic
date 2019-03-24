@@ -20,11 +20,6 @@ namespace ImDiabetic.Views
             UIForChart();
         }
 
-        public TrendPage()  //for xaml previewer only.
-        {
-            InitializeComponent();
-        }
-
         public void UIForChart()
         {
             customColors = new List<Color>

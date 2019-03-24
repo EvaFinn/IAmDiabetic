@@ -28,6 +28,12 @@
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="16.4.0.54" />
     <PackageReference Include="Acr.UserDialogs" Version="7.0.4" />
     <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="16.4.0.54" />
+    <PackageReference Include="LiveXAML" Version="2.1.70" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.4.859" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.4.859" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.4.859" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.4.859" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataForm" Version="16.4.0.54" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MyPage.xaml" />
@@ -67,6 +73,7 @@
     <None Remove="achievements.json" />
     <None Remove="EduContent\Blood Glucose.pdf" />
     <None Remove="EduContent\Food.pdf" />
+    <None Remove="Icons\blue.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icons\" />
@@ -97,6 +104,7 @@
     <EmbeddedResource Include="achievements.json" />
     <EmbeddedResource Include="EduContent\Blood Glucose Monitoring.pdf" />
     <EmbeddedResource Include="EduContent\Food.pdf" />
+    <EmbeddedResource Include="Icons\blue.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\DashboardPage.xaml.cs">

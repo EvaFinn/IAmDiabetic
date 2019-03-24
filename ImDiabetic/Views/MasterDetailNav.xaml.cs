@@ -19,12 +19,10 @@ namespace ImDiabetic.Views
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             var config = new RealmConfiguration() { SchemaVersion = 12 };
-            config.ShouldDeleteIfMigrationNeeded = true;
+            //config.ShouldDeleteIfMigrationNeeded = true;
             realm = Realm.GetInstance(config);
 
             User = user;
-            //profileImage.Source = ImageSource.FromResource("ImDiabetic.Icons.profile.png");
-            //profileImage.Source = ImageSource.FromStream(() => new MemoryStream(User.ProfilePicture)); //not working?
             aboutList.ItemsSource = GetMenuList();
             var homePage = typeof(DashboardPage);
             Detail = new NavigationPage(new DashboardPage(User));

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using FFImageLoading.Forms.Platform;
 using Foundation;
 using Lottie.Forms.iOS.Renderers;
 using Syncfusion.ListView.XForms.iOS;
@@ -10,6 +10,7 @@ using Syncfusion.SfNumericUpDown.XForms.iOS;
 using Syncfusion.SfPdfViewer.XForms.iOS;
 using Syncfusion.SfPicker.XForms.iOS;
 using Syncfusion.XForms.iOS.Buttons;
+using Syncfusion.XForms.iOS.DataForm;
 using Syncfusion.XForms.iOS.ProgressBar;
 using Syncfusion.XForms.iOS.TabView;
 using UIKit;
@@ -67,6 +68,8 @@ namespace ImDiabetic.iOS
             SfPickerRenderer.Init();
             SfLinearProgressBarRenderer.Init();
             SfCircularProgressBarRenderer.Init();
+            CachedImageRenderer.Init();
+            SfDataFormRenderer.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
         }

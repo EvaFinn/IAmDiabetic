@@ -4,8 +4,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Acr.UserDialogs;
 using ImDiabetic.Models;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
 
 namespace ImDiabetic.ViewModels
 {
@@ -13,26 +15,17 @@ namespace ImDiabetic.ViewModels
     {
         public AppUser User { get; set; }
         public string Achieve { get; set; }
-        public Achievement Achievement { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Points { get; set; }
         public string Date { get; set; }
-        //public bool IsAwarded { get; set; } = false;
-
+        private List<Achievement> AllAchievements = new List<Achievement>();
+        
         public AchievementsViewModel(AppUser user, string achievement)
         {
             User = user;
             Achieve = achievement;
             LoadAchievements();
-            //realm achievements?
-            if (Achievement != null)
-            {
-                Name = Achievement.Name;
-                Description = Achievement.Description;
-                Points = Achievement.PointsAwarded;
-                Date = Achievement.AchievedDate.Date.ToString();
-            }
         }
 
         public AchievementsViewModel(AppUser user)
@@ -48,64 +41,112 @@ namespace ImDiabetic.ViewModels
             string json = "";
             using (var reader = new System.IO.StreamReader(stream)) { json = reader.ReadToEnd(); }
             jsonresult = JsonConvert.DeserializeObject<List<Achievement>>(json);
-            List<Achievement> achievements = new List<Achievement>();
+            List<Achievement> ViewAchievementList = new List<Achievement>();
 
             for (int i = 0; i < jsonresult.Count; i++)
             {
+                AllAchievements.Add(jsonresult[i]);
                 if (jsonresult.ElementAt(i).Name.Equals(Achieve))
                 {
-                    achievements.Add(jsonresult[i]);
+                    ViewAchievementList.Add(jsonresult[i]);
                 }
             }
 
-            //Achievement = new Achievement
-            //{
-            Name = achievements.ElementAt(0).Name;
-            Description = achievements.ElementAt(0).Description;
-            Points = "Points awarded : " + achievements.ElementAt(0).PointsAwarded;
-            Date = DateTimeOffset.Now.Date.ToString();
-            //};
+            if (ViewAchievementList.Any()) {
+                Name = ViewAchievementList.ElementAt(0).Name;
+                Description = ViewAchievementList.ElementAt(0).Description;
+                Points = "Points awarded : " + ViewAchievementList.ElementAt(0).PointsAwarded;
+                Date = DateTimeOffset.Now.Date.ToString();
+            }
         }
 
         //AchievementManager class?
         public void CheckAchievements()
         {
-            CheckLoggerAchievements();
+            CheckBloodGlucoseLoggerOneDay();
+            CheckActivityLogAchievement();
+            CheckQuizTakenAchievement();
             CheckLoggerAchievementsTwo();
 
             CheckDailyStreak(3);
             CheckDailyStreak(7);
             CheckDailyStreak(14);
+
         }
 
-        private void CheckLoggerAchievements()
+        private void CheckBloodGlucoseLoggerOneDay()
         {
-            //if isachieved == false
-            //int sevendaycheck = 0;
-            //int fourteendaycheck = 0;
+            LoadAchievements();
+            bool HaveIt = false;
+            GetAchievementsForChallenge("Blood Glucose Logger");
+
             var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
+            var achieves = realm.All<Achievement>().Where(a => a.UserId == User.Id);
             if (logs.Count() > 0)
             {
                 List<Log> todaysLogs = new List<Log>();
-                //TimeSpan = DateTimeOffset.Now.Subtract((DateTimeOffset.Now.Day - 7));
                 DateTimeOffset date = DateTimeOffset.Now;
-                Debug.WriteLine("*** date: " + date);
-                DateTimeOffset newdate = date.AddDays(-1);
-                Debug.WriteLine("$$$$ new date : " + newdate);
-
 
                 foreach (Log log in logs)
                 {
-                    if (log.LogDate.Day.Equals(DateTimeOffset.Now.Day))
+                    if (log.LogDate.Day.Equals(DateTimeOffset.Now.Day) && log.Type == "Blood Glucose")
                     {
                         todaysLogs.Add(log);
                     }
                 }
+
+                foreach (Achievement a in achieves)
+                {
+                    HaveIt |= (a.Name == "Blood Glucose Logger" && a.IsAchieved == true);
+                }
+
                 if (todaysLogs.Count == 3)
                 {
-                    Debug.WriteLine("omg won award!!! ");
+                    if (!HaveIt)
+                    {
+                        realm.Write(() =>
+                        {
+                            var achievement3log = new Achievement
+                            {
+                                UserId = User.Id,
+                                Name = Name,
+                                Description = Description,
+                                IsAchieved = true,
+                                AchievedDate = DateTimeOffset.Now,
+                                PointsAwarded = Points
+                            };
+                            realm.Add(achievement3log);
+                            User.Score = User.Score + int.Parse(achievement3log.PointsAwarded);
+                        });
+                        ShareAchievement();
+                    }
                 }
-                //set is achieved to true
+            }
+        }
+
+        private void GetAchievementsForChallenge(string achievement)
+        {
+            for (int i = 0; i < AllAchievements.Count; i++)
+            {
+                if (AllAchievements.ElementAt(i).Name.Equals(achievement))
+                {
+                    Name = AllAchievements.ElementAt(i).Name;
+                    Description = AllAchievements.ElementAt(i).Description;
+                    Points = AllAchievements.ElementAt(i).PointsAwarded;
+                    Date = DateTimeOffset.Now.Date.ToString();
+                }
+            }
+        }
+
+        async private void ShareAchievement()
+        {
+            bool share = await UserDialogs.Instance.ConfirmAsync("YOU HAVE WON THE " + Name + " CHALLENGE", "Congratulations", "Share", "OK");
+            if(share == true) {
+                await Share.RequestAsync(new ShareTextRequest
+                {
+                    Text = "I just won the " + Name + " Challenge on my ImDiabetic App!",
+                    Title = "Achievement"
+                });
             }
         }
 
@@ -148,21 +189,181 @@ namespace ImDiabetic.ViewModels
 
         private void CheckDailyStreak(int checkDays)
         {
+            var achieves = realm.All<Achievement>().Where(a => a.UserId == User.Id);
+            LoadAchievements();
+            bool HaveIt = false;
+
             if (User.DailyStreak == checkDays)
             {
-                //if is won equals false
                 Debug.WriteLine("omg won award!!! streak is {0} long", checkDays);
-                //checkdays == 7 -> 7 days win set to true?
+
                 switch (checkDays) {
                     case 3:
-                        //3 day win = true
+                        GetAchievementsForChallenge("3 Day Streak");
+                        foreach (Achievement a in achieves)
+                        {
+                            HaveIt |= (a.Name == "3 Day Streak" && a.IsAchieved == true);
+                        }
+                        if (!HaveIt)
+                        {
+                            realm.Write(() =>
+                            {
+                                var achievement = new Achievement
+                                {
+                                    UserId = User.Id,
+                                    Name = Name,
+                                    Description = Description,
+                                    IsAchieved = true,
+                                    AchievedDate = DateTimeOffset.Now,
+                                    PointsAwarded = Points
+                                };
+                                realm.Add(achievement);
+                                User.Score = User.Score + int.Parse(achievement.PointsAwarded);
+                            });
+                            ShareAchievement();
+                        }
                         break;
                     case 7:
-                        //7 day win = true
+                        GetAchievementsForChallenge("7 Day Streak");
+                        foreach (Achievement a in achieves)
+                        {
+                            HaveIt |= (a.Name == "7 Day Streak" && a.IsAchieved == true);
+                        }
+                        if (!HaveIt)
+                        {
+                            realm.Write(() =>
+                            {
+                                var achievement = new Achievement
+                                {
+                                    UserId = User.Id,
+                                    Name = Name,
+                                    Description = Description,
+                                    IsAchieved = true,
+                                    AchievedDate = DateTimeOffset.Now,
+                                    PointsAwarded = Points
+                                };
+                                realm.Add(achievement);
+                                User.Score = User.Score + int.Parse(achievement.PointsAwarded);
+                            });
+                            ShareAchievement();
+                        }
                         break;
                     case 14:
-                        //14 day win = true
+                        GetAchievementsForChallenge("14 Day Streak");
+                        foreach (Achievement a in achieves)
+                        {
+                            HaveIt |= (a.Name == "14 Day Streak" && a.IsAchieved == true);
+                        }
+                        if (!HaveIt)
+                        {
+                            realm.Write(() =>
+                            {
+                                var achievement = new Achievement
+                                {
+                                    UserId = User.Id,
+                                    Name = Name,
+                                    Description = Description,
+                                    IsAchieved = true,
+                                    AchievedDate = DateTimeOffset.Now,
+                                    PointsAwarded = Points
+                                };
+                                realm.Add(achievement);
+                                User.Score = User.Score + int.Parse(achievement.PointsAwarded);
+                            });
+                            ShareAchievement();
+                        }
                         break;
+                }
+            }
+        }
+
+        private void CheckActivityLogAchievement() {
+            LoadAchievements();
+            bool HaveIt = false;
+            int TotalActivity = 0;
+            GetAchievementsForChallenge("Active Life");
+
+            var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
+            var achieves = realm.All<Achievement>().Where(a => a.UserId == User.Id);
+            if (logs.Count() > 0)
+            {
+                foreach (Log log in logs)
+                {
+                    if (log.LogDate.Day.Equals(DateTimeOffset.Now.Day) && log.Type == "Activity")
+                    {
+                        TotalActivity = TotalActivity + int.Parse(log.Amount);
+                    }
+                }
+
+                foreach (Achievement a in achieves)
+                {
+                    HaveIt |= (a.Name == "Active Life" && a.IsAchieved == true);
+                }
+
+                if (TotalActivity >= 30)
+                {
+                    if (!HaveIt)
+                    {
+                        realm.Write(() =>
+                        {
+                            var achievement3log = new Achievement
+                            {
+                                UserId = User.Id,
+                                Name = Name,
+                                Description = Description,
+                                IsAchieved = true,
+                                AchievedDate = DateTimeOffset.Now,
+                                PointsAwarded = Points
+                            };
+                            realm.Add(achievement3log);
+                            User.Score = User.Score + int.Parse(achievement3log.PointsAwarded);
+                        });
+                        ShareAchievement();
+                    }
+                }
+            }
+        }
+
+        private void CheckQuizTakenAchievement() {
+            LoadAchievements();
+            bool HaveIt = false;
+            GetAchievementsForChallenge("Quiz Master");
+
+            var quiz = realm.All<Quiz>().Where(q => q.UserId == User.Id);
+            List<Quiz> quizList = new List<Quiz>();
+            var achieves = realm.All<Achievement>().Where(a => a.UserId == User.Id);
+            if (quiz.Count() > 0)
+            {
+                foreach (Quiz q in quiz)
+                {
+                    quizList.Add(q);
+                }
+
+                foreach (Achievement a in achieves)
+                {
+                    HaveIt |= (a.Name == "Quiz Master" && a.IsAchieved == true);
+                }
+
+                if (quizList.Count() == 1)
+                {
+                    if (!HaveIt)
+                    {
+                        realm.Write(() =>
+                        {
+                            var achievement3log = new Achievement
+                            {
+                                UserId = User.Id,
+                                Name = Name,
+                                Description = Description,
+                                IsAchieved = true,
+                                AchievedDate = DateTimeOffset.Now,
+                                PointsAwarded = Points
+                            };
+                            realm.Add(achievement3log);
+                            User.Score = User.Score + int.Parse(achievement3log.PointsAwarded);
+                        });
+                        ShareAchievement();
+                    }
                 }
             }
         }

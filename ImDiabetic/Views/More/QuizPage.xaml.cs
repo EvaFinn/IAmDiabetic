@@ -16,6 +16,7 @@ namespace ImDiabetic.Views.More
 
         public QuizPage(AppUser user, string ChosenTopic)
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             User = user;
             this.BindingContext = new QuestionViewModel(ChosenTopic, User);
@@ -75,6 +76,11 @@ namespace ImDiabetic.Views.More
         async private void NavigateToEndPage()
         {
             await Navigation.PushAsync(new QuizResultPage(User));
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 }

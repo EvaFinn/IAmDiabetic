@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
+using Acr.UserDialogs;
 using ImDiabetic.Models;
 using Xamarin.Forms;
 
@@ -18,31 +19,30 @@ namespace ImDiabetic.ViewModels
         public string Level { get; set; }
         public string Points { get; set; }
         public string FoodText { get; set; }
-        public int CurrentLevel { get; set; }
         public int DailyTotalCarbs { get; set; }
         public int TotalCal { get; set; }
         public string DisplayOne { get; set; }
         public string DisplayTwo { get; set; }
+        public bool LevelUp { get; set; } = false;
 
         public DashboardViewModel(AppUser user)
         {
             User = user;
+            DailyStreakCheck();
+            HasLogs();
             Welcome = "Welcome " + User.FirstName + "!";
             DailyStreak = User.DailyStreak.ToString();
             Points = User.Score.ToString();
-            DailyStreakCheck();
-            HasLogs();
-            CurrentLevel = User.Level;
-            LevelStuff();
-            Level = CurrentLevel.ToString();
+            LevelUp = LevelStuff();
+            Level = User.Level.ToString();
             FoodText = "Getting hungry, eat soon";
             AchievementsViewModel vm = new AchievementsViewModel(User);
             vm.CheckAchievements();
         }
 
-        public void LevelStuff()
+        public bool LevelStuff()
         {
-            int pointsRequiredToLevelUp = 25 * CurrentLevel * 2;
+            int pointsRequiredToLevelUp = 25 * User.Level * 2;
             if (int.Parse(Points) >= pointsRequiredToLevelUp)
             {
                 realm.Write(() =>
@@ -50,10 +50,13 @@ namespace ImDiabetic.ViewModels
                     User.Score = 0;
                     User.Level++;
                 });
-                Debug.WriteLine("******** Points " + Points);
-                Debug.WriteLine("******** Level" + Level);
-                Debug.WriteLine("******** points needed " + pointsRequiredToLevelUp);
-            }
+                LevelUp = true;
+                Debug.WriteLine("Display level up ^^^^^^^^^^");
+                UserDialogs.Instance.Alert("Level Up", "LEVEL", "OK");
+
+            } else { LevelUp = false; }
+
+            return LevelUp;
         }
 
         public void HasLogs()
@@ -72,7 +75,6 @@ namespace ImDiabetic.ViewModels
                 {
                     if (log.LogDate.Day.Equals(DateTimeOffset.Now.Day))
                     {
-                        Debug.WriteLine("*********** LOGS " + log.Amount);
                         todaysLogs.Add(log);
                         if (log.Type == "Food Item")
                         {

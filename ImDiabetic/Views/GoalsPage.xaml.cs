@@ -15,6 +15,7 @@ namespace ImDiabetic.Views
         public GoalsPage(AppUser user)
         {
             NavigationPage.SetHasNavigationBar(this, false);
+            if (Device.RuntimePlatform == Device.iOS) Padding = new Thickness(0, 30, 0, 0);
             InitializeComponent();
             User = user;
             this.BindingContext = new GoalsViewModel(User);

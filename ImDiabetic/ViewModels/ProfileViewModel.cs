@@ -39,11 +39,14 @@ namespace ImDiabetic.ViewModels
         {
             int manCount = 0;
             int bgCount = 0;
+            int insCount = 0;
+            int diaCount = 0;
+            int nutCount = 0;
             var quiz = realm.All<Quiz>().Where(q => q.UserId == User.Id);
             foreach (Quiz q in quiz)
             {
                 Debug.WriteLine("Topic : " + q.Topic);
-                if (q.Score == "3")
+                if (q.Score == "6")
                 {
                     Debug.WriteLine("FULL SCORE!");
                     switch (q.Topic) {
@@ -53,6 +56,15 @@ namespace ImDiabetic.ViewModels
                         case "Blood Glucose":
                             bgCount++;
                             break;
+                        case "Insulin":
+                            insCount++;
+                            break;
+                        case "Diabetes":
+                            diaCount++;
+                            break;
+                        case "Nutrition":
+                            nutCount++;
+                            break;
                         default:
                             break;
                     }
@@ -60,9 +72,9 @@ namespace ImDiabetic.ViewModels
             }
             Data.Add(new TopicTargetData { TopicCount = manCount, Topic = "MANAGEMENT" });
             Data.Add(new TopicTargetData { TopicCount = bgCount, Topic = "BLOOD GLUCOSE" });
-            Data.Add(new TopicTargetData { TopicCount = 2, Topic = "INSULIN" });
-            Data.Add(new TopicTargetData { TopicCount = 3, Topic = "DIABETES TYPE" });
-            Data.Add(new TopicTargetData { TopicCount = 5, Topic = "NUTRITION" });
+            Data.Add(new TopicTargetData { TopicCount = insCount, Topic = "INSULIN" });
+            Data.Add(new TopicTargetData { TopicCount = diaCount, Topic = "DIABETES" });
+            Data.Add(new TopicTargetData { TopicCount = nutCount, Topic = "NUTRITION" });
 
         }
 

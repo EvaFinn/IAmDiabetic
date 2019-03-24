@@ -18,7 +18,7 @@ namespace ImDiabetic.Views
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
-            BindingContext = new DashboardViewModel(user);
+            this.BindingContext = new DashboardViewModel(user);
             User = user;
             TapOptions();
         }

@@ -22,6 +22,8 @@ namespace ImDiabetic.Views
             User = user;
             BindingContext = new ProfileViewModel(User);
             profileImage.Source = ImageSource.FromStream(() => new MemoryStream((BindingContext as ProfileViewModel).Photo));
+            backgroundImage.Source = ImageSource.FromResource("ImDiabetic.Icons.blue.jpg");
+            curvedMask.Source = ImageSource.FromResource("ImDiabetic.Icons.CurvedMask.png");
         }
 
         protected override bool OnBackButtonPressed()

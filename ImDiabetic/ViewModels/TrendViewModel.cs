@@ -20,6 +20,7 @@ namespace ImDiabetic.ViewModels
         public int TotalCal { get; set; }
         public string DisplayOne { get; set; }
         public string DisplayTwo { get; set; }
+        public string RecCals { get; set; }
 
         public int TotalMins { get; set; }
         public string DisplayMins { get; set; }
@@ -71,6 +72,7 @@ namespace ImDiabetic.ViewModels
             DisplayOne = "Total Carbs Today : " + DailyTotalCarbs;
             DisplayTwo = "Total Calories : " + TotalCal;
             DisplayMins = "Total Minutes of Activity : " + TotalMins;
+            RecCals = "Recommended Calories : " + ((10 * 63.5) + (6.25*167.6) - (5*21) - 161);
         }
 
         public void CheckTargetBG()

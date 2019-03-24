@@ -18,7 +18,6 @@ namespace ImDiabetic.Views.More
         {
             InitializeComponent();
             User = user;
-            //this.BindingContext = new AchievementsViewModel(user);
             string[] Achievements = GetAchievements();
             this.BindingContext = Achievements.Distinct().ToArray();
             var template = new DataTemplate(typeof(TextCell));

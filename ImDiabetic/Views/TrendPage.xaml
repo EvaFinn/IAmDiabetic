@@ -44,6 +44,7 @@
                                 </chart:LineSeries.DataMarker>
                             </chart:LineSeries>
                         </chart:SfChart>
+                        
                         <chart:SfChart VerticalOptions="FillAndExpand">
                             <chart:SfChart.Title>
                                 <chart:ChartTitle Text="Blood Glucose Targets">
@@ -63,6 +64,7 @@
                                 </chart:DoughnutSeries.DataMarker>
                             </chart:DoughnutSeries>
                         </chart:SfChart>
+                        
                     </StackLayout>
                 </ScrollView>
             </tabView:SfTabItem.Content>
@@ -108,6 +110,7 @@
                     </chart:SfChart>
                     <Label Text="{Binding DisplayOne}" Style="{StaticResource DisplayLabel}" />
                     <Label Text="{Binding DisplayTwo}" Style="{StaticResource DisplayLabel}" />
+                    <Label Text="{Binding RecCals}" Style="{StaticResource DisplayLabel}" />
                 </StackLayout>
             </tabView:SfTabItem.Content>
         </tabView:SfTabItem>

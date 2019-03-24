@@ -36,7 +36,7 @@ namespace ImDiabetic.ViewModels
             var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
             if (logs.Count() < 1)
             {
-                LastBloogGlucoseLog = (int)User.MinTargetBloodGlucose;
+                LastBloogGlucoseLog = 0; //(int)User.MinTargetBloodGlucose;
                 LastActivityLog = 0;
             }
             else

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.Views.GoalsPage">
     <StackLayout HorizontalOptions="CenterAndExpand">
         <StackLayout Orientation="Horizontal" BackgroundColor="#1e90ff" VerticalOptions="Start">
-            <Button Text="Back" TextColor="White" BackgroundColor="#1e90ff" HorizontalOptions="Start" Clicked="OnBack" />
+            <Button Text="Back" TextColor="White" BackgroundColor="#1e90ff" HorizontalOptions="Start" Clicked="OnBack" Margin="10,0,0,0" />
         </StackLayout>
         <Label Text="{Binding Text}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
         <ListView x:Name="listView" Margin="20" ItemsSource="{Binding Goals}" ItemSelected="OnListItemSelected">

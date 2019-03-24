@@ -19,6 +19,7 @@ namespace ImDiabetic.ViewModels
         public string Password { get; set; }
         public AppUser RegisteredUser { get; set; }
 
+
         public void AddUser()
         {
             realm.Write(() =>
