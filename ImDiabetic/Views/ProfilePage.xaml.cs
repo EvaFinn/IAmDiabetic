@@ -23,7 +23,12 @@ namespace ImDiabetic.Views
             BindingContext = new ProfileViewModel(User);
             profileImage.Source = ImageSource.FromStream(() => new MemoryStream((BindingContext as ProfileViewModel).Photo));
             backgroundImage.Source = ImageSource.FromResource("ImDiabetic.Icons.blue.jpg");
-            curvedMask.Source = ImageSource.FromResource("ImDiabetic.Icons.CurvedMask.png");
+        }
+
+        void Handle_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            string text = (sender as Picker).SelectedItem.ToString();
+            (BindingContext as ProfileViewModel).UpdatePet(text);
         }
 
         protected override bool OnBackButtonPressed()

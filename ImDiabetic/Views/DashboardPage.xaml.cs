@@ -18,8 +18,9 @@ namespace ImDiabetic.Views
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
-            this.BindingContext = new DashboardViewModel(user);
             User = user;
+            this.BindingContext = new DashboardViewModel(User);
+            AnimationView.Animation = User.Pet.ToLower() + ".json";
             TapOptions();
         }
 

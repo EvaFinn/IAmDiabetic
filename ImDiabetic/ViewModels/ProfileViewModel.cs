@@ -18,6 +18,7 @@ namespace ImDiabetic.ViewModels
         public int PointsNeeded { get; set; }
         public int CurrentLevel { get; set; }
         public byte[] Photo { get; set; }
+        public string Pet { get; set; }
         public List<TopicTargetData> Data { get; set; } = new List<TopicTargetData>();
 
         public ProfileViewModel(AppUser user)
@@ -32,7 +33,15 @@ namespace ImDiabetic.ViewModels
             DisplayPoints = Points + "/" + PointsNeeded;
             Info = User.Age + ", " + User.Gender;
             Photo = User.ProfilePicture;
+            Pet = User.Pet;
             TopicChartInit();
+        }
+
+        public void UpdatePet(string pet) {
+            realm.Write(() =>
+            {
+                User.Pet = pet;
+            });
         }
 
         private void TopicChartInit()

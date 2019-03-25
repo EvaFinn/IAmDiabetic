@@ -74,6 +74,7 @@
     <None Remove="EduContent\Blood Glucose.pdf" />
     <None Remove="EduContent\Food.pdf" />
     <None Remove="Icons\blue.jpg" />
+    <None Remove="Icons\trophy.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icons\" />
@@ -105,6 +106,7 @@
     <EmbeddedResource Include="EduContent\Blood Glucose Monitoring.pdf" />
     <EmbeddedResource Include="EduContent\Food.pdf" />
     <EmbeddedResource Include="Icons\blue.jpg" />
+    <EmbeddedResource Include="Icons\trophy.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\DashboardPage.xaml.cs">

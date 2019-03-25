@@ -179,7 +179,10 @@
     <AndroidAsset Include="Assets\home.png" />
     <AndroidAsset Include="Assets\Icons\rocket.png" />
     <AndroidAsset Include="Assets\quizquestion.json" />
-    <AndroidAsset Include="Assets\2113-dog.json" />
+    <AndroidAsset Include="Assets\1dog1.json" />
+    <AndroidAsset Include="Assets\pigeon.json" />
+    <AndroidAsset Include="Assets\rabbit.json" />
+    <AndroidAsset Include="Assets\dog.json" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

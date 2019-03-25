@@ -31,6 +31,7 @@ namespace ImDiabetic.ViewModels
         public AchievementsViewModel(AppUser user)
         {
             User = user;
+            //LoadAchievements();
         }
 
         public void LoadAchievements()
@@ -55,8 +56,20 @@ namespace ImDiabetic.ViewModels
             if (ViewAchievementList.Any()) {
                 Name = ViewAchievementList.ElementAt(0).Name;
                 Description = ViewAchievementList.ElementAt(0).Description;
-                Points = "Points awarded : " + ViewAchievementList.ElementAt(0).PointsAwarded;
-                Date = DateTimeOffset.Now.Date.ToString();
+                Points = "You will receive " + ViewAchievementList.ElementAt(0).PointsAwarded + " points when completed";
+                //Date = DateTimeOffset.Now.Date.ToString();
+            }
+
+            var achieveDB = realm.All<Achievement>().Where(q => q.UserId == User.Id && q.Name == Achieve);
+            if(achieveDB.Count() > 0) {
+                GetAchievementsForChallenge(Achieve);
+                foreach (Achievement a in achieveDB)
+                {
+                    Name = a.Name;
+                    Description = a.Description;
+                    Points = "You gained " + a.PointsAwarded + " points! Well done!";
+                    Date = "Date achieved : " + a.AchievedDate.Date.ToString("d");
+                }
             }
         }
 
@@ -66,7 +79,7 @@ namespace ImDiabetic.ViewModels
             CheckBloodGlucoseLoggerOneDay();
             CheckActivityLogAchievement();
             CheckQuizTakenAchievement();
-            CheckLoggerAchievementsTwo();
+            //CheckLoggerAchievementsTwo();
 
             CheckDailyStreak(3);
             CheckDailyStreak(7);

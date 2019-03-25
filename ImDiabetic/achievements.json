@@ -41,7 +41,7 @@
   },
   {
     "Name": "Quiz Master",
-    "Description": "You have completed an available quiz!",
+    "Description": "You have completed you're first quiz!",
     "PointsAwarded": "20"
   }
 ]

@@ -12,6 +12,7 @@ namespace ImDiabetic.Views.More
         {
             InitializeComponent();
             this.BindingContext = new AchievementsViewModel(user, achievement);
+            image.Source = ImageSource.FromResource("ImDiabetic.Icons.trophy.png");
         }
     }
 }

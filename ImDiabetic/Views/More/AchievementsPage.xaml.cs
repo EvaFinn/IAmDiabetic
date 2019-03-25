@@ -24,6 +24,7 @@ namespace ImDiabetic.Views.More
             template.SetValue(TextCell.TextColorProperty, Color.DeepSkyBlue);
             template.SetBinding(TextCell.TextProperty, ".");
             listView.ItemTemplate = template;
+            image.Source = ImageSource.FromResource("ImDiabetic.Icons.trophiesStep.png");
         }
 
         void OnItemTapped(object sender, ItemTappedEventArgs e)
