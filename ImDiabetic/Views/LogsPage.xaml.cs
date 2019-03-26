@@ -21,7 +21,7 @@ namespace ImDiabetic.Views
             InitializeComponent();
             BindingContext = new LogsViewModel(user);
             User = (BindingContext as LogsViewModel).User;
-            bloodglucose.Value = (BindingContext as LogsViewModel).LastBloogGlucoseLog;
+            bgThing.Value = (BindingContext as LogsViewModel).LastBloogGlucoseLog;
             timeStep.Value = (BindingContext as LogsViewModel).LastActivityLog;
 
             insulinEntry.IsVisible = false;
@@ -42,6 +42,7 @@ namespace ImDiabetic.Views
         {
             if (e.IsChecked.HasValue && e.IsChecked.Value)
             {
+                ChooseLabel.IsVisible = false;
                 string text = (sender as SfRadioButton).Text;
                 switch (text)
                 {
@@ -120,8 +121,6 @@ namespace ImDiabetic.Views
                         timeStep.IsVisible = false;
                         activityLabel.IsVisible = false;
                         break;
-                    default:
-                        break;
                 }
             }
         }
@@ -133,17 +132,17 @@ namespace ImDiabetic.Views
             await Navigation.PushAsync(new MasterDetailNav(User));
         }
 
-        private async void ScanClick(object sender, EventArgs e)
+        public async void ScanClick(object sender, EventArgs e)
         {
             var ScannerPage = new ZXingScannerPage();
 
             ScannerPage.OnScanResult += (result) =>
             {
                 ScannerPage.IsScanning = false;
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    await Navigation.PopAsync();
-                    await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    Navigation.PopAsync();
+                    DisplayAlert("Scanned Barcode", result.Text, "OK");
                 });
             };
             await Navigation.PushAsync(ScannerPage);

@@ -21,6 +21,7 @@ namespace ImDiabetic.Views
             User = user;
             this.BindingContext = new DashboardViewModel(User);
             AnimationView.Animation = User.Pet.ToLower() + ".json";
+            flameImage.Source = ImageSource.FromResource("ImDiabetic.Utils.flame.png");
             TapOptions();
         }
 
@@ -52,7 +53,6 @@ namespace ImDiabetic.Views
             var trendsTap = new TapGestureRecognizer();
             trendsTap.Tapped += async (sender, e) =>
             {
-                ;
                 stckTrends.BackgroundColor = Color.White;
                 await Navigation.PushAsync(new TrendPage(User));
                 DefaultBackground();

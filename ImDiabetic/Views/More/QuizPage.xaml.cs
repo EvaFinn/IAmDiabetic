@@ -31,6 +31,15 @@ namespace ImDiabetic.Views.More
                 DoAnswer();
             };
 
+            btnAnswerOneIOS.Clicked += (sender, ea) =>
+            {
+                if ((BindingContext as QuestionViewModel).CheckIfCorrect(1))
+                {
+                    score++;
+                }
+                DoAnswer();
+            };
+
             btnAnswerTwo.Clicked += (sender, ea) =>
             {
                 if ((BindingContext as QuestionViewModel).CheckIfCorrect(2))
@@ -40,7 +49,25 @@ namespace ImDiabetic.Views.More
                 DoAnswer();
             };
 
+            btnAnswerTwoIOS.Clicked += (sender, ea) =>
+            {
+                if ((BindingContext as QuestionViewModel).CheckIfCorrect(2))
+                {
+                    score++;
+                }
+                DoAnswer();
+            };
+
             btnAnswerThree.Clicked += (sender, ea) =>
+            {
+                if ((BindingContext as QuestionViewModel).CheckIfCorrect(3))
+                {
+                    score++;
+                }
+                DoAnswer();
+            };
+
+            btnAnswerThreeIOS.Clicked += (sender, ea) =>
             {
                 if ((BindingContext as QuestionViewModel).CheckIfCorrect(3))
                 {

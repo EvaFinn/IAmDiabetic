@@ -49,9 +49,10 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: evafinn45@gmail.com (F497844H2F)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>iOS Team Provisioning Profile: com.evafinn.ImDiabetic</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -101,6 +102,7 @@
     <Compile Include="PreviewControllerDS.cs" />
     <Compile Include="PicturePickerImplementation.cs" />
     <Compile Include="UserNotificationCenterDelegate.cs" />
+    <Compile Include="CustomButtoniOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -225,6 +227,12 @@
     <PackageReference Include="Syncfusion.Xamarin.SfDataForm">
       <Version>16.4.0.54</Version>
     </PackageReference>
+    <PackageReference Include="Matcha.Validation">
+      <Version>1.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Forms">
+      <Version>7.1.0.431</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -248,5 +256,6 @@
     <BundleResource Include="Resources\pigeon.json" />
     <BundleResource Include="Resources\rabbit.json" />
     <BundleResource Include="Resources\dog.json" />
+    <BundleResource Include="Resources\bluebackground.jpg" />
   </ItemGroup>
 </Project>

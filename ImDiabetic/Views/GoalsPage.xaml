@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.Views.GoalsPage">
-    <StackLayout HorizontalOptions="CenterAndExpand">
-        <StackLayout Orientation="Horizontal" BackgroundColor="#1e90ff" VerticalOptions="Start">
-            <Button Text="Back" TextColor="White" BackgroundColor="#1e90ff" HorizontalOptions="Start" Clicked="OnBack" Margin="10,0,0,0" />
+    <StackLayout HorizontalOptions="CenterAndExpand" Margin="0,0,0,10">
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+            <StackLayout.BackgroundColor>
+                <OnPlatform x:TypeArguments="Color" Android="#1e90ff" iOS="White">
+                </OnPlatform>
+            </StackLayout.BackgroundColor>
+            <Button Text="Back" TextColor="White" BackgroundColor="#1e90ff" FontSize="18" HorizontalOptions="Start" Clicked="OnBack" Margin="15,10,0,0">
+                <Button.BackgroundColor>
+                    <OnPlatform x:TypeArguments="Color" Android="#1e90ff" iOS="White">
+                    </OnPlatform>
+                </Button.BackgroundColor>
+                <Button.TextColor>
+                    <OnPlatform x:TypeArguments="Color" Android="White" iOS="#1e90ff">
+                    </OnPlatform>
+                </Button.TextColor>>
+            </Button>
         </StackLayout>
-        <Label Text="{Binding Text}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        <Label Text="{Binding Text}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource ProfileNameLabel}" />
         <ListView x:Name="listView" Margin="20" ItemsSource="{Binding Goals}" ItemSelected="OnListItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -17,6 +30,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Text="Add Goal" Clicked="OnItemAdded" />
+        <Button Text="Add Goal" Clicked="OnItemAdded" Style="{StaticResource AButton}" HorizontalOptions="Center" VerticalOptions="End" WidthRequest="200" />
     </StackLayout>
 </ContentPage>

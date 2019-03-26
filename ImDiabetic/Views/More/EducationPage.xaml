@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.Views.More.EducationPage">
-    <StackLayout HorizontalOptions="CenterAndExpand">
-        <Label Text="Educational Topics" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
-        <ListView x:Name="listView" ItemTapped="OnItemTapped" ItemsSource="{Binding Items}" />
+    <StackLayout HorizontalOptions="CenterAndExpand" Margin="0,0,0,10">
+        <Label Text="Educational Topics" HorizontalOptions="CenterAndExpand" Style="{StaticResource ProfileNameLabel}"/>
+        <ListView x:Name="listView" ItemTapped="OnItemTapped" ItemsSource="{Binding Items}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-            <Button x:Name="pickDocBtn" Text="Pick Document" Clicked="On_Click" Style="{StaticResource AButton}" />
+            <Button x:Name="pickDocBtn" Text="View Your Documents" Clicked="On_Click" Style="{StaticResource AButton}" />
         </StackLayout>
-        <Label Text="{Binding Test}" x:Name="lbl"/> 
     </StackLayout>
 </ContentPage>

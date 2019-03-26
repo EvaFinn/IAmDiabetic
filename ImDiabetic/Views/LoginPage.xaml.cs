@@ -11,6 +11,7 @@ namespace ImDiabetic.Views
     {
         public LoginPage()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             BindingContext = new LoginViewModel();
         }

@@ -51,7 +51,6 @@ namespace ImDiabetic.ViewModels
                     User.Level++;
                 });
                 LevelUp = true;
-                Debug.WriteLine("Display level up ^^^^^^^^^^");
                 UserDialogs.Instance.Alert("Level Up", "LEVEL", "OK");
 
             } else { LevelUp = false; }

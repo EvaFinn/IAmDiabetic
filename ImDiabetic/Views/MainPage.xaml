@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:local="clr-namespace:ImDiabetic" x:Class="ImDiabetic.Views.MainPage">
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label Text="Welcome!" HorizontalOptions="Center"/>
-        <Button Text="Login" Clicked="Login_Click"/>
-        <Button Text="Regsiter" Clicked="Register_Click"/>
-    </StackLayout>
-</ContentPage> 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ImDiabetic" x:Class="ImDiabetic.Views.MainPage">
+    <RelativeLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+        <Image x:Name="BackgroundImage" Opacity="0.8" Aspect="AspectFill" RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <Label Text="Welcome!" HorizontalOptions="Center" Style="{StaticResource ProfileNameLabel}" />
+            <Button Text="Login" Clicked="Login_Click" Style="{StaticResource AButton}" />
+            <Button Text="Regsiter" Clicked="Register_Click" Style="{StaticResource AButton}" />
+        </StackLayout>
+    </RelativeLayout>
+</ContentPage>

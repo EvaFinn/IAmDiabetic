@@ -36,12 +36,6 @@ namespace ImDiabetic.Views.More
             ((ListView)sender).SelectedItem = null;
         }
 
-        async void Handle_Clicked(object sender, System.EventArgs e)
-        {
-            Debug.WriteLine("Add Doc!");
-            await Navigation.PushAsync(new AddEducationalContentPage());
-        }
-
         async private void On_Click(object sender, System.EventArgs e)
         {
             try

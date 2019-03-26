@@ -1,12 +1,14 @@
-﻿using System;
+﻿using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
+using System.Windows.Input;
+using Acr.UserDialogs;
 using ImDiabetic.Models;
-using Realms;
+using Matcha.Validation;
+using Prism.Commands;
 
 namespace ImDiabetic.ViewModels
 {
-    public class RegistrationViewModel : BaseViewModel
+    public class RegistrationViewModel : BaseViewModel, INotifyPropertyChanged
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -18,7 +20,6 @@ namespace ImDiabetic.ViewModels
         public double MinTarget { get; set; }
         public string Password { get; set; }
         public AppUser RegisteredUser { get; set; }
-
 
         public void AddUser()
         {
@@ -46,6 +47,5 @@ namespace ImDiabetic.ViewModels
                 Debug.WriteLine("NAME " + use.FirstName + ",,," + use.Password);
             }
         }
-
     }
 }

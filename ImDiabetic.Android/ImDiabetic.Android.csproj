@@ -124,6 +124,12 @@
     <PackageReference Include="Syncfusion.Xamarin.SfDataForm">
       <Version>16.4.0.54</Version>
     </PackageReference>
+    <PackageReference Include="Matcha.Validation">
+      <Version>1.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Forms">
+      <Version>7.1.0.431</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -183,6 +189,7 @@
     <AndroidAsset Include="Assets\pigeon.json" />
     <AndroidAsset Include="Assets\rabbit.json" />
     <AndroidAsset Include="Assets\dog.json" />
+    <AndroidAsset Include="Assets\bluebackground.jpg" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

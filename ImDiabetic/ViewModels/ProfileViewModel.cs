@@ -12,7 +12,7 @@ namespace ImDiabetic.ViewModels
         public AppUser User { get; set; }
         public string UserName { get; set; }
         public string DailyStreak { get; set; }
-        public string Points { get; set; }
+        public int Points { get; set; }
         public string DisplayPoints { get; set; }
         public string Info { get; set; }
         public int PointsNeeded { get; set; }
@@ -29,7 +29,7 @@ namespace ImDiabetic.ViewModels
             DailyStreak = User.DailyStreak.ToString();
             CurrentLevel = User.Level;
             PointsNeeded = 25 * CurrentLevel * (1 + CurrentLevel);
-            Points = User.Score.ToString();
+            Points = User.Score;
             DisplayPoints = Points + "/" + PointsNeeded;
             Info = User.Age + ", " + User.Gender;
             Photo = User.ProfilePicture;

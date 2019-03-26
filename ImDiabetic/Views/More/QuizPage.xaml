@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
-             x:Class="ImDiabetic.Views.More.QuizPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ImDiabetic" xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" x:Class="ImDiabetic.Views.More.QuizPage">
     <StackLayout x:Name="slQuestion" IsVisible="true" HorizontalOptions="Center" VerticalOptions="Center">
-        <StackLayout>
-        <Label x:Name="lblQuestion"
-                       FontAttributes="Bold"
-                       FontSize="Large"
-                       HorizontalTextAlignment="Center"
-                       LineBreakMode="WordWrap"
-                       Text="{Binding Question}" />
-                <Button x:Name="btnAnswerOne" Text="{Binding Answer1}" 
-                    IsEnabled="{Binding Answer1Enabled}" />
-                <Button x:Name="btnAnswerTwo" Text="{Binding Answer2}" 
-                    IsEnabled="{Binding Answer2Enabled}" />
-                <Button x:Name="btnAnswerThree" Text="{Binding Answer3}" 
-                    IsEnabled="{Binding Answer3Enabled}" />
-                <Label x:Name="lblMessage"
-                       FontAttributes="Italic"
-                       FontSize="Large"
-                       HorizontalTextAlignment="Center"
-                       Text="{Binding Message}" />
-            </StackLayout>
+        <StackLayout >
+            <Label x:Name="lblQuestion" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" Text="{Binding Question}" />
+            <OnPlatform x:TypeArguments="View">
+                <OnPlatform.Android>
+                    <Button x:Name="btnAnswerOne" Text="{Binding Answer1}" IsEnabled="{Binding Answer1Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
+                </OnPlatform.Android>
+                <OnPlatform.iOS>
+                    <local:CustomButton x:Name="btnAnswerOneIOS" Text="{Binding Answer1}" IsEnabled="{Binding Answer1Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold" />
+                </OnPlatform.iOS>
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="View">
+                <OnPlatform.Android>
+                    <Button x:Name="btnAnswerTwo" Text="{Binding Answer2}" IsEnabled="{Binding Answer2Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
+                </OnPlatform.Android>
+                <OnPlatform.iOS>
+                    <local:CustomButton x:Name="btnAnswerTwoIOS" Text="{Binding Answer2}" IsEnabled="{Binding Answer2Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
+                </OnPlatform.iOS>
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="View">
+                <OnPlatform.Android>
+                    <Button x:Name="btnAnswerThree" Text="{Binding Answer3}" IsEnabled="{Binding Answer3Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
+                </OnPlatform.Android>
+                <OnPlatform.iOS>
+                    <local:CustomButton x:Name="btnAnswerThreeIOS" Text="{Binding Answer3}" IsEnabled="{Binding Answer3Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
+                </OnPlatform.iOS>
+            </OnPlatform>
+            <Label x:Name="lblMessage" FontAttributes="Italic" FontSize="Large" HorizontalTextAlignment="Center" Text="{Binding Message}" />
+        </StackLayout>
     </StackLayout>
 </ContentPage>
-

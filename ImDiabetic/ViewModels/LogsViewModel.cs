@@ -73,6 +73,7 @@ namespace ImDiabetic.ViewModels
             {
                 Log log = new Log { UserId = User.Id, LogDate = DateTime.Now, Type = LogType, Amount = Amount, Calorie = Calorie };
                 realm.Add(log);
+                User.Score++;
             });
         }
     }

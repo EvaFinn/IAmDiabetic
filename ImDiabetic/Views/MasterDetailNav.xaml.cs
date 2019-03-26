@@ -19,7 +19,7 @@ namespace ImDiabetic.Views
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             var config = new RealmConfiguration() { SchemaVersion = 13 };
-            config.ShouldDeleteIfMigrationNeeded = true;
+            //config.ShouldDeleteIfMigrationNeeded = true;
             realm = Realm.GetInstance(config);
 
             User = user;

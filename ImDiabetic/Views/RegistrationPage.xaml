@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage Title="Registration" NavigationPage.HasBackButton="False" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:range="clr-namespace:Syncfusion.SfRangeSlider.XForms;assembly=Syncfusion.SfRangeSlider.XForms" x:Class="ImDiabetic.Views.RegistrationPage">
-    <ScrollView>
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Label Text="Register" HorizontalOptions="Center" />
-            <Entry x:Name="firstNameEntry" Text="{Binding FirstName}" Placeholder="First Name" ReturnType="Next" />
-            <Entry x:Name="lastNameEntry" Text="{Binding LastName}" Placeholder="Last Name" ReturnType="Next" />
-            <Entry x:Name="ageEntry" Text="{Binding Age}" Placeholder="Age" Keyboard="Numeric" ReturnType="Next" />
-            <Picker x:Name="picker" Title="Gender" SelectedItem="{Binding Gender}">
+<ContentPage Title="Registration" NavigationPage.HasBackButton="False" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converter="clr-namespace:ImDiabetic.Converter;assembly=ImDiabetic" xmlns:range="clr-namespace:Syncfusion.SfRangeSlider.XForms;assembly=Syncfusion.SfRangeSlider.XForms" x:Class="ImDiabetic.Views.RegistrationPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBooleanConverter x:Key="BooleanConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView Margin="0,0,0,20">
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
+            <Label Text="Register" HorizontalOptions="Center" Style="{StaticResource ProfileNameLabel}"/>
+            <Entry x:Name="firstNameEntry" Text="{Binding FirstName}" Placeholder="First Name" ReturnType="Next" TextChanged="Handle_TextChanged"/>
+            <Label Opacity="0.3" FontSize="Micro" x:Name="FNCheck" Text="First Name should not be Empty" TextColor="Red" />
+            <Entry x:Name="lastNameEntry" Text="{Binding LastName}" Placeholder="Last Name" ReturnType="Next" TextChanged="Handle_TextChanged" />
+            <Label Opacity="0.3" FontSize="Micro" x:Name="LNCheck" Text="Last Name should not be Empty" TextColor="Red" />
+            <Entry x:Name="ageEntry" Text="{Binding Age}" Placeholder="Age" Keyboard="Numeric" ReturnType="Next" TextChanged="Handle_TextChanged" />
+            <Label Opacity="0.3" FontSize="Micro" x:Name="AgeCheck" Text="Age should not be Empty" TextColor="Red" />
+            <Picker x:Name="picker" Title="Gender" SelectedItem="{Binding Gender}" SelectedIndexChanged="Handle_SelectedIndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Female</x:String>
                         <x:String>Male</x:String>
+                        <x:String>Rather Not Say</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <Entry x:Name="weightEntry" Text="{Binding Weight}" Placeholder="Weight" ReturnType="Next" />
-            <Entry x:Name="heightEntry" Text="{Binding Height}" Placeholder="Height" ReturnType="Next" />
-            <Picker x:Name="maxTarget" Title="Max Blood Glucose Target" SelectedItem="{Binding MaxTarget}">
+            <Label Opacity="0.3" FontSize="Micro" x:Name="GenderCheck" Text="Gender should not be Empty" TextColor="Red" />
+            <Entry x:Name="weightEntry" Text="{Binding Weight}" Placeholder="Weight" Keyboard="Numeric" ReturnType="Next" TextChanged="Handle_TextChanged" />
+            <Label Opacity="0.3" FontSize="Micro" x:Name="WCheck" Text="Weigth should not be Empty" TextColor="Red" />
+            <Entry x:Name="heightEntry" Text="{Binding Height}" Placeholder="Height" Keyboard="Numeric" ReturnType="Next" TextChanged="Handle_TextChanged" />
+            <Label Opacity="0.3" FontSize="Micro" x:Name="HCheck" Text="Height should not be Empty" TextColor="Red" />
+            <Picker x:Name="maxTarget" Title="Max Blood Glucose Target" SelectedItem="{Binding MaxTarget}" SelectedIndexChanged="Handle_SelectedIndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:Double}">
-                        <x:Double>15.0</x:Double>
-                        <x:Double>14.0</x:Double>
-                        <x:Double>13.0</x:Double>
                         <x:Double>12.0</x:Double>
                         <x:Double>11.0</x:Double>
                         <x:Double>10.0</x:Double>
@@ -38,12 +46,10 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <Picker x:Name="minTarget" Title="Min Blood Glucose Target" SelectedItem="{Binding MinTarget}">
+            <Label Opacity="0.3" FontSize="Micro" x:Name="MaxCheck" Text="Max Target should not be Empty" TextColor="Red" />
+            <Picker x:Name="minTarget" Title="Min Blood Glucose Target" SelectedItem="{Binding MinTarget}" SelectedIndexChanged="Handle_SelectedIndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:Double}">
-                        <x:Double>15.0</x:Double>
-                        <x:Double>14.0</x:Double>
-                        <x:Double>13.0</x:Double>
                         <x:Double>12.0</x:Double>
                         <x:Double>11.0</x:Double>
                         <x:Double>10.0</x:Double>
@@ -59,11 +65,11 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <Entry x:Name="passwordEntry" Text="{Binding Password}" Placeholder="Password" IsPassword="true" ReturnType="Done" />
-            
-            
-            <Button Text="Register" Clicked="Handle_Clicked" />
-            <Button Text="Cancel" Clicked="Cancel_Clicked" />
+            <Label Opacity="0.3" FontSize="Micro" x:Name="MinCheck" Text="Min Target should not be Empty" TextColor="Red" />
+            <Entry x:Name="passwordEntry" Text="{Binding Password}" Placeholder="Password" IsPassword="true" ReturnType="Done" TextChanged="Handle_TextChanged" />
+            <Label Opacity="0.3" FontSize="Micro" x:Name="PWCheck" Text="Password should not be Empty" TextColor="Red" />
+            <Button Margin="0,20,0,0" x:Name="registerBtn" Text="Register" Clicked="Handle_Clicked" IsEnabled="false" Style="{StaticResource AButton}"/>
+            <Button Text="Cancel" Clicked="Cancel_Clicked" Style="{StaticResource AButton}"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

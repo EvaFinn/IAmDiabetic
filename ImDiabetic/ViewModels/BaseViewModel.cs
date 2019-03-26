@@ -1,12 +1,15 @@
 ﻿using System;
 using Realms;
 using Realms.Sync;
+using Xamarin.Forms;
 
 namespace ImDiabetic.ViewModels
 {
-    public class BaseViewModel
+    public class BaseViewModel : BindableObject
     {
         protected Realm realm;
+
+
         public BaseViewModel()
         {
             SetUpRealm();
@@ -15,7 +18,7 @@ namespace ImDiabetic.ViewModels
 
         protected void SetUpRealm() {
             var config = new RealmConfiguration() { SchemaVersion = 13 }; //change in masterdetail page also
-            config.ShouldDeleteIfMigrationNeeded = true;
+            //config.ShouldDeleteIfMigrationNeeded = true;
             realm = Realm.GetInstance(config);
         }
     }

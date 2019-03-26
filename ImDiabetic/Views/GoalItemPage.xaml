@@ -7,8 +7,8 @@
         <Entry Text="{Binding Notes}" />
         <Label Text="Done" />
         <Switch x:Name="mySwitch" IsToggled="{Binding Done}" />
-        <Button Text="Save" Clicked="OnSaveClicked" />
-        <Button Text="Delete" Clicked="OnDeleteClicked" />
-        <Button Text="Cancel" Clicked="OnCancelClicked" />
+        <Button Text="Save" Clicked="OnSaveClicked" Style="{StaticResource AButton}"/>
+        <Button Text="Delete" Clicked="OnDeleteClicked" Style="{StaticResource AButton}"/>
+        <Button Text="Cancel" Clicked="OnCancelClicked" Style="{StaticResource AButton}"/>
     </StackLayout>
 </ContentPage>

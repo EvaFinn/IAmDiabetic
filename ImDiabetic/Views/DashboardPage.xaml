@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" x:Class="ImDiabetic.Views.DashboardPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" x:Class="ImDiabetic.Views.DashboardPage">
     <AbsoluteLayout Margin="0,10,0,0">
-        <StackLayout BackgroundColor="White" AbsoluteLayout.LayoutBounds="0,0.20,1,1" AbsoluteLayout.LayoutFlags="All">
-            <StackLayout Margin="0,20,0,0" Orientation="Vertical" BackgroundColor="DeepSkyBlue" Padding="0,10,0,0">
-                <Label x:Name="welcomeUserLabel" Text="{Binding Welcome}" HorizontalOptions="Center" Style="{StaticResource StatsNumberLabel}" />
+        <StackLayout BackgroundColor="White" AbsoluteLayout.LayoutBounds="0,0.20,1,1" AbsoluteLayout.LayoutFlags="All" Padding="0,-20,0,0">
+            <StackLayout Margin="0,20,0,0" Orientation="Vertical" BackgroundColor="DeepSkyBlue" Padding="0,0,0,0">
+                <Label x:Name="welcomeUserLabel" Margin="0,10,0,0" Text="{Binding Welcome}" HorizontalOptions="Center" Style="{StaticResource StatsNumberLabel}" />
                 <Label x:Name="logTestLabel" Text="{Binding Test}" HorizontalOptions="Center" />
-                <Grid Grid.Row="2" ColumnSpacing="0" RowSpacing="0" Margin="0,30">
+                <Grid Grid.Row="2" ColumnSpacing="0" RowSpacing="0" Margin="10,30" BackgroundColor="White" Padding="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -14,10 +14,12 @@
                     <StackLayout>
                         <Label Text="{Binding DailyStreak}" Style="{StaticResource StatsNumberLabel}" />
                         <Label Text="Daily Streak" Style="{StaticResource StatsCaptionLabel}" />
+                        <Image x:Name="flameImage" Style="{StaticResource ButtonNavigationBarImageStyle}"/>
                     </StackLayout>
                     <StackLayout Grid.Column="1">
                         <Label Text="{Binding Level}" Style="{StaticResource StatsNumberLabel}" />
                         <Label Text="Level" Style="{StaticResource StatsCaptionLabel}" />
+                        <progressBar:SfLinearProgressBar x:Name="progressbar" Padding="0" SegmentCount="4" Progress="{Binding Points}" EasingEffect="CubicInOut" Maximum="{Binding PointsNeeded}" />
                     </StackLayout>
                     <StackLayout Grid.Column="2">
                         <Label Text="{Binding Points}" Style="{StaticResource StatsNumberLabel}" />
@@ -27,7 +29,7 @@
             </StackLayout>
         </StackLayout>
         <StackLayout x:Name="stackAnim" AbsoluteLayout.LayoutBounds="0,0.4,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-            <forms:AnimationView x:Name="AnimationView" Loop="True" AutoPlay="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="250" WidthRequest="250" />
+            <forms:AnimationView x:Name="AnimationView" Loop="True" AutoPlay="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="250" WidthRequest="250" Margin="0,0,0,20"/>
             <Label x:Name="foodLabel" Text="{Binding FoodText}" HorizontalOptions="Center" />
             <Label x:Name="calLabel" Text="{Binding DisplayOne}" HorizontalOptions="Center" />
             <Label x:Name="carbLabel" Text="{Binding DisplayTwo}" HorizontalOptions="Center" />
