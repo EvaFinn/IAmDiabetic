@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" x:Class="ImDiabetic.Views.ProfilePage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" x:Class="ImDiabetic.Views.ProfilePage">
     <ScrollView Margin="0,0,0,0">
         <Grid ColumnSpacing="0" RowSpacing="0" BackgroundColor="White">
             <Grid.RowDefinitions>
@@ -10,51 +10,50 @@
                 <RowDefinition Height="AUTO" />
             </Grid.RowDefinitions>
             <Image x:Name="backgroundImage" Aspect="AspectFill" />
-            <forms:CachedImage x:Name="profileImage" TranslationY="50" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="End">
+            <forms:CachedImage x:Name="profileImage" TranslationY="1" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="End">
                 <forms:CachedImage.Transformations>
                     <transformations:RoundedTransformation Radius="240" />
                 </forms:CachedImage.Transformations>
             </forms:CachedImage>
             <!--            <Image x:Name="profileImage" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="End" />-->
-            <StackLayout x:Name="stckProfile" Grid.Row="1" HorizontalOptions="Center" Padding="0,10,0,00">
-                <Button x:Name="pickPictureButton" Text="Change Picture" Style="{StaticResource AButton}" Clicked="Handle_Clicked" />
-                <Label HorizontalTextAlignment="Center" Text="{Binding UserName}" Style="{StaticResource ProfileNameLabel}" />
-                <Label HorizontalTextAlignment="Center" Text="{Binding Info}" Margin="0,-5" Style="{StaticResource ProfileTagLabel}" />
-                <Picker x:Name="typepicker" Title="Choose Pet" SelectedItem="{Binding Pet}" WidthRequest="80" FontSize="Micro" TextColor="Gray" HorizontalOptions="CenterAndExpand" SelectedIndexChanged="Handle_SelectedIndexChanged">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Dog</x:String>
-                            <x:String>Rabbit</x:String>
-                            <x:String>Pigeon</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
-            </StackLayout>
-            <Grid Grid.Row="2" ColumnSpacing="0" RowSpacing="0" Margin="0,30">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <StackLayout>
-                    <Label Text="{Binding DailyStreak}" Style="{StaticResource StatsNumberLabel}" />
-                    <Label Text="Daily Streak" Style="{StaticResource StatsCaptionLabel}" />
-                    <Image x:Name="flameImage" Style="{StaticResource ButtonNavigationBarImageStyle}" />
+            <Frame Grid.Row="1" CornerRadius="10" OutlineColor="DeepSkyBlue" Margin="10,0,10,10">
+                <StackLayout x:Name="stckProfile" Grid.Row="1" HorizontalOptions="Center" Padding="0,0,0,0">
+                    <StackLayout Orientation="Vertical">
+                        <Button x:Name="pickPictureButton" Text="Change Picture" Style="{StaticResource SmallButton}" Clicked="Handle_Clicked" />
+                        <!--<Picker x:Name="typepicker" Title="Choose Pet" SelectedItem="{Binding Pet}" WidthRequest="80" FontSize="Micro" TextColor="Gray" HorizontalOptions="CenterAndExpand" SelectedIndexChanged="Handle_SelectedIndexChanged">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Dog</x:String>
+                                    <x:String>Rabbit</x:String>
+                                    <x:String>Pigeon</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>-->
+                    </StackLayout>
+                    <Label HorizontalTextAlignment="Center" Text="{Binding UserName}" Style="{StaticResource BigProfileNameLabel}" />
+                    <Label HorizontalTextAlignment="Center" Text="{Binding Info}" Margin="0,-5" Style="{StaticResource ProfileTagLabel}" />
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Pick a Pet:" FontSize="Micro" VerticalTextAlignment="Center" TextColor="Black" />
+                        <Picker x:Name="typepicker" Title="Choose Pet" SelectedItem="{Binding Pet}" WidthRequest="80" FontSize="Micro" TextColor="Gray" HorizontalOptions="CenterAndExpand" SelectedIndexChanged="Handle_SelectedIndexChanged">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Dog</x:String>
+                                    <x:String>Rabbit</x:String>
+                                    <x:String>Pigeon</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </StackLayout>
                 </StackLayout>
-                <StackLayout Grid.Column="1">
-                    <Label Text="{Binding CurrentLevel}" Style="{StaticResource StatsNumberLabel}" />
-                    <Label Text="Level" Style="{StaticResource StatsCaptionLabel}" />
-                    <progressBar:SfLinearProgressBar x:Name="progressbar" Padding="0" SegmentCount="4" Progress="{Binding Points}" EasingEffect="CubicInOut" Maximum="{Binding PointsNeeded}" />
-                </StackLayout>
-                <StackLayout Grid.Column="2">
-                    <Label Text="{Binding DisplayPoints}" Style="{StaticResource StatsNumberLabel}" />
-                    <Label Text="Points" Style="{StaticResource StatsCaptionLabel}" />
-                </StackLayout>
-            </Grid>
+            </Frame>
             <ScrollView Grid.Row="3" Orientation="Vertical" Padding="0" VerticalOptions="FillAndExpand">
                 <StackLayout>
-                    <Label HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource MainBodyLabel}" Text="Quiz Topics Analysis - Full Marks" />
-                    <chart:SfChart VerticalOptions="FillAndExpand" HeightRequest="300" WidthRequest="300">
+                    <Frame CornerRadius="10" OutlineColor="DeepSkyBlue" Margin="10,0" Padding="10">
+                        <StackLayout>
+                            <Label HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource ProfileNameLabel}" Text="Quiz Topics Analysis - Full Marks" />
+                        </StackLayout>
+                    </Frame>
+                    <chart:SfChart VerticalOptions="FillAndExpand" HeightRequest="200" WidthRequest="200">
                         <chart:SfChart.PrimaryAxis>
                             <chart:CategoryAxis />
                         </chart:SfChart.PrimaryAxis>
@@ -63,8 +62,24 @@
                         </chart:SfChart.SecondaryAxis>
                         <chart:RadarSeries ItemsSource="{Binding Data}" DrawType="Area" XBindingPath="Topic" YBindingPath="TopicCount" Color="#008ECC" StrokeColor="DeepSkyBlue" EnableAnimation="True" Opacity="0.4" />
                     </chart:SfChart>
-                    <Label Margin="20,0" HorizontalTextAlignment="Center" Style="{StaticResource MainBodyLabel}" Text="Main body? Analyse quiz topics in a graph, put in trophies, etc." />
-                    <Label Margin="20,0" HorizontalTextAlignment="Center" Style="{StaticResource MainBodyLabel}" Text="Main body? Analyse quiz topics in a graph, put in trophies, etc." />
+<!--                    <StackLayout BackgroundColor="DeepSkyBlue" Padding="0,10,0,0">-->
+                        <Frame CornerRadius="10" OutlineColor="DeepSkyBlue" Margin="10, 0, 10, 20">
+                            <StackLayout>
+                                <Label Margin="20,0" HorizontalTextAlignment="Center" Style="{StaticResource ProfileNameLabel}" Text="Achievements" />
+                                <ListView x:Name="listView" ItemsSource="{Binding As}" VerticalOptions="Fill" ItemTapped="OnItemTapped">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="30,0">
+                                                    <Label Text="{Binding Name}" Style="{StaticResource StatsCaptionLabel}" />
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </Frame>
+<!--                    </StackLayout>-->
                 </StackLayout>
             </ScrollView>
         </Grid>

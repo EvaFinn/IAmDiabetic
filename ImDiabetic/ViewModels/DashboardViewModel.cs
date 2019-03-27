@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using ImDiabetic.Models;
+using Plugin.LocalNotifications;
 using Xamarin.Forms;
 
 namespace ImDiabetic.ViewModels
@@ -17,7 +18,10 @@ namespace ImDiabetic.ViewModels
         public string Test { get; set; }
         public string DailyStreak { get; set; }
         public string Level { get; set; }
-        public string Points { get; set; }
+        public string DisplayPoints { get; set; }
+        public int PointsNeeded { get; set; }
+        public int CurrentLevel { get; set; }
+        public int Points { get; set; }
         public string FoodText { get; set; }
         public int DailyTotalCarbs { get; set; }
         public int TotalCal { get; set; }
@@ -28,22 +32,25 @@ namespace ImDiabetic.ViewModels
         public DashboardViewModel(AppUser user)
         {
             User = user;
+            FoodText = "All good!";
             DailyStreakCheck();
             HasLogs();
             Welcome = "Welcome " + User.FirstName + "!";
             DailyStreak = User.DailyStreak.ToString();
-            Points = User.Score.ToString();
-            LevelUp = LevelStuff();
-            Level = User.Level.ToString();
-            FoodText = "Getting hungry, eat soon";
             AchievementsViewModel vm = new AchievementsViewModel(User);
             vm.CheckAchievements();
+            CurrentLevel = User.Level;
+            PointsNeeded = 25 * CurrentLevel * 2;
+            Points = User.Score;
+            DisplayPoints = Points + "/" + PointsNeeded;
+            LevelUp = LevelStuff();
+            Level = User.Level.ToString();
         }
 
         public bool LevelStuff()
         {
-            int pointsRequiredToLevelUp = 25 * User.Level * 2;
-            if (int.Parse(Points) >= pointsRequiredToLevelUp)
+            //int pointsRequiredToLevelUp = 25 * CurrentLevel * 2;
+            if (Points >= PointsNeeded)
             {
                 realm.Write(() =>
                 {
@@ -78,6 +85,16 @@ namespace ImDiabetic.ViewModels
                         if (log.Type == "Food Item")
                         {
                             DailyTotalCarbs = DailyTotalCarbs + int.Parse(log.Amount);
+                            Debug.WriteLine("Log Hour : " + log.LogDate.Hour);
+                            Debug.WriteLine("Now Hour : " + DateTimeOffset.Now.Hour);
+                            TimeSpan timeSpan = DateTimeOffset.Now.Subtract(log.LogDate);
+
+
+                            if (timeSpan.TotalHours >= 4) {
+
+                                CrossLocalNotifications.Current.Show("Remember to eat!", "You should probably eat soon...", 1);
+                                FoodText = "Getting hungry, eat soon";
+                            }
 
                             if (log.Calorie != null)
                             {

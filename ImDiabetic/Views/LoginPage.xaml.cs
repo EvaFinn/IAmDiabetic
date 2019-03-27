@@ -13,6 +13,7 @@ namespace ImDiabetic.Views
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
+            BackgroundImage.Source = ImageSource.FromResource("ImDiabetic.Icons.bluebackground.jpg");
             BindingContext = new LoginViewModel();
         }
 

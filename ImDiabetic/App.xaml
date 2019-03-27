@@ -5,9 +5,9 @@
         <ResourceDictionary>
             <Color x:Key="HeaderTextColor">#585858</Color>
             <Color x:Key="BodyTextColor">#C3C3C3</Color>
+             <Color x:Key="DarkerBodyTextColor">#888888</Color>
             <Color x:Key="ButtonBackgroundColor">#5992FF</Color>
             <Color x:Key="BackgroundColor">White</Color>
-            <Color x:Key="DisplayColor">Red</Color>
             <Color x:Key="ErrorColor">#ff5252</Color>
             <Color x:Key="BlackColor">#000000</Color>
             <!--  font families  -->
@@ -42,12 +42,12 @@
                 <On Platform="Android" Value="12" />
             </OnPlatform>
             <!--  styles  -->
-            <Style x:Key="DisplayLabel" TargetType="Label">
-                <Setter Property="TextColor" Value="{StaticResource DisplayColor}" />
-                <Setter Property="FontFamily" Value="{StaticResource RegularFontFamily}" />
-                <Setter Property="FontSize" Value="{StaticResource TitleFontSize}" />
+            <Style x:Key="BigProfileNameLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource HeaderTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />
+                <Setter Property="FontSize" Value="28" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
-            </Style>v
+            </Style>
             
             <Style x:Key="ProfileNameLabel" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource HeaderTextColor}" />
@@ -66,12 +66,12 @@
             <Style x:Key="StatsNumberLabel" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource HeaderTextColor}" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
-                <Setter Property="FontFamily" Value="{StaticResource LightFontFamily}" />
+                <Setter Property="FontFamily" Value="{StaticResource RegularFontFamily}" />
                 <Setter Property="FontSize" Value="{StaticResource StatsNumberFontSize}" />
             </Style>
             
             <Style x:Key="StatsCaptionLabel" TargetType="Label">
-                <Setter Property="TextColor" Value="{StaticResource BodyTextColor}" />
+                <Setter Property="TextColor" Value="{StaticResource DarkerBodyTextColor}" />
                 <Setter Property="Margin" Value="0,-5,0,0" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="FontFamily" Value="{StaticResource LightFontFamily}" />
@@ -91,6 +91,24 @@
                 <Setter Property="BorderRadius" Value="20" />
                 <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />
                 <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
+            </Style>
+            
+             <Style x:Key="ScanButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ButtonBackgroundColor}" />
+                <Setter Property="TextColor" Value="White" /><Setter Property="HeightRequest" Value="40" />
+                <Setter Property="BorderRadius" Value="20" />
+                <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource LittleSize}" />
+            </Style>
+            
+            <Style x:Key="SmallButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ButtonBackgroundColor}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="BorderRadius" Value="20" />
+                <Setter Property="BorderColor" Value="Blue"/>
+                <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />
+                <Setter Property="FontSize" Value="9" />
             </Style>
             
             <!--<Style x:Key="QuizButton" TargetType="Button">

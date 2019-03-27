@@ -16,14 +16,13 @@ namespace ImDiabetic.ViewModels
         public List<Log> ListOfFoodLogs { get; set; } = new List<Log>();
         public List<Log> ListOfActivity { get; set; } = new List<Log>();
         public List<BGTargetData> BGChartData { get; set; }
+        public string Average { get; set; }
+        public string Highest { get; set; }
+        public string Lowest { get; set; }
         public int DailyTotalCarbs { get; set; }
         public int TotalCal { get; set; }
-        public string DisplayOne { get; set; }
-        public string DisplayTwo { get; set; }
         public string RecCals { get; set; }
-
         public int TotalMins { get; set; }
-        public string DisplayMins { get; set; }
 
         public TrendViewModel(AppUser user)
         {
@@ -44,7 +43,14 @@ namespace ImDiabetic.ViewModels
                     switch (log.Type)
                     {
                         case "Blood Glucose":
+                            List<int> Amounts = new List<int>();
                             ListOfLogs.Add(log);
+                            foreach(Log l in ListOfLogs) {
+                                Amounts.Add(int.Parse(l.Amount));
+                            }
+                            Average = Amounts.Average().ToString("F1");
+                            Highest = Amounts.Max().ToString();
+                            Lowest = Amounts.Min().ToString();
                             break;
                         case "Food Item":
                             ListOfFoodLogs.Add(log);
@@ -56,6 +62,7 @@ namespace ImDiabetic.ViewModels
                             {
                                 DailyTotalCarbs = DailyTotalCarbs + int.Parse(log.Amount);
                             }
+                            CalorieCal();
                             break;
                         case "Activity":
                             ListOfActivity.Add(log);
@@ -69,10 +76,6 @@ namespace ImDiabetic.ViewModels
                     }
                 }
             }
-            DisplayOne = "Total Carbs Today : " + DailyTotalCarbs;
-            DisplayTwo = "Total Calories : " + TotalCal;
-            DisplayMins = "Total Minutes of Activity : " + TotalMins;
-            RecCals = "Recommended Calories : " + ((10 * 63.5) + (6.25*167.6) - (5*21) - 161);
         }
 
         public void CheckTargetBG()
@@ -104,6 +107,21 @@ namespace ImDiabetic.ViewModels
             BGChartData.Add(new BGTargetData { BGTargetCounts = lowcount, LevelType = "LOW" });
             BGChartData.Add(new BGTargetData { BGTargetCounts = normalcount, LevelType = "NORMAL" });
             BGChartData.Add(new BGTargetData { BGTargetCounts = highcount, LevelType = "HIGH" });
+        }
+
+        private void CalorieCal() {
+            double recCalories;
+            //TODO hardcoded values here!
+            if (User.Gender == "Female")
+            {
+                recCalories = (665 + (4.3 * 140) + (4.7 * 65) - (4.7 * int.Parse(User.Age))) * 1.55;
+            }
+            else
+            {
+                recCalories = (66 + (6.3 * 140) + (12.9 * 65) - (6.8 * int.Parse(User.Age))) * 1.55;
+            }
+            string Cal = recCalories.ToString("F0");
+            RecCals = TotalCal + "/" + Cal;
         }
     }
 

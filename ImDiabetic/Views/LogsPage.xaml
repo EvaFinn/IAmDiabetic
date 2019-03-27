@@ -3,12 +3,12 @@
     <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
         <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
             <Label x:Name="ChooseLabel" Text="Choose a Log type!" HorizontalOptions="CenterAndExpand" />
-            <syncfusion:SfRadioGroup x:Name="radioGroup" >
-                <syncfusion:SfRadioButton x:Name="bloodg" Text="Blood Glucose" StateChanged="RadioButton_StateChanged"/>
-                <syncfusion:SfRadioButton x:Name="insulin" Text="Insulin" StateChanged="RadioButton_StateChanged"/>
-                <syncfusion:SfRadioButton x:Name="activity" Text="Activity" StateChanged="RadioButton_StateChanged"/>
-                <syncfusion:SfRadioButton x:Name="fooditem" Text="Food Item" StateChanged="RadioButton_StateChanged"/>
-                <syncfusion:SfRadioButton x:Name="medication" Text="Medication" StateChanged="RadioButton_StateChanged"/>
+            <syncfusion:SfRadioGroup x:Name="radioGroup">
+                <syncfusion:SfRadioButton x:Name="bloodg" Text="Blood Glucose" StateChanged="RadioButton_StateChanged" />
+                <syncfusion:SfRadioButton x:Name="insulin" Text="Insulin" StateChanged="RadioButton_StateChanged" />
+                <syncfusion:SfRadioButton x:Name="activity" Text="Activity" StateChanged="RadioButton_StateChanged" />
+                <syncfusion:SfRadioButton x:Name="fooditem" Text="Food Item" StateChanged="RadioButton_StateChanged" />
+                <syncfusion:SfRadioButton x:Name="medication" Text="Medication" StateChanged="RadioButton_StateChanged" />
             </syncfusion:SfRadioGroup>
         </StackLayout>
         <Grid VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="50">
@@ -21,30 +21,21 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1.5*" />
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
             <Label x:Name="bgLabel" Text="BLOOD GLUCOSE" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" />
-           <!-- <StackLayout x:Name="bgThing" Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                <Stepper x:Name="bloodglucose" Increment="1" Value="{Binding Amount}" HorizontalOptions="End" />
-                <Label Text="{Binding Source={x:Reference bloodglucose}, Path=Value, StringFormat='{0:F0}'}" WidthRequest="50" HorizontalOptions="Start" />
-            </StackLayout>-->
-
             <numeric:SfNumericUpDown x:Name="bgThing" Minimum="0" Value="{Binding Amount}" Grid.Row="0" Grid.Column="1" StepValue="1" />
-
-            
             <Label x:Name="insulinLabel" Text="AMOUNT" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" />
-            <Entry x:Name="insulinEntry" Text="{Binding Amount}" WidthRequest="150" Placeholder="Unit" Grid.Row="1" Grid.Column="1" />
+            <Entry x:Name="insulinEntry" Text="{Binding Amount}" WidthRequest="150" Placeholder="Unit" Grid.Row="1" Grid.Column="1" Keyboard="Numeric" />
             <Label x:Name="activityLabel" Text="MINUTES" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" />
-            
             <numeric:SfNumericUpDown x:Name="timeStep" Minimum="0" Value="{Binding Amount}" Grid.Row="1" Grid.Column="1" StepValue="5" />
-            
             <Label x:Name="calLabel" Text="CALORIES" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" />
-            <Entry x:Name="calEntry" Text="{Binding Calorie}" WidthRequest="150" Placeholder="kcal" Grid.Row="2" Grid.Column="1" />
+            <Entry x:Name="calEntry" Text="{Binding Calorie}" WidthRequest="150" Placeholder="kcal" Grid.Row="2" Grid.Column="1" Keyboard="Numeric" />
             <Label x:Name="carbsLabel" Text="CARBS" Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center" />
-            <Entry x:Name="carbsEntry" Text="{Binding Amount}" WidthRequest="150" Placeholder="g" Grid.Row="3" Grid.Column="1" />
-            <Button x:Name="scanBtn" Text="Scan" Grid.Row="3" Grid.Column="2" WidthRequest="40" HeightRequest="10" Clicked="ScanClick" Style="{StaticResource AButton}"/>
-            <Button x:Name="saveBtn" Text="Save" Grid.Row="5" Grid.Column="1" Clicked="Handle_Clicked" Style="{StaticResource AButton}"/>
+            <Entry x:Name="carbsEntry" Text="{Binding Amount}" WidthRequest="150" Placeholder="g" Grid.Row="3" Grid.Column="1" Keyboard="Numeric" />
+            <Button x:Name="scanBtn" Text="Scan" Grid.Row="3" Grid.Column="2" Clicked="ScanClick" Style="{StaticResource AButton}" />
+            <Button x:Name="saveBtn" Text="Save" Grid.Row="5" Grid.Column="1" Clicked="Handle_Clicked" Style="{StaticResource AButton}" />
         </Grid>
     </StackLayout>
 </ContentPage>

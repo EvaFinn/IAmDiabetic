@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage Title="Login" NavigationPage.HasBackButton="False" 
-             xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="ImDiabetic.Views.LoginPage">
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label Text="Login" HorizontalOptions="Center" Style="{StaticResource ProfileNameLabel}" />
-        <Entry x:Name="firstNameEntry" Text="{Binding FirstName, Mode=TwoWay}" Placeholder="First Name" />
-        <Entry x:Name="passwordEntry" Text="{Binding Password, Mode=TwoWay}" Placeholder="Password" IsPassword="true" />
-        <Button Text="Next" Clicked="Handle_Clicked" Style="{StaticResource AButton}"/>
-        <Button Text="Register" Clicked="Register_Clicked" Style="{StaticResource AButton}"/>
-    </StackLayout>
+<ContentPage Title="Login" NavigationPage.HasBackButton="False" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ImDiabetic.Views.LoginPage">
+    <RelativeLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Image x:Name="BackgroundImage" Opacity="0.8" Aspect="AspectFill" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" />
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <Label Text="Welcome" HorizontalOptions="Center" Style="{StaticResource ProfileNameLabel}" />
+            <Frame CornerRadius="10" Margin="0,40,0,50">
+                <StackLayout>
+                    <Entry x:Name="firstNameEntry" Text="{Binding FirstName, Mode=TwoWay}" Placeholder="First Name" />
+                    <Entry x:Name="passwordEntry" Text="{Binding Password, Mode=TwoWay}" Placeholder="Password" IsPassword="true" />
+                </StackLayout>
+            </Frame>
+            <Button Text="Login" Clicked="Handle_Clicked" Style="{StaticResource AButton}" />
+            <Button Text="Register" Clicked="Register_Clicked" Style="{StaticResource AButton}" />
+        </StackLayout>
+    </RelativeLayout>
 </ContentPage>

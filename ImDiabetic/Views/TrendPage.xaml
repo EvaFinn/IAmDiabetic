@@ -7,8 +7,8 @@
         <tabView:SfTabItem Title="Blood Glucose" SelectionColor="White" TitleFontAttributes="Bold" TitleFontColor="DeepSkyBlue">
             <tabView:SfTabItem.Content>
                 <ScrollView>
-                    <StackLayout>
-                        <chart:SfChart VerticalOptions="FillAndExpand">
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <chart:SfChart VerticalOptions="FillAndExpand" Margin="0,0,8,0">
                             <chart:SfChart.Title>
                                 <chart:ChartTitle Text="Blood Glucose Test Results">
                                 </chart:ChartTitle>
@@ -23,7 +23,7 @@
                             <chart:SfChart.PrimaryAxis>
                                 <chart:DateTimeCategoryAxis Interval="0.1" IntervalType="Days" EdgeLabelsDrawingMode="Center" AutoScrollingDelta="5">
                                     <chart:DateTimeCategoryAxis.LabelStyle>
-                                        <chart:ChartAxisLabelStyle Margin="3" />
+                                        <chart:ChartAxisLabelStyle Margin="2" />
                                     </chart:DateTimeCategoryAxis.LabelStyle>
                                 </chart:DateTimeCategoryAxis>
                             </chart:SfChart.PrimaryAxis>
@@ -34,17 +34,12 @@
                                     </chart:NumericalAxis.Title>
                                 </chart:NumericalAxis>
                             </chart:SfChart.SecondaryAxis>
-                            <chart:SfChart.Legend>
-                                <chart:ChartLegend>
-                                </chart:ChartLegend>
-                            </chart:SfChart.Legend>
-                            <chart:LineSeries ItemsSource="{Binding ListOfLogs}" Label="Blood Glucose" XBindingPath="LogDate.DateTime" YBindingPath="Amount">
+                            <chart:LineSeries ItemsSource="{Binding ListOfLogs}" XBindingPath="LogDate.DateTime" YBindingPath="Amount">
                                 <chart:LineSeries.DataMarker>
                                     <chart:ChartDataMarker />
                                 </chart:LineSeries.DataMarker>
                             </chart:LineSeries>
                         </chart:SfChart>
-                        
                         <chart:SfChart VerticalOptions="FillAndExpand">
                             <chart:SfChart.Title>
                                 <chart:ChartTitle Text="Blood Glucose Targets">
@@ -64,7 +59,27 @@
                                 </chart:DoughnutSeries.DataMarker>
                             </chart:DoughnutSeries>
                         </chart:SfChart>
-                        
+                        <Frame CornerRadius="10" OutlineColor="DeepSkyBlue" Margin="10">
+                            <Grid Grid.Row="2" ColumnSpacing="0" RowSpacing="0" BackgroundColor="White">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout>
+                                    <Label Text="{Binding Average}" Style="{StaticResource StatsNumberLabel}" />
+                                    <Label Text="Avg. Result" Style="{StaticResource StatsCaptionLabel}" />
+                                </StackLayout>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="{Binding Highest}" Style="{StaticResource StatsNumberLabel}" />
+                                    <Label Text="Highest" Style="{StaticResource StatsCaptionLabel}" />
+                                </StackLayout>
+                                <StackLayout Grid.Column="2">
+                                    <Label Text="{Binding Lowest}" Style="{StaticResource StatsNumberLabel}" />
+                                    <Label Text="Lowest" Style="{StaticResource StatsCaptionLabel}" />
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
                     </StackLayout>
                 </ScrollView>
             </tabView:SfTabItem.Content>
@@ -72,13 +87,13 @@
         <tabView:SfTabItem Title="Food Item" SelectionColor="White" TitleFontAttributes="Bold" TitleFontColor="DeepSkyBlue">
             <tabView:SfTabItem.Content>
                 <StackLayout>
-                    <chart:SfChart VerticalOptions="FillAndExpand">
+                    <chart:SfChart VerticalOptions="FillAndExpand" Margin="0,0,8,0">
                         <chart:SfChart.Title>
                             <chart:ChartTitle Text="Carbohydrate Count">
                             </chart:ChartTitle>
                         </chart:SfChart.Title>
                         <chart:SfChart.ColorModel>
-                            <chart:ChartColorModel Palette="Metro">
+                            <chart:ChartColorModel Palette="Natural">
                             </chart:ChartColorModel>
                         </chart:SfChart.ColorModel>
                         <chart:SfChart.ChartBehaviors>
@@ -98,19 +113,28 @@
                                 </chart:NumericalAxis.Title>
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
-                        <chart:SfChart.Legend>
-                            <chart:ChartLegend>
-                            </chart:ChartLegend>
-                        </chart:SfChart.Legend>
-                        <chart:LineSeries ItemsSource="{Binding ListOfFoodLogs}" Label="Carbohydrates" XBindingPath="LogDate.DateTime" YBindingPath="Amount">
+                        <chart:LineSeries ItemsSource="{Binding ListOfFoodLogs}" XBindingPath="LogDate.DateTime" YBindingPath="Amount">
                             <chart:LineSeries.DataMarker>
                                 <chart:ChartDataMarker />
                             </chart:LineSeries.DataMarker>
                         </chart:LineSeries>
                     </chart:SfChart>
-                    <Label Text="{Binding DisplayOne}" Style="{StaticResource DisplayLabel}" />
-                    <Label Text="{Binding DisplayTwo}" Style="{StaticResource DisplayLabel}" />
-                    <Label Text="{Binding RecCals}" Style="{StaticResource DisplayLabel}" />
+                    <Frame CornerRadius="10" OutlineColor="DeepSkyBlue" Margin="10">
+                        <Grid Grid.Row="2" ColumnSpacing="0" RowSpacing="0" BackgroundColor="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout>
+                                <Label Text="{Binding DailyTotalCarbs}" Style="{StaticResource StatsNumberLabel}" />
+                                <Label Text="Total Carbs Today" Style="{StaticResource StatsCaptionLabel}" />
+                            </StackLayout>
+                            <StackLayout Grid.Column="1">
+                                <Label Text="{Binding RecCals}" Style="{StaticResource StatsNumberLabel}" />
+                                <Label Text="Total Calories Today" Style="{StaticResource StatsCaptionLabel}" />
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
                 </StackLayout>
             </tabView:SfTabItem.Content>
         </tabView:SfTabItem>
@@ -123,7 +147,7 @@
                             </chart:ChartTitle>
                         </chart:SfChart.Title>
                         <chart:SfChart.ColorModel>
-                            <chart:ChartColorModel Palette="TomatoSpectrum">
+                            <chart:ChartColorModel Palette="Natural">
                             </chart:ChartColorModel>
                         </chart:SfChart.ColorModel>
                         <chart:SfChart.ChartBehaviors>
@@ -137,23 +161,29 @@
                             </chart:DateTimeCategoryAxis>
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
-                            <chart:NumericalAxis Minimum="0">
+                            <chart:NumericalAxis Minimum="0" Interval="1">
                                 <chart:NumericalAxis.Title>
-                                    <chart:ChartAxisTitle Text="Activity" />
+                                    <chart:ChartAxisTitle Text="Minutes of Activity" />
                                 </chart:NumericalAxis.Title>
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
-                        <chart:SfChart.Legend>
-                            <chart:ChartLegend>
-                            </chart:ChartLegend>
-                        </chart:SfChart.Legend>
-                        <chart:LineSeries ItemsSource="{Binding ListOfActivity}" Label="Minutes" XBindingPath="LogDate.DateTime" YBindingPath="Amount">
+                        <chart:LineSeries ItemsSource="{Binding ListOfActivity}" XBindingPath="LogDate.DateTime" YBindingPath="Amount">
                             <chart:LineSeries.DataMarker>
                                 <chart:ChartDataMarker />
                             </chart:LineSeries.DataMarker>
                         </chart:LineSeries>
                     </chart:SfChart>
-                    <Label Text="{Binding DisplayMins}" Style="{StaticResource DisplayLabel}" />
+                    <Frame CornerRadius="10" OutlineColor="DeepSkyBlue" Margin="10">
+                        <Grid Grid.Row="2" ColumnSpacing="0" RowSpacing="0" BackgroundColor="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout>
+                                <Label Text="{Binding TotalMins}" Style="{StaticResource StatsNumberLabel}" />
+                                 <Label Text="Total Minutes Logged" Style="{StaticResource StatsCaptionLabel}" />
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
                 </StackLayout>
             </tabView:SfTabItem.Content>
         </tabView:SfTabItem>

@@ -39,7 +39,7 @@ namespace ImDiabetic.Views
 
         async void Cancel_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new MainPage());
+            await Navigation.PushAsync(new LoginPage());
         }
 
         protected override bool OnBackButtonPressed()

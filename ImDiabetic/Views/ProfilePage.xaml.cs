@@ -5,6 +5,7 @@ using System.IO;
 using ImDiabetic.Models;
 using ImDiabetic.Utils;
 using ImDiabetic.ViewModels;
+using ImDiabetic.Views.More;
 using Realms;
 using Xamarin.Forms;
 
@@ -23,8 +24,7 @@ namespace ImDiabetic.Views
             BindingContext = new ProfileViewModel(User);
             profileImage.Source = ImageSource.FromStream(() => new MemoryStream((BindingContext as ProfileViewModel).Photo));
             backgroundImage.Source = ImageSource.FromResource("ImDiabetic.Icons.blue.jpg");
-            progressbar.IsVisible = true;
-            flameImage.Source = ImageSource.FromResource("ImDiabetic.Utils.flame.png");
+            listView.HeightRequest = 50 * (BindingContext as ProfileViewModel).As.Count;
 
         }
 
@@ -37,6 +37,14 @@ namespace ImDiabetic.Views
         protected override bool OnBackButtonPressed()
         {
             return true;
+        }
+
+        void OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e == null) return;
+            Debug.WriteLine("Tapped: " + e.Item);
+            Navigation.PushAsync(new SingleAchievementsPage(User, (e.Item as Achievement).Name));
+            ((ListView)sender).SelectedItem = null;
         }
 
         async private void Handle_Clicked(object sender, System.EventArgs e)

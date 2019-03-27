@@ -11,6 +11,7 @@ namespace ImDiabetic.Views.More
         public AppUser User { get; }
         public QuizResultPage(AppUser user)
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             User = user;
             BindingContext = new QuizViewModel(User);

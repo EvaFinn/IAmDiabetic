@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -20,6 +21,10 @@ namespace ImDiabetic.ViewModels
         public byte[] Photo { get; set; }
         public string Pet { get; set; }
         public List<TopicTargetData> Data { get; set; } = new List<TopicTargetData>();
+        public List<string> ListOfAchievements { get; set; } = new List<string>();
+        public string Achievement { get; set; } = "";
+
+        public ObservableCollection<Achievement> As { get; set; }
 
         public ProfileViewModel(AppUser user)
         {
@@ -28,13 +33,16 @@ namespace ImDiabetic.ViewModels
             UserName = User.FirstName;
             DailyStreak = User.DailyStreak.ToString();
             CurrentLevel = User.Level;
-            PointsNeeded = 25 * CurrentLevel * (1 + CurrentLevel);
+            PointsNeeded = 25 * CurrentLevel * 2;
             Points = User.Score;
             DisplayPoints = Points + "/" + PointsNeeded;
             Info = User.Age + ", " + User.Gender;
             Photo = User.ProfilePicture;
             Pet = User.Pet;
+            As = new ObservableCollection<Achievement>();
             TopicChartInit();
+            GetAchievements();
+            //Achievement = ListOfAchievements.ElementAt(0).Name;
         }
 
         public void UpdatePet(string pet) {
@@ -42,6 +50,20 @@ namespace ImDiabetic.ViewModels
             {
                 User.Pet = pet;
             });
+        }
+
+        public void GetAchievements() {
+            var achievements = realm.All<Achievement>().Where(a => a.UserId == User.Id);
+            if(achievements.Count() > 0) { 
+                foreach(Achievement a in achievements) {
+                    ListOfAchievements.Add(a.Name);
+                    As.Add(a);
+                }
+            }
+
+            foreach(string a in ListOfAchievements) {
+                Achievement += a + ", ";
+            }
         }
 
         private void TopicChartInit()
