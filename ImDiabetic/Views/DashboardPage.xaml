@@ -35,31 +35,31 @@
             <Frame CornerRadius="10" Margin="20" Padding="10">
                 <StackLayout>
                     <Label x:Name="foodLabel" Text="{Binding FoodText}" HorizontalOptions="Center" Style="{StaticResource StatsNumberLabel}" />
-                    <!-- <Label x:Name="calLabel" Text="{Binding DisplayOne}" HorizontalOptions="Center" />
-                    <Label x:Name="carbLabel" Text="{Binding DisplayTwo}" HorizontalOptions="Center" />-->
                 </StackLayout>
             </Frame>
         </StackLayout>
-        <StackLayout BackgroundColor="DeepSkyBlue" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-            <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckGoals">
-                <Image Margin="0,10,0,10" x:Name="imgGoals" Style="{StaticResource ButtonNavigationBarImageStyle}" />
-                <Label Text="Goals" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
+        <Frame Padding="1" BackgroundColor="DeepSkyBlue">
+            <StackLayout BackgroundColor="DeepSkyBlue" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckGoals">
+                    <Image Margin="0,10,0,10" x:Name="imgGoals" Style="{StaticResource ButtonNavigationBarImageStyle}" />
+                    <Label Text="Goals" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
+                </StackLayout>
+                <BoxView Color="White" WidthRequest="3" />
+                <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckLogs">
+                    <Image Margin="0,10,0,10" x:Name="imgLogs" Style="{StaticResource ButtonNavigationBarImageStyle}" />
+                    <Label Text="Logs" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
+                </StackLayout>
+                <BoxView Color="White" WidthRequest="3" />
+                <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckTrends">
+                    <Image Margin="0,10,0,10" x:Name="imgTrends" Style="{StaticResource ButtonNavigationBarImageStyle}" />
+                    <Label Text="Trends" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
+                </StackLayout>
+                <BoxView Color="White" WidthRequest="3" />
+                <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckMore">
+                    <Image Margin="0,10,0,10" x:Name="imgMore" Style="{StaticResource ButtonNavigationBarImageStyle}" />
+                    <Label Text="More" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
+                </StackLayout>
             </StackLayout>
-            <BoxView Color="White" WidthRequest="3" />
-            <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckLogs">
-                <Image Margin="0,10,0,10" x:Name="imgLogs" Style="{StaticResource ButtonNavigationBarImageStyle}" />
-                <Label Text="Logs" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
-            </StackLayout>
-            <BoxView Color="White" WidthRequest="3" />
-            <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckTrends">
-                <Image Margin="0,10,0,10" x:Name="imgTrends" Style="{StaticResource ButtonNavigationBarImageStyle}" />
-                <Label Text="Trends" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
-            </StackLayout>
-            <BoxView Color="White" WidthRequest="3" />
-            <StackLayout Style="{StaticResource ButtonNavigationBarStackLayoutStyle}" x:Name="stckMore">
-                <Image Margin="0,10,0,10" x:Name="imgMore" Style="{StaticResource ButtonNavigationBarImageStyle}" />
-                <Label Text="More" Style="{StaticResource ButtonNavigationBarLabelStyle}" />
-            </StackLayout>
-        </StackLayout>
+        </Frame>
     </StackLayout>
 </ContentPage>

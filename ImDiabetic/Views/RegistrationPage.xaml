@@ -24,9 +24,9 @@
                     </Picker.ItemsSource>
                 </Picker>
                 <Label Opacity="0.3" FontSize="Micro" x:Name="GenderCheck" Text="Gender should not be Empty" TextColor="Red" />
-                <Entry x:Name="weightEntry" Text="{Binding Weight}" Placeholder="Weight" Keyboard="Numeric" ReturnType="Next" TextChanged="Handle_TextChanged" />
+                <Entry x:Name="weightEntry" Text="{Binding Weight}" Placeholder="Weight - lb" Keyboard="Numeric" ReturnType="Next" TextChanged="Handle_TextChanged" />
                 <Label Opacity="0.3" FontSize="Micro" x:Name="WCheck" Text="Weigth should not be Empty" TextColor="Red" />
-                <Entry x:Name="heightEntry" Text="{Binding Height}" Placeholder="Height" Keyboard="Numeric" ReturnType="Next" TextChanged="Handle_TextChanged" />
+                <Entry x:Name="heightEntry" Text="{Binding Height}" Placeholder="Height - inches" Keyboard="Numeric" ReturnType="Next" TextChanged="Handle_TextChanged" />
                 <Label Opacity="0.3" FontSize="Micro" x:Name="HCheck" Text="Height should not be Empty" TextColor="Red" />
                 <Picker x:Name="maxTarget" Title="Max Blood Glucose Target" SelectedItem="{Binding MaxTarget}" SelectedIndexChanged="Handle_SelectedIndexChanged">
                     <Picker.ItemsSource>

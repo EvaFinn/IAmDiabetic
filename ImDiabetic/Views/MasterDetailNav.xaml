@@ -12,7 +12,7 @@
             <StackLayout Margin="10" Orientation="Vertical">
                 <Image x:Name="profileImage" />
                 
-                <ListView x:Name="aboutList" ItemSelected="OnMenuItemSelected" >  
+                <ListView x:Name="aboutList" ItemSelected="OnMenuItemSelected" Margin="0,50,0,0" SeparatorVisibility="None">  
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ImageCell Text="{Binding Text}" TextColor="DeepSkyBlue" ImageSource="{Binding ImagePath}" />

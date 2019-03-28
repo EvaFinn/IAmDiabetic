@@ -65,10 +65,10 @@ namespace ImDiabetic.Views
                     case "Age":
                         AgeCheck.IsVisible = false;
                         break;
-                    case "Weight":
+                    case "Weight - lb":
                         WCheck.IsVisible = false;
                         break;
-                    case "Height":
+                    case "Height - inches":
                         HCheck.IsVisible = false;
                         break;
                     case "Password":

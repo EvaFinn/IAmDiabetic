@@ -141,7 +141,7 @@
         <tabView:SfTabItem Title="Activity" SelectionColor="White" TitleFontAttributes="Bold" TitleFontColor="DeepSkyBlue">
             <tabView:SfTabItem.Content>
                 <StackLayout>
-                    <chart:SfChart VerticalOptions="FillAndExpand">
+                    <chart:SfChart VerticalOptions="FillAndExpand" Margin="0,0,8,0">
                         <chart:SfChart.Title>
                             <chart:ChartTitle Text="Minutes of Activity">
                             </chart:ChartTitle>
@@ -161,7 +161,7 @@
                             </chart:DateTimeCategoryAxis>
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
-                            <chart:NumericalAxis Minimum="0" Interval="1">
+                            <chart:NumericalAxis Minimum="0" Interval="5">
                                 <chart:NumericalAxis.Title>
                                     <chart:ChartAxisTitle Text="Minutes of Activity" />
                                 </chart:NumericalAxis.Title>

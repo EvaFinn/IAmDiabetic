@@ -20,7 +20,7 @@ namespace ImDiabetic.ViewModels
         public string Highest { get; set; }
         public string Lowest { get; set; }
         public int DailyTotalCarbs { get; set; }
-        public int TotalCal { get; set; }
+        public int TotalCal { get; set; } = 0;
         public string RecCals { get; set; }
         public int TotalMins { get; set; }
 
@@ -28,6 +28,7 @@ namespace ImDiabetic.ViewModels
         {
             User = user;
             LogsForCharts();
+            CalorieCal();
             CheckTargetBG();
         }
 
@@ -35,7 +36,7 @@ namespace ImDiabetic.ViewModels
         {
             var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
             DailyTotalCarbs = 0;
-            TotalCal = 0;
+            //TotalCal = 0;
             if (logs.Count() > 0)
             {
                 foreach (Log log in logs)
@@ -62,7 +63,6 @@ namespace ImDiabetic.ViewModels
                             {
                                 DailyTotalCarbs = DailyTotalCarbs + int.Parse(log.Amount);
                             }
-                            CalorieCal();
                             break;
                         case "Activity":
                             ListOfActivity.Add(log);
@@ -114,11 +114,11 @@ namespace ImDiabetic.ViewModels
             //TODO hardcoded values here!
             if (User.Gender == "Female")
             {
-                recCalories = (665 + (4.3 * 140) + (4.7 * 65) - (4.7 * int.Parse(User.Age))) * 1.55;
+                recCalories = (665 + (4.3 * double.Parse(User.Weight)) + (4.7 * double.Parse(User.Height)) - (4.7 * int.Parse(User.Age))) * 1.55;
             }
             else
             {
-                recCalories = (66 + (6.3 * 140) + (12.9 * 65) - (6.8 * int.Parse(User.Age))) * 1.55;
+                recCalories = (66 + (6.3 * double.Parse(User.Weight)) + (12.9 * double.Parse(User.Height)) - (6.8 * int.Parse(User.Age))) * 1.55;
             }
             string Cal = recCalories.ToString("F0");
             RecCals = TotalCal + "/" + Cal;

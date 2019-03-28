@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using ImDiabetic.Models;
 using ImDiabetic.ViewModels;
+using Nutritionix.Standard;
 using Syncfusion.XForms.Buttons;
 using Xamarin.Forms;
-
 using ZXing.Net.Mobile.Forms;
 
 
@@ -139,10 +139,17 @@ namespace ImDiabetic.Views
             ScannerPage.OnScanResult += (result) =>
             {
                 ScannerPage.IsScanning = false;
+
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     Navigation.PopAsync();
-                    DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    (BindingContext as LogsViewModel).AddFoodByBarcode(result.Text);
+                    Debug.WriteLine("***Calories : " + (BindingContext as LogsViewModel).Calorie);
+                    Debug.WriteLine("***Carbs : " + (BindingContext as LogsViewModel).Carbs);
+
+                    var position = calEntry.CursorPosition;
+                    calEntry.Text = (BindingContext as LogsViewModel).Calorie;
+                    carbsEntry.Text = (BindingContext as LogsViewModel).Carbs;
                 });
             };
             await Navigation.PushAsync(ScannerPage);

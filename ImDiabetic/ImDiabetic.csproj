@@ -38,8 +38,7 @@
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.4.859" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.4.859" />
     <PackageReference Include="Syncfusion.Xamarin.SfDataForm" Version="16.4.0.54" />
-    <PackageReference Include="Matcha.Validation" Version="1.0.1" />
-    <PackageReference Include="Prism.Forms" Version="7.1.0.431" />
+    <PackageReference Include="Nutritionix.Standard" Version="1.0.3" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MyPage.xaml" />

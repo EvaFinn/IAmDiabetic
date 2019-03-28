@@ -3,8 +3,6 @@ using System.Diagnostics;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using ImDiabetic.Models;
-using Matcha.Validation;
-using Prism.Commands;
 
 namespace ImDiabetic.ViewModels
 {

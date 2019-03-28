@@ -4,8 +4,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using Acr.UserDialogs;
 using ImDiabetic.Models;
 using ImDiabetic.Models.Logbook;
+using Nutritionix.Standard;
 
 namespace ImDiabetic.ViewModels
 {
@@ -18,8 +20,8 @@ namespace ImDiabetic.ViewModels
         public string Insulin { get; set; }
         public string Pills { get; set; }
         public string Activity { get; set; }
-        public string Carbs { get; set; }
-        public string Calorie { get; set; }
+        public string Carbs { get; set; } 
+        public string Calorie { get; set; } 
         public Log Log { get; set; }
         public int LastBloogGlucoseLog { get; set; }
         public int LastActivityLog { get; set; }
@@ -64,6 +66,26 @@ namespace ImDiabetic.ViewModels
                         LastActivityLog = int.Parse(AList.Last().Amount);
                     }
                 }
+            }
+        }
+
+        public void AddFoodByBarcode(string barcodeResult) {
+            var nutritionix = new NutritionixClient();
+            nutritionix.Initialize("6a11f905", "e73b446372659100c44aafd008b5b705");
+            Item food = null;
+            try
+            {
+                food = nutritionix.RetrieveItemByUPC(barcodeResult);
+                if (food != null)
+                {
+                    Carbs = food.NutritionFactTotalCarbohydrate.ToString();
+                    Calorie = food.NutritionFactCalories.ToString();
+                }
+            }
+            catch {
+                UserDialogs.Instance.Alert("Food item not found.", "Sorry", "OK");
+                Carbs = "";
+                Calorie = "";
             }
         }
 

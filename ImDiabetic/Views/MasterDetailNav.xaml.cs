@@ -51,21 +51,21 @@ namespace ImDiabetic.Views
                 new MasterMenuItems()
                 {
                     Text = "Profile",
-                    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rocket.png"),
+                    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rockets.png"),
                     TargetPage = typeof(ProfilePage)
                 },
 
                 new MasterMenuItems()
                 {
                     Text = "Dashboard",
-                    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rocket.png"),
+                    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rockets.png"),
                     TargetPage = typeof(DashboardPage)
                 },
 
                 new MasterMenuItems()
                 {
                     Text = "Reminders",
-                    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rocket.png"),
+                    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rockets.png"),
                     TargetPage = typeof(RemindersListPage)
                 }
                 //,
