@@ -26,10 +26,6 @@ namespace ImDiabetic.Views
             Goal = goal;
             IsNew = false;
             this.BindingContext = new GoalsViewModel(User, Goal);
-            mySwitch.Toggled += (object sende, ToggledEventArgs ee) =>
-            {
-                Console.WriteLine("Switch.Toggled event sent");
-            };
         }
 
         async private void Update()
@@ -43,32 +39,23 @@ namespace ImDiabetic.Views
             if (IsNew)
             {
                 (BindingContext as GoalsViewModel).SaveGoal();
-                //TODO fix: doesn't update list
             }
             else
             {
                 (BindingContext as GoalsViewModel).UpdateGoal(Goal);
             }
             await Navigation.PushAsync(new GoalsPage(User));
-            //await Navigation.PopAsync();
         }
 
         async void OnDeleteClicked(object sender, EventArgs e)
         {
             (BindingContext as GoalsViewModel).DeleteGoal(Goal);
-            //TODO fix: doesn't update list
             await Navigation.PushAsync(new GoalsPage(User));
-            //await Navigation.PopAsync();
         }
 
         async void OnCancelClicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
-
-        //protected override bool OnBackButtonPressed()
-        //{
-        //    return true;
-        //}
     }
 }

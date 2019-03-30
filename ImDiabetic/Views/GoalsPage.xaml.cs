@@ -19,19 +19,11 @@ namespace ImDiabetic.Views
             InitializeComponent();
             User = user;
             this.BindingContext = new GoalsViewModel(User);
-            //if ((BindingContext as GoalsViewModel).Goals != null)
-            //{
-            //    listView.ItemsSource = (BindingContext as GoalsViewModel).Goals;
-            //}
-            //checkImg.Source = ImageSource.FromResource("ImDiabetic.Icons.checked.png");
         }
 
         protected override void OnAppearing()
         {
-            //if ((BindingContext as GoalsViewModel).Goals != null)
-            //{
             listView.ItemsSource = (BindingContext as GoalsViewModel).Goals;
-            //}
         }
 
         async void OnItemAdded(object sender, EventArgs e)

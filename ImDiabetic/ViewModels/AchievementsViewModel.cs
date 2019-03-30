@@ -20,7 +20,7 @@ namespace ImDiabetic.ViewModels
         public string Points { get; set; }
         public string Date { get; set; }
         private List<Achievement> AllAchievements = new List<Achievement>();
-        
+
         public AchievementsViewModel(AppUser user, string achievement)
         {
             User = user;
@@ -31,7 +31,6 @@ namespace ImDiabetic.ViewModels
         public AchievementsViewModel(AppUser user)
         {
             User = user;
-            //LoadAchievements();
         }
 
         public void LoadAchievements()
@@ -53,15 +52,16 @@ namespace ImDiabetic.ViewModels
                 }
             }
 
-            if (ViewAchievementList.Any()) {
+            if (ViewAchievementList.Any())
+            {
                 Name = ViewAchievementList.ElementAt(0).Name;
                 Description = ViewAchievementList.ElementAt(0).Description;
                 Points = "You will receive " + ViewAchievementList.ElementAt(0).PointsAwarded + " points when completed";
-                //Date = DateTimeOffset.Now.Date.ToString();
             }
 
             var achieveDB = realm.All<Achievement>().Where(q => q.UserId == User.Id && q.Name == Achieve);
-            if(achieveDB.Count() > 0) {
+            if (achieveDB.Count() > 0)
+            {
                 GetAchievementsForChallenge(Achieve);
                 foreach (Achievement a in achieveDB)
                 {
@@ -73,14 +73,11 @@ namespace ImDiabetic.ViewModels
             }
         }
 
-        //AchievementManager class?
         public void CheckAchievements()
         {
             CheckBloodGlucoseLoggerOneDay();
             CheckActivityLogAchievement();
             CheckQuizTakenAchievement();
-            //CheckLoggerAchievementsTwo();
-
             CheckDailyStreak(3);
             CheckDailyStreak(7);
             CheckDailyStreak(14);
@@ -113,26 +110,9 @@ namespace ImDiabetic.ViewModels
                     HaveIt |= (a.Name == "Blood Glucose Logger" && a.IsAchieved == true);
                 }
 
-                if (todaysLogs.Count == 3)
+                if (todaysLogs.Count == 3 && !HaveIt)
                 {
-                    if (!HaveIt)
-                    {
-                        realm.Write(() =>
-                        {
-                            var achievement3log = new Achievement
-                            {
-                                UserId = User.Id,
-                                Name = Name,
-                                Description = Description,
-                                IsAchieved = true,
-                                AchievedDate = DateTimeOffset.Now,
-                                PointsAwarded = Points
-                            };
-                            realm.Add(achievement3log);
-                            User.Score = User.Score + int.Parse(achievement3log.PointsAwarded);
-                        });
-                        ShareAchievement();
-                    }
+                    AddAchievement();
                 }
             }
         }
@@ -154,49 +134,13 @@ namespace ImDiabetic.ViewModels
         async private void ShareAchievement()
         {
             bool share = await UserDialogs.Instance.ConfirmAsync("YOU HAVE WON THE " + Name + " CHALLENGE", "Congratulations", "Share", "OK");
-            if(share == true) {
+            if (share == true)
+            {
                 await Share.RequestAsync(new ShareTextRequest
                 {
                     Text = "I just won the " + Name + " Challenge on my ImDiabetic App!",
                     Title = "Achievement"
                 });
-            }
-        }
-
-        private void CheckLoggerAchievementsTwo()
-        {
-            //if isachieved == false
-            int sevendaycheck = 0;
-            //int fourteendaycheck = 0;
-            var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
-            if (logs.Count() > 0)
-            {
-                List<Log> todaysLogs = new List<Log>();
-                DateTimeOffset date = DateTimeOffset.Now;
-
-                for (int i = 0; i < 7; i++)
-                {
-                    List<Log> someLogs = new List<Log>();
-                    foreach (Log log in logs)
-                    {
-                        if (log.LogDate.Day.Equals(date.Day - i))
-                        {
-                            Debug.WriteLine("$$$$$$$++++ datetest thing  " + (date.Day - i) + ",,,,,  " + i);
-
-                            someLogs.Add(log);
-                        }
-                    }
-                    if (someLogs.Count == 3)
-                    {
-                        Debug.WriteLine("$$$$$$$ had 3 today!");
-
-                        //Debug.WriteLine("omg won award!!! ");
-                        sevendaycheck++;
-                    }
-                }
-                Debug.WriteLine("$$$$$$$ seven day check is: " + sevendaycheck);
-
-                //set is achieved to true
             }
         }
 
@@ -210,7 +154,8 @@ namespace ImDiabetic.ViewModels
             {
                 Debug.WriteLine("omg won award!!! streak is {0} long", checkDays);
 
-                switch (checkDays) {
+                switch (checkDays)
+                {
                     case 3:
                         GetAchievementsForChallenge("3 Day Streak");
                         foreach (Achievement a in achieves)
@@ -219,21 +164,7 @@ namespace ImDiabetic.ViewModels
                         }
                         if (!HaveIt)
                         {
-                            realm.Write(() =>
-                            {
-                                var achievement = new Achievement
-                                {
-                                    UserId = User.Id,
-                                    Name = Name,
-                                    Description = Description,
-                                    IsAchieved = true,
-                                    AchievedDate = DateTimeOffset.Now,
-                                    PointsAwarded = Points
-                                };
-                                realm.Add(achievement);
-                                User.Score = User.Score + int.Parse(achievement.PointsAwarded);
-                            });
-                            ShareAchievement();
+                            AddAchievement();
                         }
                         break;
                     case 7:
@@ -244,21 +175,7 @@ namespace ImDiabetic.ViewModels
                         }
                         if (!HaveIt)
                         {
-                            realm.Write(() =>
-                            {
-                                var achievement = new Achievement
-                                {
-                                    UserId = User.Id,
-                                    Name = Name,
-                                    Description = Description,
-                                    IsAchieved = true,
-                                    AchievedDate = DateTimeOffset.Now,
-                                    PointsAwarded = Points
-                                };
-                                realm.Add(achievement);
-                                User.Score = User.Score + int.Parse(achievement.PointsAwarded);
-                            });
-                            ShareAchievement();
+                            AddAchievement();
                         }
                         break;
                     case 14:
@@ -269,31 +186,19 @@ namespace ImDiabetic.ViewModels
                         }
                         if (!HaveIt)
                         {
-                            realm.Write(() =>
-                            {
-                                var achievement = new Achievement
-                                {
-                                    UserId = User.Id,
-                                    Name = Name,
-                                    Description = Description,
-                                    IsAchieved = true,
-                                    AchievedDate = DateTimeOffset.Now,
-                                    PointsAwarded = Points
-                                };
-                                realm.Add(achievement);
-                                User.Score = User.Score + int.Parse(achievement.PointsAwarded);
-                            });
-                            ShareAchievement();
+                            AddAchievement();
                         }
                         break;
                 }
             }
         }
 
-        private void CheckActivityLogAchievement() {
+        private void CheckActivityLogAchievement()
+        {
             LoadAchievements();
             bool HaveIt = false;
             int TotalActivity = 0;
+            int GoalActivity = 30;
             GetAchievementsForChallenge("Active Life");
 
             var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
@@ -313,31 +218,15 @@ namespace ImDiabetic.ViewModels
                     HaveIt |= (a.Name == "Active Life" && a.IsAchieved == true);
                 }
 
-                if (TotalActivity >= 30)
+                if (TotalActivity >= GoalActivity && !HaveIt)
                 {
-                    if (!HaveIt)
-                    {
-                        realm.Write(() =>
-                        {
-                            var achievement3log = new Achievement
-                            {
-                                UserId = User.Id,
-                                Name = Name,
-                                Description = Description,
-                                IsAchieved = true,
-                                AchievedDate = DateTimeOffset.Now,
-                                PointsAwarded = Points
-                            };
-                            realm.Add(achievement3log);
-                            User.Score = User.Score + int.Parse(achievement3log.PointsAwarded);
-                        });
-                        ShareAchievement();
-                    }
+                    AddAchievement();
                 }
             }
         }
 
-        private void CheckQuizTakenAchievement() {
+        private void CheckQuizTakenAchievement()
+        {
             LoadAchievements();
             bool HaveIt = false;
             GetAchievementsForChallenge("Quiz Master");
@@ -357,28 +246,30 @@ namespace ImDiabetic.ViewModels
                     HaveIt |= (a.Name == "Quiz Master" && a.IsAchieved == true);
                 }
 
-                if (quizList.Count() == 1)
+                if (quizList.Count() == 1 && !HaveIt)
                 {
-                    if (!HaveIt)
-                    {
-                        realm.Write(() =>
-                        {
-                            var achievement3log = new Achievement
-                            {
-                                UserId = User.Id,
-                                Name = Name,
-                                Description = Description,
-                                IsAchieved = true,
-                                AchievedDate = DateTimeOffset.Now,
-                                PointsAwarded = Points
-                            };
-                            realm.Add(achievement3log);
-                            User.Score = User.Score + int.Parse(achievement3log.PointsAwarded);
-                        });
-                        ShareAchievement();
-                    }
+                    AddAchievement();
                 }
             }
+        }
+
+        private void AddAchievement()
+        {
+            realm.Write(() =>
+            {
+                var achievement3log = new Achievement
+                {
+                    UserId = User.Id,
+                    Name = Name,
+                    Description = Description,
+                    IsAchieved = true,
+                    AchievedDate = DateTimeOffset.Now,
+                    PointsAwarded = Points
+                };
+                realm.Add(achievement3log);
+                User.Score = User.Score + int.Parse(achievement3log.PointsAwarded);
+            });
+            ShareAchievement();
         }
     }
 }

@@ -5,26 +5,26 @@
             <Label x:Name="lblQuestion" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" Text="{Binding Question}" />
             <OnPlatform x:TypeArguments="View">
                 <OnPlatform.Android>
-                    <Button x:Name="btnAnswerOne" Text="{Binding Answer1}" IsEnabled="{Binding Answer1Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
+                    <Button x:Name="btnAnswerOne" Text="{Binding Answer1}" Clicked="AnswerOneClicked" IsEnabled="{Binding Answer1Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
                 </OnPlatform.Android>
                 <OnPlatform.iOS>
-                    <local:CustomButton x:Name="btnAnswerOneIOS" Text="{Binding Answer1}" IsEnabled="{Binding Answer1Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold" />
+                    <local:CustomButton x:Name="btnAnswerOneIOS" Text="{Binding Answer1}" Clicked="AnswerOneClicked" IsEnabled="{Binding Answer1Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold" />
                 </OnPlatform.iOS>
             </OnPlatform>
             <OnPlatform x:TypeArguments="View">
                 <OnPlatform.Android>
-                    <Button x:Name="btnAnswerTwo" Text="{Binding Answer2}" IsEnabled="{Binding Answer2Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
+                    <Button x:Name="btnAnswerTwo" Text="{Binding Answer2}" Clicked="AnswerTwoClicked" IsEnabled="{Binding Answer2Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
                 </OnPlatform.Android>
                 <OnPlatform.iOS>
-                    <local:CustomButton x:Name="btnAnswerTwoIOS" Text="{Binding Answer2}" IsEnabled="{Binding Answer2Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
+                    <local:CustomButton x:Name="btnAnswerTwoIOS" Text="{Binding Answer2}" Clicked="AnswerTwoClicked" IsEnabled="{Binding Answer2Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
                 </OnPlatform.iOS>
             </OnPlatform>
             <OnPlatform x:TypeArguments="View">
                 <OnPlatform.Android>
-                    <Button x:Name="btnAnswerThree" Text="{Binding Answer3}" IsEnabled="{Binding Answer3Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
+                    <Button x:Name="btnAnswerThree" Text="{Binding Answer3}" Clicked="AnswerThreeClicked" IsEnabled="{Binding Answer3Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
                 </OnPlatform.Android>
                 <OnPlatform.iOS>
-                    <local:CustomButton x:Name="btnAnswerThreeIOS" Text="{Binding Answer3}" IsEnabled="{Binding Answer3Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
+                    <local:CustomButton x:Name="btnAnswerThreeIOS" Text="{Binding Answer3}" Clicked="AnswerThreeClicked" IsEnabled="{Binding Answer3Enabled}" BackgroundColor="DeepSkyBlue" TextColor="White" FontAttributes="Bold"/>
                 </OnPlatform.iOS>
             </OnPlatform>
             <Label x:Name="lblMessage" FontAttributes="Italic" FontSize="Large" HorizontalTextAlignment="Center" Text="{Binding Message}" />

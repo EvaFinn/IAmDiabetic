@@ -21,7 +21,7 @@ namespace ImDiabetic.Views.More
         {
             InitializeComponent();
             User = user;
-            this.BindingContext = new EducationContentViewModel(user, "topic");
+            this.BindingContext = new EducationContentViewModel();
             var template = new DataTemplate(typeof(TextCell));
             template.SetValue(TextCell.TextColorProperty, Color.DeepSkyBlue);
             template.SetBinding(TextCell.TextProperty, ".");
@@ -31,7 +31,6 @@ namespace ImDiabetic.Views.More
         void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e == null) return;
-            Debug.WriteLine("Tapped: " + e.Item);
             Navigation.PushAsync(new EducationContentPage(User, e.Item.ToString()));
             ((ListView)sender).SelectedItem = null;
         }
@@ -40,28 +39,14 @@ namespace ImDiabetic.Views.More
         {
             try
             {
-                //(BindingContext as EducationContentViewModel).PickFile();
                 FileData fileData = new FileData();
                 fileData = await CrossFilePicker.Current.PickFile();
 
                 if (fileData != null)
                 {
                     byte[] data = fileData.DataArray;
-                    string name = fileData.FileName;
-                    string filePath = fileData.FilePath;
-                    (BindingContext as EducationContentViewModel).Test = name;
-
-                    Debug.WriteLine("File name is: " + name);
-                    Debug.WriteLine("File Path : " + filePath);
-
-                    (BindingContext as EducationContentViewModel).Items.Add(name);
                     Stream MyStream = new MemoryStream(data);
                     await Navigation.PushAsync(new EducationContentPage(User, MyStream));
-
-                    foreach (string item in (BindingContext as EducationContentViewModel).Items)
-                    {
-                        Debug.WriteLine("ITEM : " + item);
-                    }
                 }
             }
             catch (InvalidOperationException ex)

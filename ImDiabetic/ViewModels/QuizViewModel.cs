@@ -9,12 +9,6 @@ namespace ImDiabetic.ViewModels
     {
         public AppUser User { get; set; }
         public string Score { get; set; }
-        public string Topic { get; set; }
-        public string Points { get; set; }
-        public int Level { get; set; }
-        public int LevelOne { get; set; } = 10;
-        public int LevelTwo { get; set; } = 20;
-        public int LevelThree { get; set; } = 30;
 
         public QuizViewModel(AppUser user)
         {
@@ -27,16 +21,12 @@ namespace ImDiabetic.ViewModels
             }
             else
             {
-                Score = "Your Score is " + LastQuiz.Score + "!";
+                Score = "Your Score is " + LastQuiz.Score + " out of 6";
             }
-            Topic = "Topic was " + LastQuiz.Topic;
             realm.Write(() =>
             {
                 User.Score = User.Score + int.Parse(LastQuiz.Score);
             });
-
-            Points = User.Score.ToString();
-            Level = User.Level;
         }
     }
 }

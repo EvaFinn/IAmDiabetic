@@ -7,40 +7,15 @@ using ImDiabetic.Models;
 
 namespace ImDiabetic.ViewModels
 {
-    public class GoalsViewModel : BaseViewModel, INotifyPropertyChanged
+    public class GoalsViewModel : BaseViewModel
     {
         public AppUser User { get; set; }
         public string Name { get; set; }
         public bool Done { get; set; }
         public string Notes { get; set; }
         public Goal Goal { get; set; }
-        //public Goal Goal
-        //{
-        //    get { return _goal; }
-        //    set
-        //    {
-        //        _goal = value;
-        //        OnPropertyChanged("Goal");
-        //    }
-        //}
         public string Text { get; set; }
-        private List<Goal> _goals = new List<Goal>();
-        public List<Goal> Goals
-        {
-            get { return _goals; }
-            set 
-            {
-                _goals = value;
-                OnPropertyChanged("Goals");
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged(string name)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
+        public List<Goal> Goals { get; set; } = new List<Goal>();
 
         public GoalsViewModel(AppUser user)
         {
@@ -64,7 +39,7 @@ namespace ImDiabetic.ViewModels
             {
                 foreach (Goal goal in goals)
                 {
-                    _goals.Add(goal);
+                    Goals.Add(goal);
                 }
                 Text = "Goals";
             }
@@ -87,7 +62,6 @@ namespace ImDiabetic.ViewModels
                 Goal = newGoal;
                 realm.Add(newGoal);
             });
-            //GetGoals();
         }
 
         public void DeleteGoal(Goal goal)
@@ -96,7 +70,6 @@ namespace ImDiabetic.ViewModels
             {
                 realm.Remove(goal);
             });
-            //GetGoals();
         }
 
         public void UpdateGoal(Goal goal)
@@ -108,13 +81,5 @@ namespace ImDiabetic.ViewModels
                 goal.Done = Done;
             });
         }
-
-        //private void NotifyPropertyChanged(string propertyName)
-        //{
-        //    if (PropertyChanged != null)
-        //    {
-        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        //    }
-        //}
     }
 }

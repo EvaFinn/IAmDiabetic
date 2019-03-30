@@ -84,18 +84,16 @@
     <None Remove="EduContent\Blood Glucose Monitoring.pdf" />
     <None Remove="EduContent\Insulin.pdf" />
     <None Remove="EduContent\PrivacyAgreement.pdf" />
+    <None Remove="Icons\finish.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icons\" />
     <Folder Include="Models\" />
     <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Models\Logbook\" />
     <Folder Include="Views\More\" />
     <Folder Include="EduContent\" />
     <Folder Include="Utils\" />
-    <Folder Include="Validation\" />
-    <Folder Include="Converter\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\home.png" />
@@ -124,6 +122,7 @@
     <EmbeddedResource Include="EduContent\Blood Glucose Monitoring.pdf" />
     <EmbeddedResource Include="EduContent\Insulin.pdf" />
     <EmbeddedResource Include="EduContent\PrivacyAgreement.pdf" />
+    <EmbeddedResource Include="Icons\finish.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\DashboardPage.xaml.cs">
@@ -140,10 +139,6 @@
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\LogsPage.xaml.cs">
       <DependentUpon>Ignore.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\MorePage.xaml.cs">

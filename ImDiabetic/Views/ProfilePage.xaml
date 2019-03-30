@@ -52,7 +52,6 @@
                         </chart:SfChart.SecondaryAxis>
                         <chart:RadarSeries ItemsSource="{Binding Data}" DrawType="Area" XBindingPath="Topic" YBindingPath="TopicCount" Color="#008ECC" StrokeColor="DeepSkyBlue" EnableAnimation="True" Opacity="0.4" />
                     </chart:SfChart>
-<!--                    <StackLayout BackgroundColor="DeepSkyBlue" Padding="0,10,0,0">-->
                         <Frame CornerRadius="10" OutlineColor="DeepSkyBlue" Margin="10, 0, 10, 20">
                             <StackLayout>
                                 <Label Margin="20,0" HorizontalTextAlignment="Center" Style="{StaticResource ProfileNameLabel}" Text="Achievements" TextDecorations="Underline"/>
@@ -69,7 +68,6 @@
                                 </ListView>
                             </StackLayout>
                         </Frame>
-<!--                    </StackLayout>-->
                 </StackLayout>
             </ScrollView>
         </Grid>

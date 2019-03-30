@@ -13,11 +13,10 @@ namespace ImDiabetic.ViewModels
         public BaseViewModel()
         {
             SetUpRealm();
-
         }
 
         protected void SetUpRealm() {
-            var config = new RealmConfiguration() { SchemaVersion = 13 }; //change in masterdetail page also
+            var config = new RealmConfiguration() { SchemaVersion = 13 };
             //config.ShouldDeleteIfMigrationNeeded = true;
             realm = Realm.GetInstance(config);
         }

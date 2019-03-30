@@ -10,16 +10,15 @@ namespace ImDiabetic.Views
 {
     public partial class RegistrationPage : ContentPage
     {
-        Regex patdi = new Regex(@"[0-9]+");//match digits
-        Regex patupp = new Regex(@"[A-Z]+"); //match upper cases
-        Regex patlow = new Regex(@"[a-z]+"); //match lower cases
+        Regex patdi = new Regex(@"[0-9]+");
+        Regex patupp = new Regex(@"[A-Z]+"); 
+        Regex patlow = new Regex(@"[a-z]+"); 
 
         public RegistrationPage()
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             BindingContext = new RegistrationViewModel();
-
             firstNameEntry.ReturnCommand = new Command(() => lastNameEntry.Focus());
             lastNameEntry.ReturnCommand = new Command(() => ageEntry.Focus());
             ageEntry.ReturnCommand = new Command(() => picker.Focus());
@@ -68,10 +67,7 @@ namespace ImDiabetic.Views
                         LNCheck.IsVisible = false;
                         break;
                     case "Age":
-                        if (int.Parse(text) >= 12)
-                        {
-                            AgeCheck.IsVisible = false;
-                        }
+                        AgeCheck.IsVisible &= int.Parse(text) < 12;
                         break;
                     case "Weight - lb":
                         WCheck.IsVisible = false;
@@ -85,7 +81,6 @@ namespace ImDiabetic.Views
                             PWCheck.IsVisible = false;
                             registerBtn.IsEnabled = true;
                         }
-
                         break;
                 }
             }

@@ -30,7 +30,6 @@ namespace ImDiabetic.Views.More
         void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e == null) return;
-            Debug.WriteLine("Tapped: " + e.Item);
             Navigation.PushAsync(new SingleAchievementsPage(User, e.Item.ToString()));
             ((ListView)sender).SelectedItem = null;
         }
@@ -52,7 +51,6 @@ namespace ImDiabetic.Views.More
             for (int i = 0; i < jsonresult.Count; i++)
             {
                 acheivements[i] = jsonresult.ElementAt(i).Name;
-                Debug.WriteLine("Name : " + acheivements[i]);
             }
             return acheivements;
         }

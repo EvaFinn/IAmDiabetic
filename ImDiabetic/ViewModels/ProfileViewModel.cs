@@ -12,18 +12,11 @@ namespace ImDiabetic.ViewModels
     {
         public AppUser User { get; set; }
         public string UserName { get; set; }
-        public string DailyStreak { get; set; }
-        public int Points { get; set; }
-        public string DisplayPoints { get; set; }
         public string Info { get; set; }
-        public int PointsNeeded { get; set; }
-        public int CurrentLevel { get; set; }
         public byte[] Photo { get; set; }
         public string Pet { get; set; }
-        public List<TopicTargetData> Data { get; set; } = new List<TopicTargetData>();
-        public List<string> ListOfAchievements { get; set; } = new List<string>();
-        public string Achievement { get; set; } = "";
-
+        public List<TopicTargetData> Data { get; set; } 
+        public List<string> ListOfAchievements { get; set; } 
         public ObservableCollection<Achievement> As { get; set; }
 
         public ProfileViewModel(AppUser user)
@@ -31,18 +24,14 @@ namespace ImDiabetic.ViewModels
             User = user;
 
             UserName = User.FirstName;
-            DailyStreak = User.DailyStreak.ToString();
-            CurrentLevel = User.Level;
-            PointsNeeded = 25 * CurrentLevel * 2;
-            Points = User.Score;
-            DisplayPoints = Points + "/" + PointsNeeded;
             Info = User.Age + ", " + User.Gender;
             Photo = User.ProfilePicture;
             Pet = User.Pet;
+            Data = new List<TopicTargetData>();
+            ListOfAchievements = new List<string>();
             As = new ObservableCollection<Achievement>();
             TopicChartInit();
             GetAchievements();
-            //Achievement = ListOfAchievements.ElementAt(0).Name;
         }
 
         public void UpdatePet(string pet) {
@@ -60,10 +49,6 @@ namespace ImDiabetic.ViewModels
                     As.Add(a);
                 }
             }
-
-            foreach(string a in ListOfAchievements) {
-                Achievement += a + ", ";
-            }
         }
 
         private void TopicChartInit()
@@ -76,10 +61,8 @@ namespace ImDiabetic.ViewModels
             var quiz = realm.All<Quiz>().Where(q => q.UserId == User.Id);
             foreach (Quiz q in quiz)
             {
-                Debug.WriteLine("Topic : " + q.Topic);
                 if (q.Score == "6")
                 {
-                    Debug.WriteLine("FULL SCORE!");
                     switch (q.Topic) {
                         case "Management":
                             manCount++;
@@ -109,7 +92,7 @@ namespace ImDiabetic.ViewModels
 
         }
 
-        public void ReadFully(Stream input)
+        public void ReadPhoto(Stream input)
         {
             var buffer = new byte[16 * 1024];
             using (MemoryStream ms = new MemoryStream())

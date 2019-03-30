@@ -5,7 +5,7 @@
         <Entry Text="{Binding Name}" />
         <Label Text="Notes" />
         <Entry Text="{Binding Notes}" />
-        <Label Text="Done" />
+        <Label Text="Reached Goal" />
         <Switch x:Name="mySwitch" IsToggled="{Binding Done}" />
         <Button Text="Save" Clicked="OnSaveClicked" Style="{StaticResource AButton}"/>
         <Button Text="Delete" Clicked="OnDeleteClicked" Style="{StaticResource AButton}"/>

@@ -38,12 +38,6 @@ namespace ImDiabetic.ViewModels
                 RegisteredUser = user;
                 realm.Add(user);
             });
-
-            var uuu = realm.All<AppUser>();
-            foreach (AppUser use in uuu)
-            {
-                Debug.WriteLine("NAME " + use.FirstName + ",,," + use.Password);
-            }
         }
     }
 }

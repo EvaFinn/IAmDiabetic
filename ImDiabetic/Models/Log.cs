@@ -1,5 +1,4 @@
 ﻿using System;
-using ImDiabetic.Models.Logbook;
 using Realms;
 
 namespace ImDiabetic.Models
@@ -12,6 +11,5 @@ namespace ImDiabetic.Models
         public string Type { get; set; }
         public string Amount { get; set; }
         public string Calorie { get; set; }
-
     }
 }

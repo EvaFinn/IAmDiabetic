@@ -59,6 +59,15 @@
                                 </chart:DoughnutSeries.DataMarker>
                             </chart:DoughnutSeries>
                         </chart:SfChart>
+                      <Picker x:Name="typepicker" Title="Choose Time" WidthRequest="80" FontSize="Micro" TextColor="Gray" HorizontalOptions="CenterAndExpand" >
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>7 days</x:String>
+                                    <x:String>14 days</x:String>
+                                    <x:String>90 days</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
                         <Frame CornerRadius="10" OutlineColor="DeepSkyBlue" Margin="10">
                             <Grid Grid.Row="2" ColumnSpacing="0" RowSpacing="0" BackgroundColor="White">
                                 <Grid.ColumnDefinitions>
@@ -180,7 +189,7 @@
                             </Grid.ColumnDefinitions>
                             <StackLayout>
                                 <Label Text="{Binding TotalMins}" Style="{StaticResource StatsNumberLabel}" />
-                                 <Label Text="Total Minutes Logged" Style="{StaticResource StatsCaptionLabel}" />
+                                <Label Text="Total Minutes Logged" Style="{StaticResource StatsCaptionLabel}" />
                             </StackLayout>
                         </Grid>
                     </Frame>

@@ -39,7 +39,6 @@ namespace ImDiabetic.ViewModels
                     new PropertyChangedEventArgs("Question"));
             }
         }
-
         private string _answer1;
         public string Answer1
         {
@@ -51,7 +50,6 @@ namespace ImDiabetic.ViewModels
                     new PropertyChangedEventArgs("Answer1"));
             }
         }
-
         private bool _answer1Enabled;
         public bool Answer1Enabled
         {
@@ -63,7 +61,6 @@ namespace ImDiabetic.ViewModels
                     new PropertyChangedEventArgs("Answer1Enabled"));
             }
         }
-
         private string _answer2;
         public string Answer2
         {
@@ -75,7 +72,6 @@ namespace ImDiabetic.ViewModels
                     new PropertyChangedEventArgs("Answer2"));
             }
         }
-
         private bool _answer2Enabled;
         public bool Answer2Enabled
         {
@@ -87,7 +83,6 @@ namespace ImDiabetic.ViewModels
                     new PropertyChangedEventArgs("Answer2Enabled"));
             }
         }
-
         private string _answer3;
         public string Answer3
         {
@@ -99,7 +94,6 @@ namespace ImDiabetic.ViewModels
                     new PropertyChangedEventArgs("Answer3"));
             }
         }
-
         private bool _answer3Enabled;
         public bool Answer3Enabled
         {
@@ -111,9 +105,8 @@ namespace ImDiabetic.ViewModels
                     new PropertyChangedEventArgs("Answer3Enabled"));
             }
         }
-
         private List<QuizQuestion> _questionList;
-        List<QuizQuestion> QuestionList
+        public List<QuizQuestion> QuestionList
         {
             get { return this._questionList; }
             set
@@ -123,10 +116,7 @@ namespace ImDiabetic.ViewModels
                     new PropertyChangedEventArgs("QuestionList"));
             }
         }
-        Random rnd = new Random();
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private string _message;
         public string Message
         {
@@ -138,8 +128,8 @@ namespace ImDiabetic.ViewModels
                     new PropertyChangedEventArgs("Message"));
             }
         }
-
         private string ChosenTopic { get; set; }
+
 
         public QuestionViewModel(string topic, AppUser user)
         {
@@ -161,7 +151,6 @@ namespace ImDiabetic.ViewModels
         public void LoadQuestions()
         {
             List<QuizQuestion> jsonresult;
-
             var assembly = IntrospectionExtensions.GetTypeInfo(typeof(QuizQuestion)).Assembly;
             Stream stream = assembly.GetManifestResourceStream("ImDiabetic.quizquestion.json");
             string json = "";
@@ -169,7 +158,6 @@ namespace ImDiabetic.ViewModels
             {
                 json = reader.ReadToEnd();
             }
-
             jsonresult = JsonConvert.DeserializeObject<List<QuizQuestion>>(json);
             List<QuizQuestion> questions = new List<QuizQuestion>();
 
@@ -180,14 +168,11 @@ namespace ImDiabetic.ViewModels
                 }
             }
             QuestionList = questions;
-
             ChooseNewQuestion();
         }
 
         public void ChooseNewQuestion()
         {
-            //int num = rnd.Next(0, questionNumber);
-            //random number between 0 and QuizSettings.QuestionCount??? idk
             QuizQuestion selectedItem = QuestionList[questionNumber];
 
             Answer1Enabled = true;
@@ -204,7 +189,6 @@ namespace ImDiabetic.ViewModels
 
         public void AddQuizToDB(int finalScore) {
             var quiz = new Quiz { UserId = User.Id, Score = finalScore.ToString(), Topic = ChosenTopic };
-
             realm.Write(() => {
                 realm.Add(quiz);
             });

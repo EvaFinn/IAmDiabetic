@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using ImDiabetic.Models;
 using System.Linq;
-using ImDiabetic.Models.Logbook;
 using System.Diagnostics;
 using Syncfusion.SfChart.XForms;
 
@@ -36,7 +35,6 @@ namespace ImDiabetic.ViewModels
         {
             var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
             DailyTotalCarbs = 0;
-            //TotalCal = 0;
             if (logs.Count() > 0)
             {
                 foreach (Log log in logs)
@@ -55,13 +53,13 @@ namespace ImDiabetic.ViewModels
                             break;
                         case "Food Item":
                             ListOfFoodLogs.Add(log);
-                            if (log.Calorie != null)
-                            {
-                                TotalCal = TotalCal + int.Parse(log.Calorie);
-                            }
                             if (log.LogDate.Day == DateTimeOffset.Now.Day)
                             {
                                 DailyTotalCarbs = DailyTotalCarbs + int.Parse(log.Amount);
+                                if (log.Calorie != null)
+                                {
+                                    TotalCal = TotalCal + int.Parse(log.Calorie);
+                                }
                             }
                             break;
                         case "Activity":
@@ -111,7 +109,6 @@ namespace ImDiabetic.ViewModels
 
         private void CalorieCal() {
             double recCalories;
-            //TODO hardcoded values here!
             if (User.Gender == "Female")
             {
                 recCalories = (665 + (4.3 * double.Parse(User.Weight)) + (4.7 * double.Parse(User.Height)) - (4.7 * int.Parse(User.Age))) * 1.55;

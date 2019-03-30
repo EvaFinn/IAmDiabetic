@@ -15,6 +15,7 @@ namespace ImDiabetic.Views.More
             InitializeComponent();
             User = user;
             BindingContext = new QuizViewModel(User);
+            finishImage.Source = ImageSource.FromResource("ImDiabetic.Icons.finish.png");
         }
 
         async void Handle_Clicked(object sender, System.EventArgs e)

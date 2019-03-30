@@ -8,7 +8,6 @@ namespace ImDiabetic
     public class MasterMenuItems
     {
         public string Text { get; set; }
-        public ImageSource ImagePath { get; set; }
         public Type TargetPage { get; set; }
     }
 }

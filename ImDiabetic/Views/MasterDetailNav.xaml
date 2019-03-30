@@ -7,7 +7,7 @@
                 <ListView x:Name="aboutList" ItemSelected="OnMenuItemSelected" Margin="0,50,0,0" SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ImageCell Text="{Binding Text}" TextColor="DeepSkyBlue" ImageSource="{Binding ImagePath}" />
+                            <ImageCell Text="{Binding Text}" TextColor="DeepSkyBlue" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

@@ -18,7 +18,6 @@ namespace ImDiabetic.Views.More
             InitializeComponent();
             User = user;
             string[] questionTopics = GetQustionTopics();
-
             this.BindingContext = questionTopics.Distinct().ToArray();
             var template = new DataTemplate(typeof(TextCell));
             template.SetValue(TextCell.TextColorProperty, Color.DeepSkyBlue);
@@ -43,9 +42,7 @@ namespace ImDiabetic.Views.More
             for (int i = 0; i < jsonresult.Count; i++)
             {
                 questionTopics[i] = jsonresult.ElementAt(i).Topic;
-                Debug.WriteLine("Topics : " + questionTopics[i]);
             }
-
             return questionTopics;
         }
 

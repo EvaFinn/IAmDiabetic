@@ -9,6 +9,7 @@ namespace ImDiabetic.ViewModels
     {
         public AppUser User { get; set; }
         public List<Reminders> Reminders { get; set; } = new List<Reminders>();
+
         public RemindersListViewModel(AppUser user)
         {
             User = user;

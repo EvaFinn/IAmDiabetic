@@ -37,14 +37,12 @@ namespace ImDiabetic.Views
             }
             else
             {
-                await DisplayAlert("Alert", "User does not exist", "OK");
+                await DisplayAlert("Alert", "Incorrect credentials", "OK");
             }
         }
 
         public void Register_Clicked(object sender, System.EventArgs e)
         {
-
-            //await Navigation.PushAsync(new RegistrationPage());
             PrivacyAgree();
         }
 

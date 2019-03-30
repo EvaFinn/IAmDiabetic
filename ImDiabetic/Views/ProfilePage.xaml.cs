@@ -25,7 +25,6 @@ namespace ImDiabetic.Views
             profileImage.Source = ImageSource.FromStream(() => new MemoryStream((BindingContext as ProfileViewModel).Photo));
             backgroundImage.Source = ImageSource.FromResource("ImDiabetic.Icons.blue.jpg");
             listView.HeightRequest = 50 * (BindingContext as ProfileViewModel).As.Count;
-
         }
 
         void Handle_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -42,7 +41,6 @@ namespace ImDiabetic.Views
         void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e == null) return;
-            Debug.WriteLine("Tapped: " + e.Item);
             Navigation.PushAsync(new SingleAchievementsPage(User, (e.Item as Achievement).Name));
             ((ListView)sender).SelectedItem = null;
         }
@@ -54,7 +52,7 @@ namespace ImDiabetic.Views
 
             if (stream != null)
             {
-                (BindingContext as ProfileViewModel).ReadFully(stream);
+                (BindingContext as ProfileViewModel).ReadPhoto(stream);
                 profileImage.Source = ImageSource.FromStream(() => new MemoryStream((BindingContext as ProfileViewModel).Photo));
                 profileImage.BackgroundColor = Color.White;
 

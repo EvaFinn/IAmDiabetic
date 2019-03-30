@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage Title="Registration" NavigationPage.HasBackButton="False" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converter="clr-namespace:ImDiabetic.Converter;assembly=ImDiabetic" xmlns:range="clr-namespace:Syncfusion.SfRangeSlider.XForms;assembly=Syncfusion.SfRangeSlider.XForms" x:Class="ImDiabetic.Views.RegistrationPage">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converter:InverseBooleanConverter x:Key="BooleanConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
+<ContentPage Title="Registration" NavigationPage.HasBackButton="False" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:range="clr-namespace:Syncfusion.SfRangeSlider.XForms;assembly=Syncfusion.SfRangeSlider.XForms" x:Class="ImDiabetic.Views.RegistrationPage">
     <ScrollView Margin="0,0,0,20">
             <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Start" >
                 <Label Text="Register" HorizontalOptions="Center" Style="{StaticResource ProfileNameLabel}" />

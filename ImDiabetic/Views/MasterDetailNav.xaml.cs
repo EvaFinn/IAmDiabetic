@@ -36,7 +36,7 @@ namespace ImDiabetic.Views
                 return;
             }
             Type selectedPage = selectedMenuItem.TargetPage;
-            if (selectedPage == typeof(MainPage)) {
+            if (selectedPage == typeof(LoginPage)) {
                 IsGestureEnabled = false;
             }
 
@@ -52,21 +52,18 @@ namespace ImDiabetic.Views
                 new MasterMenuItems()
                 {
                     Text = "Profile",
-                    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rockets.png"),
                     TargetPage = typeof(ProfilePage)
                 },
 
                 new MasterMenuItems()
                 {
                     Text = "Dashboard",
-                    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rockets.png"),
                     TargetPage = typeof(DashboardPage)
                 },
 
                 new MasterMenuItems()
                 {
                     Text = "Reminders",
-                    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rockets.png"),
                     TargetPage = typeof(RemindersListPage)
                 }
             };
@@ -80,7 +77,7 @@ namespace ImDiabetic.Views
 
         async void DeleteAccount(object sender, System.EventArgs e)
         {
-            var userToDelete = realm.All<AppUser>().Where(b => b.Id == User.Id).First();
+            var userToDelete = realm.All<AppUser>().Where(b => b.Id == User.Id).FirstOrDefault();
 
             using (var trans = realm.BeginWrite())
             {

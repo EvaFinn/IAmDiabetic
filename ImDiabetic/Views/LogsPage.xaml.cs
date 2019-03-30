@@ -126,7 +126,7 @@ namespace ImDiabetic.Views
         }
 
 
-        async void Handle_Clicked(object sender, System.EventArgs e)
+        public async void Handle_Clicked(object sender, System.EventArgs e)
         {
             (BindingContext as LogsViewModel).AddLog();
             await Navigation.PushAsync(new MasterDetailNav(User));
@@ -135,19 +135,13 @@ namespace ImDiabetic.Views
         public async void ScanClick(object sender, EventArgs e)
         {
             var ScannerPage = new ZXingScannerPage();
-
             ScannerPage.OnScanResult += (result) =>
             {
                 ScannerPage.IsScanning = false;
-
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     Navigation.PopAsync();
                     (BindingContext as LogsViewModel).AddFoodByBarcode(result.Text);
-                    Debug.WriteLine("***Calories : " + (BindingContext as LogsViewModel).Calorie);
-                    Debug.WriteLine("***Carbs : " + (BindingContext as LogsViewModel).Carbs);
-
-                    var position = calEntry.CursorPosition;
                     calEntry.Text = (BindingContext as LogsViewModel).Calorie;
                     carbsEntry.Text = (BindingContext as LogsViewModel).Carbs;
                 });

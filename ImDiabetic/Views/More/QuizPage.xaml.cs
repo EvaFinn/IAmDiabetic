@@ -21,60 +21,6 @@ namespace ImDiabetic.Views.More
             User = user;
             this.BindingContext = new QuestionViewModel(ChosenTopic, User);
             (BindingContext as QuestionViewModel).LoadQuestions();
-
-            btnAnswerOne.Clicked += (sender, ea) =>
-            {
-                if ((BindingContext as QuestionViewModel).CheckIfCorrect(1))
-                {
-                    score++;
-                }
-                DoAnswer();
-            };
-
-            btnAnswerOneIOS.Clicked += (sender, ea) =>
-            {
-                if ((BindingContext as QuestionViewModel).CheckIfCorrect(1))
-                {
-                    score++;
-                }
-                DoAnswer();
-            };
-
-            btnAnswerTwo.Clicked += (sender, ea) =>
-            {
-                if ((BindingContext as QuestionViewModel).CheckIfCorrect(2))
-                {
-                    score++;
-                }
-                DoAnswer();
-            };
-
-            btnAnswerTwoIOS.Clicked += (sender, ea) =>
-            {
-                if ((BindingContext as QuestionViewModel).CheckIfCorrect(2))
-                {
-                    score++;
-                }
-                DoAnswer();
-            };
-
-            btnAnswerThree.Clicked += (sender, ea) =>
-            {
-                if ((BindingContext as QuestionViewModel).CheckIfCorrect(3))
-                {
-                    score++;
-                }
-                DoAnswer();
-            };
-
-            btnAnswerThreeIOS.Clicked += (sender, ea) =>
-            {
-                if ((BindingContext as QuestionViewModel).CheckIfCorrect(3))
-                {
-                    score++;
-                }
-                DoAnswer();
-            };
         }
 
         private void DoAnswer()
@@ -87,11 +33,37 @@ namespace ImDiabetic.Views.More
             else
             {
                 QuizSettings.Score += score;
-                Debug.WriteLine("Final Score : " + QuizSettings.Score);
                 (BindingContext as QuestionViewModel).AddQuizToDB(QuizSettings.Score);
                 ResetQuizStats();
                 NavigateToEndPage();
             }
+        }
+
+        public void AnswerOneClicked(object sender, System.EventArgs e)
+        {
+            if ((BindingContext as QuestionViewModel).CheckIfCorrect(1))
+            {
+                score++;
+            }
+            DoAnswer();
+        }
+
+        public void AnswerTwoClicked(object sender, System.EventArgs e)
+        {
+            if ((BindingContext as QuestionViewModel).CheckIfCorrect(2))
+            {
+                score++;
+            }
+            DoAnswer();
+        }
+
+        public void AnswerThreeClicked(object sender, System.EventArgs e)
+        {
+            if ((BindingContext as QuestionViewModel).CheckIfCorrect(3))
+            {
+                score++;
+            }
+            DoAnswer();
         }
 
         private static void ResetQuizStats()
