@@ -250,7 +250,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\quizquestion.json" />
     <BundleResource Include="Resources\1dog1.json" />
-    <BundleResource Include="Resources\pigeon.json" />
+    <BundleResource Include="Resources\bird.json" />
     <BundleResource Include="Resources\rabbit.json" />
     <BundleResource Include="Resources\dog.json" />
     <BundleResource Include="Resources\bluebackground.jpg" />

@@ -13,5 +13,8 @@
             <Button Text="Login" Clicked="Handle_Clicked" Style="{StaticResource AButton}" />
             <Button Text="Register" Clicked="Register_Clicked" Style="{StaticResource AButton}" />
         </StackLayout>
+        <StackLayout x:Name="PrivacyStack" VerticalOptions="End" HorizontalOptions="CenterAndExpand" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <Label Text="Click here to view Privacy Agreement" VerticalOptions="EndAndExpand" Opacity="0.9" TextDecorations="Underline" Margin="0,0,0,20"/>
+        </StackLayout>
     </RelativeLayout>
 </ContentPage>

@@ -76,12 +76,14 @@
     <None Remove="Icons\add.png" />
     <None Remove="Icons\checked.png" />
     <None Remove="achievements.json" />
-    <None Remove="EduContent\Blood Glucose.pdf" />
     <None Remove="EduContent\Food.pdf" />
     <None Remove="Icons\blue.jpg" />
     <None Remove="Icons\trophy.png" />
     <None Remove="Icons\bluebackground.jpg" />
     <None Remove="Icons\flame.png" />
+    <None Remove="EduContent\Blood Glucose Monitoring.pdf" />
+    <None Remove="EduContent\Insulin.pdf" />
+    <None Remove="EduContent\PrivacyAgreement.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icons\" />
@@ -112,7 +114,6 @@
     <EmbeddedResource Include="Icons\add.png" />
     <EmbeddedResource Include="Icons\checked.png" />
     <EmbeddedResource Include="achievements.json" />
-    <EmbeddedResource Include="EduContent\Blood Glucose Monitoring.pdf" />
     <EmbeddedResource Include="EduContent\Food.pdf" />
     <EmbeddedResource Include="Icons\blue.jpg" />
     <EmbeddedResource Include="Icons\trophy.png" />
@@ -120,6 +121,9 @@
     <EmbeddedResource Include="Icons\flame.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="EduContent\Blood Glucose Monitoring.pdf" />
+    <EmbeddedResource Include="EduContent\Insulin.pdf" />
+    <EmbeddedResource Include="EduContent\PrivacyAgreement.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\DashboardPage.xaml.cs">

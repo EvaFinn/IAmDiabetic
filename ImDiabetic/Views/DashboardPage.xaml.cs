@@ -23,6 +23,7 @@ namespace ImDiabetic.Views
             AnimationView.Animation = User.Pet.ToLower() + ".json";
             flameImage.Source = ImageSource.FromResource("ImDiabetic.Utils.flame.png");
             TapOptions();
+            logTestLabel.IsVisible = false;
         }
 
         private void TapOptions()

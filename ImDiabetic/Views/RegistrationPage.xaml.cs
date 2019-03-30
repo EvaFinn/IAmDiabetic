@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using ImDiabetic.Models;
 using ImDiabetic.ViewModels;
 using Xamarin.Forms;
@@ -9,6 +10,10 @@ namespace ImDiabetic.Views
 {
     public partial class RegistrationPage : ContentPage
     {
+        Regex patdi = new Regex(@"[0-9]+");//match digits
+        Regex patupp = new Regex(@"[A-Z]+"); //match upper cases
+        Regex patlow = new Regex(@"[a-z]+"); //match lower cases
+
         public RegistrationPage()
         {
             NavigationPage.SetHasNavigationBar(this, false);
@@ -63,7 +68,10 @@ namespace ImDiabetic.Views
                         LNCheck.IsVisible = false;
                         break;
                     case "Age":
-                        AgeCheck.IsVisible = false;
+                        if (int.Parse(text) >= 12)
+                        {
+                            AgeCheck.IsVisible = false;
+                        }
                         break;
                     case "Weight - lb":
                         WCheck.IsVisible = false;
@@ -72,8 +80,12 @@ namespace ImDiabetic.Views
                         HCheck.IsVisible = false;
                         break;
                     case "Password":
-                        PWCheck.IsVisible = false;
-                        registerBtn.IsEnabled = true;
+                        if (patdi.IsMatch(text) && patlow.IsMatch(text) && patupp.IsMatch(text))
+                        {
+                            PWCheck.IsVisible = false;
+                            registerBtn.IsEnabled = true;
+                        }
+
                         break;
                 }
             }

@@ -7,6 +7,7 @@ using System.Windows.Input;
 using Acr.UserDialogs;
 using ImDiabetic.Models;
 using Plugin.LocalNotifications;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ImDiabetic.ViewModels
@@ -58,11 +59,24 @@ namespace ImDiabetic.ViewModels
                     User.Level++;
                 });
                 LevelUp = true;
-                UserDialogs.Instance.Alert("Level Up", "LEVEL", "OK");
+                ShareLevelUp();
 
             } else { LevelUp = false; }
 
             return LevelUp;
+        }
+
+        async private void ShareLevelUp()
+        {
+            bool share = await UserDialogs.Instance.ConfirmAsync("YOU HAVE LEVELED UP", "CONGRATULATIONS", "Share", "OK");
+            if (share == true)
+            {
+                await Share.RequestAsync(new ShareTextRequest
+                {
+                    Text = "I just leveled up on my ImDiabetic app!",
+                    Title = "Level Up"
+                });
+            }
         }
 
         public void HasLogs()

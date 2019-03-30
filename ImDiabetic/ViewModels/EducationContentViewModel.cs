@@ -40,9 +40,6 @@ namespace ImDiabetic.ViewModels
                 string filePath = fileData.FilePath;
                 Test = name;
 
-                Debug.WriteLine("File name is: " + name);
-                Debug.WriteLine("File Path : " + filePath);
-
                 Items.Add(name);
                 MyStream = new MemoryStream(data);
 

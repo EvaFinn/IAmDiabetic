@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using ImDiabetic.Models;
 using ImDiabetic.ViewModels;
 using Realms;
@@ -68,20 +69,24 @@ namespace ImDiabetic.Views
                     ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rockets.png"),
                     TargetPage = typeof(RemindersListPage)
                 }
-                //,
-
-                //new MasterMenuItems()
-                //{
-                //    Text = "Settings",
-                //    ImagePath = ImageSource.FromResource("ImDiabetic.Icons.rocket.png"),
-                //    TargetPage = typeof(SettingsPage)
-                //}
             };
             return list;
         }
 
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
+            await Navigation.PushAsync(new LoginPage());
+        }
+
+        async void DeleteAccount(object sender, System.EventArgs e)
+        {
+            var userToDelete = realm.All<AppUser>().Where(b => b.Id == User.Id).First();
+
+            using (var trans = realm.BeginWrite())
+            {
+                realm.Remove(userToDelete);
+                trans.Commit();
+            }
             await Navigation.PushAsync(new LoginPage());
         }
     }

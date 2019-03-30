@@ -20,5 +20,11 @@ namespace ImDiabetic.Views.More
             InitializeComponent();
             this.BindingContext = new PdfViewerViewModel(stream);
         }
+
+        public EducationContentPage(String topic)
+        {
+            InitializeComponent();
+            this.BindingContext = new PdfViewerViewModel(topic);
+        }
     }
 }
