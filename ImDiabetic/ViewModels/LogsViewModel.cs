@@ -17,8 +17,8 @@ namespace ImDiabetic.ViewModels
         public string Amount { get; set; }
         public string Carbs { get; set; }
         public string Calorie { get; set; }
-        public int LastBloogGlucoseLog { get; set; } = 0;
-        public int LastActivityLog { get; set; } = 0;
+        public int LastBloogGlucoseLog { get; set; } 
+        public int LastActivityLog { get; set; } 
 
 
         public LogsViewModel(AppUser user)
@@ -29,7 +29,6 @@ namespace ImDiabetic.ViewModels
 
         private void GetLastBGLog()
         {
-
             List<Log> BGList = new List<Log>();
             List<Log> AList = new List<Log>();
             var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
@@ -47,16 +46,8 @@ namespace ImDiabetic.ViewModels
                     }
                 }
             }
-
-            if (BGList.Any())
-            {
-                LastBloogGlucoseLog = int.Parse(BGList.Last().Amount);
-            }
-
-            if (AList.Any())
-            {
-                LastActivityLog = int.Parse(AList.Last().Amount);
-            }
+            LastBloogGlucoseLog = BGList.Any() ? int.Parse(BGList.Last().Amount) : 0;
+            LastActivityLog = AList.Any() ? int.Parse(AList.Last().Amount) : 0;
         }
 
         public void AddFoodByBarcode(string barcodeResult)
@@ -75,6 +66,7 @@ namespace ImDiabetic.ViewModels
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e.Message);
                 UserDialogs.Instance.Alert("Food item not found.", "Sorry", "OK");
                 Carbs = "";
                 Calorie = "";

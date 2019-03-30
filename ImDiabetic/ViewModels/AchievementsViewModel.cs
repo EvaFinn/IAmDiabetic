@@ -20,20 +20,23 @@ namespace ImDiabetic.ViewModels
         public string Points { get; set; }
         public string Date { get; set; }
         private List<Achievement> AllAchievements = new List<Achievement>();
+        private readonly IQueryable<Achievement> MyAchievements;
 
         public AchievementsViewModel(AppUser user, string achievement)
         {
             User = user;
             Achieve = achievement;
             LoadAchievements();
+            MyAchievements = realm.All<Achievement>().Where(a => a.UserId == User.Id);
         }
 
         public AchievementsViewModel(AppUser user)
         {
             User = user;
+            MyAchievements = realm.All<Achievement>().Where(a => a.UserId == User.Id);
         }
 
-        public void LoadAchievements()
+        private void LoadAchievements()
         {
             List<Achievement> jsonresult;
             var assembly = IntrospectionExtensions.GetTypeInfo(typeof(Achievement)).Assembly;
@@ -73,50 +76,6 @@ namespace ImDiabetic.ViewModels
             }
         }
 
-        public void CheckAchievements()
-        {
-            CheckBloodGlucoseLoggerOneDay();
-            CheckActivityLogAchievement();
-            CheckQuizTakenAchievement();
-            CheckDailyStreak(3);
-            CheckDailyStreak(7);
-            CheckDailyStreak(14);
-
-        }
-
-        private void CheckBloodGlucoseLoggerOneDay()
-        {
-            LoadAchievements();
-            bool HaveIt = false;
-            GetAchievementsForChallenge("Blood Glucose Logger");
-
-            var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
-            var achieves = realm.All<Achievement>().Where(a => a.UserId == User.Id);
-            if (logs.Count() > 0)
-            {
-                List<Log> todaysLogs = new List<Log>();
-                DateTimeOffset date = DateTimeOffset.Now;
-
-                foreach (Log log in logs)
-                {
-                    if (log.LogDate.Day.Equals(DateTimeOffset.Now.Day) && log.Type == "Blood Glucose")
-                    {
-                        todaysLogs.Add(log);
-                    }
-                }
-
-                foreach (Achievement a in achieves)
-                {
-                    HaveIt |= (a.Name == "Blood Glucose Logger" && a.IsAchieved == true);
-                }
-
-                if (todaysLogs.Count == 3 && !HaveIt)
-                {
-                    AddAchievement();
-                }
-            }
-        }
-
         private void GetAchievementsForChallenge(string achievement)
         {
             for (int i = 0; i < AllAchievements.Count; i++)
@@ -131,65 +90,70 @@ namespace ImDiabetic.ViewModels
             }
         }
 
-        async private void ShareAchievement()
+        public void CheckAchievements()
         {
-            bool share = await UserDialogs.Instance.ConfirmAsync("YOU HAVE WON THE " + Name + " CHALLENGE", "Congratulations", "Share", "OK");
-            if (share == true)
+            CheckBloodGlucoseLoggerOneDay();
+            CheckActivityLogAchievement();
+            CheckQuizTakenAchievement();
+            CheckDailyStreak(3);
+            CheckDailyStreak(7);
+            CheckDailyStreak(14);
+        }
+
+        private void CheckBloodGlucoseLoggerOneDay()
+        {
+            LoadAchievements();
+            bool HaveIt = false;
+            GetAchievementsForChallenge("Blood Glucose Logger");
+
+            var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
+            if (logs.Count() > 0)
             {
-                await Share.RequestAsync(new ShareTextRequest
+                List<Log> todaysLogs = new List<Log>();
+                foreach (Log log in logs)
                 {
-                    Text = "I just won the " + Name + " Challenge on my ImDiabetic App!",
-                    Title = "Achievement"
-                });
+                    if (log.LogDate.Day.Equals(DateTimeOffset.Now.Day) && log.Type == "Blood Glucose")
+                    {
+                        todaysLogs.Add(log);
+                    }
+                }
+                HaveIt = CheckIfAchieved(HaveIt, "Blood Glucose Logger");
+
+                if (todaysLogs.Count == 3 && !HaveIt)
+                {
+                    AddAchievement();
+                }
             }
         }
 
         private void CheckDailyStreak(int checkDays)
         {
-            var achieves = realm.All<Achievement>().Where(a => a.UserId == User.Id);
             LoadAchievements();
             bool HaveIt = false;
-
             if (User.DailyStreak == checkDays)
             {
-                Debug.WriteLine("omg won award!!! streak is {0} long", checkDays);
-
                 switch (checkDays)
                 {
                     case 3:
-                        GetAchievementsForChallenge("3 Day Streak");
-                        foreach (Achievement a in achieves)
-                        {
-                            HaveIt |= (a.Name == "3 Day Streak" && a.IsAchieved == true);
-                        }
-                        if (!HaveIt)
-                        {
-                            AddAchievement();
-                        }
+                        StreakAchieve("3 Day Streak", HaveIt);
                         break;
                     case 7:
-                        GetAchievementsForChallenge("7 Day Streak");
-                        foreach (Achievement a in achieves)
-                        {
-                            HaveIt |= (a.Name == "7 Day Streak" && a.IsAchieved == true);
-                        }
-                        if (!HaveIt)
-                        {
-                            AddAchievement();
-                        }
+                        StreakAchieve("7 Day Streak", HaveIt);
                         break;
                     case 14:
-                        GetAchievementsForChallenge("14 Day Streak");
-                        foreach (Achievement a in achieves)
-                        {
-                            HaveIt |= (a.Name == "14 Day Streak" && a.IsAchieved == true);
-                        }
-                        if (!HaveIt)
-                        {
-                            AddAchievement();
-                        }
+                        StreakAchieve("14 Day Streak", HaveIt);
                         break;
                 }
+            }
+        }
+
+        private void StreakAchieve(string Challenge, bool HaveIt)
+        {
+            GetAchievementsForChallenge(Challenge);
+            HaveIt = CheckIfAchieved(HaveIt, Challenge);
+            if (!HaveIt)
+            {
+                AddAchievement();
             }
         }
 
@@ -202,7 +166,6 @@ namespace ImDiabetic.ViewModels
             GetAchievementsForChallenge("Active Life");
 
             var logs = realm.All<Log>().Where(l => l.UserId == User.Id);
-            var achieves = realm.All<Achievement>().Where(a => a.UserId == User.Id);
             if (logs.Count() > 0)
             {
                 foreach (Log log in logs)
@@ -213,10 +176,7 @@ namespace ImDiabetic.ViewModels
                     }
                 }
 
-                foreach (Achievement a in achieves)
-                {
-                    HaveIt |= (a.Name == "Active Life" && a.IsAchieved == true);
-                }
+                HaveIt = CheckIfAchieved(HaveIt, "Active Life");
 
                 if (TotalActivity >= GoalActivity && !HaveIt)
                 {
@@ -233,24 +193,28 @@ namespace ImDiabetic.ViewModels
 
             var quiz = realm.All<Quiz>().Where(q => q.UserId == User.Id);
             List<Quiz> quizList = new List<Quiz>();
-            var achieves = realm.All<Achievement>().Where(a => a.UserId == User.Id);
             if (quiz.Count() > 0)
             {
                 foreach (Quiz q in quiz)
                 {
                     quizList.Add(q);
                 }
-
-                foreach (Achievement a in achieves)
-                {
-                    HaveIt |= (a.Name == "Quiz Master" && a.IsAchieved == true);
-                }
+                HaveIt = CheckIfAchieved(HaveIt, "Quiz Master");
 
                 if (quizList.Count() == 1 && !HaveIt)
                 {
                     AddAchievement();
                 }
             }
+        }
+
+        private bool CheckIfAchieved(bool HaveIt, string ChallengeName)
+        {
+            foreach (Achievement a in MyAchievements)
+            {
+                HaveIt |= (a.Name == ChallengeName && a.IsAchieved == true);
+            }
+            return HaveIt;
         }
 
         private void AddAchievement()
@@ -270,6 +234,19 @@ namespace ImDiabetic.ViewModels
                 User.Score = User.Score + int.Parse(achievement3log.PointsAwarded);
             });
             ShareAchievement();
+        }
+
+        async private void ShareAchievement()
+        {
+            bool share = await UserDialogs.Instance.ConfirmAsync("YOU HAVE WON THE " + Name + " CHALLENGE", "Congratulations", "Share", "OK");
+            if (share == true)
+            {
+                await Share.RequestAsync(new ShareTextRequest
+                {
+                    Text = "I just won the " + Name + " Challenge on my ImDiabetic App!",
+                    Title = "Achievement"
+                });
+            }
         }
     }
 }

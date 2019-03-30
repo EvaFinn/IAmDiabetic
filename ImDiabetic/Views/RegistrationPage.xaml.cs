@@ -11,8 +11,8 @@ namespace ImDiabetic.Views
     public partial class RegistrationPage : ContentPage
     {
         Regex patdi = new Regex(@"[0-9]+");
-        Regex patupp = new Regex(@"[A-Z]+"); 
-        Regex patlow = new Regex(@"[a-z]+"); 
+        Regex patupp = new Regex(@"[A-Z]+");
+        Regex patlow = new Regex(@"[a-z]+");
 
         public RegistrationPage()
         {
@@ -27,21 +27,17 @@ namespace ImDiabetic.Views
         }
         private bool IsValidEntry(string text)
         {
-            if (text == null || text.Equals("") || String.IsNullOrWhiteSpace(text))
-            {
-                return false;
-            }
-            return true;
+            return (text != null || !text.Equals("") || !String.IsNullOrWhiteSpace(text));
         }
 
-        async void Handle_Clicked(object sender, System.EventArgs e)
+        async void Handle_Clicked(object sender, EventArgs e)
         {
             (BindingContext as RegistrationViewModel).AddUser();
             AppUser user = (BindingContext as RegistrationViewModel).RegisteredUser;
             await Navigation.PushAsync(new MasterDetailNav(user));
         }
 
-        async void Cancel_Clicked(object sender, System.EventArgs e)
+        async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LoginPage());
         }
@@ -51,7 +47,7 @@ namespace ImDiabetic.Views
             return true;
         }
 
-        void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
+        void Handle_TextChanged(object sender, TextChangedEventArgs e)
         {
             string text = (sender as Entry).Text;
             bool valid = IsValidEntry(text);
