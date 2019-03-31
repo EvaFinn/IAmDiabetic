@@ -12,6 +12,7 @@ namespace ImDiabetic.Views.More
     public partial class QuizPage : ContentPage
     {
         public AppUser User { get; set; }
+        public string DisplayProgress { get; set; }
         int score = 0;
 
         public QuizPage(AppUser user, string ChosenTopic)
@@ -21,6 +22,8 @@ namespace ImDiabetic.Views.More
             User = user;
             this.BindingContext = new QuestionViewModel(ChosenTopic, User);
             (BindingContext as QuestionViewModel).LoadQuestions();
+            DisplayProgress =QuizSettings.CurrentQuestion + " / " + QuizSettings.QUESTIONS_COUNT;
+            Progress.Text = DisplayProgress;
         }
 
         private void DoAnswer()
@@ -29,6 +32,8 @@ namespace ImDiabetic.Views.More
             {
                 QuizSettings.CurrentQuestion++;
                 ((QuestionViewModel)BindingContext).ChooseNewQuestion();
+                DisplayProgress = QuizSettings.CurrentQuestion + " / " + QuizSettings.QUESTIONS_COUNT;
+                Progress.Text = DisplayProgress;
             }
             else
             {

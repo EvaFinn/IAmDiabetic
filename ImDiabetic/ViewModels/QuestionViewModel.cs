@@ -17,6 +17,17 @@ namespace ImDiabetic.ViewModels
     {
         public AppUser User { get; set; }
         private int questionNumber = 0;
+        private string _displayprogress = "";
+        public string DisplayProgress
+        {
+            get { return this._displayprogress; }
+            set
+            {
+                this._displayprogress = value;
+                PropertyChanged(this,
+                    new PropertyChangedEventArgs("DisplayProgress"));
+            }
+        } 
         private int _correctAnswer = 0;
         public int CorrectAnswer
         {
@@ -174,6 +185,7 @@ namespace ImDiabetic.ViewModels
         public void ChooseNewQuestion()
         {
             QuizQuestion selectedItem = QuestionList[questionNumber];
+            DisplayProgress = (questionNumber+1) + " / 6";
 
             Answer1Enabled = true;
             Answer2Enabled = true;
